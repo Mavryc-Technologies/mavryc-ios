@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D30a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="t9F-WZ-h6L">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Onboarding View Controller-->
+        <scene sceneID="I27-wZ-zKE">
+            <objects>
+                <viewController storyboardIdentifier="OnboardingViewController" id="t9F-WZ-h6L" customClass="OnboardingViewController" customModule="mavryc" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="XZr-iz-akq"/>
+                        <viewControllerLayoutGuide type="bottom" id="qB2-A1-my7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="uwB-Da-lSG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Onboarding" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HqT-db-xX4">
+                                <rect key="frame" x="132" y="323" width="109" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wOR-Y1-wgF">
+                                <rect key="frame" x="151" y="374" width="70" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="v2l-Mh-uxV"/>
+                                </constraints>
+                                <state key="normal" title="Skip"/>
+                                <connections>
+                                    <action selector="skipButtonAction:" destination="t9F-WZ-h6L" eventType="touchUpInside" id="rao-u5-cax"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="qB2-A1-my7" firstAttribute="top" secondItem="HqT-db-xX4" secondAttribute="bottom" constant="323" id="Tfi-Cf-tZ9"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="HqT-db-xX4" secondAttribute="trailing" constant="118" id="oGj-Mc-cu5"/>
+                            <constraint firstItem="HqT-db-xX4" firstAttribute="leading" secondItem="uwB-Da-lSG" secondAttribute="leadingMargin" constant="116" id="oRI-gr-0hP"/>
+                            <constraint firstItem="wOR-Y1-wgF" firstAttribute="top" secondItem="HqT-db-xX4" secondAttribute="bottom" constant="30" id="t4B-HB-IDq"/>
+                            <constraint firstItem="HqT-db-xX4" firstAttribute="top" secondItem="XZr-iz-akq" secondAttribute="bottom" constant="303" id="xIq-ce-Rxr"/>
+                            <constraint firstItem="wOR-Y1-wgF" firstAttribute="centerX" secondItem="HqT-db-xX4" secondAttribute="centerX" id="zuI-kM-g9g"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="afM-ZF-Koo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-418.39999999999998" y="34.632683658170919"/>
+        </scene>
+    </scenes>
+</document>
