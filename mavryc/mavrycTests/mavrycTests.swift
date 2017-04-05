@@ -8,8 +8,11 @@
 
 import XCTest
 @testable import mavryc
+import SwiftyJSON
 
 class mavrycTests: XCTestCase {
+    
+    var globalTempUserEmail: String = "h@h.com"
     
     override func setUp() {
         super.setUp()
@@ -21,16 +24,18 @@ class mavrycTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    func testSearchForUser() {
+        
+        let exp = expectation(description: "test web service find-user expectation")
+        
+        UserSearchClient().makeRequest(email: globalTempUserEmail, success: { responseString in
+            print("serverResponse: \(responseString)")
+            exp.fulfill()
+        }, failure: { error in
+            XCTFail()
+        })
+        
+        waitForExpectations(timeout: 20.0, handler:nil)
     }
     
 }
