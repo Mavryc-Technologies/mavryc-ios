@@ -7,8 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9666A4561E95A9D000CA822F /* FetchFlightsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9666A4551E95A9D000CA822F /* FetchFlightsClient.swift */; };
 		967FF6261E9446BF007B56C6 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967FF6251E9446BF007B56C6 /* Networking.swift */; };
 		967FF6291E945796007B56C6 /* UserSearchClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967FF6281E945796007B56C6 /* UserSearchClient.swift */; };
+		96A32C181E96A30500DA7DC1 /* states-cities.json in Resources */ = {isa = PBXBuildFile; fileRef = 96A32C171E96A30500DA7DC1 /* states-cities.json */; };
+		96A32C1B1E96A36900DA7DC1 /* Cities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A32C1A1E96A36900DA7DC1 /* Cities.swift */; };
 		96E53ED31E90378E0045AA06 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E53ED21E90378E0045AA06 /* AppDelegate.swift */; };
 		96E53ED81E90378E0045AA06 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96E53ED61E90378E0045AA06 /* Main.storyboard */; };
 		96E53EDA1E90378E0045AA06 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96E53ED91E90378E0045AA06 /* Assets.xcassets */; };
@@ -45,8 +48,11 @@
 		77E884330154E11441155D61 /* Pods_mavryc.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mavryc.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BB6D2AAAA732FB84064959C /* Pods-mavryc-mavrycTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mavryc-mavrycTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-mavryc-mavrycTests/Pods-mavryc-mavrycTests.release.xcconfig"; sourceTree = "<group>"; };
 		7BF64E167EC734F4C54DBF17 /* Pods-mavryc.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mavryc.debug.xcconfig"; path = "Pods/Target Support Files/Pods-mavryc/Pods-mavryc.debug.xcconfig"; sourceTree = "<group>"; };
+		9666A4551E95A9D000CA822F /* FetchFlightsClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchFlightsClient.swift; sourceTree = "<group>"; };
 		967FF6251E9446BF007B56C6 /* Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		967FF6281E945796007B56C6 /* UserSearchClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSearchClient.swift; sourceTree = "<group>"; };
+		96A32C171E96A30500DA7DC1 /* states-cities.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "states-cities.json"; sourceTree = "<group>"; };
+		96A32C1A1E96A36900DA7DC1 /* Cities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cities.swift; sourceTree = "<group>"; };
 		96E53ECF1E90378E0045AA06 /* mavryc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mavryc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		96E53ED21E90378E0045AA06 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		96E53ED71E90378E0045AA06 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -113,8 +119,25 @@
 			isa = PBXGroup;
 			children = (
 				967FF6281E945796007B56C6 /* UserSearchClient.swift */,
+				9666A4551E95A9D000CA822F /* FetchFlightsClient.swift */,
 			);
 			name = clients;
+			sourceTree = "<group>";
+		};
+		96A32C161E96A1A900DA7DC1 /* data */ = {
+			isa = PBXGroup;
+			children = (
+				96A32C171E96A30500DA7DC1 /* states-cities.json */,
+			);
+			name = data;
+			sourceTree = "<group>";
+		};
+		96A32C191E96A34800DA7DC1 /* models */ = {
+			isa = PBXGroup;
+			children = (
+				96A32C1A1E96A36900DA7DC1 /* Cities.swift */,
+			);
+			name = models;
 			sourceTree = "<group>";
 		};
 		96E53EC61E90378E0045AA06 = {
@@ -144,6 +167,7 @@
 				96E53EF31E9037EB0045AA06 /* resources */,
 				96E53EF61E903AA00045AA06 /* networking */,
 				96E53EF71E903AC70045AA06 /* features */,
+				96A32C191E96A34800DA7DC1 /* models */,
 				96E53EF91E903B440045AA06 /* extensions */,
 				96F2FCB51E92FACA00C51674 /* logging */,
 				96F2FCA01E92D9A900C51674 /* storyboard support */,
@@ -177,6 +201,7 @@
 				96E53EDB1E90378E0045AA06 /* LaunchScreen.storyboard */,
 				96E53EDE1E90378E0045AA06 /* Info.plist */,
 				96E53ED91E90378E0045AA06 /* Assets.xcassets */,
+				96A32C161E96A1A900DA7DC1 /* data */,
 			);
 			name = resources;
 			sourceTree = "<group>";
@@ -349,6 +374,7 @@
 			files = (
 				96E53EDD1E90378E0045AA06 /* LaunchScreen.storyboard in Resources */,
 				96E53EDA1E90378E0045AA06 /* Assets.xcassets in Resources */,
+				96A32C181E96A30500DA7DC1 /* states-cities.json in Resources */,
 				96E53ED81E90378E0045AA06 /* Main.storyboard in Resources */,
 				96F2FCAC1E92DEE300C51674 /* Onboarding.storyboard in Resources */,
 			);
@@ -466,7 +492,9 @@
 				967FF6261E9446BF007B56C6 /* Networking.swift in Sources */,
 				96F2FCB31E92DF4E00C51674 /* MainViewController.swift in Sources */,
 				96F2FC961E92CD0000C51674 /* AppCoordinator.swift in Sources */,
+				96A32C1B1E96A36900DA7DC1 /* Cities.swift in Sources */,
 				96F2FCA51E92DA3400C51674 /* UIViewController+StoryboardIdentifier.swift in Sources */,
+				9666A4561E95A9D000CA822F /* FetchFlightsClient.swift in Sources */,
 				967FF6291E945796007B56C6 /* UserSearchClient.swift in Sources */,
 				96F2FC9B1E92D6FE00C51674 /* AppStyle.swift in Sources */,
 				96F2FC981E92D29600C51674 /* SafeLog.swift in Sources */,
