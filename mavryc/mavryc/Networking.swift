@@ -10,7 +10,19 @@ import Foundation
 import Alamofire
 
 enum PlatformAPI {
+    
     case searchUser(email: String)
+    
+    case signup(email: String,
+            firstName: String,
+            lastName: String,
+            password: String,
+            phone: String?,
+            birthday: String?)
+    
+//    case login(email: String, password: String?, fbToken: String?)
+    
+    case fetchFlights()
 }
 
 //enum PlatformAuthenticatedAPI {
@@ -26,6 +38,27 @@ protocol Path {
     var path: String { get }
 }
 
+protocol Routable: Path {
+    var baseURL: URL { get }
+}
+
+/// A Payload to be used in platform requests for the given API.
+protocol Payload: Path {
+    var payload: [String: Any]? { get }
+}
+
+protocol ClientServerSecretHashable: Path {
+    var hashedSecret: String? { get }
+}
+
+protocol ClientConfiguration {
+    var securityTokenStoreKey: String { get }
+    var securityTokenUrlParameter: String? { get set }
+    func loggedIn(with securityToken: String?)
+    func logout()
+}
+
+
 extension PlatformAPI: Path {
     
     var path: String {
@@ -33,6 +66,10 @@ extension PlatformAPI: Path {
         switch self {
             
         case .searchUser(_): return "/find-user"
+            
+        case .signup(_,_,_,_,_,_): return "/add-user"
+            
+        case .fetchFlights(): return "/flights"
             
 //        case .signup: return "user.registerUser"
 //            
@@ -55,10 +92,6 @@ extension PlatformAPI: Path {
 //    }
 //}
 
-protocol Routable: Path {
-    var baseURL: URL { get }
-}
-
 extension PlatformAPI: Routable {
     
     var baseURL: URL {
@@ -75,9 +108,6 @@ extension PlatformAPI: Routable {
 //    }
 //}
 
-protocol ClientServerSecretHashable: Path {
-    var hashedSecret: String? { get }
-}
 
 extension PlatformAPI: ClientServerSecretHashable {
     
@@ -117,63 +147,31 @@ extension PlatformAPI: ClientServerSecretHashable {
     }
 }
 
-/// A Payload to be used in platform requests for the given API.
-protocol Payload: Path {
-    var payload: [String: Any]? { get }
-}
-
 /// Define as needed for each API that requires a payload in addition to, or rather than, url encoded params
 extension PlatformAPI: Payload {
     
     var payload: [String: Any]? {
+        
         switch self {
             
         case .searchUser(let email):
             return ["email":email]
             
-//        case .login(let username, let password, let fbToken):
-//            guard let hash = self.hashedSecret else { return [:] }
-//            guard let deviceid = AppState.deviceID else { return [:] }
-//            if let fbToken = fbToken {
-//                return ["facebookToken":fbToken,
-//                        "deviceId":deviceid,
-//                        Networking.sharedInstance.confirmationAppSecretHashKey: hash]
-//            } else if let username = username, let password = password {
-//                return ["username":username,
-//                        "password":password,
-//                        "deviceId":deviceid,
-//                        Networking.sharedInstance.confirmationAppSecretHashKey: hash]
-//            }
-//                
-//            else {
-//                
-//                return ["deviceId":deviceid,
-//                        Networking.sharedInstance.confirmationAppSecretHashKey: hash]
-//            }
-//            
-//        case .resetPassword:
-//            guard let hash = self.hashedSecret else { return [:] }
-//            return [Networking.sharedInstance.confirmationAppSecretHashKey: hash]
-//            
-//        case .signup(let username, let password, let firstname, let lastname, let phone, let base64Photo, let facebookId,let dob):
-//            guard let hash = self.hashedSecret else { return [:] }
-//            guard let deviceid = AppState.deviceID else { return [:] }
-//            var params = [String:String]()
-//            params[Networking.sharedInstance.confirmationAppSecretHashKey] = hash
-//            params["firstName"] = firstname
-//            params["lastName"] = lastname
-//            params["deviceId"] = deviceid
-//            params["phoneNumber"] = phone
-//            params["dob"] = dob
-//            if let userIcon = base64Photo { params["userIcon"] = userIcon }
-//            if let fbId = facebookId { params["facebookId"] = fbId }
-//            else {
-//                params["username"] = username
-//                params["password"] = password
-//            }
-//            return params
+        case .signup(let email, let firstName, let lastName, let password, let phone, let birthday):
+            var params = [String:String]()
+            params["firstname"] = firstName
+            params["lastname"] = lastName
+            params["email"] = email
+            params["password"] = password
+            params["phone"] = phone // TODO: CHECK TO SEE WHETHER THE LET ABOVE IS AN OPTIONAL - if so then dicionary has a convenience unwrapper when adding if it knows the type should be String and the param is an optional with a string.
+            params["birthday"] = birthday
+            return params
             
-        default: return nil
+        case .fetchFlights():
+            var params = [String:String]()
+            return params
+            
+        //default: return nil
         }
     }
 }
@@ -190,13 +188,6 @@ class Networking {
         sessionManager.session.configuration.httpCookieStorage = HTTPCookieStorage.shared
         self.sessionManager = sessionManager
     }
-}
-
-protocol ClientConfiguration {
-    var securityTokenStoreKey: String { get }
-    var securityTokenUrlParameter: String? { get set }
-    func loggedIn(with securityToken: String?)
-    func logout()
 }
 
 //extension Networking: ClientConfiguration {

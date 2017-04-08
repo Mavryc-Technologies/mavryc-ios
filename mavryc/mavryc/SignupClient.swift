@@ -1,8 +1,8 @@
 //
-//  FetchFlightsClient.swift
+//  SignupClient.swift
 //  mavryc
 //
-//  Created by Todd Hopkinson on 4/5/17.
+//  Created by Todd Hopkinson on 4/7/17.
 //  Copyright © 2017 Mavryc Technologies, Inc. All rights reserved.
 //
 
@@ -10,11 +10,16 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
-class FetchFlightsClient {
+class SignupClient {
     
-    public func makeRequest(dto: FetchFlightsDTO, success: ((String) -> Void)?, failure: ((Error) -> Void)? ) {
+    public func makeRequest(signup: SignupDTO, success: ((String) -> Void)?, failure: ((Error) -> Void)? ) {
         
-        let api = PlatformAPI.fetchFlights()
+        let api = PlatformAPI.signup(email: signup.email,
+                                     firstName: signup.firstName,
+                                     lastName: signup.lastName,
+                                     password: signup.password,
+                                     phone: signup.phone,
+                                     birthday: signup.birthday)
         let url = Networking.url(route: api)
         let params = Networking.payload(source: api)
         
