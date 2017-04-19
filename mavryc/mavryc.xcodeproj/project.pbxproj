@@ -11,7 +11,7 @@
 		961E2AC71E985A20000F2D64 /* webServiceClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961E2AC61E985A20000F2D64 /* webServiceClientTests.swift */; };
 		9666A4561E95A9D000CA822F /* FetchFlightsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9666A4551E95A9D000CA822F /* FetchFlightsClient.swift */; };
 		967FF6261E9446BF007B56C6 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967FF6251E9446BF007B56C6 /* Networking.swift */; };
-		967FF6291E945796007B56C6 /* UserSearchClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967FF6281E945796007B56C6 /* UserSearchClient.swift */; };
+		967FF6291E945796007B56C6 /* FetchUserClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967FF6281E945796007B56C6 /* FetchUserClient.swift */; };
 		96A32C181E96A30500DA7DC1 /* states-cities.json in Resources */ = {isa = PBXBuildFile; fileRef = 96A32C171E96A30500DA7DC1 /* states-cities.json */; };
 		96A32C1B1E96A36900DA7DC1 /* Cities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A32C1A1E96A36900DA7DC1 /* Cities.swift */; };
 		96A32C1D1E96D1EC00DA7DC1 /* AutoCompletionPredictable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A32C1C1E96D1EC00DA7DC1 /* AutoCompletionPredictable.swift */; };
@@ -57,7 +57,7 @@
 		961E2AC61E985A20000F2D64 /* webServiceClientTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = webServiceClientTests.swift; sourceTree = "<group>"; };
 		9666A4551E95A9D000CA822F /* FetchFlightsClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchFlightsClient.swift; sourceTree = "<group>"; };
 		967FF6251E9446BF007B56C6 /* Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
-		967FF6281E945796007B56C6 /* UserSearchClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSearchClient.swift; sourceTree = "<group>"; };
+		967FF6281E945796007B56C6 /* FetchUserClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchUserClient.swift; sourceTree = "<group>"; };
 		96A32C171E96A30500DA7DC1 /* states-cities.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "states-cities.json"; sourceTree = "<group>"; };
 		96A32C1A1E96A36900DA7DC1 /* Cities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cities.swift; sourceTree = "<group>"; };
 		96A32C1C1E96D1EC00DA7DC1 /* AutoCompletionPredictable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCompletionPredictable.swift; sourceTree = "<group>"; };
@@ -139,7 +139,7 @@
 			children = (
 				96A32C1E1E98153300DA7DC1 /* SignupClient.swift */,
 				96A32C201E98158D00DA7DC1 /* SignupDTO.swift */,
-				967FF6281E945796007B56C6 /* UserSearchClient.swift */,
+				967FF6281E945796007B56C6 /* FetchUserClient.swift */,
 			);
 			name = user;
 			sourceTree = "<group>";
@@ -530,7 +530,7 @@
 				96A32C1D1E96D1EC00DA7DC1 /* AutoCompletionPredictable.swift in Sources */,
 				96A32C211E98158D00DA7DC1 /* SignupDTO.swift in Sources */,
 				9666A4561E95A9D000CA822F /* FetchFlightsClient.swift in Sources */,
-				967FF6291E945796007B56C6 /* UserSearchClient.swift in Sources */,
+				967FF6291E945796007B56C6 /* FetchUserClient.swift in Sources */,
 				96F2FC9B1E92D6FE00C51674 /* AppStyle.swift in Sources */,
 				96F2FC981E92D29600C51674 /* SafeLog.swift in Sources */,
 				96F2FC9E1E92D8CC00C51674 /* AppState.swift in Sources */,

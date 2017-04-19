@@ -10,11 +10,11 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
-class UserSearchClient {
+class FetchUserClient {
     
     public func makeRequest(email: String, success: ((String) -> Void)?, failure: ((Error) -> Void)? ) {
         
-        let api = PlatformAPI.searchUser(email: email)
+        let api = PlatformAPI.fetchUser(userId: "21")
         let url = Networking.url(route: api)
         let params = Networking.payload(source: api)
         

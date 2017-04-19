@@ -7,6 +7,8 @@
 //
 
 import XCTest
+@testable import mavryc
+import SwiftyJSON
 
 class webServiceClientTests: XCTestCase {
     
@@ -20,6 +22,47 @@ class webServiceClientTests: XCTestCase {
         super.tearDown()
     }
 
+    func testSearchForUser() {
+        
+        let exp = expectation(description: "test web service find-user expectation")
+        
+        let email = "h@h.com"
+        //        let email = "one@test.com"
+        FetchUserClient().makeRequest(email: email, success: { responseString in
+            print("serverResponse: \(responseString)")
+            exp.fulfill()
+        }, failure: { error in
+            XCTFail()
+        })
+        
+        waitForExpectations(timeout: 20.0, handler:nil)
+    }
     
+    func testSignup() {
+        let exp = expectation(description: "signup web service expectation")
+        let dto = SignupDTO(email: "five@test.com", firstName: "oneF", lastName: "oneL", password: "password")
+        SignupClient().makeRequest(signup: dto, success: { responseString in
+            print("serverResponse: \(responseString)")
+            exp.fulfill()
+        }, failure: { error in
+            XCTFail()
+        })
+        
+        waitForExpectations(timeout: 20.0, handler:nil)
+    }
+    
+    func testFetchFlightsClient() {
+        let exp = expectation(description: "fetch flights web service expectation")
+
+        let dto = FetchFlightsDTO()
+        FetchFlightsClient().makeRequest(dto: dto, success: { responseString in
+            print("serverResponse: \(responseString)")
+            exp.fulfill()
+        }, failure: { error in
+            XCTFail()
+        })
+        
+        waitForExpectations(timeout: 20.0, handler:nil)
+    }
     
 }

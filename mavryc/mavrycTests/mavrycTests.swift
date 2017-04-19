@@ -42,33 +42,4 @@ class mavrycTests: XCTestCase {
         waitForExpectations(timeout: 5.0, handler:nil)
     }
     
-    func testSearchForUser() {
-        
-        let exp = expectation(description: "test web service find-user expectation")
-        
-        let email = "h@h.com"
-//        let email = "one@test.com"
-        UserSearchClient().makeRequest(email: email, success: { responseString in
-            print("serverResponse: \(responseString)")
-            exp.fulfill()
-        }, failure: { error in
-            XCTFail()
-        })
-        
-        waitForExpectations(timeout: 20.0, handler:nil)
-    }
-    
-    func testSignup() {
-        let exp = expectation(description: "signup web service expectation")
-        let dto = SignupDTO(email: "two@test.com", firstName: "oneF", lastName: "oneL", password: "password")
-        SignupClient().makeRequest(signup: dto, success: { responseString in
-            print("serverResponse: \(responseString)")
-            exp.fulfill()
-        }, failure: { error in
-            XCTFail()
-        })
-        
-        waitForExpectations(timeout: 20.0, handler:nil)
-    }
-    
 }

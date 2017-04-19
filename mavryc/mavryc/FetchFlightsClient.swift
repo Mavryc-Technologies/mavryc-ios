@@ -17,8 +17,9 @@ class FetchFlightsClient {
         let api = PlatformAPI.fetchFlights()
         let url = Networking.url(route: api)
         let params = Networking.payload(source: api)
+        let method = Networking.httpMethod(source: api)
         
-        Networking.sharedInstance.sessionManager.request(url, method: .post, parameters: params, encoding: URLEncoding.default, headers: nil).validate().responseJSON { response in
+        Networking.sharedInstance.sessionManager.request(url, method: method, parameters: params, encoding: URLEncoding.default, headers: nil).validate().responseJSON { response in
             
             switch response.result {
             case .success(let jsonData):
