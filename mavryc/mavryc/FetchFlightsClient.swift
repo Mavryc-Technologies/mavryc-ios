@@ -8,11 +8,11 @@
 
 import Foundation
 import Alamofire
-import SwiftyJSON
+import ObjectMapper
 
 class FetchFlightsClient {
     
-    public func makeRequest(dto: FetchFlightsDTO, success: ((String) -> Void)?, failure: ((Error) -> Void)? ) {
+    public func makeRequest(dto: FetchFlightsDTO, success: (([Flight]) -> Void)?, failure: ((Error) -> Void)? ) {
         
         let api = PlatformAPI.fetchFlights()
         let url = Networking.url(route: api)
@@ -24,32 +24,13 @@ class FetchFlightsClient {
             switch response.result {
             case .success(let jsonData):
                 
-                let json:JSON = JSON(jsonData)
-                SafeLog.print("response \(json)")
-                
-                //                do {
-                //                    try json.validatePlatformResponseSuccess()
-                //                } catch  {
-                //                    failure?(error)
-                //                    print("📡 response: \(response)")
-                //                    return
-                //                }
-                
-                // Parse the user object
-                //                do {
-                //                    if let user = try User.parseServerData(json: json) {
-                //                        success?(user)
-                success?(json.debugDescription)
-                //                        return
-                //                    }
-                //                } catch {
-                //                    print("caught thrown parsing error")
-                //                    failure?(error)
-                //                    print("📡 response: \(response)")
-                //                    return
-                //                }
-                
-                //                failure?(NSError(domain: "httpresponsesuccessful.butnotreally.somethingiswrong", code: 999, userInfo: nil))
+                if let flights: Array<Flight> = Mapper<Flight>().mapArray(JSONObject: jsonData) {
+                    success?(flights)
+                } else {
+                    let error = NSError(domain: "error.parsing.fetchFlights.serverResponse", code: 999, userInfo: ["jsonData":"\(jsonData)", "response":"\(response)", "result":"\(response.result)"])
+                    SafeLog.print(error)
+                    failure?(error)
+                }
                 
             case .failure(let error):
                 SafeLog.print(error)

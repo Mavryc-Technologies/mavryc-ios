@@ -55,8 +55,8 @@ class webServiceClientTests: XCTestCase {
         let exp = expectation(description: "fetch flights web service expectation")
 
         let dto = FetchFlightsDTO()
-        FetchFlightsClient().makeRequest(dto: dto, success: { responseString in
-            print("serverResponse: \(responseString)")
+        FetchFlightsClient().makeRequest(dto: dto, success: { flights in
+            print("flights: \(flights)")
             exp.fulfill()
         }, failure: { error in
             XCTFail()
