@@ -11,12 +11,13 @@
 		961E2AC71E985A20000F2D64 /* webServiceClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961E2AC61E985A20000F2D64 /* webServiceClientTests.swift */; };
 		9666A4561E95A9D000CA822F /* FetchFlightsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9666A4551E95A9D000CA822F /* FetchFlightsClient.swift */; };
 		967FF6261E9446BF007B56C6 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967FF6251E9446BF007B56C6 /* Networking.swift */; };
-		967FF6291E945796007B56C6 /* UserSearchClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967FF6281E945796007B56C6 /* UserSearchClient.swift */; };
+		967FF6291E945796007B56C6 /* FetchUserClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967FF6281E945796007B56C6 /* FetchUserClient.swift */; };
 		96A32C181E96A30500DA7DC1 /* states-cities.json in Resources */ = {isa = PBXBuildFile; fileRef = 96A32C171E96A30500DA7DC1 /* states-cities.json */; };
 		96A32C1B1E96A36900DA7DC1 /* Cities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A32C1A1E96A36900DA7DC1 /* Cities.swift */; };
 		96A32C1D1E96D1EC00DA7DC1 /* AutoCompletionPredictable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A32C1C1E96D1EC00DA7DC1 /* AutoCompletionPredictable.swift */; };
 		96A32C1F1E98153300DA7DC1 /* SignupClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A32C1E1E98153300DA7DC1 /* SignupClient.swift */; };
 		96A32C211E98158D00DA7DC1 /* SignupDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A32C201E98158D00DA7DC1 /* SignupDTO.swift */; };
+		96DA42371EA7FD670036C227 /* Flight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DA42361EA7FD670036C227 /* Flight.swift */; };
 		96E53ED31E90378E0045AA06 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E53ED21E90378E0045AA06 /* AppDelegate.swift */; };
 		96E53ED81E90378E0045AA06 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96E53ED61E90378E0045AA06 /* Main.storyboard */; };
 		96E53EDA1E90378E0045AA06 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96E53ED91E90378E0045AA06 /* Assets.xcassets */; };
@@ -57,12 +58,13 @@
 		961E2AC61E985A20000F2D64 /* webServiceClientTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = webServiceClientTests.swift; sourceTree = "<group>"; };
 		9666A4551E95A9D000CA822F /* FetchFlightsClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchFlightsClient.swift; sourceTree = "<group>"; };
 		967FF6251E9446BF007B56C6 /* Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
-		967FF6281E945796007B56C6 /* UserSearchClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSearchClient.swift; sourceTree = "<group>"; };
+		967FF6281E945796007B56C6 /* FetchUserClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchUserClient.swift; sourceTree = "<group>"; };
 		96A32C171E96A30500DA7DC1 /* states-cities.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "states-cities.json"; sourceTree = "<group>"; };
 		96A32C1A1E96A36900DA7DC1 /* Cities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cities.swift; sourceTree = "<group>"; };
 		96A32C1C1E96D1EC00DA7DC1 /* AutoCompletionPredictable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCompletionPredictable.swift; sourceTree = "<group>"; };
 		96A32C1E1E98153300DA7DC1 /* SignupClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupClient.swift; sourceTree = "<group>"; };
 		96A32C201E98158D00DA7DC1 /* SignupDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupDTO.swift; sourceTree = "<group>"; };
+		96DA42361EA7FD670036C227 /* Flight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Flight.swift; sourceTree = "<group>"; };
 		96E53ECF1E90378E0045AA06 /* mavryc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mavryc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		96E53ED21E90378E0045AA06 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		96E53ED71E90378E0045AA06 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -139,7 +141,7 @@
 			children = (
 				96A32C1E1E98153300DA7DC1 /* SignupClient.swift */,
 				96A32C201E98158D00DA7DC1 /* SignupDTO.swift */,
-				967FF6281E945796007B56C6 /* UserSearchClient.swift */,
+				967FF6281E945796007B56C6 /* FetchUserClient.swift */,
 			);
 			name = user;
 			sourceTree = "<group>";
@@ -166,6 +168,7 @@
 			children = (
 				96A32C1C1E96D1EC00DA7DC1 /* AutoCompletionPredictable.swift */,
 				96A32C1A1E96A36900DA7DC1 /* Cities.swift */,
+				96DA42361EA7FD670036C227 /* Flight.swift */,
 			);
 			name = models;
 			sourceTree = "<group>";
@@ -196,8 +199,8 @@
 				96E53EF21E9037B70045AA06 /* application */,
 				96E53EF31E9037EB0045AA06 /* resources */,
 				96E53EF61E903AA00045AA06 /* networking */,
-				96E53EF71E903AC70045AA06 /* features */,
 				96A32C191E96A34800DA7DC1 /* models */,
+				96E53EF71E903AC70045AA06 /* features */,
 				96E53EF91E903B440045AA06 /* extensions */,
 				96F2FCB51E92FACA00C51674 /* logging */,
 				96F2FCA01E92D9A900C51674 /* storyboard support */,
@@ -530,9 +533,10 @@
 				96A32C1D1E96D1EC00DA7DC1 /* AutoCompletionPredictable.swift in Sources */,
 				96A32C211E98158D00DA7DC1 /* SignupDTO.swift in Sources */,
 				9666A4561E95A9D000CA822F /* FetchFlightsClient.swift in Sources */,
-				967FF6291E945796007B56C6 /* UserSearchClient.swift in Sources */,
+				967FF6291E945796007B56C6 /* FetchUserClient.swift in Sources */,
 				96F2FC9B1E92D6FE00C51674 /* AppStyle.swift in Sources */,
 				96F2FC981E92D29600C51674 /* SafeLog.swift in Sources */,
+				96DA42371EA7FD670036C227 /* Flight.swift in Sources */,
 				96F2FC9E1E92D8CC00C51674 /* AppState.swift in Sources */,
 				96F2FCAF1E92DF0D00C51674 /* OnboardingViewController.swift in Sources */,
 				96E53ED31E90378E0045AA06 /* AppDelegate.swift in Sources */,

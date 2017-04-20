@@ -11,7 +11,7 @@ import Alamofire
 
 enum PlatformAPI {
     
-    case searchUser(email: String)
+    case fetchUser(userId: String)
     
     case signup(email: String,
             firstName: String,
@@ -30,6 +30,7 @@ enum PlatformAPI {
 //}
 
 enum PlatformBaseUrl: String {
+    case apiaryMock = "https://private-6f3e2-mavrycswaggerapi.apiary-mock.com/v1"
     case development = "https://mavryc.herokuapp.com"
     case production = "https://www.mavrycapp.com" // TODO: update prod base url
 }
@@ -40,6 +41,10 @@ protocol Path {
 
 protocol Routable: Path {
     var baseURL: URL { get }
+}
+
+protocol httpMethod: Path {
+    var method: HTTPMethod { get }
 }
 
 /// A Payload to be used in platform requests for the given API.
@@ -65,14 +70,12 @@ extension PlatformAPI: Path {
         
         switch self {
             
-        case .searchUser(_): return "/find-user"
+        case .fetchUser(let userId): return "/users/\(userId)"
             
-        case .signup(_,_,_,_,_,_): return "/add-user"
+        case .signup(_,_,_,_,_,_): return "/signup"
             
         case .fetchFlights(): return "/flights"
             
-//        case .signup: return "user.registerUser"
-//            
 //        case .login(_, _, _): return "user.login"
 //            
 //        case .logout: return "user.logout"
@@ -92,11 +95,30 @@ extension PlatformAPI: Path {
 //    }
 //}
 
+extension PlatformAPI: httpMethod {
+    
+    var method: HTTPMethod {
+        switch self {
+        case .fetchUser(_):
+            return HTTPMethod.get
+        case .fetchFlights():
+            return HTTPMethod.get
+        case .signup(_, _, _, _, _, _):
+            return HTTPMethod.post
+        default:
+            return HTTPMethod.get
+        }
+    }
+}
+
 extension PlatformAPI: Routable {
     
     var baseURL: URL {
-        let isDev = true // TODO: implement better environment switching
-        return isDev ? URL(string: PlatformBaseUrl.development.rawValue)! : URL(string: PlatformBaseUrl.production.rawValue)!
+        
+        return URL(string: PlatformBaseUrl.apiaryMock.rawValue)!  // TEMP mock
+        
+        //let isDev = true // TODO: implement better environment switching
+        //return isDev ? URL(string: PlatformBaseUrl.development.rawValue)! : URL(string: PlatformBaseUrl.production.rawValue)!
     }
 }
 
@@ -154,8 +176,8 @@ extension PlatformAPI: Payload {
         
         switch self {
             
-        case .searchUser(let email):
-            return ["email":email]
+        case .fetchUser(_):
+            return nil
             
         case .signup(let email, let firstName, let lastName, let password, let phone, let birthday):
             var params = [String:String]()
@@ -254,5 +276,9 @@ extension Networking {
     /// - returns: a json-formatted payload ready for inclusion as json in http body in a network request
     class func payload(source: Payload) -> [String: Any]? {
         return source.payload
+    }
+    
+    class func httpMethod(source: httpMethod) -> HTTPMethod {
+        return source.method
     }
 }
