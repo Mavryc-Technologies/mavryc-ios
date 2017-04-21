@@ -24,6 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         appCoordinator.start()
         AppStyle.setup()
+        AppData.setup()
         window?.makeKeyAndVisible()
         
         return true
