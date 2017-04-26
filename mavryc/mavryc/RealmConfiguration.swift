@@ -56,7 +56,7 @@ class RealmConfiguration {
     
     private class func getKey() -> NSData {
         // Identifier for our keychain entry - should be unique for your application
-        let keychainIdentifier = "io.Realm.EncryptionExampleKey"
+        let keychainIdentifier = "com.mavryc.primary-realm-encryption-key"
         let keychainIdentifierData = keychainIdentifier.data(using: String.Encoding.utf8, allowLossyConversion: false)!
         
         // First check in the keychain for an existing key
