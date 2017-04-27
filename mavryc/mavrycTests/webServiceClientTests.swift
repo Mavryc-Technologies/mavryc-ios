@@ -51,6 +51,18 @@ class webServiceClientTests: XCTestCase {
         waitForExpectations(timeout: 20.0, handler:nil)
     }
     
+    func testLogin() {
+        let exp = expectation(description: "Login Web Service expectation")
+        let dto = LoginDTO(email: "ScoobyDoo@aol.com", password: "ScoobySnacks")
+        LoginClient().makeLoginRequest(login: dto, success: { responseString in
+            print("serverResponse: \(responseString)")
+            exp.fulfill()
+        }, failure: { error in
+            XCTFail()
+        })
+    
+    }
+    
     func testFetchFlightsClient() {
         let exp = expectation(description: "fetch flights web service expectation")
 

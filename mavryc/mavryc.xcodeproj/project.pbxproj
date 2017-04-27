@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		23B819C81EB19145006017FC /* LoginDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B819C71EB19145006017FC /* LoginDTO.swift */; };
+		23B819CA1EB19198006017FC /* LoginClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B819C91EB19198006017FC /* LoginClient.swift */; };
+		23B819CB1EB19493006017FC /* LoginClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B819C91EB19198006017FC /* LoginClient.swift */; };
+		23B819CC1EB194A7006017FC /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967FF6251E9446BF007B56C6 /* Networking.swift */; };
+		23B819CD1EB194AB006017FC /* LoginDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B819C71EB19145006017FC /* LoginDTO.swift */; };
 		961E2AC21E985602000F2D64 /* FetchFlightsDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961E2AC11E985602000F2D64 /* FetchFlightsDTO.swift */; };
 		961E2AC71E985A20000F2D64 /* webServiceClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961E2AC61E985A20000F2D64 /* webServiceClientTests.swift */; };
 		9652283E1EAAA1280054DA70 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9652283D1EAAA1280054DA70 /* MapViewController.swift */; };
@@ -56,6 +61,8 @@
 
 /* Begin PBXFileReference section */
 		196AE7244B031B9DB1A43ED0 /* Pods-mavryc.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mavryc.release.xcconfig"; path = "Pods/Target Support Files/Pods-mavryc/Pods-mavryc.release.xcconfig"; sourceTree = "<group>"; };
+		23B819C71EB19145006017FC /* LoginDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginDTO.swift; sourceTree = "<group>"; };
+		23B819C91EB19198006017FC /* LoginClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginClient.swift; sourceTree = "<group>"; };
 		6CE399F9AC03FE71B57D7BEC /* Pods_mavryc_mavrycTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mavryc_mavrycTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		77E884330154E11441155D61 /* Pods_mavryc.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mavryc.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BB6D2AAAA732FB84064959C /* Pods-mavryc-mavrycTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mavryc-mavrycTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-mavryc-mavrycTests/Pods-mavryc-mavrycTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -154,6 +161,8 @@
 				96A32C1E1E98153300DA7DC1 /* SignupClient.swift */,
 				96A32C201E98158D00DA7DC1 /* SignupDTO.swift */,
 				967FF6281E945796007B56C6 /* FetchUserClient.swift */,
+				23B819C71EB19145006017FC /* LoginDTO.swift */,
+				23B819C91EB19198006017FC /* LoginClient.swift */,
 			);
 			name = user;
 			sourceTree = "<group>";
@@ -559,6 +568,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				96F2FCA21E92D9DA00C51674 /* StoryboardIdentifiable.swift in Sources */,
+				23B819C81EB19145006017FC /* LoginDTO.swift in Sources */,
 				967FF6261E9446BF007B56C6 /* Networking.swift in Sources */,
 				96A32C1F1E98153300DA7DC1 /* SignupClient.swift in Sources */,
 				96F2FCB31E92DF4E00C51674 /* MainViewController.swift in Sources */,
@@ -573,6 +583,7 @@
 				96A32C211E98158D00DA7DC1 /* SignupDTO.swift in Sources */,
 				9666A4561E95A9D000CA822F /* FetchFlightsClient.swift in Sources */,
 				967FF6291E945796007B56C6 /* FetchUserClient.swift in Sources */,
+				23B819CA1EB19198006017FC /* LoginClient.swift in Sources */,
 				96F2FC9B1E92D6FE00C51674 /* AppStyle.swift in Sources */,
 				96F2FC981E92D29600C51674 /* SafeLog.swift in Sources */,
 				96DA42371EA7FD670036C227 /* Flight.swift in Sources */,
@@ -588,6 +599,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23B819CB1EB19493006017FC /* LoginClient.swift in Sources */,
+				23B819CD1EB194AB006017FC /* LoginDTO.swift in Sources */,
+				23B819CC1EB194A7006017FC /* Networking.swift in Sources */,
 				96E53EE81E90378E0045AA06 /* mavrycTests.swift in Sources */,
 				96B723721EA9B53400B2E322 /* databaseTests.swift in Sources */,
 				961E2AC71E985A20000F2D64 /* webServiceClientTests.swift in Sources */,

@@ -20,7 +20,7 @@ enum PlatformAPI {
             phone: String?,
             birthday: String?)
     
-//    case login(email: String, password: String?, fbToken: String?)
+    case login(email: String, password: String)
     
     case fetchFlights()
 }
@@ -73,6 +73,8 @@ extension PlatformAPI: Path {
         case .fetchUser(let userId): return "/users/\(userId)"
             
         case .signup(_,_,_,_,_,_): return "/signup"
+        
+        case .login(_,_): return "/login"
             
         case .fetchFlights(): return "/flights"
             
@@ -104,6 +106,8 @@ extension PlatformAPI: httpMethod {
         case .fetchFlights():
             return HTTPMethod.get
         case .signup(_, _, _, _, _, _):
+            return HTTPMethod.post
+        case .login(_,_):
             return HTTPMethod.post
         default:
             return HTTPMethod.get
@@ -188,7 +192,11 @@ extension PlatformAPI: Payload {
             params["phone"] = phone // TODO: CHECK TO SEE WHETHER THE LET ABOVE IS AN OPTIONAL - if so then dicionary has a convenience unwrapper when adding if it knows the type should be String and the param is an optional with a string.
             params["birthday"] = birthday
             return params
-            
+        case .login(let email, let password):
+            var params = [String:String]()
+            params["email"] = email
+            params["password"] = password
+            return params
         case .fetchFlights():
             var params = [String:String]()
             return params
