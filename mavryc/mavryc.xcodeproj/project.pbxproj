@@ -421,7 +421,7 @@
 					};
 					96E53EE21E90378E0045AA06 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = YXPQPR8B68;
+						DevelopmentTeam = 8H5S399Z5A;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 96E53ECE1E90378E0045AA06;
 					};
@@ -769,7 +769,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = YXPQPR8B68;
+				DEVELOPMENT_TEAM = 8H5S399Z5A;
 				INFOPLIST_FILE = mavrycTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mavryc.mavrycTests;
@@ -785,7 +785,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = YXPQPR8B68;
+				DEVELOPMENT_TEAM = 8H5S399Z5A;
 				INFOPLIST_FILE = mavrycTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mavryc.mavrycTests;
