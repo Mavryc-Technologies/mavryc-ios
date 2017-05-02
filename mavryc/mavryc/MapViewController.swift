@@ -78,9 +78,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
             
             print("number map items: \(response.mapItems.count)")
             for item in response.mapItems {
-                // ...
                 print("🗺mapItem: \(item)")
-                self.dropPinZoomIn(placemark: item.placemark)
+                self.dropPin(placemark: item.placemark)
             }
             
             //let span = MKCoordinateSpanMake(1, 1)
@@ -89,11 +88,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    func dropPinZoomIn(placemark:MKPlacemark){
-        // cache the pin
-        //selectedPin = placemark
-        // clear existing pins
-        //mapView.removeAnnotations(mapView.annotations)
+    func dropPin(placemark:MKPlacemark){
         let annotation = MKPointAnnotation()
         annotation.coordinate = placemark.coordinate
         annotation.title = placemark.name
@@ -102,8 +97,5 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
             annotation.subtitle = "\(city) \(state)"
         }
         mapView.addAnnotation(annotation)
-//        let span = MKCoordinateSpanMake(0.05, 0.05)
-//        let region = MKCoordinateRegionMake(placemark.coordinate, span)
-//        mapView.setRegion(region, animated: true)
     }
 }

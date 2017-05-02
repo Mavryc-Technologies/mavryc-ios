@@ -109,8 +109,8 @@ extension PlatformAPI: httpMethod {
             return HTTPMethod.post
         case .login(_,_):
             return HTTPMethod.post
-        default:
-            return HTTPMethod.get
+//        default:
+//            return HTTPMethod.get
         }
     }
 }
@@ -198,8 +198,8 @@ extension PlatformAPI: Payload {
             params["password"] = password
             return params
         case .fetchFlights():
-            var params = [String:String]()
-            return params
+//            var params = [String:String]()
+            return [String:String]()
             
         //default: return nil
         }
