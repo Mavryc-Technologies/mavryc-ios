@@ -17,6 +17,7 @@
 		9652283E1EAAA1280054DA70 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9652283D1EAAA1280054DA70 /* MapViewController.swift */; };
 		965228401EAAA1380054DA70 /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9652283F1EAAA1380054DA70 /* Map.storyboard */; };
 		9666A4561E95A9D000CA822F /* FetchFlightsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9666A4551E95A9D000CA822F /* FetchFlightsClient.swift */; };
+		9672A66A1EBA525000D3793A /* Master.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9672A6691EBA525000D3793A /* Master.storyboard */; };
 		967FF6261E9446BF007B56C6 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967FF6251E9446BF007B56C6 /* Networking.swift */; };
 		967FF6291E945796007B56C6 /* FetchUserClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967FF6281E945796007B56C6 /* FetchUserClient.swift */; };
 		96A32C181E96A30500DA7DC1 /* states-cities.json in Resources */ = {isa = PBXBuildFile; fileRef = 96A32C171E96A30500DA7DC1 /* states-cities.json */; };
@@ -72,6 +73,7 @@
 		9652283D1EAAA1280054DA70 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		9652283F1EAAA1380054DA70 /* Map.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Map.storyboard; sourceTree = "<group>"; };
 		9666A4551E95A9D000CA822F /* FetchFlightsClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchFlightsClient.swift; sourceTree = "<group>"; };
+		9672A6691EBA525000D3793A /* Master.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Master.storyboard; sourceTree = "<group>"; };
 		967FF6251E9446BF007B56C6 /* Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		967FF6281E945796007B56C6 /* FetchUserClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchUserClient.swift; sourceTree = "<group>"; };
 		96A32C171E96A30500DA7DC1 /* states-cities.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "states-cities.json"; sourceTree = "<group>"; };
@@ -306,6 +308,7 @@
 				96F2FCAA1E92DBE800C51674 /* onboarding */,
 				96E53EF41E90387B0045AA06 /* pay */,
 				96E53EF81E903AEC0045AA06 /* signup */,
+				9672A6691EBA525000D3793A /* Master.storyboard */,
 			);
 			name = features;
 			sourceTree = "<group>";
@@ -456,6 +459,7 @@
 				96A32C181E96A30500DA7DC1 /* states-cities.json in Resources */,
 				96E53ED81E90378E0045AA06 /* Main.storyboard in Resources */,
 				96F2FCAC1E92DEE300C51674 /* Onboarding.storyboard in Resources */,
+				9672A66A1EBA525000D3793A /* Master.storyboard in Resources */,
 				965228401EAAA1380054DA70 /* Map.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
