@@ -14,6 +14,7 @@
 		23B819CD1EB194AB006017FC /* LoginDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B819C71EB19145006017FC /* LoginDTO.swift */; };
 		961E2AC21E985602000F2D64 /* FetchFlightsDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961E2AC11E985602000F2D64 /* FetchFlightsDTO.swift */; };
 		961E2AC71E985A20000F2D64 /* webServiceClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961E2AC61E985A20000F2D64 /* webServiceClientTests.swift */; };
+		962EE1181EBBBA7800797CD9 /* Mapbox.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 962EE1171EBBBA7800797CD9 /* Mapbox.storyboard */; };
 		9652283E1EAAA1280054DA70 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9652283D1EAAA1280054DA70 /* MapViewController.swift */; };
 		965228401EAAA1380054DA70 /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9652283F1EAAA1380054DA70 /* Map.storyboard */; };
 		9666A4561E95A9D000CA822F /* FetchFlightsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9666A4551E95A9D000CA822F /* FetchFlightsClient.swift */; };
@@ -70,6 +71,7 @@
 		7BF64E167EC734F4C54DBF17 /* Pods-mavryc.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mavryc.debug.xcconfig"; path = "Pods/Target Support Files/Pods-mavryc/Pods-mavryc.debug.xcconfig"; sourceTree = "<group>"; };
 		961E2AC11E985602000F2D64 /* FetchFlightsDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchFlightsDTO.swift; sourceTree = "<group>"; };
 		961E2AC61E985A20000F2D64 /* webServiceClientTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = webServiceClientTests.swift; sourceTree = "<group>"; };
+		962EE1171EBBBA7800797CD9 /* Mapbox.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Mapbox.storyboard; sourceTree = "<group>"; };
 		9652283D1EAAA1280054DA70 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		9652283F1EAAA1380054DA70 /* Map.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Map.storyboard; sourceTree = "<group>"; };
 		9666A4551E95A9D000CA822F /* FetchFlightsClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchFlightsClient.swift; sourceTree = "<group>"; };
@@ -169,9 +171,18 @@
 			name = user;
 			sourceTree = "<group>";
 		};
+		962EE1161EBBBA5B00797CD9 /* mapbox */ = {
+			isa = PBXGroup;
+			children = (
+				962EE1171EBBBA7800797CD9 /* Mapbox.storyboard */,
+			);
+			name = mapbox;
+			sourceTree = "<group>";
+		};
 		9652283C1EAAA0DE0054DA70 /* map */ = {
 			isa = PBXGroup;
 			children = (
+				962EE1161EBBBA5B00797CD9 /* mapbox */,
 				9652283D1EAAA1280054DA70 /* MapViewController.swift */,
 				9652283F1EAAA1380054DA70 /* Map.storyboard */,
 			);
@@ -461,6 +472,7 @@
 				96F2FCAC1E92DEE300C51674 /* Onboarding.storyboard in Resources */,
 				9672A66A1EBA525000D3793A /* Master.storyboard in Resources */,
 				965228401EAAA1380054DA70 /* Map.storyboard in Resources */,
+				962EE1181EBBBA7800797CD9 /* Mapbox.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
