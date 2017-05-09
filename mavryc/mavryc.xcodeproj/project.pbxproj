@@ -30,6 +30,7 @@
 		96B723701EA98B8D00B2E322 /* RealmConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B7236F1EA98B8D00B2E322 /* RealmConfiguration.swift */; };
 		96B723721EA9B53400B2E322 /* databaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B723711EA9B53400B2E322 /* databaseTests.swift */; };
 		96B723741EA9E26100B2E322 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B723731EA9E26100B2E322 /* User.swift */; };
+		96DA35AD1EC1264400D2A0BC /* FlightPanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DA35AC1EC1264400D2A0BC /* FlightPanelViewController.swift */; };
 		96DA42371EA7FD670036C227 /* Flight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DA42361EA7FD670036C227 /* Flight.swift */; };
 		96E53ED31E90378E0045AA06 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E53ED21E90378E0045AA06 /* AppDelegate.swift */; };
 		96E53ED81E90378E0045AA06 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96E53ED61E90378E0045AA06 /* Main.storyboard */; };
@@ -87,6 +88,7 @@
 		96B7236F1EA98B8D00B2E322 /* RealmConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmConfiguration.swift; sourceTree = "<group>"; };
 		96B723711EA9B53400B2E322 /* databaseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = databaseTests.swift; sourceTree = "<group>"; };
 		96B723731EA9E26100B2E322 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		96DA35AC1EC1264400D2A0BC /* FlightPanelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlightPanelViewController.swift; sourceTree = "<group>"; };
 		96DA42361EA7FD670036C227 /* Flight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Flight.swift; sourceTree = "<group>"; };
 		96E53ECF1E90378E0045AA06 /* mavryc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mavryc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		96E53ED21E90378E0045AA06 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -362,6 +364,7 @@
 			children = (
 				96E53ED61E90378E0045AA06 /* Main.storyboard */,
 				96F2FCB21E92DF4E00C51674 /* MainViewController.swift */,
+				96DA35AC1EC1264400D2A0BC /* FlightPanelViewController.swift */,
 			);
 			name = "main screen";
 			sourceTree = "<group>";
@@ -597,6 +600,7 @@
 				9652283E1EAAA1280054DA70 /* MapViewController.swift in Sources */,
 				96A32C1D1E96D1EC00DA7DC1 /* AutoCompletionPredictable.swift in Sources */,
 				96B723741EA9E26100B2E322 /* User.swift in Sources */,
+				96DA35AD1EC1264400D2A0BC /* FlightPanelViewController.swift in Sources */,
 				96A32C211E98158D00DA7DC1 /* SignupDTO.swift in Sources */,
 				9666A4561E95A9D000CA822F /* FetchFlightsClient.swift in Sources */,
 				967FF6291E945796007B56C6 /* FetchUserClient.swift in Sources */,
@@ -754,6 +758,7 @@
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 8H5S399Z5A;
 				INFOPLIST_FILE = mavryc/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mavryc.mavrycalpha;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -773,6 +778,7 @@
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 8H5S399Z5A;
 				INFOPLIST_FILE = mavryc/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mavryc.mavrycalpha;
 				PRODUCT_NAME = "$(TARGET_NAME)";
