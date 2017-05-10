@@ -11,9 +11,14 @@ import UIKit
 class MainViewController: UIViewController {
 
     @IBOutlet weak var panelHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var joystick: CDJoystick!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        joystick.trackingHandler = { joystickData in
+            print("joystick data: \(joystickData)")
+        }
     }
 
     // Segues

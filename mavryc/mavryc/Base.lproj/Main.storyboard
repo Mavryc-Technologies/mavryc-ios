@@ -33,6 +33,12 @@
                                 <color key="textColor" red="1" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5mB-pa-23C" userLabel="Joystick" customClass="CDJoystick" customModule="mavryc" customModuleProvider="target">
+                                <rect key="frame" x="123" y="269" width="128" height="128"/>
+                                <connections>
+                                    <segue destination="n9Y-8z-WLZ" kind="embed" id="7vm-NW-En5"/>
+                                </connections>
+                            </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sxP-CM-Y4T" userLabel="Panel Container">
                                 <rect key="frame" x="0.0" y="607" width="375" height="60"/>
                                 <constraints>
@@ -57,21 +63,26 @@
                         <constraints>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="6A3-PG-cen" secondAttribute="bottom" constant="461" id="0Oa-CO-DYl"/>
                             <constraint firstItem="6A3-PG-cen" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="165" id="1SS-WU-vX2"/>
+                            <constraint firstItem="5mB-pa-23C" firstAttribute="top" secondItem="zdh-rz-3Oz" secondAttribute="bottom" constant="205" id="8Kf-oN-SLG"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="5mB-pa-23C" secondAttribute="bottom" constant="270" id="Caf-Lb-bqZ"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="sxP-CM-Y4T" secondAttribute="bottom" id="I4w-48-yoJ"/>
                             <constraint firstItem="jUE-lh-mSM" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="MCi-3x-s3l"/>
                             <constraint firstItem="6A3-PG-cen" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="125" id="ST2-bx-vmT"/>
                             <constraint firstItem="zdh-rz-3Oz" firstAttribute="leading" secondItem="jUE-lh-mSM" secondAttribute="leading" id="XCj-3I-iDq"/>
                             <constraint firstItem="zdh-rz-3Oz" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Y9f-Cr-1Lg"/>
+                            <constraint firstItem="5mB-pa-23C" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="107" id="c7r-iq-SO3"/>
                             <constraint firstAttribute="trailingMargin" secondItem="6A3-PG-cen" secondAttribute="trailing" constant="125" id="duo-zX-kT1"/>
                             <constraint firstItem="jUE-lh-mSM" firstAttribute="top" secondItem="zdh-rz-3Oz" secondAttribute="bottom" id="ezV-Z6-Yzc"/>
                             <constraint firstItem="zdh-rz-3Oz" firstAttribute="trailing" secondItem="sxP-CM-Y4T" secondAttribute="trailing" id="lv5-Rs-Qhp"/>
                             <constraint firstItem="sxP-CM-Y4T" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="njt-83-OMl"/>
                             <constraint firstAttribute="trailing" secondItem="sxP-CM-Y4T" secondAttribute="trailing" id="npm-0L-frA"/>
                             <constraint firstItem="zdh-rz-3Oz" firstAttribute="trailing" secondItem="jUE-lh-mSM" secondAttribute="trailing" id="rzJ-Xh-sJr"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="5mB-pa-23C" secondAttribute="trailing" constant="108" id="tFS-Gm-oUw"/>
                             <constraint firstItem="zdh-rz-3Oz" firstAttribute="leading" secondItem="sxP-CM-Y4T" secondAttribute="leading" id="xiH-ua-BIe"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="joystick" destination="5mB-pa-23C" id="tqE-8v-IcN"/>
                         <outlet property="panelHeightConstraint" destination="1IV-fB-Tyl" id="dhZ-fk-0uH"/>
                     </connections>
                 </viewController>
@@ -95,10 +106,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="400"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kel-uV-Env">
-                                <rect key="frame" x="16" y="0.0" width="343" height="30"/>
-                                <state key="normal" title="JOURNEY DETAILS">
-                                    <color key="titleColor" red="0.98837620020000005" green="0.76928478479999995" blue="0.14469903710000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kel-uV-Env">
+                                <rect key="frame" x="16" y="0.0" width="343" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="GmO-bg-Haj"/>
+                                </constraints>
+                                <state key="normal" image="up_chevron">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="panelButtonAction:" destination="HQl-IR-mbL" eventType="touchUpInside" id="4b1-jB-ZQA"/>
@@ -155,7 +169,23 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yr4-Kl-JLj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="580" y="-48"/>
+            <point key="canvasLocation" x="580" y="-48.575712143928037"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="JnY-Ad-iJR">
+            <objects>
+                <viewController id="n9Y-8z-WLZ" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pgd-Ia-fgk">
+                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T12-yk-ddv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
         </scene>
     </scenes>
+    <resources>
+        <image name="up_chevron" width="32" height="11"/>
+    </resources>
 </document>

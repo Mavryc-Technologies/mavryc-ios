@@ -31,6 +31,10 @@
 		96B723721EA9B53400B2E322 /* databaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B723711EA9B53400B2E322 /* databaseTests.swift */; };
 		96B723741EA9E26100B2E322 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B723731EA9E26100B2E322 /* User.swift */; };
 		96DA35AD1EC1264400D2A0BC /* FlightPanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DA35AC1EC1264400D2A0BC /* FlightPanelViewController.swift */; };
+		96DA35B01EC2732C00D2A0BC /* Joystick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DA35AF1EC2732C00D2A0BC /* Joystick.swift */; };
+		96DA35B31EC281C600D2A0BC /* skylar.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96DA35B21EC281C600D2A0BC /* skylar.xcassets */; };
+		96DA35B51EC281E400D2A0BC /* Asap in Resources */ = {isa = PBXBuildFile; fileRef = 96DA35B41EC281E400D2A0BC /* Asap */; };
+		96DA35B71EC281F400D2A0BC /* Lato in Resources */ = {isa = PBXBuildFile; fileRef = 96DA35B61EC281F400D2A0BC /* Lato */; };
 		96DA42371EA7FD670036C227 /* Flight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DA42361EA7FD670036C227 /* Flight.swift */; };
 		96E53ED31E90378E0045AA06 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E53ED21E90378E0045AA06 /* AppDelegate.swift */; };
 		96E53ED81E90378E0045AA06 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96E53ED61E90378E0045AA06 /* Main.storyboard */; };
@@ -89,6 +93,10 @@
 		96B723711EA9B53400B2E322 /* databaseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = databaseTests.swift; sourceTree = "<group>"; };
 		96B723731EA9E26100B2E322 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		96DA35AC1EC1264400D2A0BC /* FlightPanelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlightPanelViewController.swift; sourceTree = "<group>"; };
+		96DA35AF1EC2732C00D2A0BC /* Joystick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Joystick.swift; sourceTree = "<group>"; };
+		96DA35B21EC281C600D2A0BC /* skylar.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = skylar.xcassets; sourceTree = "<group>"; };
+		96DA35B41EC281E400D2A0BC /* Asap */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Asap; sourceTree = "<group>"; };
+		96DA35B61EC281F400D2A0BC /* Lato */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Lato; sourceTree = "<group>"; };
 		96DA42361EA7FD670036C227 /* Flight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Flight.swift; sourceTree = "<group>"; };
 		96E53ECF1E90378E0045AA06 /* mavryc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mavryc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		96E53ED21E90378E0045AA06 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -227,6 +235,24 @@
 			name = database;
 			sourceTree = "<group>";
 		};
+		96DA35AE1EC2731000D2A0BC /* joystick */ = {
+			isa = PBXGroup;
+			children = (
+				96DA35AF1EC2732C00D2A0BC /* Joystick.swift */,
+			);
+			name = joystick;
+			sourceTree = "<group>";
+		};
+		96DA35B11EC2812C00D2A0BC /* skylar_assets */ = {
+			isa = PBXGroup;
+			children = (
+				96DA35B61EC281F400D2A0BC /* Lato */,
+				96DA35B41EC281E400D2A0BC /* Asap */,
+				96DA35B21EC281C600D2A0BC /* skylar.xcassets */,
+			);
+			name = skylar_assets;
+			sourceTree = "<group>";
+		};
 		96E53EC61E90378E0045AA06 = {
 			isa = PBXGroup;
 			children = (
@@ -289,6 +315,7 @@
 		96E53EF31E9037EB0045AA06 /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				96DA35B11EC2812C00D2A0BC /* skylar_assets */,
 				96E53EDB1E90378E0045AA06 /* LaunchScreen.storyboard */,
 				96E53EDE1E90378E0045AA06 /* Info.plist */,
 				96E53ED91E90378E0045AA06 /* Assets.xcassets */,
@@ -316,6 +343,7 @@
 		96E53EF71E903AC70045AA06 /* features */ = {
 			isa = PBXGroup;
 			children = (
+				96DA35AE1EC2731000D2A0BC /* joystick */,
 				9652283C1EAAA0DE0054DA70 /* map */,
 				96F2FCB11E92DF1F00C51674 /* main screen */,
 				96F2FCAA1E92DBE800C51674 /* onboarding */,
@@ -469,11 +497,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				96E53EDD1E90378E0045AA06 /* LaunchScreen.storyboard in Resources */,
+				96DA35B71EC281F400D2A0BC /* Lato in Resources */,
 				96E53EDA1E90378E0045AA06 /* Assets.xcassets in Resources */,
 				96A32C181E96A30500DA7DC1 /* states-cities.json in Resources */,
 				96E53ED81E90378E0045AA06 /* Main.storyboard in Resources */,
+				96DA35B31EC281C600D2A0BC /* skylar.xcassets in Resources */,
 				96F2FCAC1E92DEE300C51674 /* Onboarding.storyboard in Resources */,
 				9672A66A1EBA525000D3793A /* Master.storyboard in Resources */,
+				96DA35B51EC281E400D2A0BC /* Asap in Resources */,
 				965228401EAAA1380054DA70 /* Map.storyboard in Resources */,
 				962EE1181EBBBA7800797CD9 /* Mapbox.storyboard in Resources */,
 			);
@@ -596,6 +627,7 @@
 				96A32C1B1E96A36900DA7DC1 /* Cities.swift in Sources */,
 				961E2AC21E985602000F2D64 /* FetchFlightsDTO.swift in Sources */,
 				96B723701EA98B8D00B2E322 /* RealmConfiguration.swift in Sources */,
+				96DA35B01EC2732C00D2A0BC /* Joystick.swift in Sources */,
 				96F2FCA51E92DA3400C51674 /* UIViewController+StoryboardIdentifier.swift in Sources */,
 				9652283E1EAAA1280054DA70 /* MapViewController.swift in Sources */,
 				96A32C1D1E96D1EC00DA7DC1 /* AutoCompletionPredictable.swift in Sources */,
