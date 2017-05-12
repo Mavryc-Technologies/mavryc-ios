@@ -22,26 +22,35 @@ public struct CDJoystickData: CustomStringConvertible {
     /// 0 at top middle to 6.28 radians going around clockwise
     public var angle: CGFloat = 0.0
     
+    public var stickCenter: CGPoint = .zero
+    
     public var description: String {
         return "velocity: \(velocity), angle: \(angle)"
     }
 }
 
+public protocol JoystickDelegate {
+    
+    /// let delegate know the position of the joystick has been reset
+    func stickDidResetTo(center:CGPoint)
+}
+
 @IBDesignable
 public class CDJoystick: UIView {
     
-    @IBInspectable public var substrateColor: UIColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1) { didSet { setNeedsDisplay() }}
-    @IBInspectable public var substrateBorderColor: UIColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1) { didSet { setNeedsDisplay() }}
+    @IBInspectable public var substrateColor: UIColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1) { didSet { setNeedsDisplay() }}
+    @IBInspectable public var substrateBorderColor: UIColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1) { didSet { setNeedsDisplay() }}
     @IBInspectable public var substrateBorderWidth: CGFloat = 1.0 { didSet { setNeedsDisplay() }}
     
     @IBInspectable public var stickSize: CGSize = CGSize(width: 50, height: 50) { didSet { setNeedsDisplay() }}
-    @IBInspectable public var stickColor: UIColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1) { didSet { setNeedsDisplay() }}
+    @IBInspectable public var stickColor: UIColor = UIColor.clear { didSet { setNeedsDisplay() }}
     @IBInspectable public var stickBorderColor: UIColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1) { didSet { setNeedsDisplay() }}
     @IBInspectable public var stickBorderWidth: CGFloat = 1.0 { didSet { setNeedsDisplay() }}
     
     @IBInspectable public var fade: CGFloat = 0.1 { didSet { setNeedsDisplay() }}
     
     public var trackingHandler: ((CDJoystickData) -> Void)?
+    public var delegate: JoystickDelegate?
     
     private var data = CDJoystickData()
     private var stickView = UIView(frame: .zero)
@@ -79,8 +88,8 @@ public class CDJoystick: UIView {
     public override func draw(_ rect: CGRect) {
         alpha = fade
         
-        layer.backgroundColor = UIColor.clear.cgColor//substrateColor.cgColor
-        layer.borderColor = substrateBorderColor.cgColor
+        layer.backgroundColor = UIColor.clear.cgColor //substrateColor.cgColor
+        layer.borderColor = UIColor.clear.cgColor //substrateBorderColor.cgColor
         layer.borderWidth = substrateBorderWidth
         layer.cornerRadius = bounds.width / 2
         
@@ -124,7 +133,7 @@ public class CDJoystick: UIView {
         let x = clamp(distance.x, lower: -bounds.size.width / 2, upper: bounds.size.width / 2) / (bounds.size.width / 2)
         let y = clamp(distance.y, lower: -bounds.size.height / 2, upper: bounds.size.height / 2) / (bounds.size.height / 2)
         
-        data = CDJoystickData(velocity: CGPoint(x: x, y: y), angle: -atan2(x, y) + .pi)
+        data = CDJoystickData(velocity: CGPoint(x: x, y: y), angle: -atan2(x, y) + .pi, stickCenter: stickView.center)
     }
     
     public override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -138,9 +147,10 @@ public class CDJoystick: UIView {
     private func reset() {
         tracking = false
         data = CDJoystickData()
-        
+
         UIView.animate(withDuration: 0.25) {
             self.stickView.center = CGPoint(x: self.bounds.width / 2, y: self.bounds.height / 2)
+            self.delegate?.stickDidResetTo(center: self.stickView.center)
         }
     }
     

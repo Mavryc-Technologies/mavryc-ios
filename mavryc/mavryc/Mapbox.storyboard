@@ -21,7 +21,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="string" keyPath="styleURL__" value="mapbox://styles/toddhopkinson/cj2cdc8sk002v2rogpeyiuuh6"/>
+                            <userDefinedRuntimeAttribute type="string" keyPath="styleURL__" value="mapbox://styles/toddhopkinson/cj2kx5doz001l2rmycuzd5f9m"/>
                         </userDefinedRuntimeAttributes>
                     </view>
                 </viewController>
