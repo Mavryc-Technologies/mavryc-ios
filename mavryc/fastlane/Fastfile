@@ -27,10 +27,21 @@ platform :ios do
     scan
   end
 
-  desc "Submit a new Beta Build to Apple TestFlight"
+  desc "Make a new Dev Build"
   desc "This will also make sure the profile is up to date"
   lane :dev do
     match(type: "development") # more information: https://codesigning.guide
+    gym(scheme: "mavryc", workspace: "mavryc.xcworkspace")  # Build your app - more options available
+
+    # sh "your_script.sh"
+    # You can also use other beta testing services here (run `fastlane actions`)
+  end
+
+  desc "Make a new AdHoc Build"
+  desc "This will also make sure the profile is up to date"
+  lane :adhoc do
+    increment_build_number
+    match(type: "adhoc") # more information: https://codesigning.guide
     gym(scheme: "mavryc", workspace: "mavryc.xcworkspace")  # Build your app - more options available
 
     # sh "your_script.sh"

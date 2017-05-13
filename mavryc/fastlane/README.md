@@ -39,7 +39,14 @@ Runs all the tests
 ```
 fastlane ios dev
 ```
-Submit a new Beta Build to Apple TestFlight
+Make a new Dev Build
+
+This will also make sure the profile is up to date
+### ios adhoc
+```
+fastlane ios adhoc
+```
+Make a new AdHoc Build
 
 This will also make sure the profile is up to date
 ### ios beta
