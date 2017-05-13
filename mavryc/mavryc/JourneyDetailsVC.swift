@@ -10,6 +10,25 @@ import UIKit
 
 class JourneyDetailsVC: UIViewController {
 
+    // MARK: Outlet Properties
+    @IBOutlet weak var nextButton: UIButton! {
+        didSet {
+            nextButton.layer.borderWidth = 1
+            nextButton.layer.borderColor = AppStyle.journeyDetailsNextButtonBorderColor.cgColor
+            nextButton.layer.backgroundColor = AppStyle.journeyDetailsNextButtonBGColor.cgColor
+            nextButton.layer.cornerRadius = 12
+        }
+    }
+    
+    @IBOutlet weak var oneWayReturnSegmentControl: UISegmentedControl! {
+        didSet {
+            oneWayReturnSegmentControl.setTitleTextAttributes([NSForegroundColorAttributeName: AppStyle.journeyDetailsSegmentedControllerHighlightTextColor], for: UIControlState.selected)
+            oneWayReturnSegmentControl.setTitleTextAttributes([NSForegroundColorAttributeName: AppStyle.journeyDetailsSegmentedControllerNormalTextColor], for: UIControlState.normal)
+        }
+    }
+    
+    
+    // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -19,6 +38,12 @@ class JourneyDetailsVC: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    
+    // MARK: - Control Actions
+    
+    @IBAction func nextButtonAction(_ sender: Any) {
     }
     
 

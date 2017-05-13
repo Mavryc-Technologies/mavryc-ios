@@ -36,6 +36,8 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // TODO: fix displacement of the joystickToken on varying size screens
+        
         joystick.delegate = self
         joystick.trackingHandler = self.joystickTrackingHandler()
         
