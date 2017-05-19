@@ -42,7 +42,7 @@ public class CDJoystick: UIView {
     @IBInspectable public var substrateBorderColor: UIColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1) { didSet { setNeedsDisplay() }}
     @IBInspectable public var substrateBorderWidth: CGFloat = 1.0 { didSet { setNeedsDisplay() }}
     
-    @IBInspectable public var stickSize: CGSize = CGSize(width: 50, height: 50) { didSet { setNeedsDisplay() }}
+    @IBInspectable public var stickSize: CGSize = CGSize(width: 250, height: 250) { didSet { setNeedsDisplay() }}
     @IBInspectable public var stickColor: UIColor = UIColor.clear { didSet { setNeedsDisplay() }}
     @IBInspectable public var stickBorderColor: UIColor = UIColor.clear { didSet { setNeedsDisplay() }}
     @IBInspectable public var stickBorderWidth: CGFloat = 1.0 { didSet { setNeedsDisplay() }}
