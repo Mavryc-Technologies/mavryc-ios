@@ -16,6 +16,9 @@ import UIKit
 
 public struct CDJoystickData: CustomStringConvertible {
     
+    /// The Force!
+    public var force: CGFloat = 0.0
+    
     /// (-1.0, -1.0) at bottom left to (1.0, 1.0) at top right
     public var velocity: CGPoint = .zero
     
@@ -133,7 +136,7 @@ public class CDJoystick: UIView {
         let x = clamp(distance.x, lower: -bounds.size.width / 2, upper: bounds.size.width / 2) / (bounds.size.width / 2)
         let y = clamp(distance.y, lower: -bounds.size.height / 2, upper: bounds.size.height / 2) / (bounds.size.height / 2)
         
-        data = CDJoystickData(velocity: CGPoint(x: x, y: y), angle: -atan2(x, y) + .pi, stickCenter: stickView.center)
+        data = CDJoystickData(force: touch.force, velocity: CGPoint(x: x, y: y), angle: -atan2(x, y) + .pi, stickCenter: stickView.center)
     }
     
     public override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {

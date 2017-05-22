@@ -163,7 +163,7 @@ extension MainViewController: JoystickDelegate {
             let altitudeCeiling = 10000000.00 // 10mil - shows contiguous US in one scene
             
             self.updatePosition(for: self.joystickToken, toJoystick: self.joystick, atStickCenter: joystickData.stickCenter)
-
+            
             let deltaX = joystickData.velocity.x
             let deltaY = joystickData.velocity.y
             
@@ -174,27 +174,34 @@ extension MainViewController: JoystickDelegate {
             var targetPoint = self.mapView!.convert(mapCenter, toPointTo: self.view)
 
             // 3. update coord points with point additions
-            targetPoint.x = targetPoint.x + (deltaX * 5)
-            targetPoint.y = targetPoint.y + (deltaY * 5)
+            targetPoint.x = targetPoint.x + (deltaX * 2)
+            targetPoint.y = targetPoint.y + (deltaY * 2)
             // 4. convert view coords back into map coord
             let center:CLLocationCoordinate2D = self.mapView!.convert(targetPoint, toCoordinateFrom: self.view)
             
-            // 5. create camera at new target center point, which we will now animate to from current location
+            // 5. create camera at new target center point, which we will now animate to from current location/altitude
             self.mapCam.centerCoordinate = center
+            var altitude:CLLocationDistance = self.mapView!.camera.altitude // current altitude
             
-            var altitude:CLLocationDistance = self.mapView!.camera.altitude
+            // 6. calculate altitude
             
-            // 6. Set altitude appropriate for joystick position -- NOTE: mapping altFloor to origPoint and altCeiling to maximum distanceFromOrigin point gives us every potential in between altitude basedon where the current distanceFromOriginPoint will be. Max distance from origin point is the radius of the joystick. Thus, 0 origin point is to 7k alt as 125 max distance is to 40 mil alt. I.E. 7k:0 to 40mil:125
-            let distanceFromOriginPoint = max(abs(joystickData.stickCenter.x), abs(joystickData.stickCenter.y))
-            let maxDistanceFromOrig = self.joystick.stickSize.width
-            let altitudeSpread = altitudeCeiling - altitudeFloor
-            let proportionStep = CGFloat(altitudeSpread) / maxDistanceFromOrig
-            print("distFromOriginPoint: \(distanceFromOriginPoint)")
-            print("maxDistFromOrig: \(maxDistanceFromOrig)")
-            print("altSpread \(altitudeSpread)")
-            print("proportionStep \(proportionStep)")
+            // 6a -- Analog Pixel-Altitude Algorithm
+//            altitude = self.altitudeAnalogPixelToAltitudeAlgorithm(floor: altitudeFloor,
+//                                                                   ceiling: altitudeCeiling,
+//                                                                   currentAlt: self.mapView!.camera.altitude,
+//                                                                   stickCenter: joystickData.stickCenter)
             
-            altitude = CLLocationDistance(proportionStep * distanceFromOriginPoint)
+            // 6b -- psuedo-exponential growing altitude
+            //altitude = self.altAlgTwo(absoluteDelta: max(abs(deltaX), abs(deltaY)))
+            
+            // 6c
+            //altitude = CLLocationDistance(altitude + Double(self.altAlgOne(maxDelta: CGFloat(max(abs(deltaX), abs(deltaY))))))
+            
+            // 6d -- Exponential Curve based from min alt to max alt based on pixel x (min pixel to max pixel)
+            altitude = self.altitudePixelToAltitudeExponentialFormula(floor: altitudeFloor,
+                                                                               ceiling: altitudeCeiling,
+                                                                               currentAlt: self.mapView!.camera.altitude,
+                                                                               stickCenter: joystickData.stickCenter)
             
             self.mapCam.altitude = altitude
             print("currentAlt: \(self.mapView!.camera.altitude) --- targetAlt: \(self.mapCam.altitude)")
@@ -202,6 +209,34 @@ extension MainViewController: JoystickDelegate {
             // 7. instruct map to animate-transition to new camera
             self.mapView!.setCamera(self.mapCam, withDuration: 0, animationTimingFunction: CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut))
         }
+    }
+    
+    func altitudePixelToAltitudeExponentialFormula(floor: Double, ceiling: Double, currentAlt: CLLocationDistance, stickCenter: CGPoint) -> CLLocationDistance {
+        // algorithm:
+        // y = ab^x
+        // model: y = floor * (pow(ceiling/floor, 1/pixelMax))^x
+        let x = Double(max(abs(stickCenter.x), abs(stickCenter.y)))
+        let pixelMax = Double(self.joystick.stickSize.width/2)
+        let bRoot = pow(ceiling/floor, 1.0/pixelMax)
+        let b = pow(bRoot, x)
+        let y = floor * b
+        
+        return CLLocationDistance(y)
+    }
+    
+    func altitudeAnalogPixelToAltitudeAlgorithm(floor: Double, ceiling: Double, currentAlt: CLLocationDistance, stickCenter: CGPoint) -> CLLocationDistance {
+        // algorithm model: 
+        // ((ceiling - floor) / maxJoystickCoverage) * actualPixelDistFromOrigin
+        // ex: ((40mil - 70k) / 250) * number of pixels from origin.
+        let distanceFromOriginPoint = max(abs(stickCenter.x), abs(stickCenter.y))
+        let maxDistanceFromOrig = self.joystick.stickSize.width
+        let altitudeSpread = ceiling - floor
+        let proportionStep = CGFloat(altitudeSpread) / maxDistanceFromOrig
+        print("distFromOriginPoint: \(distanceFromOriginPoint)")
+        print("step amount \(proportionStep)")
+        let alt = CLLocationDistance(proportionStep * distanceFromOriginPoint)
+        print("analog pixel to alt. altitude: \(alt)")
+        return alt
     }
     
     func altAlgOne(maxDelta: CGFloat) -> CGFloat {
@@ -220,7 +255,7 @@ extension MainViewController: JoystickDelegate {
         return output
     }
     
-    func altAlgTwo(absoluteDelta: CGFloat) -> CGFloat {
+    func altAlgTwo(absoluteDelta: CGFloat) -> Double {
         
         //            let movementX = ((deltaX * 10) / 0.1) / 10 // alg: ((.1 * 10) / .1) / 10 = 1 ... (() / .1) / 10 = 10
         //            let movementY = ((deltaY * 10) / 0.1) / 10 // ((delta * 10) / .1) / expFactor
@@ -231,9 +266,9 @@ extension MainViewController: JoystickDelegate {
   //      print("absoluteDelta: \(absoluteDelta)")
     //    print("cumulative absoluteDelta: \(self.joystickMapCoordinator.cumulativeAbsoluteDelta)")
         
-        let altitudeShift = Double(1000.0 * (absoluteDelta * 10))
+        let altitudeShift = Double(1000.0 * absoluteDelta)
         //print("altitude shift: \(altitudeShift)")
-        return CGFloat(altitudeShift)
+        return altitudeShift
     }
     
     // MARK: Joystick
@@ -276,19 +311,16 @@ extension MainViewController: PanelDelegate {
 
 struct JoystickMapCoordinator {
     
-    var cumulativeAbsoluteDelta: CGFloat
-    //var greatestJoystickDistanceFromOrigin:
+    var vsyncCount = 0
+    var lastPixelDistanceFromOrigin = 0.0
     
-    init(cumulativeAbsoluteDelta: CGFloat = 0) {
-        self.cumulativeAbsoluteDelta = cumulativeAbsoluteDelta
-    }
-    
-    mutating func appendDelta(delta: CGFloat) {
-        self.cumulativeAbsoluteDelta = self.cumulativeAbsoluteDelta + delta
+    init(lastPixelDistanceFromOrigin: CGFloat = 0.0, vsyncCount: Int = 0) {
+        self.lastPixelDistanceFromOrigin = Double(lastPixelDistanceFromOrigin)
+        self.vsyncCount = vsyncCount
     }
     
     mutating func reset() {
-        self.cumulativeAbsoluteDelta = 0.0
+        self.lastPixelDistanceFromOrigin = 0.0
     }
     
     //var originPoint: Float
