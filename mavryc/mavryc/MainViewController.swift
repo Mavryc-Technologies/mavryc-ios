@@ -160,19 +160,25 @@ extension MainViewController: JoystickDelegate {
         return { joystickData in
             
             // Joystick Modes: stationary-disk or moving-disk. Comment in below for moving disk.
-            //self.updateDiskPosition(for: self.joystickToken, toJoystick: self.joystick, atStickCenter: joystickData.stickCenter)
+            self.updateDiskPosition(for: self.joystickToken, toJoystick: self.joystick, atStickCenter: joystickData.stickCenter)
             
             // Map's position
             let nextCenter = self.joystickMapCoordinator.nextMapCenterPosition(mapView: self.mapView!, mapParentView: self.view, joystickDelta: joystickData.velocity)
             self.mapCam.centerCoordinate = nextCenter
             
             // Map's altitude
-            //let nextAltitude = self.joystickMapCoordinator.altitudeForPixelExponential(joystick: self.joystick, stickCenter: joystickData.stickCenter)
-            let nextAltitude = self.joystickMapCoordinator.altitudeForPixelAndForce(joystick: self.joystick, stickCenter: joystickData.stickCenter, force: joystickData.force)
+            var nextAltitude: CLLocationDistance = 0.0
+            if self.joystickMapCoordinator.isForceTouchMode {
+                nextAltitude = self.joystickMapCoordinator.altitudeForForceTouch(joystick: self.joystick, stickCenter: joystickData.stickCenter, force: joystickData.force)
+            } else {
+                //nextAltitude = self.joystickMapCoordinator.altitudeForPixelExponential(joystick: self.joystick, stickCenter: joystickData.stickCenter)
+                
+                nextAltitude = self.joystickMapCoordinator.altitudeForPixelExponentialAndMAASmoothing(joystick: self.joystick, stickCenter: joystickData.stickCenter)
+            }
             self.mapCam.altitude = nextAltitude
             
-            // Map's viewing angle
-            self.mapCam.pitch = 0.5
+            // Map's viewing pitch
+            self.mapCam.pitch = 1.0
             
             self.mapView!.setCamera(self.mapCam, withDuration: 0, animationTimingFunction: CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut))
         }
