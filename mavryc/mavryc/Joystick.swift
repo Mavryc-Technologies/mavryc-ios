@@ -61,9 +61,9 @@ public class CDJoystick: UIView {
     
     private var tracking = false {
         didSet {
-            UIView.animate(withDuration: 0.25) {
-                self.alpha = self.tracking ? 1.0 : self.fade
-            }
+//            UIView.animate(withDuration: 0.25) {
+//                self.alpha = self.tracking ? 1.0 : self.fade
+//            }
         }
     }
     
@@ -89,7 +89,7 @@ public class CDJoystick: UIView {
     }
     
     public override func draw(_ rect: CGRect) {
-        alpha = fade
+        //alpha = fade
         
         layer.backgroundColor = UIColor.clear.cgColor //substrateColor.cgColor
         layer.borderColor = UIColor.clear.cgColor //substrateBorderColor.cgColor

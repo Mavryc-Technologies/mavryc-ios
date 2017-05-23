@@ -26,6 +26,7 @@
 		96A32C1D1E96D1EC00DA7DC1 /* AutoCompletionPredictable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A32C1C1E96D1EC00DA7DC1 /* AutoCompletionPredictable.swift */; };
 		96A32C1F1E98153300DA7DC1 /* SignupClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A32C1E1E98153300DA7DC1 /* SignupClient.swift */; };
 		96A32C211E98158D00DA7DC1 /* SignupDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A32C201E98158D00DA7DC1 /* SignupDTO.swift */; };
+		96B063D81ED3A4B7006151E5 /* JoystickMapCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B063D71ED3A4B7006151E5 /* JoystickMapCoordinator.swift */; };
 		96B7236D1EA98B5200B2E322 /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B7236C1EA98B5200B2E322 /* AppData.swift */; };
 		96B723701EA98B8D00B2E322 /* RealmConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B7236F1EA98B8D00B2E322 /* RealmConfiguration.swift */; };
 		96B723721EA9B53400B2E322 /* databaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B723711EA9B53400B2E322 /* databaseTests.swift */; };
@@ -88,6 +89,7 @@
 		96A32C1C1E96D1EC00DA7DC1 /* AutoCompletionPredictable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCompletionPredictable.swift; sourceTree = "<group>"; };
 		96A32C1E1E98153300DA7DC1 /* SignupClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupClient.swift; sourceTree = "<group>"; };
 		96A32C201E98158D00DA7DC1 /* SignupDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupDTO.swift; sourceTree = "<group>"; };
+		96B063D71ED3A4B7006151E5 /* JoystickMapCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoystickMapCoordinator.swift; sourceTree = "<group>"; };
 		96B7236C1EA98B5200B2E322 /* AppData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppData.swift; sourceTree = "<group>"; };
 		96B7236F1EA98B8D00B2E322 /* RealmConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmConfiguration.swift; sourceTree = "<group>"; };
 		96B723711EA9B53400B2E322 /* databaseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = databaseTests.swift; sourceTree = "<group>"; };
@@ -256,6 +258,7 @@
 			isa = PBXGroup;
 			children = (
 				96DA35AF1EC2732C00D2A0BC /* Joystick.swift */,
+				96B063D71ED3A4B7006151E5 /* JoystickMapCoordinator.swift */,
 			);
 			name = joystick;
 			sourceTree = "<group>";
@@ -642,6 +645,7 @@
 				96A32C1B1E96A36900DA7DC1 /* Cities.swift in Sources */,
 				961E2AC21E985602000F2D64 /* FetchFlightsDTO.swift in Sources */,
 				96B723701EA98B8D00B2E322 /* RealmConfiguration.swift in Sources */,
+				96B063D81ED3A4B7006151E5 /* JoystickMapCoordinator.swift in Sources */,
 				96DA35B01EC2732C00D2A0BC /* Joystick.swift in Sources */,
 				96F2FCA51E92DA3400C51674 /* UIViewController+StoryboardIdentifier.swift in Sources */,
 				9652283E1EAAA1280054DA70 /* MapViewController.swift in Sources */,
