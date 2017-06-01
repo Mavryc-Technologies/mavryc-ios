@@ -6,6 +6,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -48,10 +49,14 @@
                                 </constraints>
                             </imageView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5mB-pa-23C" userLabel="Joystick" customClass="CDJoystick" customModule="mavryc" customModuleProvider="target">
-                                <rect key="frame" x="155" y="301" width="65" height="65"/>
+                                <rect key="frame" x="112.5" y="425.5" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="cqp-5L-1To"/>
+                                    <constraint firstAttribute="height" constant="150" id="f1J-K1-Gqm"/>
+                                </constraints>
                             </containerView>
                             <view userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cFN-Fj-6Dl" userLabel="joystickToken">
-                                <rect key="frame" x="84" y="230" width="207" height="207"/>
+                                <rect key="frame" x="84" y="397" width="207" height="207"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="plane_icon_bg" translatesAutoresizingMaskIntoConstraints="NO" id="pqM-2U-VGg">
@@ -99,17 +104,15 @@
                         <color key="backgroundColor" red="0.070632614195346832" green="0.082291208207607269" blue="0.11758648604154587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="t7R-Dr-WIp" firstAttribute="top" secondItem="zdh-rz-3Oz" secondAttribute="bottom" id="14j-1A-mjU"/>
-                            <constraint firstItem="5mB-pa-23C" firstAttribute="top" secondItem="zdh-rz-3Oz" secondAttribute="bottom" constant="237" id="8Kf-oN-SLG"/>
                             <constraint firstAttribute="trailingMargin" secondItem="DvP-bY-FJA" secondAttribute="trailing" constant="37" id="9Mp-sx-AAP"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="5mB-pa-23C" secondAttribute="bottom" constant="301" id="Caf-Lb-bqZ"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="sxP-CM-Y4T" secondAttribute="bottom" id="I4w-48-yoJ"/>
                             <constraint firstAttribute="trailing" secondItem="t7R-Dr-WIp" secondAttribute="trailing" id="LFf-lA-ZZH"/>
                             <constraint firstItem="jUE-lh-mSM" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="MCi-3x-s3l"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="xdu-ln-9BJ" secondAttribute="bottom" id="Rgs-YD-gJf"/>
                             <constraint firstItem="DvP-bY-FJA" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="-14" id="Txo-DP-Ubh"/>
+                            <constraint firstItem="5mB-pa-23C" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="WTa-0L-dJs"/>
                             <constraint firstItem="zdh-rz-3Oz" firstAttribute="leading" secondItem="jUE-lh-mSM" secondAttribute="leading" id="XCj-3I-iDq"/>
                             <constraint firstItem="zdh-rz-3Oz" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Y9f-Cr-1Lg"/>
-                            <constraint firstItem="5mB-pa-23C" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="139" id="c7r-iq-SO3"/>
                             <constraint firstItem="jUE-lh-mSM" firstAttribute="top" secondItem="zdh-rz-3Oz" secondAttribute="bottom" id="ezV-Z6-Yzc"/>
                             <constraint firstItem="xdu-ln-9BJ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="-1" id="iml-Dm-fS9"/>
                             <constraint firstItem="zdh-rz-3Oz" firstAttribute="trailing" secondItem="sxP-CM-Y4T" secondAttribute="trailing" id="lv5-Rs-Qhp"/>
@@ -117,9 +120,9 @@
                             <constraint firstItem="sxP-CM-Y4T" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="njt-83-OMl"/>
                             <constraint firstAttribute="trailing" secondItem="sxP-CM-Y4T" secondAttribute="trailing" id="npm-0L-frA"/>
                             <constraint firstItem="zdh-rz-3Oz" firstAttribute="trailing" secondItem="jUE-lh-mSM" secondAttribute="trailing" id="rzJ-Xh-sJr"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="5mB-pa-23C" secondAttribute="trailing" constant="139" id="tFS-Gm-oUw"/>
                             <constraint firstItem="t7R-Dr-WIp" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="-1" id="udj-72-rLM"/>
                             <constraint firstAttribute="trailing" secondItem="xdu-ln-9BJ" secondAttribute="trailing" id="vRg-Yw-6D6"/>
+                            <constraint firstItem="5mB-pa-23C" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="1.5" id="vuw-tX-B3t"/>
                             <constraint firstItem="zdh-rz-3Oz" firstAttribute="leading" secondItem="sxP-CM-Y4T" secondAttribute="leading" id="xiH-ua-BIe"/>
                         </constraints>
                     </view>
@@ -372,7 +375,7 @@
                                         <rect key="frame" x="49" y="0.0" width="251" height="48"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25 June 2017" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Poc-p4-48q">
-                                                <rect key="frame" x="20" y="18" width="223" height="15"/>
+                                                <rect key="frame" x="20" y="18.5" width="223" height="14"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="223" id="fjq-KO-kFX"/>
                                                 </constraints>

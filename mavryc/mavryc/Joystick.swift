@@ -16,6 +16,9 @@ import UIKit
 
 public struct CDJoystickData: CustomStringConvertible {
     
+    /// The Force!
+    public var force: CGFloat = 0.0
+    
     /// (-1.0, -1.0) at bottom left to (1.0, 1.0) at top right
     public var velocity: CGPoint = .zero
     
@@ -42,7 +45,7 @@ public class CDJoystick: UIView {
     @IBInspectable public var substrateBorderColor: UIColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1) { didSet { setNeedsDisplay() }}
     @IBInspectable public var substrateBorderWidth: CGFloat = 1.0 { didSet { setNeedsDisplay() }}
     
-    @IBInspectable public var stickSize: CGSize = CGSize(width: 50, height: 50) { didSet { setNeedsDisplay() }}
+    @IBInspectable public var stickSize: CGSize = CGSize(width: 250, height: 250) { didSet { setNeedsDisplay() }}
     @IBInspectable public var stickColor: UIColor = UIColor.clear { didSet { setNeedsDisplay() }}
     @IBInspectable public var stickBorderColor: UIColor = UIColor.clear { didSet { setNeedsDisplay() }}
     @IBInspectable public var stickBorderWidth: CGFloat = 1.0 { didSet { setNeedsDisplay() }}
@@ -58,11 +61,14 @@ public class CDJoystick: UIView {
     
     private var tracking = false {
         didSet {
-            UIView.animate(withDuration: 0.25) {
-                self.alpha = self.tracking ? 1.0 : self.fade
-            }
+//            UIView.animate(withDuration: 0.25) {
+//                self.alpha = self.tracking ? 1.0 : self.fade
+//            }
         }
     }
+    
+    // represents the point of first touch
+    private var activeDeadZone = CGPoint(x: 0.0, y: 0.0)
     
     override public init(frame: CGRect) {
         super.init(frame: frame)
@@ -85,8 +91,12 @@ public class CDJoystick: UIView {
         trackingHandler?(data)
     }
     
+    public func translatedDeadzoneOffsetCenter() -> CGPoint {
+        return CGPoint(x: self.stickView.center.x - self.activeDeadZone.x, y: self.stickView.center.y - self.activeDeadZone.y)
+    }
+    
     public override func draw(_ rect: CGRect) {
-        alpha = fade
+        //alpha = fade
         
         layer.backgroundColor = UIColor.clear.cgColor //substrateColor.cgColor
         layer.borderColor = UIColor.clear.cgColor //substrateBorderColor.cgColor
@@ -95,6 +105,7 @@ public class CDJoystick: UIView {
         
         stickView.frame = CGRect(origin: .zero, size: stickSize)
         stickView.center = CGPoint(x: bounds.width / 2, y: bounds.height / 2)
+        print("draw: \(stickView.center)")
         stickView.layer.backgroundColor = stickColor.cgColor
         stickView.layer.borderColor = stickBorderColor.cgColor
         stickView.layer.borderWidth = stickBorderWidth
@@ -109,6 +120,8 @@ public class CDJoystick: UIView {
     
     public override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         tracking = true
+        
+        self.activeDeadZone = CGPoint(x: touches.first!.location(in: self).x, y: touches.first!.location(in: self).y)
         
         UIView.animate(withDuration: 0.1) {
             self.touchesMoved(touches, with: event)
@@ -133,7 +146,7 @@ public class CDJoystick: UIView {
         let x = clamp(distance.x, lower: -bounds.size.width / 2, upper: bounds.size.width / 2) / (bounds.size.width / 2)
         let y = clamp(distance.y, lower: -bounds.size.height / 2, upper: bounds.size.height / 2) / (bounds.size.height / 2)
         
-        data = CDJoystickData(velocity: CGPoint(x: x, y: y), angle: -atan2(x, y) + .pi, stickCenter: stickView.center)
+        data = CDJoystickData(force: touch.force, velocity: CGPoint(x: x, y: y), angle: -atan2(x, y) + .pi, stickCenter: stickView.center)
     }
     
     public override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
