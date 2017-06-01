@@ -67,6 +67,9 @@ public class CDJoystick: UIView {
         }
     }
     
+    // represents the point of first touch
+    private var activeDeadZone = CGPoint(x: 0.0, y: 0.0)
+    
     override public init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -88,6 +91,10 @@ public class CDJoystick: UIView {
         trackingHandler?(data)
     }
     
+    public func translatedDeadzoneOffsetCenter() -> CGPoint {
+        return CGPoint(x: self.stickView.center.x - self.activeDeadZone.x, y: self.stickView.center.y - self.activeDeadZone.y)
+    }
+    
     public override func draw(_ rect: CGRect) {
         //alpha = fade
         
@@ -98,6 +105,7 @@ public class CDJoystick: UIView {
         
         stickView.frame = CGRect(origin: .zero, size: stickSize)
         stickView.center = CGPoint(x: bounds.width / 2, y: bounds.height / 2)
+        print("draw: \(stickView.center)")
         stickView.layer.backgroundColor = stickColor.cgColor
         stickView.layer.borderColor = stickBorderColor.cgColor
         stickView.layer.borderWidth = stickBorderWidth
@@ -112,6 +120,8 @@ public class CDJoystick: UIView {
     
     public override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         tracking = true
+        
+        self.activeDeadZone = CGPoint(x: touches.first!.location(in: self).x, y: touches.first!.location(in: self).y)
         
         UIView.animate(withDuration: 0.1) {
             self.touchesMoved(touches, with: event)

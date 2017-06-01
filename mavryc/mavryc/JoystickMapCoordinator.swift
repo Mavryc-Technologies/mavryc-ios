@@ -20,7 +20,7 @@ class JoystickMapCoordinator {
     var isForceTouchMode: Bool {
         get {
             // :TODO: retrieve from userdefaults
-            return false
+            return false // currently always false
         }
         set(value) {
             // :TODO: add to userdefaults
@@ -30,6 +30,8 @@ class JoystickMapCoordinator {
             }
         }
     }
+    
+    var polylineSource: MGLShapeSource?
     
     // Moving Average local-stores
     private var movingAverageForceXs: [Double] = []
@@ -92,7 +94,7 @@ class JoystickMapCoordinator {
     func altitudeForPixelExponentialAndMAASmoothing(joystick: CDJoystick,
                                      stickCenter: CGPoint) -> CLLocationDistance {
         
-        let x = Double(max(abs(stickCenter.x), abs(stickCenter.y)))
+        let x = Double(max(abs(joystick.translatedDeadzoneOffsetCenter().x), abs(joystick.translatedDeadzoneOffsetCenter().y)))
         let pixelMax = Double(joystick.stickSize.width/2)
         let bRoot = pow(self.altitudeCeiling/self.altitudeFloor, 1.0/pixelMax)
         let b = pow(bRoot, x)
@@ -109,7 +111,7 @@ class JoystickMapCoordinator {
     func altitudeForPixelExponential(joystick: CDJoystick,
                                     stickCenter: CGPoint) -> CLLocationDistance {
         
-        let x = Double(max(abs(stickCenter.x), abs(stickCenter.y)))
+        let x = Double(max(abs(joystick.translatedDeadzoneOffsetCenter().x), abs(joystick.translatedDeadzoneOffsetCenter().y)))
         let pixelMax = Double(joystick.stickSize.width/2)
         let bRoot = pow(self.altitudeCeiling/self.altitudeFloor, 1.0/pixelMax)
         let b = pow(bRoot, x)
@@ -127,7 +129,7 @@ class JoystickMapCoordinator {
                                stickCenter: CGPoint,
                                joystick: CDJoystick) -> CLLocationDistance {
         
-        let distanceFromOriginPoint = max(abs(stickCenter.x), abs(stickCenter.y))
+        let distanceFromOriginPoint = max(abs(joystick.translatedDeadzoneOffsetCenter().x), abs(joystick.translatedDeadzoneOffsetCenter().y))
         let maxDistanceFromOrig = joystick.stickSize.width
         let altitudeSpread = ceiling - floor
         let proportionStep = CGFloat(altitudeSpread) / maxDistanceFromOrig
@@ -170,5 +172,30 @@ class JoystickMapCoordinator {
         }
         
         self.panSpeedFactor = 5.0
+    }
+    
+    // MARK: - Polyline
+    func addPolylineLayer(to style: MGLStyle) {
+        // Add an empty MGLShapeSource, we’ll keep a reference to this and add points to this later.
+        let source = MGLShapeSource(identifier: "polyline", shape: nil, options: nil)
+        style.addSource(source)
+        self.polylineSource = source
+        
+        // Add a layer to style our polyline.
+        let layer = MGLLineStyleLayer(identifier: "polyline", source: source)
+        layer.lineJoin = MGLStyleValue(rawValue: NSValue(mglLineJoin: .round))
+        layer.lineCap = MGLStyleValue(rawValue: NSValue(mglLineCap: .round))
+        layer.lineColor = MGLStyleValue(rawValue: UIColor.white)
+        
+        style.addLayer(layer)
+    }
+    
+    func updatePolylineWithCoordinates(coordinates: [CLLocationCoordinate2D]) {
+        var mutableCoordinates = coordinates
+        
+        let polyline = MGLPolylineFeature(coordinates: &mutableCoordinates, count: UInt(mutableCoordinates.count))
+        
+        // Updating the MGLShapeSource’s shape will have the map redraw our polyline with the current coordinates.
+        polylineSource?.shape = polyline
     }
 }
