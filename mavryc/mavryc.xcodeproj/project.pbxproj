@@ -27,6 +27,7 @@
 		96A32C1D1E96D1EC00DA7DC1 /* AutoCompletionPredictable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A32C1C1E96D1EC00DA7DC1 /* AutoCompletionPredictable.swift */; };
 		96A32C1F1E98153300DA7DC1 /* SignupClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A32C1E1E98153300DA7DC1 /* SignupClient.swift */; };
 		96A32C211E98158D00DA7DC1 /* SignupDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A32C201E98158D00DA7DC1 /* SignupDTO.swift */; };
+		96A758B41EE0CAB500F58A4F /* AirportSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A758B31EE0CAB500F58A4F /* AirportSearchTableViewController.swift */; };
 		96B063D81ED3A4B7006151E5 /* JoystickMapCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B063D71ED3A4B7006151E5 /* JoystickMapCoordinator.swift */; };
 		96B7236D1EA98B5200B2E322 /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B7236C1EA98B5200B2E322 /* AppData.swift */; };
 		96B723701EA98B8D00B2E322 /* RealmConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B7236F1EA98B8D00B2E322 /* RealmConfiguration.swift */; };
@@ -91,6 +92,7 @@
 		96A32C1C1E96D1EC00DA7DC1 /* AutoCompletionPredictable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCompletionPredictable.swift; sourceTree = "<group>"; };
 		96A32C1E1E98153300DA7DC1 /* SignupClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupClient.swift; sourceTree = "<group>"; };
 		96A32C201E98158D00DA7DC1 /* SignupDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupDTO.swift; sourceTree = "<group>"; };
+		96A758B31EE0CAB500F58A4F /* AirportSearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirportSearchTableViewController.swift; sourceTree = "<group>"; };
 		96B063D71ED3A4B7006151E5 /* JoystickMapCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoystickMapCoordinator.swift; sourceTree = "<group>"; };
 		96B7236C1EA98B5200B2E322 /* AppData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppData.swift; sourceTree = "<group>"; };
 		96B7236F1EA98B8D00B2E322 /* RealmConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmConfiguration.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 		960B50E21EC634B9002B1432 /* pull-up panel */ = {
 			isa = PBXGroup;
 			children = (
+				96A758B21EE0CA8F00F58A4F /* airport search */,
 				96DA35AC1EC1264400D2A0BC /* FlightPanelViewController.swift */,
 				960B50E31EC6392F002B1432 /* JourneyDetailsVC.swift */,
 			);
@@ -247,6 +250,14 @@
 				96B723731EA9E26100B2E322 /* User.swift */,
 			);
 			name = models;
+			sourceTree = "<group>";
+		};
+		96A758B21EE0CA8F00F58A4F /* airport search */ = {
+			isa = PBXGroup;
+			children = (
+				96A758B31EE0CAB500F58A4F /* AirportSearchTableViewController.swift */,
+			);
+			name = "airport search";
 			sourceTree = "<group>";
 		};
 		96B7236E1EA98B7000B2E322 /* database */ = {
@@ -646,6 +657,7 @@
 				96F2FCB31E92DF4E00C51674 /* MainViewController.swift in Sources */,
 				96F2FC961E92CD0000C51674 /* AppCoordinator.swift in Sources */,
 				96A32C1B1E96A36900DA7DC1 /* Cities.swift in Sources */,
+				96A758B41EE0CAB500F58A4F /* AirportSearchTableViewController.swift in Sources */,
 				961E2AC21E985602000F2D64 /* FetchFlightsDTO.swift in Sources */,
 				96B723701EA98B8D00B2E322 /* RealmConfiguration.swift in Sources */,
 				96B063D81ED3A4B7006151E5 /* JoystickMapCoordinator.swift in Sources */,

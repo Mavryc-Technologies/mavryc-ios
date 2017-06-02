@@ -10,6 +10,9 @@ import UIKit
 
 class JourneyDetailsVC: UIViewController {
 
+    // MARK: Properties
+    // TODO: add enum for state of control
+    
     // MARK: Outlet Properties
     @IBOutlet weak var nextButton: UIButton! {
         didSet {
@@ -27,12 +30,19 @@ class JourneyDetailsVC: UIViewController {
         }
     }
     
+    // use to expand or retract departure city/airport list
+    @IBOutlet weak var departureTableViewHeightConstraint: NSLayoutConstraint!
+    
+    // use to expand or retract arrival city/airport list
+    @IBOutlet weak var arrivalTableViewHeightConstraint: NSLayoutConstraint!
+    
     
     // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.deselectSearchControls()
     }
 
     override func didReceiveMemoryWarning() {
@@ -44,8 +54,42 @@ class JourneyDetailsVC: UIViewController {
     // MARK: - Control Actions
     
     @IBAction func nextButtonAction(_ sender: Any) {
+        print("next button pressed")
     }
     
+    @IBAction func departureIconTapAction(_ sender: Any) {
+        print("tapped departure icon")
+        self.triggerDepartureList()
+    }
+    
+    @IBAction func arrivalIconTapAction(_ sender: Any) {
+        print("tapped arrival icon")
+        self.triggerArrivalList()
+    }
+    
+    // MARK: - Search Control Support
+    func triggerDepartureList() {
+        if self.departureTableViewHeightConstraint.constant == 0 {
+            self.arrivalTableViewHeightConstraint.constant = 0
+            self.departureTableViewHeightConstraint.constant = 600
+        } else {
+            self.departureTableViewHeightConstraint.constant = 0
+        }
+    }
+
+    func triggerArrivalList() {
+        if self.arrivalTableViewHeightConstraint.constant == 0 {
+            self.arrivalTableViewHeightConstraint.constant = 600
+            self.departureTableViewHeightConstraint.constant = 0
+        } else {
+            self.arrivalTableViewHeightConstraint.constant = 0
+        }
+    }
+    
+    func deselectSearchControls() {
+        self.arrivalTableViewHeightConstraint.constant = 0
+        self.departureTableViewHeightConstraint.constant = 0
+    }
 
     /*
     // MARK: - Navigation
