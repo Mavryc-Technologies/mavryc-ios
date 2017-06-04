@@ -93,7 +93,6 @@
                                     <constraint firstAttribute="height" constant="48" id="0zA-mP-Pv8"/>
                                     <constraint firstItem="cO0-KK-gUv" firstAttribute="leading" secondItem="0IC-Vt-fGK" secondAttribute="leading" id="J2p-7E-NzR"/>
                                     <constraint firstAttribute="width" constant="300" id="KLg-eV-d1p"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="48" id="LdP-jq-Jjn"/>
                                     <constraint firstAttribute="trailing" secondItem="qGe-33-eBr" secondAttribute="trailing" id="Leb-AR-QpW"/>
                                     <constraint firstAttribute="bottom" secondItem="qGe-33-eBr" secondAttribute="bottom" id="XGa-82-Niv"/>
                                     <constraint firstItem="cO0-KK-gUv" firstAttribute="top" secondItem="0IC-Vt-fGK" secondAttribute="top" id="jdw-3a-0yl"/>
@@ -235,7 +234,7 @@
                                                 <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oiq-vT-vgL">
                                                     <rect key="frame" x="0.0" y="44" width="375" height="556"/>
                                                     <connections>
-                                                        <segue destination="ELB-y0-PzL" kind="embed" identifier="JourneyDetailsVCEmbeddedSeque" id="CFy-Ol-Z6V"/>
+                                                        <segue destination="zVs-XS-9fh" kind="embed" identifier="JourneyDetailsVCEmbeddedSeque" id="CFy-Ol-Z6V"/>
                                                     </connections>
                                                 </containerView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="header_shadow" translatesAutoresizingMaskIntoConstraints="NO" id="tPW-39-Xcc">
@@ -334,7 +333,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="9hY-kE-cil">
-                                <rect key="frame" x="37" y="15" width="300" height="668"/>
+                                <rect key="frame" x="37" y="35" width="300" height="668"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="IS3-Mr-D1s">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="198"/>
@@ -721,6 +720,7 @@
                                                         </state>
                                                         <connections>
                                                             <action selector="nextButtonAction:" destination="ELB-y0-PzL" eventType="touchUpInside" id="tdC-XB-rnF"/>
+                                                            <segue destination="w1h-Mb-lAg" kind="show" identifier="ShowServicesSegue" id="yKT-9u-jCf"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -745,6 +745,7 @@
                             <constraint firstItem="9hY-kE-cil" firstAttribute="centerX" secondItem="wZs-TF-sh2" secondAttribute="centerX" id="elQ-2N-Oek"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="SfM-aB-l3i"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="700"/>
                     <connections>
@@ -768,7 +769,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1397.5999999999999" y="-47.676161919040482"/>
+            <point key="canvasLocation" x="2336.8000000000002" y="-47.676161919040482"/>
         </scene>
         <!--Airport Search Table View Controller-->
         <scene sceneID="oc7-Cg-M60">
@@ -821,7 +822,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kKu-yG-suW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2149" y="60"/>
+            <point key="canvasLocation" x="3069" y="-609"/>
         </scene>
         <!--Airport Search Table View Controller-->
         <scene sceneID="PcB-tG-jc4">
@@ -869,7 +870,68 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Bt-Xj-z94" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2150" y="207"/>
+            <point key="canvasLocation" x="3069" y="-443"/>
+        </scene>
+        <!--Services Table View Controller-->
+        <scene sceneID="GIO-CG-CBD">
+            <objects>
+                <tableViewController id="w1h-Mb-lAg" customClass="ServicesTableViewController" customModule="mavryc" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="hEL-zw-rbw">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="700"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="YY2-bN-byh">
+                            <rect key="frame" x="0.0" y="72" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bW5-7P-FWs">
+                                    <rect key="frame" x="168" y="7" width="39" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" title="NEXT"/>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </view>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="I8H-8D-od7">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="I8H-8D-od7" id="xXd-k0-4oY">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="w1h-Mb-lAg" id="MgS-eC-Qc3"/>
+                            <outlet property="delegate" destination="w1h-Mb-lAg" id="bWX-QR-oh2"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5Ro-it-HBG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3846" y="3"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="oW0-fZ-0dj">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="zVs-XS-9fh" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="556"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="3ha-Yn-xGq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ELB-y0-PzL" kind="relationship" relationship="rootViewController" id="dcZ-Db-nKc"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t64-I1-Hni" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1489" y="-62"/>
         </scene>
     </scenes>
     <resources>

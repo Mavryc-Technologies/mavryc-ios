@@ -12,6 +12,7 @@
 		23B819CB1EB19493006017FC /* LoginClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B819C91EB19198006017FC /* LoginClient.swift */; };
 		23B819CC1EB194A7006017FC /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967FF6251E9446BF007B56C6 /* Networking.swift */; };
 		23B819CD1EB194AB006017FC /* LoginDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B819C71EB19145006017FC /* LoginDTO.swift */; };
+		9604FE7E1EE3E65100B1A631 /* ServicesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9604FE7D1EE3E65100B1A631 /* ServicesTableViewController.swift */; };
 		9608F2731EDCA3A60028B70D /* MapAnnotationsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9608F2721EDCA3A60028B70D /* MapAnnotationsCoordinator.swift */; };
 		960B50E41EC6392F002B1432 /* JourneyDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960B50E31EC6392F002B1432 /* JourneyDetailsVC.swift */; };
 		961E2AC21E985602000F2D64 /* FetchFlightsDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961E2AC11E985602000F2D64 /* FetchFlightsDTO.swift */; };
@@ -77,6 +78,7 @@
 		77E884330154E11441155D61 /* Pods_mavryc.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mavryc.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BB6D2AAAA732FB84064959C /* Pods-mavryc-mavrycTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mavryc-mavrycTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-mavryc-mavrycTests/Pods-mavryc-mavrycTests.release.xcconfig"; sourceTree = "<group>"; };
 		7BF64E167EC734F4C54DBF17 /* Pods-mavryc.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mavryc.debug.xcconfig"; path = "Pods/Target Support Files/Pods-mavryc/Pods-mavryc.debug.xcconfig"; sourceTree = "<group>"; };
+		9604FE7D1EE3E65100B1A631 /* ServicesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServicesTableViewController.swift; sourceTree = "<group>"; };
 		9608F2721EDCA3A60028B70D /* MapAnnotationsCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapAnnotationsCoordinator.swift; sourceTree = "<group>"; };
 		960B50E31EC6392F002B1432 /* JourneyDetailsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JourneyDetailsVC.swift; sourceTree = "<group>"; };
 		961E2AC11E985602000F2D64 /* FetchFlightsDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchFlightsDTO.swift; sourceTree = "<group>"; };
@@ -178,9 +180,10 @@
 		960B50E21EC634B9002B1432 /* pull-up panel */ = {
 			isa = PBXGroup;
 			children = (
-				96A758B21EE0CA8F00F58A4F /* airport search */,
 				96DA35AC1EC1264400D2A0BC /* FlightPanelViewController.swift */,
 				960B50E31EC6392F002B1432 /* JourneyDetailsVC.swift */,
+				9604FE7D1EE3E65100B1A631 /* ServicesTableViewController.swift */,
+				96A758B21EE0CA8F00F58A4F /* airport search */,
 			);
 			name = "pull-up panel";
 			sourceTree = "<group>";
@@ -423,9 +426,9 @@
 		96F2FCB11E92DF1F00C51674 /* main screen */ = {
 			isa = PBXGroup;
 			children = (
-				960B50E21EC634B9002B1432 /* pull-up panel */,
 				96E53ED61E90378E0045AA06 /* Main.storyboard */,
 				96F2FCB21E92DF4E00C51674 /* MainViewController.swift */,
+				960B50E21EC634B9002B1432 /* pull-up panel */,
 			);
 			name = "main screen";
 			sourceTree = "<group>";
@@ -671,6 +674,7 @@
 				96A32C211E98158D00DA7DC1 /* SignupDTO.swift in Sources */,
 				9608F2731EDCA3A60028B70D /* MapAnnotationsCoordinator.swift in Sources */,
 				9666A4561E95A9D000CA822F /* FetchFlightsClient.swift in Sources */,
+				9604FE7E1EE3E65100B1A631 /* ServicesTableViewController.swift in Sources */,
 				967FF6291E945796007B56C6 /* FetchUserClient.swift in Sources */,
 				23B819CA1EB19198006017FC /* LoginClient.swift in Sources */,
 				96F2FC9B1E92D6FE00C51674 /* AppStyle.swift in Sources */,
