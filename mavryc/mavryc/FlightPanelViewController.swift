@@ -38,12 +38,28 @@ class FlightPanelViewController: UIViewController, UIGestureRecognizerDelegate {
     private var lastPanIncrement: CGFloat = 0
     private var isOpen: Bool = false
 
+    // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         let gesture = UIPanGestureRecognizer(target: self, action: #selector(wasDragged(recognizer:)))
         self.panelButton.addGestureRecognizer(gesture)
         self.panelButton.isUserInteractionEnabled = true
         gesture.delegate = self
+    }
+    
+    // MARK: Segues
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "JourneyDetailsVCEmbeddedSeque" {
+            let vc = segue.destination as? JourneyDetailsVC
+            vc?.delegate = self
+        }
+    }
+    
+    /// Open panel and set to state
+    public func openPanelAndSetState() {
+        // TODO: update function to handle diff states
+        
+        self.activatePanel(open: true)
     }
     
     /// Triggers automatic panel extension/retraction when panelButton is normal pressed
@@ -112,6 +128,8 @@ class FlightPanelViewController: UIViewController, UIGestureRecognizerDelegate {
         }
         
     }
-    
+}
+
+extension FlightPanelViewController: JourneyDelegate {
     
 }

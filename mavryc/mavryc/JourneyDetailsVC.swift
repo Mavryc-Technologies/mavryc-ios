@@ -8,6 +8,18 @@
 
 import UIKit
 
+enum JourneyScreensState {
+    case onewayScreenShouldActivateDepartureSearchField
+    case onewayScreenNormal
+    
+    /*
+     animation states...
+     */
+}
+
+protocol JourneyDelegate {
+}
+
 class JourneyDetailsVC: UIViewController {
 
     // MARK: Properties
@@ -30,12 +42,16 @@ class JourneyDetailsVC: UIViewController {
         }
     }
     
+    @IBOutlet weak var departureSearchTextField: UITextField!
+    @IBOutlet weak var arrivalSearchTextField: UITextField!
+    
     // use to expand or retract departure city/airport list
     @IBOutlet weak var departureTableViewHeightConstraint: NSLayoutConstraint!
     
     // use to expand or retract arrival city/airport list
     @IBOutlet weak var arrivalTableViewHeightConstraint: NSLayoutConstraint!
     
+    var delegate: JourneyDelegate? = nil
     
     // MARK: Lifecycle
     override func viewDidLoad() {
@@ -43,6 +59,14 @@ class JourneyDetailsVC: UIViewController {
 
         // Do any additional setup after loading the view.
         self.deselectSearchControls()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        // setup based on current screen state
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        // animate into setup for current screen state and transition state
     }
 
     override func didReceiveMemoryWarning() {

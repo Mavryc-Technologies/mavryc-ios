@@ -23,6 +23,8 @@ class MainViewController: UIViewController {
     @IBOutlet weak var joystickToken: UIView!
     @IBOutlet weak var joystickTokenDisk: UIImageView!
     
+    @IBOutlet weak var destinationSearchButton: UIView!
+    
     // Location manager used to start and stop updating location.
     let manager = CLLocationManager()
     var receivedLocationCount = 0
@@ -34,6 +36,9 @@ class MainViewController: UIViewController {
     
     // Joystick & Map
     var joystickMapCoordinator = JoystickMapCoordinator()
+    
+    // Panel
+    weak var panel: FlightPanelViewController? = nil
     
     // MARK: Lifecycle
     override func viewDidLoad() {
@@ -58,11 +63,17 @@ class MainViewController: UIViewController {
         if segue.identifier == "JourneyPanelSegue" {
             let panel = segue.destination as? FlightPanelViewController
             panel?.delegate = self
+            self.panel = panel
         }
         if segue.identifier == "MapboxSegue" {
             let vc = segue.destination
             self.mapView = (vc.view as! MGLMapView)
         }
+    }
+    
+    // MARK: Interface Actions
+    @IBAction func distinationSearchButtonAction(_ sender: Any) {
+        self.panel?.openPanelAndSetState()
     }
 }
 
