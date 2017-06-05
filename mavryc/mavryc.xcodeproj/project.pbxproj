@@ -34,6 +34,8 @@
 		96B723701EA98B8D00B2E322 /* RealmConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B7236F1EA98B8D00B2E322 /* RealmConfiguration.swift */; };
 		96B723721EA9B53400B2E322 /* databaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B723711EA9B53400B2E322 /* databaseTests.swift */; };
 		96B723741EA9E26100B2E322 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B723731EA9E26100B2E322 /* User.swift */; };
+		96CB0A441EE5DB42004ADEA0 /* PaxPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CB0A431EE5DB42004ADEA0 /* PaxPicker.swift */; };
+		96CB0A461EE5DBF9004ADEA0 /* PaxPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 96CB0A451EE5DBF9004ADEA0 /* PaxPicker.xib */; };
 		96DA35AD1EC1264400D2A0BC /* FlightPanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DA35AC1EC1264400D2A0BC /* FlightPanelViewController.swift */; };
 		96DA35B01EC2732C00D2A0BC /* Joystick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DA35AF1EC2732C00D2A0BC /* Joystick.swift */; };
 		96DA35B31EC281C600D2A0BC /* skylar.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96DA35B21EC281C600D2A0BC /* skylar.xcassets */; };
@@ -100,6 +102,8 @@
 		96B7236F1EA98B8D00B2E322 /* RealmConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmConfiguration.swift; sourceTree = "<group>"; };
 		96B723711EA9B53400B2E322 /* databaseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = databaseTests.swift; sourceTree = "<group>"; };
 		96B723731EA9E26100B2E322 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		96CB0A431EE5DB42004ADEA0 /* PaxPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaxPicker.swift; sourceTree = "<group>"; };
+		96CB0A451EE5DBF9004ADEA0 /* PaxPicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PaxPicker.xib; sourceTree = "<group>"; };
 		96DA35AC1EC1264400D2A0BC /* FlightPanelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlightPanelViewController.swift; sourceTree = "<group>"; };
 		96DA35AF1EC2732C00D2A0BC /* Joystick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Joystick.swift; sourceTree = "<group>"; };
 		96DA35B21EC281C600D2A0BC /* skylar.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = skylar.xcassets; sourceTree = "<group>"; };
@@ -184,6 +188,8 @@
 				960B50E31EC6392F002B1432 /* JourneyDetailsVC.swift */,
 				9604FE7D1EE3E65100B1A631 /* ServicesTableViewController.swift */,
 				96A758B21EE0CA8F00F58A4F /* airport search */,
+				96CB0A431EE5DB42004ADEA0 /* PaxPicker.swift */,
+				96CB0A451EE5DBF9004ADEA0 /* PaxPicker.xib */,
 			);
 			name = "pull-up panel";
 			sourceTree = "<group>";
@@ -534,6 +540,7 @@
 			files = (
 				96E53EDD1E90378E0045AA06 /* LaunchScreen.storyboard in Resources */,
 				96DA35B71EC281F400D2A0BC /* Lato in Resources */,
+				96CB0A461EE5DBF9004ADEA0 /* PaxPicker.xib in Resources */,
 				96E53EDA1E90378E0045AA06 /* Assets.xcassets in Resources */,
 				96A32C181E96A30500DA7DC1 /* states-cities.json in Resources */,
 				96E53ED81E90378E0045AA06 /* Main.storyboard in Resources */,
@@ -673,6 +680,7 @@
 				96DA35AD1EC1264400D2A0BC /* FlightPanelViewController.swift in Sources */,
 				96A32C211E98158D00DA7DC1 /* SignupDTO.swift in Sources */,
 				9608F2731EDCA3A60028B70D /* MapAnnotationsCoordinator.swift in Sources */,
+				96CB0A441EE5DB42004ADEA0 /* PaxPicker.swift in Sources */,
 				9666A4561E95A9D000CA822F /* FetchFlightsClient.swift in Sources */,
 				9604FE7E1EE3E65100B1A631 /* ServicesTableViewController.swift in Sources */,
 				967FF6291E945796007B56C6 /* FetchUserClient.swift in Sources */,
