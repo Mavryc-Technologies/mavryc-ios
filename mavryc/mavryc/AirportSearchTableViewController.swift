@@ -8,8 +8,41 @@
 
 import UIKit
 
-class AirportSearchTableViewController: UITableViewController {
+enum AirportSearchType {
+    case departure
+    case destination
+}
 
+protocol AirportSearchListDelegate {
+    
+    func airportSearchListItemWasSelected(airportName: String)
+    
+    /// returns type of list
+    func airportSearchListType(controller: AirportSearchTableViewController) -> AirportSearchType
+}
+
+class AirportSearchTableViewController: UITableViewController {
+    
+    public var listDelegate: AirportSearchListDelegate? = nil
+    
+//    public var isListVisible = false
+    
+    // MARK: - Datasource support
+    
+    private var data: [Any] = []
+    
+    public func updateListWithAirports(list: [Any]) {
+        self.data = list
+        self.tableView.reloadData()
+    }
+
+    public func clearList() {
+        self.data = []
+        self.tableView.reloadData()
+    }
+    
+    // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,7 +61,7 @@ class AirportSearchTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return data.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -38,8 +71,14 @@ class AirportSearchTableViewController: UITableViewController {
         cell.separatorInset = UIEdgeInsets.zero
         cell.layoutMargins = UIEdgeInsets.zero
         
-        cell.textLabel?.text = "Portland, Oregon"
-
+        cell.backgroundColor = UIColor.clear
+        
+        if data.count >= indexPath.row {
+            if let string = data[indexPath.row] as? String {
+                cell.textLabel?.text = string
+            }
+        }
+        
         return cell
     }
     
@@ -51,11 +90,16 @@ class AirportSearchTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         if let cell = tableView.cellForRow(at: indexPath) {
             if cell.isSelected {
                 cell.backgroundColor = AppStyle.airportSearchCellSelectionColor
             } else {
                 cell.backgroundColor = UIColor.clear
+            }
+            
+            if let text = cell.textLabel?.text {
+                self.listDelegate?.airportSearchListItemWasSelected(airportName: text)
             }
         }
     }

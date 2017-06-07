@@ -59,8 +59,8 @@
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Where To?" placeholder="Where to?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HER-Xj-oqm">
                                                 <rect key="frame" x="20" y="8" width="223" height="30"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
+                                                <color key="textColor" red="0.3803921569" green="0.4431372549" blue="0.53333333329999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                         </subviews>
@@ -75,7 +75,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cO0-KK-gUv">
                                         <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ArriveIconFormPDF" translatesAutoresizingMaskIntoConstraints="NO" id="NWD-CI-8VF">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ArriveIconUnselected" translatesAutoresizingMaskIntoConstraints="NO" id="NWD-CI-8VF">
                                                 <rect key="frame" x="13.5" y="14" width="21" height="20"/>
                                                 <color key="backgroundColor" red="0.058823529409999999" green="0.070588235289999995" blue="0.1058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </imageView>
@@ -275,7 +275,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" red="0.058823529409999999" green="0.070588235289999995" blue="0.1058823529" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="backgroundColor" red="0.1052359950423826" green="0.12703246503178695" blue="0.19242187499999996" alpha="0.65000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
                                             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="oiq-vT-vgL" secondAttribute="trailing" id="1Mc-Nh-EcR"/>
@@ -338,20 +338,20 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="9hY-kE-cil">
                                 <rect key="frame" x="37" y="35" width="300" height="670"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="IS3-Mr-D1s">
+                                    <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="IS3-Mr-D1s">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="198"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jgl-hF-yNs" userLabel="protocontrol orig">
+                                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jgl-hF-yNs" userLabel="protocontrol orig">
                                                 <rect key="frame" x="0.0" y="0.0" width="300" height="48"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hgy-DP-d0k">
+                                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hgy-DP-d0k">
                                                         <rect key="frame" x="49" y="0.0" width="251" height="48"/>
                                                         <subviews>
-                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Portland (Best Option)" placeholder="Default City" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SVy-Sf-uF9">
+                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Departure" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SVy-Sf-uF9">
                                                                 <rect key="frame" x="20" y="8" width="223" height="30"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                                             </textField>
                                                         </subviews>
                                                         <color key="backgroundColor" red="0.058823529409999999" green="0.070588235289999995" blue="0.1058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -401,7 +401,7 @@
                                                     <constraint firstAttribute="height" constant="150" id="FrD-uw-vvX"/>
                                                 </constraints>
                                                 <connections>
-                                                    <segue destination="8bL-v6-2b2" kind="embed" id="YOy-6K-Fr1"/>
+                                                    <segue destination="8bL-v6-2b2" kind="embed" identifier="DepartureSearchListSegue" id="YOy-6K-Fr1"/>
                                                 </connections>
                                             </containerView>
                                         </subviews>
@@ -415,11 +415,11 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kJE-Q3-asd">
                                                         <rect key="frame" x="49" y="0.0" width="251" height="48"/>
                                                         <subviews>
-                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="San Jose (Best Option)" placeholder="Default City" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="elu-wX-of4">
+                                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Arrival" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="elu-wX-of4">
                                                                 <rect key="frame" x="20" y="8" width="223" height="30"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                                             </textField>
                                                         </subviews>
                                                         <color key="backgroundColor" red="0.058823529409999999" green="0.070588235289999995" blue="0.1058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -469,7 +469,7 @@
                                                     <constraint firstAttribute="height" constant="50" id="99e-Tz-A7e"/>
                                                 </constraints>
                                                 <connections>
-                                                    <segue destination="4l5-WZ-xxq" kind="embed" id="baf-Cm-Yuw"/>
+                                                    <segue destination="4l5-WZ-xxq" kind="embed" identifier="DestinationSearchListSegue" id="baf-Cm-Yuw"/>
                                                 </connections>
                                             </containerView>
                                         </subviews>
@@ -609,13 +609,13 @@
                                             </view>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ExR-qc-OJP">
+                                    <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ExR-qc-OJP">
                                         <rect key="frame" x="0.0" y="542" width="300" height="50"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L4E-wm-wuu">
+                                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L4E-wm-wuu">
                                                 <rect key="frame" x="0.0" y="0.0" width="300" height="50"/>
                                                 <subviews>
-                                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="HAa-r7-snu">
+                                                    <segmentedControl opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="HAa-r7-snu">
                                                         <rect key="frame" x="52" y="11" width="195" height="29"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="195" id="Enj-tg-kAq"/>
@@ -627,7 +627,7 @@
                                                         </segments>
                                                         <color key="tintColor" red="0.058823529409999999" green="0.070588235289999995" blue="0.1058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </segmentedControl>
-                                                    <segmentedControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="qFb-ki-isz" userLabel="StaticLayoverNoInteractive">
+                                                    <segmentedControl opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="qFb-ki-isz" userLabel="StaticLayoverNoInteractive">
                                                         <rect key="frame" x="52" y="11" width="195" height="29"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="28" id="MrI-tC-zBJ"/>
@@ -699,8 +699,10 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="700"/>
                     <connections>
+                        <outlet property="arrivalIconImageView" destination="CZe-ZU-FQb" id="Nfq-r9-2v0"/>
                         <outlet property="arrivalSearchTextField" destination="elu-wX-of4" id="18H-co-K13"/>
                         <outlet property="arrivalTableViewHeightConstraint" destination="99e-Tz-A7e" id="VAm-tT-eg4"/>
+                        <outlet property="departureIconImageView" destination="DKG-kp-BYu" id="jrw-sd-cCl"/>
                         <outlet property="departureSearchTextField" destination="SVy-Sf-uF9" id="RMN-DZ-3Ic"/>
                         <outlet property="departureTableViewHeightConstraint" destination="FrD-uw-vvX" id="ese-HU-wff"/>
                         <outlet property="nextButton" destination="vai-xG-fRo" id="hvq-xi-qQN"/>
@@ -734,11 +736,11 @@
                                 <rect key="frame" x="0.0" y="28" width="300" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ExJ-nC-fRo" id="n1P-Lp-5aE">
-                                    <rect key="frame" x="0.0" y="0.0" width="300" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" alpha="0.75" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="EUq-TY-Uxh">
-                                            <rect key="frame" x="15" y="0.0" width="270" height="43.5"/>
+                                            <rect key="frame" x="15" y="0.0" width="270" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="12"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -776,11 +778,11 @@
                                 <rect key="frame" x="0.0" y="28" width="300" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Owt-8m-Wh6" id="njz-A0-wV4">
-                                    <rect key="frame" x="0.0" y="0.0" width="300" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" alpha="0.75" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="C2c-yH-qwq">
-                                            <rect key="frame" x="15" y="0.0" width="270" height="43.5"/>
+                                            <rect key="frame" x="15" y="0.0" width="270" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="12"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -801,7 +803,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Bt-Xj-z94" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3069" y="-443"/>
+            <point key="canvasLocation" x="3118" y="-416"/>
         </scene>
         <!--Services Table View Controller-->
         <scene sceneID="GIO-CG-CBD">
@@ -828,7 +830,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="I8H-8D-od7" id="xXd-k0-4oY">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -866,7 +868,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ArriveIconFormPDF" width="21" height="20"/>
         <image name="ArriveIconUnselected" width="21" height="20"/>
         <image name="CalendarIconFormPDF" width="19" height="19"/>
         <image name="DepartIconFormPDF" width="22" height="18"/>
