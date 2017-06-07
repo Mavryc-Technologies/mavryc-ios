@@ -36,6 +36,7 @@
 		96B723741EA9E26100B2E322 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B723731EA9E26100B2E322 /* User.swift */; };
 		96CB0A441EE5DB42004ADEA0 /* PaxPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CB0A431EE5DB42004ADEA0 /* PaxPicker.swift */; };
 		96CB0A461EE5DBF9004ADEA0 /* PaxPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 96CB0A451EE5DBF9004ADEA0 /* PaxPicker.xib */; };
+		96CB0A491EE75FAA004ADEA0 /* AirportSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CB0A481EE75FAA004ADEA0 /* AirportSearchTableViewCell.swift */; };
 		96DA35AD1EC1264400D2A0BC /* FlightPanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DA35AC1EC1264400D2A0BC /* FlightPanelViewController.swift */; };
 		96DA35B01EC2732C00D2A0BC /* Joystick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DA35AF1EC2732C00D2A0BC /* Joystick.swift */; };
 		96DA35B31EC281C600D2A0BC /* skylar.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96DA35B21EC281C600D2A0BC /* skylar.xcassets */; };
@@ -104,6 +105,7 @@
 		96B723731EA9E26100B2E322 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		96CB0A431EE5DB42004ADEA0 /* PaxPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaxPicker.swift; sourceTree = "<group>"; };
 		96CB0A451EE5DBF9004ADEA0 /* PaxPicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PaxPicker.xib; sourceTree = "<group>"; };
+		96CB0A481EE75FAA004ADEA0 /* AirportSearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirportSearchTableViewCell.swift; sourceTree = "<group>"; };
 		96DA35AC1EC1264400D2A0BC /* FlightPanelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlightPanelViewController.swift; sourceTree = "<group>"; };
 		96DA35AF1EC2732C00D2A0BC /* Joystick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Joystick.swift; sourceTree = "<group>"; };
 		96DA35B21EC281C600D2A0BC /* skylar.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = skylar.xcassets; sourceTree = "<group>"; };
@@ -184,12 +186,11 @@
 		960B50E21EC634B9002B1432 /* pull-up panel */ = {
 			isa = PBXGroup;
 			children = (
+				96A758B21EE0CA8F00F58A4F /* airport search */,
+				96CB0A471EE70FA3004ADEA0 /* pax control */,
 				96DA35AC1EC1264400D2A0BC /* FlightPanelViewController.swift */,
 				960B50E31EC6392F002B1432 /* JourneyDetailsVC.swift */,
 				9604FE7D1EE3E65100B1A631 /* ServicesTableViewController.swift */,
-				96A758B21EE0CA8F00F58A4F /* airport search */,
-				96CB0A431EE5DB42004ADEA0 /* PaxPicker.swift */,
-				96CB0A451EE5DBF9004ADEA0 /* PaxPicker.xib */,
 			);
 			name = "pull-up panel";
 			sourceTree = "<group>";
@@ -265,6 +266,7 @@
 			isa = PBXGroup;
 			children = (
 				96A758B31EE0CAB500F58A4F /* AirportSearchTableViewController.swift */,
+				96CB0A481EE75FAA004ADEA0 /* AirportSearchTableViewCell.swift */,
 			);
 			name = "airport search";
 			sourceTree = "<group>";
@@ -275,6 +277,15 @@
 				96B7236F1EA98B8D00B2E322 /* RealmConfiguration.swift */,
 			);
 			name = database;
+			sourceTree = "<group>";
+		};
+		96CB0A471EE70FA3004ADEA0 /* pax control */ = {
+			isa = PBXGroup;
+			children = (
+				96CB0A431EE5DB42004ADEA0 /* PaxPicker.swift */,
+				96CB0A451EE5DBF9004ADEA0 /* PaxPicker.xib */,
+			);
+			name = "pax control";
 			sourceTree = "<group>";
 		};
 		96DA35AE1EC2731000D2A0BC /* joystick */ = {
@@ -388,6 +399,7 @@
 			children = (
 				96DA35AE1EC2731000D2A0BC /* joystick */,
 				9652283C1EAAA0DE0054DA70 /* map */,
+				960B50E21EC634B9002B1432 /* pull-up panel */,
 				96F2FCB11E92DF1F00C51674 /* main screen */,
 				96F2FCAA1E92DBE800C51674 /* onboarding */,
 				96E53EF41E90387B0045AA06 /* pay */,
@@ -434,7 +446,6 @@
 			children = (
 				96E53ED61E90378E0045AA06 /* Main.storyboard */,
 				96F2FCB21E92DF4E00C51674 /* MainViewController.swift */,
-				960B50E21EC634B9002B1432 /* pull-up panel */,
 			);
 			name = "main screen";
 			sourceTree = "<group>";
@@ -678,6 +689,7 @@
 				96A32C1D1E96D1EC00DA7DC1 /* AutoCompletionPredictable.swift in Sources */,
 				96B723741EA9E26100B2E322 /* User.swift in Sources */,
 				96DA35AD1EC1264400D2A0BC /* FlightPanelViewController.swift in Sources */,
+				96CB0A491EE75FAA004ADEA0 /* AirportSearchTableViewCell.swift in Sources */,
 				96A32C211E98158D00DA7DC1 /* SignupDTO.swift in Sources */,
 				9608F2731EDCA3A60028B70D /* MapAnnotationsCoordinator.swift in Sources */,
 				96CB0A441EE5DB42004ADEA0 /* PaxPicker.swift in Sources */,
@@ -835,7 +847,7 @@
 			baseConfigurationReference = 7BF64E167EC734F4C54DBF17 /* Pods-mavryc.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = 8H5S399Z5A;
 				INFOPLIST_FILE = mavryc/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -855,7 +867,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = 8H5S399Z5A;
 				INFOPLIST_FILE = mavryc/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;

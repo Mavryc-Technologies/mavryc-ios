@@ -32,6 +32,7 @@ class JourneyDetailsVC: UIViewController {
             nextButton.layer.borderColor = AppStyle.journeyDetailsNextButtonBorderColor.cgColor
             nextButton.layer.backgroundColor = AppStyle.journeyDetailsNextButtonBGColor.cgColor
             nextButton.layer.cornerRadius = 12
+            nextButton.setTitleColor(AppStyle.journeyDetailsNextButtonSelectedTextColor, for: .selected)
         }
     }
     
@@ -93,20 +94,26 @@ class JourneyDetailsVC: UIViewController {
     
     // MARK: - Search Control Support
     func triggerDepartureList() {
-        if self.departureTableViewHeightConstraint.constant == 0 {
-            self.arrivalTableViewHeightConstraint.constant = 0
-            self.departureTableViewHeightConstraint.constant = 600
-        } else {
-            self.departureTableViewHeightConstraint.constant = 0
+        UIView.animate(withDuration: 0.25) {
+            if self.departureTableViewHeightConstraint.constant == 0 {
+                self.arrivalTableViewHeightConstraint.constant = 0
+                self.departureTableViewHeightConstraint.constant = 600
+            } else {
+                self.departureTableViewHeightConstraint.constant = 0
+            }
+            self.view.layoutIfNeeded()
         }
     }
 
     func triggerArrivalList() {
-        if self.arrivalTableViewHeightConstraint.constant == 0 {
-            self.arrivalTableViewHeightConstraint.constant = 600
-            self.departureTableViewHeightConstraint.constant = 0
-        } else {
-            self.arrivalTableViewHeightConstraint.constant = 0
+        UIView.animate(withDuration: 0.25) {
+            if self.arrivalTableViewHeightConstraint.constant == 0 {
+                self.arrivalTableViewHeightConstraint.constant = 600
+                self.departureTableViewHeightConstraint.constant = 0
+            } else {
+                self.arrivalTableViewHeightConstraint.constant = 0
+            }
+            self.view.layoutIfNeeded()
         }
     }
     

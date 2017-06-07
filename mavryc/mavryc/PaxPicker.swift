@@ -66,4 +66,23 @@ import UIKit
             maskingBar.frame = CGRect(x: maskingBar.frame.origin.x, y: maskingBar.frame.origin.y, width: barsProgress, height: maskingBar.frame.height)
         }
     }
+    
+    @IBAction func tapAction(_ sender: UITapGestureRecognizer) {
+
+            let x = sender.location(in: sender.view).x
+            let percentTouchOverMaxPixels = x / filledBarsImageView.frame.width
+            var numberOfPax = Int(percentTouchOverMaxPixels * 24)
+            numberOfPax = max(numberOfPax, 1) // has to be 1 or more
+            numberOfPax = min(numberOfPax, 24)  // has to be 24 or less
+            
+            PaxCountLabel.text = String(numberOfPax)
+            
+            let jumpGap = filledBarsImageView.frame.width / 24
+            var barsProgress = CGFloat(numberOfPax) * jumpGap
+            barsProgress = max(barsProgress, jumpGap)
+            barsProgress = min(barsProgress, filledBarsImageView.frame.width)
+            
+            maskingBar.frame = CGRect(x: maskingBar.frame.origin.x, y: maskingBar.frame.origin.y, width: barsProgress, height: maskingBar.frame.height)
+    }
+    
 }
