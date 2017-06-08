@@ -36,7 +36,7 @@ class JourneyDetailsVC: UIViewController {
             nextButton.layer.borderColor = AppStyle.journeyDetailsNextButtonBorderColor.cgColor
             nextButton.layer.backgroundColor = AppStyle.journeyDetailsNextButtonBGColor.cgColor
             nextButton.layer.cornerRadius = 12
-            nextButton.setTitleColor(AppStyle.journeyDetailsNextButtonSelectedTextColor, for: .selected)
+            nextButton.setTitleColor(AppStyle.journeyDetailsNextButtonHighlightedTextColor, for: .highlighted)
         }
     }
     

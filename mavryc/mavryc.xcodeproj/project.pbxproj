@@ -12,7 +12,6 @@
 		23B819CB1EB19493006017FC /* LoginClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B819C91EB19198006017FC /* LoginClient.swift */; };
 		23B819CC1EB194A7006017FC /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967FF6251E9446BF007B56C6 /* Networking.swift */; };
 		23B819CD1EB194AB006017FC /* LoginDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B819C71EB19145006017FC /* LoginDTO.swift */; };
-		9604FE7E1EE3E65100B1A631 /* ServicesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9604FE7D1EE3E65100B1A631 /* ServicesTableViewController.swift */; };
 		9608F2731EDCA3A60028B70D /* MapAnnotationsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9608F2721EDCA3A60028B70D /* MapAnnotationsCoordinator.swift */; };
 		960B50E41EC6392F002B1432 /* JourneyDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960B50E31EC6392F002B1432 /* JourneyDetailsVC.swift */; };
 		961E2AC21E985602000F2D64 /* FetchFlightsDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961E2AC11E985602000F2D64 /* FetchFlightsDTO.swift */; };
@@ -37,6 +36,10 @@
 		96CB0A441EE5DB42004ADEA0 /* PaxPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CB0A431EE5DB42004ADEA0 /* PaxPicker.swift */; };
 		96CB0A461EE5DBF9004ADEA0 /* PaxPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 96CB0A451EE5DBF9004ADEA0 /* PaxPicker.xib */; };
 		96CB0A491EE75FAA004ADEA0 /* AirportSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CB0A481EE75FAA004ADEA0 /* AirportSearchTableViewCell.swift */; };
+		96CE58ED1EE89DE300073BD5 /* AircraftSelectTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CE58EC1EE89DE300073BD5 /* AircraftSelectTVC.swift */; };
+		96CE58F01EE8A12900073BD5 /* AircraftSelectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CE58EE1EE8A12900073BD5 /* AircraftSelectCell.swift */; };
+		96CE58F11EE8A12900073BD5 /* AircraftSelectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 96CE58EF1EE8A12900073BD5 /* AircraftSelectCell.xib */; };
+		96CE58F41EE8D3A600073BD5 /* AircraftSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CE58F31EE8D3A600073BD5 /* AircraftSelectViewController.swift */; };
 		96DA35AD1EC1264400D2A0BC /* FlightPanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DA35AC1EC1264400D2A0BC /* FlightPanelViewController.swift */; };
 		96DA35B01EC2732C00D2A0BC /* Joystick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DA35AF1EC2732C00D2A0BC /* Joystick.swift */; };
 		96DA35B31EC281C600D2A0BC /* skylar.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96DA35B21EC281C600D2A0BC /* skylar.xcassets */; };
@@ -81,7 +84,6 @@
 		77E884330154E11441155D61 /* Pods_mavryc.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mavryc.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BB6D2AAAA732FB84064959C /* Pods-mavryc-mavrycTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mavryc-mavrycTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-mavryc-mavrycTests/Pods-mavryc-mavrycTests.release.xcconfig"; sourceTree = "<group>"; };
 		7BF64E167EC734F4C54DBF17 /* Pods-mavryc.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mavryc.debug.xcconfig"; path = "Pods/Target Support Files/Pods-mavryc/Pods-mavryc.debug.xcconfig"; sourceTree = "<group>"; };
-		9604FE7D1EE3E65100B1A631 /* ServicesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServicesTableViewController.swift; sourceTree = "<group>"; };
 		9608F2721EDCA3A60028B70D /* MapAnnotationsCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapAnnotationsCoordinator.swift; sourceTree = "<group>"; };
 		960B50E31EC6392F002B1432 /* JourneyDetailsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JourneyDetailsVC.swift; sourceTree = "<group>"; };
 		961E2AC11E985602000F2D64 /* FetchFlightsDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchFlightsDTO.swift; sourceTree = "<group>"; };
@@ -106,6 +108,10 @@
 		96CB0A431EE5DB42004ADEA0 /* PaxPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaxPicker.swift; sourceTree = "<group>"; };
 		96CB0A451EE5DBF9004ADEA0 /* PaxPicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PaxPicker.xib; sourceTree = "<group>"; };
 		96CB0A481EE75FAA004ADEA0 /* AirportSearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirportSearchTableViewCell.swift; sourceTree = "<group>"; };
+		96CE58EC1EE89DE300073BD5 /* AircraftSelectTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AircraftSelectTVC.swift; sourceTree = "<group>"; };
+		96CE58EE1EE8A12900073BD5 /* AircraftSelectCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AircraftSelectCell.swift; sourceTree = "<group>"; };
+		96CE58EF1EE8A12900073BD5 /* AircraftSelectCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AircraftSelectCell.xib; sourceTree = "<group>"; };
+		96CE58F31EE8D3A600073BD5 /* AircraftSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AircraftSelectViewController.swift; sourceTree = "<group>"; };
 		96DA35AC1EC1264400D2A0BC /* FlightPanelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlightPanelViewController.swift; sourceTree = "<group>"; };
 		96DA35AF1EC2732C00D2A0BC /* Joystick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Joystick.swift; sourceTree = "<group>"; };
 		96DA35B21EC281C600D2A0BC /* skylar.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = skylar.xcassets; sourceTree = "<group>"; };
@@ -186,11 +192,11 @@
 		960B50E21EC634B9002B1432 /* pull-up panel */ = {
 			isa = PBXGroup;
 			children = (
-				96A758B21EE0CA8F00F58A4F /* airport search */,
+				96CE58F21EE8A38100073BD5 /* aircraft select screen */,
+				96A758B21EE0CA8F00F58A4F /* airport search control */,
 				96CB0A471EE70FA3004ADEA0 /* pax control */,
 				96DA35AC1EC1264400D2A0BC /* FlightPanelViewController.swift */,
 				960B50E31EC6392F002B1432 /* JourneyDetailsVC.swift */,
-				9604FE7D1EE3E65100B1A631 /* ServicesTableViewController.swift */,
 			);
 			name = "pull-up panel";
 			sourceTree = "<group>";
@@ -262,13 +268,13 @@
 			name = models;
 			sourceTree = "<group>";
 		};
-		96A758B21EE0CA8F00F58A4F /* airport search */ = {
+		96A758B21EE0CA8F00F58A4F /* airport search control */ = {
 			isa = PBXGroup;
 			children = (
 				96A758B31EE0CAB500F58A4F /* AirportSearchTableViewController.swift */,
 				96CB0A481EE75FAA004ADEA0 /* AirportSearchTableViewCell.swift */,
 			);
-			name = "airport search";
+			name = "airport search control";
 			sourceTree = "<group>";
 		};
 		96B7236E1EA98B7000B2E322 /* database */ = {
@@ -286,6 +292,17 @@
 				96CB0A451EE5DBF9004ADEA0 /* PaxPicker.xib */,
 			);
 			name = "pax control";
+			sourceTree = "<group>";
+		};
+		96CE58F21EE8A38100073BD5 /* aircraft select screen */ = {
+			isa = PBXGroup;
+			children = (
+				96CE58EC1EE89DE300073BD5 /* AircraftSelectTVC.swift */,
+				96CE58EE1EE8A12900073BD5 /* AircraftSelectCell.swift */,
+				96CE58EF1EE8A12900073BD5 /* AircraftSelectCell.xib */,
+				96CE58F31EE8D3A600073BD5 /* AircraftSelectViewController.swift */,
+			);
+			name = "aircraft select screen";
 			sourceTree = "<group>";
 		};
 		96DA35AE1EC2731000D2A0BC /* joystick */ = {
@@ -560,6 +577,7 @@
 				96DA35B51EC281E400D2A0BC /* Asap in Resources */,
 				965228401EAAA1380054DA70 /* Map.storyboard in Resources */,
 				962EE1181EBBBA7800797CD9 /* Mapbox.storyboard in Resources */,
+				96CE58F11EE8A12900073BD5 /* AircraftSelectCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -671,6 +689,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96CE58F41EE8D3A600073BD5 /* AircraftSelectViewController.swift in Sources */,
 				96F2FCA21E92D9DA00C51674 /* StoryboardIdentifiable.swift in Sources */,
 				23B819C81EB19145006017FC /* LoginDTO.swift in Sources */,
 				967FF6261E9446BF007B56C6 /* Networking.swift in Sources */,
@@ -686,6 +705,7 @@
 				96F2FCA51E92DA3400C51674 /* UIViewController+StoryboardIdentifier.swift in Sources */,
 				9652283E1EAAA1280054DA70 /* MapViewController.swift in Sources */,
 				960B50E41EC6392F002B1432 /* JourneyDetailsVC.swift in Sources */,
+				96CE58ED1EE89DE300073BD5 /* AircraftSelectTVC.swift in Sources */,
 				96A32C1D1E96D1EC00DA7DC1 /* AutoCompletionPredictable.swift in Sources */,
 				96B723741EA9E26100B2E322 /* User.swift in Sources */,
 				96DA35AD1EC1264400D2A0BC /* FlightPanelViewController.swift in Sources */,
@@ -694,13 +714,13 @@
 				9608F2731EDCA3A60028B70D /* MapAnnotationsCoordinator.swift in Sources */,
 				96CB0A441EE5DB42004ADEA0 /* PaxPicker.swift in Sources */,
 				9666A4561E95A9D000CA822F /* FetchFlightsClient.swift in Sources */,
-				9604FE7E1EE3E65100B1A631 /* ServicesTableViewController.swift in Sources */,
 				967FF6291E945796007B56C6 /* FetchUserClient.swift in Sources */,
 				23B819CA1EB19198006017FC /* LoginClient.swift in Sources */,
 				96F2FC9B1E92D6FE00C51674 /* AppStyle.swift in Sources */,
 				96F2FC981E92D29600C51674 /* SafeLog.swift in Sources */,
 				96DA42371EA7FD670036C227 /* Flight.swift in Sources */,
 				96F2FC9E1E92D8CC00C51674 /* AppState.swift in Sources */,
+				96CE58F01EE8A12900073BD5 /* AircraftSelectCell.swift in Sources */,
 				96F2FCAF1E92DF0D00C51674 /* OnboardingViewController.swift in Sources */,
 				96E53ED31E90378E0045AA06 /* AppDelegate.swift in Sources */,
 				96F2FCA81E92DA6A00C51674 /* UIStoryboard+Storyboards.swift in Sources */,
@@ -847,7 +867,7 @@
 			baseConfigurationReference = 7BF64E167EC734F4C54DBF17 /* Pods-mavryc.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = 8H5S399Z5A;
 				INFOPLIST_FILE = mavryc/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -867,7 +887,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = 8H5S399Z5A;
 				INFOPLIST_FILE = mavryc/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;

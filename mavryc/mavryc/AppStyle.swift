@@ -25,7 +25,7 @@ class AppStyle {
     
     // MARK: - journey detail screen
     public static var journeyDetailsNextButtonTextColor: UIColor = UIColor.white
-    public static var journeyDetailsNextButtonSelectedTextColor: UIColor = AppStyle.skylarGold
+    public static var journeyDetailsNextButtonHighlightedTextColor: UIColor = AppStyle.skylarGold
     public static var journeyDetailsNextButtonBorderColor: UIColor = AppStyle.skylarBlueGrey.withAlphaComponent(0.5)
     public static var journeyDetailsNextButtonBGColor: UIColor = AppStyle.skylarDeepBlue
     
@@ -37,4 +37,11 @@ class AppStyle {
     // MARK: - Airport Search components
     public static var airportSearchTableViewSeparatorColor = AppStyle.skylarDeepBlue
     public static var airportSearchCellSelectionColor = AppStyle.skylarDeepBlue
+    
+    // MARK: - Aircraft Select Screen
+    public static var aircraftSelectScreenCellHighlightColor = AppStyle.skylarGold
+    public static var aircraftSelectScreenCellNormalColor = AppStyle.skylarDeepBlue
+    public static var aircraftSelectScreenCellTextNormalColor = AppStyle.skylarBlueGrey
+    public static var aircraftSelectScreenCellTextHighlightPrimaryColor = UIColor.white
+    public static var aircraftSelectScreenCellTextHighlightSecondaryColor = AppStyle.skylarGold
 }
