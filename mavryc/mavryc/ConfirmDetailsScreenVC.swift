@@ -10,6 +10,23 @@ import UIKit
 
 class ConfirmDetailsScreenVC: UIViewController {
 
+    // MARK: - placeholder ApplePay
+    var extendedApplePayBottomVerticalSpaceValue: CGFloat = 0
+    var retractedApplePayBottomVerticalSpaceValue: CGFloat = 0
+    @IBOutlet weak var applePayBottomVerticalSpace: NSLayoutConstraint! {
+        didSet {
+            self.retractedApplePayBottomVerticalSpaceValue = applePayBottomVerticalSpace.constant
+        }
+    }
+    /// dismiss apple pay standin
+    @IBAction func applePayTap(_ sender: UITapGestureRecognizer) {
+        UIView.animate(withDuration: 0.25) { 
+            self.applePayBottomVerticalSpace.constant = self.retractedApplePayBottomVerticalSpaceValue
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    // MARK: - IBOutlets
     @IBOutlet weak var screenTitle: UILabel! {
         didSet {
             screenTitle.textColor = UIColor.white
@@ -39,11 +56,11 @@ class ConfirmDetailsScreenVC: UIViewController {
 
     }
     
-    private func showApplePay() {
-        
-    }
     
-    private func hideApplePay() {
-        
+    @IBAction func bookButtonAction(_ sender: Any) {
+        UIView.animate(withDuration: 0.25) {
+            self.applePayBottomVerticalSpace.constant = self.extendedApplePayBottomVerticalSpaceValue
+            self.view.layoutIfNeeded()
+        }
     }
 }
