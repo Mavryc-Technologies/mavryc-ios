@@ -75,6 +75,22 @@ class MainViewController: UIViewController {
     @IBAction func distinationSearchButtonAction(_ sender: Any) {
         self.panel?.openPanelAndSetState()
     }
+    
+    // MARK: - Map Annotation Support
+    func updateUserLocation(location: CLLocation) {
+        
+        // put map center at user location
+        let lat = location.coordinate.latitude
+        let lon = location.coordinate.longitude
+        let center = CLLocationCoordinate2D(latitude: lat, longitude: lon)
+        mapView?.setCenter(center, zoomLevel: 12, animated: true)
+        
+        // Fill an array with point annotations and add it to the map.
+        let userAnnotation = CustomPointAnnotation()
+        userAnnotation.coordinate = center
+        userAnnotation.willUseImage = true
+        mapView?.addAnnotation(userAnnotation)
+    }
 }
 
 // MARK: - Location Manager Delegate
@@ -82,24 +98,16 @@ extension MainViewController: CLLocationManagerDelegate {
     
     // MARK: Location Delegation
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
         receivedLocationCount = receivedLocationCount + locations.count
-        //reverseGeocodeLocation(locations: locations)
-//        print("number of received locations: \(receivedLocationCount)")
-//        print("locations: \(locations)")
         if receivedLocationCount > 3 {
             
             manager.stopUpdatingLocation()
             
             if isUpdatingLocation {
-                guard let lat = locations.first?.coordinate.latitude else { return }
-                guard let lon = locations.first?.coordinate.longitude else { return }
-                let center = CLLocationCoordinate2D(latitude: lat, longitude: lon)
-                mapView?.setCenter(center, zoomLevel: 12, animated: true)
-                
-                // Fill an array with point annotations and add it to the map.
-                let userAnnotation = MGLPointAnnotation()
-                userAnnotation.coordinate = center
-                mapView?.addAnnotation(userAnnotation)
+                if let userLocation = locations.first {
+                    self.updateUserLocation(location: userLocation)
+                }
             }
             isUpdatingLocation = false
         }
@@ -134,6 +142,13 @@ extension MainViewController: MGLMapViewDelegate {
     
     // This delegate method is where you tell the map to load a view for a specific annotation. To load a static MGLAnnotationImage, you would use `-mapView:imageForAnnotation:`.
     func mapView(_ mapView: MGLMapView, viewFor annotation: MGLAnnotation) -> MGLAnnotationView? {
+        
+        if let castAnnotation = annotation as? CustomPointAnnotation {
+            if (castAnnotation.willUseImage) {
+                return nil;
+            }
+        }
+        
         // This example is only concerned with point annotations.
         guard annotation is MGLPointAnnotation else {
             return nil
@@ -158,8 +173,47 @@ extension MainViewController: MGLMapViewDelegate {
         return annotationView
     }
     
+    func mapView(_ mapView: MGLMapView, imageFor annotation: MGLAnnotation) -> MGLAnnotationImage? {
+        
+        if let castAnnotation = annotation as? CustomPointAnnotation {
+            if (!castAnnotation.willUseImage) {
+                return nil;
+            }
+        }
+        
+//        var reuseIdKey = 
+        
+        // Try to reuse the existing ‘pisa’ annotation image, if it exists.
+        var annotationImage = mapView.dequeueReusableAnnotationImage(withIdentifier: "userLocationMaker")
+        
+        if annotationImage == nil {
+            // Leaning Tower of Pisa by Stefan Spieler from the Noun Project.
+            var image = UIImage(named: "LocationMarker")!
+            
+            // The anchor point of an annotation is currently always the center. To
+            // shift the anchor point to the bottom of the annotation, the image
+            // asset includes transparent bottom padding equal to the original image
+            // height.
+            //
+            // To make this padding non-interactive, we create another image object
+            // with a custom alignment rect that excludes the padding.
+            image = image.withAlignmentRectInsets(UIEdgeInsets(top: 0, left: 0, bottom: image.size.height/2, right: 0))
+            
+            // Initialize the ‘pisa’ annotation image with the UIImage we just loaded.
+            annotationImage = MGLAnnotationImage(image: image, reuseIdentifier: "userLocationMaker")
+        }
+        
+        return annotationImage
+    }
+    
     func mapView(_ mapView: MGLMapView, annotationCanShowCallout annotation: MGLAnnotation) -> Bool {
         return true
+    }
+    
+    // MGLPointAnnotation subclass
+    class CustomPointAnnotation: MGLPointAnnotation {
+        var willUseImage: Bool = false
+        var showAirport: Bool = false
     }
 }
 
