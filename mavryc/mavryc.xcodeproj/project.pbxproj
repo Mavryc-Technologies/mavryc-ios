@@ -191,15 +191,15 @@
 			name = "old-toss-soon";
 			sourceTree = "<group>";
 		};
-		960B50E21EC634B9002B1432 /* pull-up panel */ = {
+		960B50E21EC634B9002B1432 /* pull-up panel screens */ = {
 			isa = PBXGroup;
 			children = (
 				96DA35AC1EC1264400D2A0BC /* FlightPanelViewController.swift */,
-				96CE58F81EE93C0800073BD5 /* screens */,
-				96A758B21EE0CA8F00F58A4F /* airport search control */,
-				96CB0A471EE70FA3004ADEA0 /* pax control */,
+				962E88DA1EE9A822003DECBF /* journey details screen */,
+				96CE58F21EE8A38100073BD5 /* aircraft select screen */,
+				96CE58F91EE93C6000073BD5 /* ConfirmDetailsScreenVC.swift */,
 			);
-			name = "pull-up panel";
+			name = "pull-up panel screens";
 			sourceTree = "<group>";
 		};
 		961E2AC41E985913000F2D64 /* flights */ = {
@@ -221,6 +221,25 @@
 				23B819C91EB19198006017FC /* LoginClient.swift */,
 			);
 			name = user;
+			sourceTree = "<group>";
+		};
+		962E88D91EE9A7A8003DECBF /* screens */ = {
+			isa = PBXGroup;
+			children = (
+				96F2FCB11E92DF1F00C51674 /* main screen */,
+				960B50E21EC634B9002B1432 /* pull-up panel screens */,
+			);
+			name = screens;
+			sourceTree = "<group>";
+		};
+		962E88DA1EE9A822003DECBF /* journey details screen */ = {
+			isa = PBXGroup;
+			children = (
+				960B50E31EC6392F002B1432 /* JourneyDetailsVC.swift */,
+				96A758B21EE0CA8F00F58A4F /* airport search control */,
+				96CB0A471EE70FA3004ADEA0 /* pax control */,
+			);
+			name = "journey details screen";
 			sourceTree = "<group>";
 		};
 		962EE1161EBBBA5B00797CD9 /* mapbox */ = {
@@ -311,16 +330,6 @@
 				96CE58F51EE8FBAF00073BD5 /* StyledButton.swift */,
 			);
 			name = common;
-			sourceTree = "<group>";
-		};
-		96CE58F81EE93C0800073BD5 /* screens */ = {
-			isa = PBXGroup;
-			children = (
-				960B50E31EC6392F002B1432 /* JourneyDetailsVC.swift */,
-				96CE58F21EE8A38100073BD5 /* aircraft select screen */,
-				96CE58F91EE93C6000073BD5 /* ConfirmDetailsScreenVC.swift */,
-			);
-			name = screens;
 			sourceTree = "<group>";
 		};
 		96DA35AE1EC2731000D2A0BC /* joystick */ = {
@@ -432,11 +441,10 @@
 		96E53EF71E903AC70045AA06 /* features */ = {
 			isa = PBXGroup;
 			children = (
+				962E88D91EE9A7A8003DECBF /* screens */,
 				96CE58F71EE8FBB900073BD5 /* common */,
 				96DA35AE1EC2731000D2A0BC /* joystick */,
 				9652283C1EAAA0DE0054DA70 /* map */,
-				960B50E21EC634B9002B1432 /* pull-up panel */,
-				96F2FCB11E92DF1F00C51674 /* main screen */,
 				96F2FCAA1E92DBE800C51674 /* onboarding */,
 				96E53EF41E90387B0045AA06 /* pay */,
 				96E53EF81E903AEC0045AA06 /* signup */,
@@ -887,7 +895,7 @@
 			baseConfigurationReference = 7BF64E167EC734F4C54DBF17 /* Pods-mavryc.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = 8H5S399Z5A;
 				INFOPLIST_FILE = mavryc/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -907,7 +915,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = 8H5S399Z5A;
 				INFOPLIST_FILE = mavryc/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
