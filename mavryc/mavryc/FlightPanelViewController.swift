@@ -8,6 +8,24 @@
 
 import UIKit
 
+extension Notification.Name {
+    /// Used as a namespace for all `Panel` related notifications.
+    public struct PanelScreen {
+     
+        /// Posted when Panel is about to open.
+        public static let WillOpen = Notification.Name(rawValue: "com.mavryk.notification.name.panel.willOpen")
+        
+        /// Posted when Panel is opened.
+        public static let DidOpen = Notification.Name(rawValue: "com.mavryk.notification.name.panel.didOpen")
+        
+        /// Posted when Panel is about to open.
+        public static let WillClose = Notification.Name(rawValue: "com.mavryk.notification.name.panel.willClose")
+
+        /// Posted when Panel is closed.
+        public static let DidClose = Notification.Name(rawValue: "com.mavryk.notification.name.panel.didClose")
+    }
+}
+
 protocol PanelDelegate {
     /// notify delegate when panel did open
     func panelDidOpen()
@@ -50,8 +68,8 @@ class FlightPanelViewController: UIViewController, UIGestureRecognizerDelegate {
     // MARK: Segues
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "JourneyDetailsVCEmbeddedSeque" {
-            let vc = segue.destination as? JourneyDetailsVC
-            vc?.delegate = self
+            //let vc = segue.destination as? JourneyDetailsVC
+            //vc?.delegate = self
         }
     }
     
@@ -75,6 +93,13 @@ class FlightPanelViewController: UIViewController, UIGestureRecognizerDelegate {
         self.updateChevronForActivityState(isOpenState: open)
         self.updateBorderForActivityState(isOpenState: open)
         delegate.panelLayoutConstraintToUpdate().constant = open ? delegate.panelExtendedHeight() : delegate.panelRetractedHeight()
+        
+        if open {
+            NotificationCenter.default.post(name: Notification.Name.PanelScreen.WillOpen, object: self, userInfo:nil)
+        } else {
+            NotificationCenter.default.post(name: Notification.Name.PanelScreen.WillClose, object: self, userInfo:nil)
+        }
+        
         UIView.animate(withDuration: 0.5,
                        delay: 0,
                        usingSpringWithDamping: 1,
@@ -83,7 +108,23 @@ class FlightPanelViewController: UIViewController, UIGestureRecognizerDelegate {
                        animations: {
                         delegate.panelParentView().layoutIfNeeded()
         }) { (success) in
-            if open { delegate.panelDidOpen() } else { delegate.panelDidClose() }
+            if open {
+                delegate.panelDidOpen()
+                
+                NotificationCenter.default.post(
+                    name: Notification.Name.PanelScreen.DidOpen,
+                    object: self,
+                    userInfo: nil
+                )
+            } else {
+                delegate.panelDidClose()
+                
+                NotificationCenter.default.post(
+                    name: Notification.Name.PanelScreen.DidOpen,
+                    object: self,
+                    userInfo: nil
+                )
+            }
         }
     }
     
@@ -128,8 +169,4 @@ class FlightPanelViewController: UIViewController, UIGestureRecognizerDelegate {
         }
         
     }
-}
-
-extension FlightPanelViewController: JourneyDelegate {
-    
 }

@@ -36,10 +36,11 @@
 		96CB0A441EE5DB42004ADEA0 /* PaxPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CB0A431EE5DB42004ADEA0 /* PaxPicker.swift */; };
 		96CB0A461EE5DBF9004ADEA0 /* PaxPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 96CB0A451EE5DBF9004ADEA0 /* PaxPicker.xib */; };
 		96CB0A491EE75FAA004ADEA0 /* AirportSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CB0A481EE75FAA004ADEA0 /* AirportSearchTableViewCell.swift */; };
-		96CE58ED1EE89DE300073BD5 /* AircraftSelectTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CE58EC1EE89DE300073BD5 /* AircraftSelectTVC.swift */; };
 		96CE58F01EE8A12900073BD5 /* AircraftSelectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CE58EE1EE8A12900073BD5 /* AircraftSelectCell.swift */; };
 		96CE58F11EE8A12900073BD5 /* AircraftSelectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 96CE58EF1EE8A12900073BD5 /* AircraftSelectCell.xib */; };
 		96CE58F41EE8D3A600073BD5 /* AircraftSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CE58F31EE8D3A600073BD5 /* AircraftSelectViewController.swift */; };
+		96CE58F61EE8FBAF00073BD5 /* StyledButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CE58F51EE8FBAF00073BD5 /* StyledButton.swift */; };
+		96CE58FA1EE93C6000073BD5 /* ConfirmDetailsScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CE58F91EE93C6000073BD5 /* ConfirmDetailsScreenVC.swift */; };
 		96DA35AD1EC1264400D2A0BC /* FlightPanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DA35AC1EC1264400D2A0BC /* FlightPanelViewController.swift */; };
 		96DA35B01EC2732C00D2A0BC /* Joystick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DA35AF1EC2732C00D2A0BC /* Joystick.swift */; };
 		96DA35B31EC281C600D2A0BC /* skylar.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96DA35B21EC281C600D2A0BC /* skylar.xcassets */; };
@@ -108,10 +109,11 @@
 		96CB0A431EE5DB42004ADEA0 /* PaxPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaxPicker.swift; sourceTree = "<group>"; };
 		96CB0A451EE5DBF9004ADEA0 /* PaxPicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PaxPicker.xib; sourceTree = "<group>"; };
 		96CB0A481EE75FAA004ADEA0 /* AirportSearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirportSearchTableViewCell.swift; sourceTree = "<group>"; };
-		96CE58EC1EE89DE300073BD5 /* AircraftSelectTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AircraftSelectTVC.swift; sourceTree = "<group>"; };
 		96CE58EE1EE8A12900073BD5 /* AircraftSelectCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AircraftSelectCell.swift; sourceTree = "<group>"; };
 		96CE58EF1EE8A12900073BD5 /* AircraftSelectCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AircraftSelectCell.xib; sourceTree = "<group>"; };
 		96CE58F31EE8D3A600073BD5 /* AircraftSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AircraftSelectViewController.swift; sourceTree = "<group>"; };
+		96CE58F51EE8FBAF00073BD5 /* StyledButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyledButton.swift; sourceTree = "<group>"; };
+		96CE58F91EE93C6000073BD5 /* ConfirmDetailsScreenVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmDetailsScreenVC.swift; sourceTree = "<group>"; };
 		96DA35AC1EC1264400D2A0BC /* FlightPanelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlightPanelViewController.swift; sourceTree = "<group>"; };
 		96DA35AF1EC2732C00D2A0BC /* Joystick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Joystick.swift; sourceTree = "<group>"; };
 		96DA35B21EC281C600D2A0BC /* skylar.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = skylar.xcassets; sourceTree = "<group>"; };
@@ -192,11 +194,10 @@
 		960B50E21EC634B9002B1432 /* pull-up panel */ = {
 			isa = PBXGroup;
 			children = (
-				96CE58F21EE8A38100073BD5 /* aircraft select screen */,
+				96DA35AC1EC1264400D2A0BC /* FlightPanelViewController.swift */,
+				96CE58F81EE93C0800073BD5 /* screens */,
 				96A758B21EE0CA8F00F58A4F /* airport search control */,
 				96CB0A471EE70FA3004ADEA0 /* pax control */,
-				96DA35AC1EC1264400D2A0BC /* FlightPanelViewController.swift */,
-				960B50E31EC6392F002B1432 /* JourneyDetailsVC.swift */,
 			);
 			name = "pull-up panel";
 			sourceTree = "<group>";
@@ -297,12 +298,29 @@
 		96CE58F21EE8A38100073BD5 /* aircraft select screen */ = {
 			isa = PBXGroup;
 			children = (
-				96CE58EC1EE89DE300073BD5 /* AircraftSelectTVC.swift */,
 				96CE58EE1EE8A12900073BD5 /* AircraftSelectCell.swift */,
 				96CE58EF1EE8A12900073BD5 /* AircraftSelectCell.xib */,
 				96CE58F31EE8D3A600073BD5 /* AircraftSelectViewController.swift */,
 			);
 			name = "aircraft select screen";
+			sourceTree = "<group>";
+		};
+		96CE58F71EE8FBB900073BD5 /* common */ = {
+			isa = PBXGroup;
+			children = (
+				96CE58F51EE8FBAF00073BD5 /* StyledButton.swift */,
+			);
+			name = common;
+			sourceTree = "<group>";
+		};
+		96CE58F81EE93C0800073BD5 /* screens */ = {
+			isa = PBXGroup;
+			children = (
+				960B50E31EC6392F002B1432 /* JourneyDetailsVC.swift */,
+				96CE58F21EE8A38100073BD5 /* aircraft select screen */,
+				96CE58F91EE93C6000073BD5 /* ConfirmDetailsScreenVC.swift */,
+			);
+			name = screens;
 			sourceTree = "<group>";
 		};
 		96DA35AE1EC2731000D2A0BC /* joystick */ = {
@@ -414,6 +432,7 @@
 		96E53EF71E903AC70045AA06 /* features */ = {
 			isa = PBXGroup;
 			children = (
+				96CE58F71EE8FBB900073BD5 /* common */,
 				96DA35AE1EC2731000D2A0BC /* joystick */,
 				9652283C1EAAA0DE0054DA70 /* map */,
 				960B50E21EC634B9002B1432 /* pull-up panel */,
@@ -692,6 +711,7 @@
 				96CE58F41EE8D3A600073BD5 /* AircraftSelectViewController.swift in Sources */,
 				96F2FCA21E92D9DA00C51674 /* StoryboardIdentifiable.swift in Sources */,
 				23B819C81EB19145006017FC /* LoginDTO.swift in Sources */,
+				96CE58FA1EE93C6000073BD5 /* ConfirmDetailsScreenVC.swift in Sources */,
 				967FF6261E9446BF007B56C6 /* Networking.swift in Sources */,
 				96A32C1F1E98153300DA7DC1 /* SignupClient.swift in Sources */,
 				96F2FCB31E92DF4E00C51674 /* MainViewController.swift in Sources */,
@@ -705,11 +725,11 @@
 				96F2FCA51E92DA3400C51674 /* UIViewController+StoryboardIdentifier.swift in Sources */,
 				9652283E1EAAA1280054DA70 /* MapViewController.swift in Sources */,
 				960B50E41EC6392F002B1432 /* JourneyDetailsVC.swift in Sources */,
-				96CE58ED1EE89DE300073BD5 /* AircraftSelectTVC.swift in Sources */,
 				96A32C1D1E96D1EC00DA7DC1 /* AutoCompletionPredictable.swift in Sources */,
 				96B723741EA9E26100B2E322 /* User.swift in Sources */,
 				96DA35AD1EC1264400D2A0BC /* FlightPanelViewController.swift in Sources */,
 				96CB0A491EE75FAA004ADEA0 /* AirportSearchTableViewCell.swift in Sources */,
+				96CE58F61EE8FBAF00073BD5 /* StyledButton.swift in Sources */,
 				96A32C211E98158D00DA7DC1 /* SignupDTO.swift in Sources */,
 				9608F2731EDCA3A60028B70D /* MapAnnotationsCoordinator.swift in Sources */,
 				96CB0A441EE5DB42004ADEA0 /* PaxPicker.swift in Sources */,

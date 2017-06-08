@@ -8,17 +8,6 @@
 
 import UIKit
 
-enum JourneyScreensState {
-    case onewayScreenShouldActivateDepartureSearchField
-    case onewayScreenNormal
-    
-    /*
-     animation states...
-     */
-}
-
-protocol JourneyDelegate {
-}
 
 class JourneyDetailsVC: UIViewController {
 
@@ -30,13 +19,9 @@ class JourneyDetailsVC: UIViewController {
     var preventEditBecauseDestinationAirportWasSelected = false
     
     // MARK: Outlet Properties
-    @IBOutlet weak var nextButton: UIButton! {
+    @IBOutlet weak var nextButton: StyledButton! {
         didSet {
-            nextButton.layer.borderWidth = 1
-            nextButton.layer.borderColor = AppStyle.journeyDetailsNextButtonBorderColor.cgColor
-            nextButton.layer.backgroundColor = AppStyle.journeyDetailsNextButtonBGColor.cgColor
-            nextButton.layer.cornerRadius = 12
-            nextButton.setTitleColor(AppStyle.journeyDetailsNextButtonHighlightedTextColor, for: .highlighted)
+            nextButton.isEnabled = true
         }
     }
     
@@ -62,6 +47,7 @@ class JourneyDetailsVC: UIViewController {
             
         }
     }
+    
     @IBOutlet weak var arrivalSearchTextField: UITextField! {
         didSet {
             arrivalSearchTextField.delegate = self
@@ -89,17 +75,39 @@ class JourneyDetailsVC: UIViewController {
     @IBOutlet weak var arrivalTableViewHeightConstraint: NSLayoutConstraint!
     
     
+    var nextButtonBottomSpaceOriginal: CGFloat = 20.0
+    var nextButtonBottomSpaceRetracted: CGFloat = -80.0
+    @IBOutlet weak var nextButtonBottomVerticalSpaceConstraint: NSLayoutConstraint! {
+        didSet {
+            self.nextButtonBottomSpaceOriginal = nextButtonBottomVerticalSpaceConstraint.constant
+        }
+    }
+    
     @IBOutlet weak var arrivalIconImageView: UIImageView!
     
     @IBOutlet weak var departureIconImageView: UIImageView!
     
-    var delegate: JourneyDelegate? = nil
+    //var delegate: JourneyDelegate? = nil
     
     // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(panelWillOpen),
+                                               name: Notification.Name.PanelScreen.WillOpen,
+                                               object: nil)
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(panelDidOpen),
+                                               name: Notification.Name.PanelScreen.DidOpen,
+                                               object: nil)
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(panelWillClose),
+                                               name: Notification.Name.PanelScreen.WillClose,
+                                               object: nil)
+        
         self.deselectSearchControls()
     }
     
@@ -112,6 +120,34 @@ class JourneyDetailsVC: UIViewController {
 
     }
     
+    // MARK: - Notification Handlers
+    
+    @objc private func panelWillOpen() {
+        print("panelWillOpen notification handler called")
+
+        self.nextButtonBottomVerticalSpaceConstraint.constant = self.nextButtonBottomSpaceRetracted
+        self.nextButton.alpha = 1.0
+        self.view.layoutIfNeeded()
+    }
+    
+    @objc private func panelDidOpen() {
+        print("panelDidOpen notification handler called")
+        
+        UIView.animate(withDuration: 0.25) {
+            self.nextButtonBottomVerticalSpaceConstraint.constant = self.nextButtonBottomSpaceOriginal
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    @objc private func panelWillClose() {
+        print("panelWillClose notification handler called")
+        
+        UIView.animate(withDuration: 0.10) {
+            self.nextButtonBottomVerticalSpaceConstraint.constant = self.nextButtonBottomSpaceRetracted
+            self.nextButton.alpha = 0.0
+            self.view.layoutIfNeeded()
+        }
+    }
     
     // MARK: - Control Actions
     
@@ -177,9 +213,9 @@ class JourneyDetailsVC: UIViewController {
         
         let source = Cities.shared
         source.autoCompletionSuggestions(for: text, predictions: { list in
-            list.forEach({ (item) in
-                print("autocompletion suggestion: \(item)")
-            })
+//            list.forEach({ (item) in
+//                print("autocompletion suggestion: \(item)")
+//            })
             
             if searchControl == self.arrivalSearchTextField {
                 self.destinationSearchList?.updateListWithAirports(list: list)

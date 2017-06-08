@@ -12,6 +12,13 @@ class AircraftSelectViewController: UIViewController, UITableViewDelegate, UITab
     
     @IBOutlet weak var tableView: UITableView!
 
+    @IBOutlet weak var nextButton: StyledButton! {
+        didSet{
+            // TODO: check trip data to see if enabled nextButton
+            nextButton.isEnabled = false
+        }
+    }
+    
     // MARK: - Temp Data
     var titleData = ["Very Light","Light","MID","SUPER","HEAVY"]
     var subtitleData = ["Not Available","Not Available","Flight Time: 1hr 32mins","Flight Time: 1hr 24mins","Flight Time: 1hr 12mins"]
@@ -63,6 +70,7 @@ class AircraftSelectViewController: UIViewController, UITableViewDelegate, UITab
                     cell.title.attributedText = attributedString
                 }
                 
+                nextButton.isEnabled = true
             }
         }
     }
