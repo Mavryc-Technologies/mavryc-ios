@@ -138,6 +138,37 @@ extension MainViewController: MGLMapViewDelegate {
     
         // TODO: comment in code below to show and work on refinement of mapbox's polyline. However, better than this would be implement our own arc core graphics line above the map layer. There are many limitations with the mapbox polyline.
         self.joystickMapCoordinator.addPolylineLayer(to: style)
+        
+        // add airports to map
+        // 1. fetch the airports and then do:
+        // Create four new point annotations with specified coordinates and titles.
+        //...
+        let pointA = CustomPointAnnotation()
+        pointA.coordinate = CLLocationCoordinate2D(latitude: 36.4623, longitude: -116.8656)
+        pointA.title = "Stovepipe Wells"
+        pointA.willUseImage = true
+        pointA.showAirport = true
+        
+        let pointB = CustomPointAnnotation()
+        pointB.coordinate = CLLocationCoordinate2D(latitude: 36.6071, longitude: -117.1458)
+        pointB.title = "Furnace Creek"
+        pointB.willUseImage = true
+        pointB.showAirport = true
+        
+        let pointC = CustomPointAnnotation()
+        pointC.title = "Zabriskie Point"
+        pointC.coordinate = CLLocationCoordinate2D(latitude: 36.4208, longitude: -116.8101)
+        pointC.showAirport = true
+        pointC.willUseImage = true
+        
+        let pointD = CustomPointAnnotation()
+        pointD.title = "Mesquite Flat Sand Dunes"
+        pointD.coordinate = CLLocationCoordinate2D(latitude: 36.6836, longitude: -117.1005)
+        pointD.showAirport = true
+        pointD.willUseImage = true
+        
+        let myPlaces = [pointA, pointB, pointC, pointD]
+        mapView.addAnnotations(myPlaces)
     }
     
     // This delegate method is where you tell the map to load a view for a specific annotation. To load a static MGLAnnotationImage, you would use `-mapView:imageForAnnotation:`.
@@ -175,35 +206,32 @@ extension MainViewController: MGLMapViewDelegate {
     
     func mapView(_ mapView: MGLMapView, imageFor annotation: MGLAnnotation) -> MGLAnnotationImage? {
         
+        var isAirport = false
         if let castAnnotation = annotation as? CustomPointAnnotation {
+            isAirport = castAnnotation.showAirport
             if (!castAnnotation.willUseImage) {
                 return nil;
             }
         }
         
-//        var reuseIdKey = 
-        
-        // Try to reuse the existing ‘pisa’ annotation image, if it exists.
-        var annotationImage = mapView.dequeueReusableAnnotationImage(withIdentifier: "userLocationMaker")
-        
-        if annotationImage == nil {
-            // Leaning Tower of Pisa by Stefan Spieler from the Noun Project.
-            var image = UIImage(named: "LocationMarker")!
+        if isAirport {
+            var annotationImage = mapView.dequeueReusableAnnotationImage(withIdentifier: "airportMarker")
+            if annotationImage == nil {
+                var image = UIImage(named: "Depart Icon")!
+                image = image.withAlignmentRectInsets(UIEdgeInsets(top: 0, left: 0, bottom: image.size.height/2, right: 0))
+                annotationImage = MGLAnnotationImage(image: image, reuseIdentifier: "airportMarker")
+            }
+            return annotationImage
             
-            // The anchor point of an annotation is currently always the center. To
-            // shift the anchor point to the bottom of the annotation, the image
-            // asset includes transparent bottom padding equal to the original image
-            // height.
-            //
-            // To make this padding non-interactive, we create another image object
-            // with a custom alignment rect that excludes the padding.
-            image = image.withAlignmentRectInsets(UIEdgeInsets(top: 0, left: 0, bottom: image.size.height/2, right: 0))
-            
-            // Initialize the ‘pisa’ annotation image with the UIImage we just loaded.
-            annotationImage = MGLAnnotationImage(image: image, reuseIdentifier: "userLocationMaker")
+        } else { // is user location
+            var annotationImage = mapView.dequeueReusableAnnotationImage(withIdentifier: "userLocationMaker")
+            if annotationImage == nil {
+                var image = UIImage(named: "LocationMarker")!
+                image = image.withAlignmentRectInsets(UIEdgeInsets(top: 0, left: 0, bottom: image.size.height/2, right: 0))
+                annotationImage = MGLAnnotationImage(image: image, reuseIdentifier: "userLocationMaker")
+            }
+            return annotationImage
         }
-        
-        return annotationImage
     }
     
     func mapView(_ mapView: MGLMapView, annotationCanShowCallout annotation: MGLAnnotation) -> Bool {
