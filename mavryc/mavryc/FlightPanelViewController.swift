@@ -48,6 +48,8 @@ protocol PanelDelegate {
 
 class FlightPanelViewController: UIViewController, UIGestureRecognizerDelegate {
     
+    @IBOutlet weak var fxBGView: UIVisualEffectView!
+    
     @IBOutlet weak var panelButton: UIButton!
     @IBOutlet weak var panelTopBorder: UIView!
     
@@ -116,6 +118,10 @@ class FlightPanelViewController: UIViewController, UIGestureRecognizerDelegate {
                     object: self,
                     userInfo: nil
                 )
+                
+                // kludgehack time TODO: replace the hack with real custom anim transitions for nice effect!
+                AppState.tempBGImageForTransitionAnimationHack = self.fxBGView.takeSnapshot()
+                
             } else {
                 delegate.panelDidClose()
                 
@@ -168,5 +174,15 @@ class FlightPanelViewController: UIViewController, UIGestureRecognizerDelegate {
             }
         }
         
+    }
+}
+
+extension UIView {
+    func takeSnapshot() -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(bounds.size, false, UIScreen.main.scale)
+        drawHierarchy(in: self.bounds, afterScreenUpdates: true)
+        let image = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        return image
     }
 }

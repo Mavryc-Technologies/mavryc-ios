@@ -339,9 +339,9 @@
 		96CE58F21EE8A38100073BD5 /* aircraft select screen */ = {
 			isa = PBXGroup;
 			children = (
+				96CE58F31EE8D3A600073BD5 /* AircraftSelectViewController.swift */,
 				96CE58EE1EE8A12900073BD5 /* AircraftSelectCell.swift */,
 				96CE58EF1EE8A12900073BD5 /* AircraftSelectCell.xib */,
-				96CE58F31EE8D3A600073BD5 /* AircraftSelectViewController.swift */,
 			);
 			name = "aircraft select screen";
 			sourceTree = "<group>";

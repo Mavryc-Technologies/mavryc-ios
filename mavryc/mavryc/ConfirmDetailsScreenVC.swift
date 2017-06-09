@@ -10,6 +10,13 @@ import UIKit
 
 class ConfirmDetailsScreenVC: UIViewController {
 
+    @IBOutlet weak var bgView: UIImageView! {
+        didSet {
+            bgView.image = AppState.tempBGImageForTransitionAnimationHack
+        }
+    }
+    
+    
     // MARK: - placeholder ApplePay
     var extendedApplePayBottomVerticalSpaceValue: CGFloat = 0
     var retractedApplePayBottomVerticalSpaceValue: CGFloat = 0
@@ -18,6 +25,7 @@ class ConfirmDetailsScreenVC: UIViewController {
             self.retractedApplePayBottomVerticalSpaceValue = applePayBottomVerticalSpace.constant
         }
     }
+    
     /// dismiss apple pay standin
     @IBAction func applePayTap(_ sender: UITapGestureRecognizer) {
         UIView.animate(withDuration: 0.25) { 

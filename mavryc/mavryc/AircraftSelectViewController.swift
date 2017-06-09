@@ -19,6 +19,13 @@ class AircraftSelectViewController: UIViewController, UITableViewDelegate, UITab
         }
     }
     
+    @IBOutlet weak var backgroundImageView: UIImageView! {
+        didSet {
+            backgroundImageView.image = AppState.tempBGImageForTransitionAnimationHack
+        }
+    }
+    
+    
     // MARK: - Temp Data
     var titleData = ["Very Light","Light","MID","SUPER","HEAVY"]
     var subtitleData = ["Not Available","Not Available","Flight Time: 1hr 32mins","Flight Time: 1hr 24mins","Flight Time: 1hr 12mins"]
