@@ -29,6 +29,7 @@ class MainViewController: UIViewController {
     let manager = CLLocationManager()
     var receivedLocationCount = 0
     var isUpdatingLocation = false
+    var lastKnownUserLocation: CLLocation?
     
     // Map
     var mapView: MGLMapView? = nil
@@ -44,10 +45,9 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // TODO: fix displacement of the joystickToken on varying size screens
-        
-        joystick.delegate = self
-        joystick.trackingHandler = self.joystickTrackingHandler()
+        // TODO: add feature flagging for joystick
+        //joystick.delegate = self
+        //joystick.trackingHandler = self.joystickTrackingHandler()
         
         //mapView.mapType = .satelliteFlyover
         manager.delegate = self
@@ -76,20 +76,17 @@ class MainViewController: UIViewController {
         self.panel?.openPanelAndSetState()
     }
     
-    // MARK: - Map Annotation Support
-    func updateUserLocation(location: CLLocation) {
-        
-        // put map center at user location
-        let lat = location.coordinate.latitude
-        let lon = location.coordinate.longitude
-        let center = CLLocationCoordinate2D(latitude: lat, longitude: lon)
-        mapView?.setCenter(center, zoomLevel: 12, animated: true)
-        
-        // Fill an array with point annotations and add it to the map.
-        let userAnnotation = CustomPointAnnotation()
-        userAnnotation.coordinate = center
-        userAnnotation.willUseImage = true
-        mapView?.addAnnotation(userAnnotation)
+    @IBAction func joystickTapAction(_ sender: UITapGestureRecognizer) {
+        if let userLocation = self.lastKnownUserLocation, let map = self.mapView {
+            self.animateMap(to: userLocation, map: map)
+        }
+    }
+    
+    func animateMap(to location: CLLocation, map: MGLMapView) {
+        self.mapCam.centerCoordinate = location.coordinate
+        self.mapCam.altitude = Double(3000000)
+        //self.mapCam.pitch = 60.0
+        map.setCamera(self.mapCam, withDuration: 2, animationTimingFunction: CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn))
     }
 }
 
@@ -106,6 +103,7 @@ extension MainViewController: CLLocationManagerDelegate {
             
             if isUpdatingLocation {
                 if let userLocation = locations.first {
+                    self.lastKnownUserLocation = userLocation
                     self.updateUserLocation(location: userLocation)
                 }
             }
@@ -137,33 +135,10 @@ extension MainViewController: MGLMapViewDelegate {
     func mapView(_ mapView: MGLMapView, didFinishLoading style: MGLStyle) {
     
         // TODO: comment in code below to show and work on refinement of mapbox's polyline. However, better than this would be implement our own arc core graphics line above the map layer. There are many limitations with the mapbox polyline.
-        self.joystickMapCoordinator.addPolylineLayer(to: style)
+        //self.joystickMapCoordinator.addPolylineLayer(to: style)
         
         // add airports to map
         //self.addAirportAnnotations(to: mapView)
-    }
-    
-    private func addClusteredAirportMarkers() {
-        
-    }
-    
-    private func addAirportAnnotations(to mapView: MGLMapView) {
-        
-        Airports.requestAirports { (locations) in
-            var annotations = [CustomPointAnnotation]()
-            locations.forEach({ (loc) in
-                let point = CustomPointAnnotation()
-                point.coordinate = loc.location.coordinate
-                point.title = loc.threeLetterCode
-                point.subtitle = loc.airportName
-                point.showAirport = true
-                point.willUseImage = true
-                annotations.append(point)
-            })
-            DispatchQueue.main.async {
-                mapView.addAnnotations(annotations)
-            }
-        }
     }
     
     // This delegate method is where you tell the map to load a view for a specific annotation. To load a static MGLAnnotationImage, you would use `-mapView:imageForAnnotation:`.
@@ -175,23 +150,15 @@ extension MainViewController: MGLMapViewDelegate {
             }
         }
         
-        // This example is only concerned with point annotations.
         guard annotation is MGLPointAnnotation else {
             return nil
         }
         
-        // Use the point annotation’s longitude value (as a string) as the reuse identifier for its view.
         let reuseIdentifier = "\(annotation.coordinate.longitude)"
-        
-        // For better performance, always try to reuse existing annotations.
         var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseIdentifier)
-        
-        // If there’s no reusable annotation view available, initialize a new one.
         if annotationView == nil {
             annotationView = CustomAnnotationView(reuseIdentifier: reuseIdentifier)
             annotationView!.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
-            
-            // Set the annotation view’s background color to a value determined by its longitude.
             let hue = CGFloat(annotation.coordinate.longitude) / 100
             annotationView!.backgroundColor = UIColor(hue: hue, saturation: 0.5, brightness: 1, alpha: 1)
         }
@@ -244,6 +211,47 @@ extension MainViewController: MGLMapViewDelegate {
         var willUseImage: Bool = false
         var showAirport: Bool = false
     }
+    
+    
+    // MARK: - Map Annotation Support
+    func updateUserLocation(location: CLLocation) {
+        
+        // put map center at user location
+        let lat = location.coordinate.latitude
+        let lon = location.coordinate.longitude
+        let center = CLLocationCoordinate2D(latitude: lat, longitude: lon)
+        mapView?.setCenter(center, zoomLevel: 12, animated: true)
+        
+        // Fill an array with point annotations and add it to the map.
+        let userAnnotation = CustomPointAnnotation()
+        userAnnotation.coordinate = center
+        userAnnotation.willUseImage = true
+        mapView?.addAnnotation(userAnnotation)
+    }
+    
+    private func addClusteredAirportMarkers() {
+        
+    }
+    
+    private func addAirportAnnotations(to mapView: MGLMapView) {
+        
+        Airports.requestAirports { (locations) in
+            var annotations = [CustomPointAnnotation]()
+            locations.forEach({ (loc) in
+                let point = CustomPointAnnotation()
+                point.coordinate = loc.location.coordinate
+                point.title = loc.threeLetterCode
+                point.subtitle = loc.airportName
+                point.showAirport = true
+                point.willUseImage = true
+                annotations.append(point)
+            })
+            DispatchQueue.main.async {
+                mapView.addAnnotations(annotations)
+            }
+        }
+    }
+
 }
 
 //
@@ -277,14 +285,10 @@ class CustomAnnotationView: MGLAnnotationView {
 extension MainViewController: JoystickDelegate {
     
     func stickDidResetTo(center: CGPoint) {
-        
         self.updateDiskPosition(for: self.joystickToken, toJoystick: self.joystick, atStickCenter: center)
         UIView.animate(withDuration: 0.25) {
             self.view.layoutIfNeeded()
         }
-        
-        // return map to optimal zoom state now that joystick was released...
-        // self.joystickMapCoordinator.reset()
     }
     
     /// 🕹🕹🕹

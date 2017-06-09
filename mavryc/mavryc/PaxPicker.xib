@@ -17,6 +17,7 @@
             <connections>
                 <outlet property="PaxCountLabel" destination="Nt3-5K-QSf" id="dvG-uE-6xv"/>
                 <outlet property="filledBarsImageView" destination="MQw-C5-paU" id="Azg-4B-9YU"/>
+                <outlet property="iconImageView" destination="gjF-v9-MFG" id="iYo-gs-8qA"/>
                 <outlet property="maskingBar" destination="cZ8-oj-7r4" id="4uI-Hb-MDH"/>
                 <outlet property="maskingBarWidthConstraint" destination="MNn-Cn-C3f" id="ZsF-fa-E96"/>
                 <outlet property="view" destination="NFo-Sn-JcD" id="XQQ-pw-sci"/>
@@ -29,9 +30,9 @@
                     <rect key="frame" x="49" y="0.0" width="251" height="48"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nt3-5K-QSf">
-                            <rect key="frame" x="207" y="14" width="24" height="21"/>
+                            <rect key="frame" x="183" y="14" width="48" height="21"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="24" id="XVW-ad-jip"/>
+                                <constraint firstAttribute="width" constant="48" id="XVW-ad-jip"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -64,9 +65,9 @@
                         <constraint firstItem="MQw-C5-paU" firstAttribute="top" secondItem="LqQ-hG-Exx" secondAttribute="top" constant="13" id="885-ST-sih"/>
                         <constraint firstItem="6tU-9R-kZB" firstAttribute="top" secondItem="LqQ-hG-Exx" secondAttribute="top" constant="13" id="KLq-Dj-QHk"/>
                         <constraint firstAttribute="bottom" secondItem="cZ8-oj-7r4" secondAttribute="bottom" constant="-1" id="OEq-mA-FOe"/>
-                        <constraint firstItem="Nt3-5K-QSf" firstAttribute="leading" secondItem="6tU-9R-kZB" secondAttribute="trailing" constant="25" id="RAA-kw-lhr"/>
+                        <constraint firstItem="Nt3-5K-QSf" firstAttribute="leading" secondItem="6tU-9R-kZB" secondAttribute="trailing" constant="1" id="RAA-kw-lhr"/>
                         <constraint firstAttribute="trailing" secondItem="Nt3-5K-QSf" secondAttribute="trailing" constant="20" id="W3h-J3-by7"/>
-                        <constraint firstItem="Nt3-5K-QSf" firstAttribute="leading" secondItem="MQw-C5-paU" secondAttribute="trailing" constant="25" id="WeN-DL-cdV"/>
+                        <constraint firstItem="Nt3-5K-QSf" firstAttribute="leading" secondItem="MQw-C5-paU" secondAttribute="trailing" constant="1" id="WeN-DL-cdV"/>
                         <constraint firstItem="MQw-C5-paU" firstAttribute="leading" secondItem="LqQ-hG-Exx" secondAttribute="leading" constant="20" id="cYr-C0-ZSm"/>
                         <constraint firstAttribute="bottom" secondItem="MQw-C5-paU" secondAttribute="bottom" constant="13" id="oyX-aJ-Phz"/>
                         <constraint firstItem="cZ8-oj-7r4" firstAttribute="top" secondItem="LqQ-hG-Exx" secondAttribute="top" id="qah-YA-4lb"/>

@@ -11,6 +11,29 @@ import AVFoundation
 
 @IBDesignable class PaxPicker: UIView {
     
+    
+    @IBOutlet weak var iconImageView: UIImageView! {
+        didSet {
+            if self.isTimeControl {
+                iconImageView.image = UIImage(named: "TimeIconFormPDF")
+            } else {
+                iconImageView.image = UIImage(named: "PAXIconFormPDF")
+            }
+        }
+    }
+    
+    @IBInspectable var isTimeControl: Bool = true {
+        didSet {
+            if isTimeControl {
+                iconImageView.image = UIImage(named: "TimeIconFormPDF")
+                self.updateUIBarIndicator(to: 50.0) // 5 pixels * 10 bars
+                self.PaxCountLabel.text = "10:00"
+            } else {
+                iconImageView.image = UIImage(named: "PAXIconFormPDF")
+            }
+        }
+    }
+    
     @IBOutlet var view: UIView!
     var nibName: String = "PaxPicker"
     
@@ -37,6 +60,7 @@ import AVFoundation
     func setup() {
         view = loadViewFromNib()
         view.translatesAutoresizingMaskIntoConstraints = true // NOTE: lesson learned: hours saved if you'll remember -- without this set to true, you'll need to programaticaly provide constraints
+        
         view.frame = self.bounds
         addSubview(view)
         
@@ -70,6 +94,35 @@ import AVFoundation
         return view
     }
     
+    // MARK: Indicator methods
+    private func updateUIBarIndicator(to barProgressPercent: CGFloat) {
+        maskingBar.frame = CGRect(x: maskingBar.frame.origin.x, y: maskingBar.frame.origin.y, width: barProgressPercent, height: maskingBar.frame.height)
+    }
+    
+    private func triggerUIFeedback() {
+        
+        buttonSound?.play()
+        
+        if #available(iOS 10.0, *) {
+            let generator = UIImpactFeedbackGenerator(style: .light)
+            generator.impactOccurred()
+        }
+    }
+    
+    private func formattedIndicatorText(for numberOfBars: Int) -> String {
+        if self.isTimeControl {
+            var formattedTime = String(numberOfBars)
+            if numberOfBars < 10 {
+                formattedTime = "0" + formattedTime + ":00"
+            } else {
+                formattedTime = formattedTime + ":00"
+            }
+            return formattedTime
+        } else {
+            return String(numberOfBars)
+        }
+    }
+    
     // MARK: Gestures
     var previousPaxCount = 1
     @IBAction func panGestureAction(_ gestureRecognizer : UIPanGestureRecognizer) {
@@ -77,60 +130,45 @@ import AVFoundation
             
             let x = gestureRecognizer.location(in: gestureRecognizer.view).x
             let percentTouchOverMaxPixels = x / filledBarsImageView.frame.width
-            var numberOfPax = Int(percentTouchOverMaxPixels * 24)
+            var numberOfBars = Int(percentTouchOverMaxPixels * 24)
             
-            if previousPaxCount < numberOfPax || previousPaxCount > numberOfPax {
-                buttonSound?.play()
-                if #available(iOS 10.0, *) {
-                    let generator = UIImpactFeedbackGenerator(style: .light)
-                    generator.impactOccurred()
-                } else {
-                    // Fallback on earlier versions
-                }
+            if previousPaxCount < numberOfBars || previousPaxCount > numberOfBars {
+                self.triggerUIFeedback()
             }
             
-            previousPaxCount = numberOfPax
+            previousPaxCount = numberOfBars
             
-            numberOfPax = max(numberOfPax, 1) // has to be 1 or more
-            numberOfPax = min(numberOfPax, 24)  // has to be 24 or less
+            numberOfBars = max(numberOfBars, 1) // has to be 1 or more
+            numberOfBars = min(numberOfBars, 24)  // has to be 24 or less
             
-            PaxCountLabel.text = String(numberOfPax)
+            PaxCountLabel.text = self.formattedIndicatorText(for: numberOfBars)
             
             let jumpGap = filledBarsImageView.frame.width / 24
-            var barsProgress = CGFloat(numberOfPax) * jumpGap
+            var barsProgress = CGFloat(numberOfBars) * jumpGap
             barsProgress = max(barsProgress, jumpGap)
             barsProgress = min(barsProgress, filledBarsImageView.frame.width)
 
-            maskingBar.frame = CGRect(x: maskingBar.frame.origin.x, y: maskingBar.frame.origin.y, width: barsProgress, height: maskingBar.frame.height)
+            self.updateUIBarIndicator(to: barsProgress)
         }
     }
     
     @IBAction func tapAction(_ sender: UITapGestureRecognizer) {
-
-        buttonSound?.play()
-        if #available(iOS 10.0, *) {
-            let generator = UIImpactFeedbackGenerator(style: .light)
-            generator.impactOccurred()
-        } else {
-            // Fallback on earlier versions
-        }
+        
+        self.triggerUIFeedback()
         
         let x = sender.location(in: sender.view).x
         let percentTouchOverMaxPixels = x / filledBarsImageView.frame.width
-        var numberOfPax = Int(percentTouchOverMaxPixels * 24)
-        numberOfPax = max(numberOfPax, 1) // has to be 1 or more
-        numberOfPax = min(numberOfPax, 24)  // has to be 24 or less
-        
-        PaxCountLabel.text = String(numberOfPax)
+        var numberOfBars = Int(percentTouchOverMaxPixels * 24)
+        numberOfBars = max(numberOfBars, 1) // has to be 1 or more
+        numberOfBars = min(numberOfBars, 24)  // has to be 24 or less
+
+        PaxCountLabel.text = self.formattedIndicatorText(for: numberOfBars)
         
         let jumpGap = filledBarsImageView.frame.width / 24
-        var barsProgress = CGFloat(numberOfPax) * jumpGap
+        var barsProgress = CGFloat(numberOfBars) * jumpGap
         barsProgress = max(barsProgress, jumpGap)
         barsProgress = min(barsProgress, filledBarsImageView.frame.width)
-        
-        maskingBar.frame = CGRect(x: maskingBar.frame.origin.x, y: maskingBar.frame.origin.y, width: barsProgress, height: maskingBar.frame.height)
-    
-        
+        self.updateUIBarIndicator(to: barsProgress)
     }
     
 }
