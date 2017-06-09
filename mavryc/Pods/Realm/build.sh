@@ -1018,11 +1018,12 @@ EOM
           mkdir -p include
           mv core/include include/core
 
-          mkdir -p include/impl/apple include/util/apple include/sync/impl
+          mkdir -p include/impl/apple include/util/apple include/sync/impl/apple
           cp Realm/*.hpp include
           cp Realm/ObjectStore/src/*.hpp include
           cp Realm/ObjectStore/src/sync/*.hpp include/sync
           cp Realm/ObjectStore/src/sync/impl/*.hpp include/sync/impl
+          cp Realm/ObjectStore/src/sync/impl/apple/*.hpp include/sync/impl/apple
           cp Realm/ObjectStore/src/impl/*.hpp include/impl
           cp Realm/ObjectStore/src/impl/apple/*.hpp include/impl/apple
           cp Realm/ObjectStore/src/util/*.hpp include/util
@@ -1054,6 +1055,11 @@ EOM
         mkdir -p build/reports
         # FIXME: Re-enable once CI can properly unlock the keychain
         export REALM_DISABLE_METADATA_ENCRYPTION=1
+
+        # strip off the ios|tvos version specifier, e.g. the last part of: `ios-device-objc-ios8`
+        if [[ "$target" =~ ^((ios|tvos)-device(-(objc|swift))?)(-(ios|tvos)[[:digit:]]+)?$ ]]; then
+            export target=${BASH_REMATCH[1]}
+        fi
 
         if [ "$target" = "docs" ]; then
             sh build.sh set-swift-version
