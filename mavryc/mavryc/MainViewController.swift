@@ -140,35 +140,23 @@ extension MainViewController: MGLMapViewDelegate {
         self.joystickMapCoordinator.addPolylineLayer(to: style)
         
         // add airports to map
-        // 1. fetch the airports and then do:
-        // Create four new point annotations with specified coordinates and titles.
-        //...
-        let pointA = CustomPointAnnotation()
-        pointA.coordinate = CLLocationCoordinate2D(latitude: 36.4623, longitude: -116.8656)
-        pointA.title = "Stovepipe Wells"
-        pointA.willUseImage = true
-        pointA.showAirport = true
         
-        let pointB = CustomPointAnnotation()
-        pointB.coordinate = CLLocationCoordinate2D(latitude: 36.6071, longitude: -117.1458)
-        pointB.title = "Furnace Creek"
-        pointB.willUseImage = true
-        pointB.showAirport = true
-        
-        let pointC = CustomPointAnnotation()
-        pointC.title = "Zabriskie Point"
-        pointC.coordinate = CLLocationCoordinate2D(latitude: 36.4208, longitude: -116.8101)
-        pointC.showAirport = true
-        pointC.willUseImage = true
-        
-        let pointD = CustomPointAnnotation()
-        pointD.title = "Mesquite Flat Sand Dunes"
-        pointD.coordinate = CLLocationCoordinate2D(latitude: 36.6836, longitude: -117.1005)
-        pointD.showAirport = true
-        pointD.willUseImage = true
-        
-        let myPlaces = [pointA, pointB, pointC, pointD]
-        mapView.addAnnotations(myPlaces)
+        Airports.requestAirports { (aeroportLocation) in
+            
+            var airportAnnots = [CustomPointAnnotation]()
+            aeroportLocation.forEach({ (loc) in
+                let point = CustomPointAnnotation()
+                point.coordinate = loc.location.coordinate
+                point.title = loc.threeLetterCode
+                point.subtitle = loc.airportName
+                point.showAirport = true
+                point.willUseImage = true
+                airportAnnots.append(point)
+            })
+            DispatchQueue.main.async {
+                mapView.addAnnotations(airportAnnots)
+            }
+        }
     }
     
     // This delegate method is where you tell the map to load a view for a specific annotation. To load a static MGLAnnotationImage, you would use `-mapView:imageForAnnotation:`.
@@ -220,6 +208,7 @@ extension MainViewController: MGLMapViewDelegate {
                 var image = UIImage(named: "Depart Icon")!
                 image = image.withAlignmentRectInsets(UIEdgeInsets(top: 0, left: 0, bottom: image.size.height/2, right: 0))
                 annotationImage = MGLAnnotationImage(image: image, reuseIdentifier: "airportMarker")
+                
             }
             return annotationImage
             
@@ -237,6 +226,11 @@ extension MainViewController: MGLMapViewDelegate {
     func mapView(_ mapView: MGLMapView, annotationCanShowCallout annotation: MGLAnnotation) -> Bool {
         return true
     }
+
+    // TODO: may use this for added functionality
+//    func mapView(_ mapView: MGLMapView, calloutViewFor annotation: MGLAnnotation) -> MGLCalloutView? {
+//        return nil
+//    }
     
     // MGLPointAnnotation subclass
     class CustomPointAnnotation: MGLPointAnnotation {

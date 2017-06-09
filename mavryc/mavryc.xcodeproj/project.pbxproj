@@ -29,6 +29,10 @@
 		96A32C211E98158D00DA7DC1 /* SignupDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A32C201E98158D00DA7DC1 /* SignupDTO.swift */; };
 		96A758B41EE0CAB500F58A4F /* AirportSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A758B31EE0CAB500F58A4F /* AirportSearchTableViewController.swift */; };
 		96B063D81ED3A4B7006151E5 /* JoystickMapCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B063D71ED3A4B7006151E5 /* JoystickMapCoordinator.swift */; };
+		96B1F2CB1EEA0CB500EB5F4A /* Airports.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B1F2CA1EEA0CB500EB5F4A /* Airports.swift */; };
+		96B1F2CD1EEA142C00EB5F4A /* AirportLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B1F2CC1EEA142C00EB5F4A /* AirportLocation.swift */; };
+		96B1F2CF1EEA19A900EB5F4A /* airports.csv in Resources */ = {isa = PBXBuildFile; fileRef = 96B1F2CE1EEA19A900EB5F4A /* airports.csv */; };
+		96B1F2D11EEA294E00EB5F4A /* airports.sqlite3 in Resources */ = {isa = PBXBuildFile; fileRef = 96B1F2D01EEA294E00EB5F4A /* airports.sqlite3 */; };
 		96B7236D1EA98B5200B2E322 /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B7236C1EA98B5200B2E322 /* AppData.swift */; };
 		96B723701EA98B8D00B2E322 /* RealmConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B7236F1EA98B8D00B2E322 /* RealmConfiguration.swift */; };
 		96B723721EA9B53400B2E322 /* databaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B723711EA9B53400B2E322 /* databaseTests.swift */; };
@@ -102,6 +106,10 @@
 		96A32C201E98158D00DA7DC1 /* SignupDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupDTO.swift; sourceTree = "<group>"; };
 		96A758B31EE0CAB500F58A4F /* AirportSearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirportSearchTableViewController.swift; sourceTree = "<group>"; };
 		96B063D71ED3A4B7006151E5 /* JoystickMapCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoystickMapCoordinator.swift; sourceTree = "<group>"; };
+		96B1F2CA1EEA0CB500EB5F4A /* Airports.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Airports.swift; sourceTree = "<group>"; };
+		96B1F2CC1EEA142C00EB5F4A /* AirportLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirportLocation.swift; sourceTree = "<group>"; };
+		96B1F2CE1EEA19A900EB5F4A /* airports.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = airports.csv; sourceTree = "<group>"; };
+		96B1F2D01EEA294E00EB5F4A /* airports.sqlite3 */ = {isa = PBXFileReference; lastKnownFileType = file; path = airports.sqlite3; sourceTree = "<group>"; };
 		96B7236C1EA98B5200B2E322 /* AppData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppData.swift; sourceTree = "<group>"; };
 		96B7236F1EA98B8D00B2E322 /* RealmConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmConfiguration.swift; sourceTree = "<group>"; };
 		96B723711EA9B53400B2E322 /* databaseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = databaseTests.swift; sourceTree = "<group>"; };
@@ -272,6 +280,8 @@
 		96A32C161E96A1A900DA7DC1 /* data */ = {
 			isa = PBXGroup;
 			children = (
+				96B1F2D01EEA294E00EB5F4A /* airports.sqlite3 */,
+				96B1F2CE1EEA19A900EB5F4A /* airports.csv */,
 				96A32C171E96A30500DA7DC1 /* states-cities.json */,
 			);
 			name = data;
@@ -284,6 +294,8 @@
 				96A32C1A1E96A36900DA7DC1 /* Cities.swift */,
 				96DA42361EA7FD670036C227 /* Flight.swift */,
 				96B723731EA9E26100B2E322 /* User.swift */,
+				96B1F2CA1EEA0CB500EB5F4A /* Airports.swift */,
+				96B1F2CC1EEA142C00EB5F4A /* AirportLocation.swift */,
 			);
 			name = models;
 			sourceTree = "<group>";
@@ -601,9 +613,11 @@
 				96E53ED81E90378E0045AA06 /* Main.storyboard in Resources */,
 				96DA35B31EC281C600D2A0BC /* skylar.xcassets in Resources */,
 				96F2FCAC1E92DEE300C51674 /* Onboarding.storyboard in Resources */,
+				96B1F2CF1EEA19A900EB5F4A /* airports.csv in Resources */,
 				96DA35B51EC281E400D2A0BC /* Asap in Resources */,
 				965228401EAAA1380054DA70 /* Map.storyboard in Resources */,
 				962EE1181EBBBA7800797CD9 /* Mapbox.storyboard in Resources */,
+				96B1F2D11EEA294E00EB5F4A /* airports.sqlite3 in Resources */,
 				96CE58F11EE8A12900073BD5 /* AircraftSelectCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -729,6 +743,7 @@
 				961E2AC21E985602000F2D64 /* FetchFlightsDTO.swift in Sources */,
 				96B723701EA98B8D00B2E322 /* RealmConfiguration.swift in Sources */,
 				96B063D81ED3A4B7006151E5 /* JoystickMapCoordinator.swift in Sources */,
+				96B1F2CB1EEA0CB500EB5F4A /* Airports.swift in Sources */,
 				96DA35B01EC2732C00D2A0BC /* Joystick.swift in Sources */,
 				96F2FCA51E92DA3400C51674 /* UIViewController+StoryboardIdentifier.swift in Sources */,
 				9652283E1EAAA1280054DA70 /* MapViewController.swift in Sources */,
@@ -742,6 +757,7 @@
 				9608F2731EDCA3A60028B70D /* MapAnnotationsCoordinator.swift in Sources */,
 				96CB0A441EE5DB42004ADEA0 /* PaxPicker.swift in Sources */,
 				9666A4561E95A9D000CA822F /* FetchFlightsClient.swift in Sources */,
+				96B1F2CD1EEA142C00EB5F4A /* AirportLocation.swift in Sources */,
 				967FF6291E945796007B56C6 /* FetchUserClient.swift in Sources */,
 				23B819CA1EB19198006017FC /* LoginClient.swift in Sources */,
 				96F2FC9B1E92D6FE00C51674 /* AppStyle.swift in Sources */,
