@@ -46,7 +46,7 @@ class Airports {
 //        }
         return cityStateStrings
     }
-    
+
     /// list of strings formatted as "city, state", e.g. "Scottsdale, AZ"
 //    public var airports: [AirportLocation] {
 //        get {
@@ -74,8 +74,6 @@ class Airports {
                 let city = Expression<String>("City")
                 let code = Expression<String>("IATA")
                 
-//                let query = airportsTable.select(lat, long, name, country, city, code).filter(country == "United States")
-                
                 for aeroport in try db.prepare(airportsTable.where(country == "United States")) {
                     //print("aeroporte::: \(aeroport)")
 
@@ -90,9 +88,7 @@ class Airports {
                     aeroLocations.append(aeroLoc)
                 }
                 
-                //DispatchQueue.main.async {
-                    completion?(aeroLocations)
-                //}
+                completion?(aeroLocations)
                 
             } catch {
                 

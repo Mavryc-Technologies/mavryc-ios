@@ -140,21 +140,28 @@ extension MainViewController: MGLMapViewDelegate {
         self.joystickMapCoordinator.addPolylineLayer(to: style)
         
         // add airports to map
+        //self.addAirportAnnotations(to: mapView)
+    }
+    
+    private func addClusteredAirportMarkers() {
         
-        Airports.requestAirports { (aeroportLocation) in
-            
-            var airportAnnots = [CustomPointAnnotation]()
-            aeroportLocation.forEach({ (loc) in
+    }
+    
+    private func addAirportAnnotations(to mapView: MGLMapView) {
+        
+        Airports.requestAirports { (locations) in
+            var annotations = [CustomPointAnnotation]()
+            locations.forEach({ (loc) in
                 let point = CustomPointAnnotation()
                 point.coordinate = loc.location.coordinate
                 point.title = loc.threeLetterCode
                 point.subtitle = loc.airportName
                 point.showAirport = true
                 point.willUseImage = true
-                airportAnnots.append(point)
+                annotations.append(point)
             })
             DispatchQueue.main.async {
-                mapView.addAnnotations(airportAnnots)
+                mapView.addAnnotations(annotations)
             }
         }
     }
