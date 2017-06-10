@@ -37,6 +37,12 @@ class AircraftSelectViewController: UIViewController, UITableViewDelegate, UITab
         tableView.register(UINib(nibName: "AircraftSelectCell", bundle: Bundle.main), forCellReuseIdentifier: "cell")
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        FlightPanelViewController.currentPanelScreen = .aircraftSelection
+    }
+    
     // MARK: - Table view data source
     
     func numberOfSections(in tableView: UITableView) -> Int {

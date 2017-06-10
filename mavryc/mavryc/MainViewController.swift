@@ -18,6 +18,13 @@ class MainViewController: UIViewController {
                                       for: .default)
         }
     }
+    
+    @IBOutlet weak var navLeftButtonHamburgerAndBack: UIBarButtonItem! {
+        didSet {
+            navLeftButtonHamburgerAndBack.image = UIImage(named: "Hamburger.png")
+        }
+    }
+    
     @IBOutlet weak var panelHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var joystick: CDJoystick!
     @IBOutlet weak var joystickToken: UIView!
@@ -40,6 +47,8 @@ class MainViewController: UIViewController {
     
     // Panel
     weak var panel: FlightPanelViewController? = nil
+
+    var hamburgerNavMode = true
     
     // MARK: Lifecycle
     override func viewDidLoad() {
@@ -71,7 +80,7 @@ class MainViewController: UIViewController {
         }
     }
     
-    // MARK: Interface Actions
+    // MARK: - Interface Actions
     @IBAction func distinationSearchButtonAction(_ sender: Any) {
         self.panel?.openPanelAndSetState()
     }
@@ -81,6 +90,30 @@ class MainViewController: UIViewController {
             self.animateMap(to: userLocation, map: map)
         }
     }
+    
+    // MARK: - Navigation
+    
+    
+    @IBAction func navButtonAction(_ sender: Any) {
+        if self.hamburgerNavMode {
+            // TODO: implement hamburger menu trigger
+        } else {
+            // back nav mode
+            NotificationCenter.default.post(name: Notification.Name.PanelScreen.DidTapBackNav, object: self, userInfo:nil)
+        }
+    }
+    
+    func showHamburgerNav() {
+        self.hamburgerNavMode = true
+        self.navLeftButtonHamburgerAndBack.image = UIImage(named: "Hamburger.png")
+    }
+    
+    func showBackButtonNav() {
+        self.hamburgerNavMode = false
+        self.navLeftButtonHamburgerAndBack.image = UIImage(named: "BackArrow.png")
+    }
+    
+    // MARK: - Map misc
     
     func animateMap(to location: CLLocation, map: MGLMapView) {
         self.mapCam.centerCoordinate = location.coordinate
@@ -353,10 +386,12 @@ extension MainViewController: PanelDelegate {
     
     func panelDidOpen() {
         SafeLog.print("panel opened")
+        self.showBackButtonNav()
     }
     
     func panelDidClose() {
         SafeLog.print("panel closed")
+        self.showHamburgerNav()
     }
     
     func panelExtendedHeight() -> CGFloat {

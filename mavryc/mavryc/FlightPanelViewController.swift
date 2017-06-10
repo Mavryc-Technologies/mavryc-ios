@@ -23,6 +23,8 @@ extension Notification.Name {
 
         /// Posted when Panel is closed.
         public static let DidClose = Notification.Name(rawValue: "com.mavryk.notification.name.panel.didClose")
+    
+        public static let DidTapBackNav = Notification.Name(rawValue: "com.mavryk.notification.name.panel.didTapBackNav")
     }
 }
 
@@ -46,6 +48,33 @@ protocol PanelDelegate {
     func panelParentView() -> UIView
 }
 
+enum PanelScreen {
+    case retractedHome
+    case journey
+    case aircraftSelection
+    case confirmDetails
+    
+    static var isPanelRetrated = true
+    
+    func nextSceenOnBackTap(isPanelRetracted: Bool) -> PanelScreen {
+        
+        if isPanelRetracted {
+           return self
+        } else {
+            switch self {
+            case .journey:
+                return .retractedHome
+            case .aircraftSelection:
+                return .journey
+            case .confirmDetails:
+                return .aircraftSelection
+            default:
+                return self
+            }
+        }
+    }
+}
+
 class FlightPanelViewController: UIViewController, UIGestureRecognizerDelegate {
     
     @IBOutlet weak var fxBGView: UIVisualEffectView!
@@ -57,23 +86,63 @@ class FlightPanelViewController: UIViewController, UIGestureRecognizerDelegate {
     
     private var lastPanIncrement: CGFloat = 0
     private var isOpen: Bool = false
+    
+    public static var currentPanelScreen = PanelScreen.retractedHome
+    
+    private var journeyVC: JourneyDetailsVC?
 
-    // MARK: Lifecycle
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         let gesture = UIPanGestureRecognizer(target: self, action: #selector(wasDragged(recognizer:)))
         self.panelButton.addGestureRecognizer(gesture)
         self.panelButton.isUserInteractionEnabled = true
         gesture.delegate = self
+        
+        self.setupNavigationControl()
     }
     
-    // MARK: Segues
+    // MARK: - Segues
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "JourneyDetailsVCEmbeddedSeque" {
-            //let vc = segue.destination as? JourneyDetailsVC
-            //vc?.delegate = self
+        if segue.identifier == "JourneyDetailsRootSegue" {
+            guard let navController = segue.destination as? UINavigationController else { return }
+            guard let vc = navController.childViewControllers.first as? JourneyDetailsVC else { return }
+            self.journeyVC = vc
         }
     }
+    
+    // MARK: - Navigation Control
+    private func setupNavigationControl() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(didTapBackNavButton),
+                                               name: Notification.Name.PanelScreen.DidTapBackNav,
+                                               object: nil)
+    }
+    
+    @objc private func didTapBackNavButton() {
+        print("didTapBackNavButton notification handler called")
+        
+        let isRetracted = !self.isOpen
+        let nextScreen = FlightPanelViewController.currentPanelScreen.nextSceenOnBackTap(isPanelRetracted: isRetracted)
+        
+
+            switch nextScreen {
+            case .aircraftSelection:
+                self.journeyVC?.navigationController?.popViewController(animated: true)
+                break
+            case .journey:
+                self.journeyVC?.navigationController?.popViewController(animated: true)
+                break
+            case .retractedHome:
+                self.activatePanel(open: false)
+            default:
+                break
+            }
+        
+    }
+    
+    
+    // MARK: - Panel Control
     
     /// Open panel and set to state
     public func openPanelAndSetState() {
@@ -118,6 +187,8 @@ class FlightPanelViewController: UIViewController, UIGestureRecognizerDelegate {
                     object: self,
                     userInfo: nil
                 )
+                
+                
                 
                 // kludgehack time TODO: replace the hack with real custom anim transitions for nice effect!
                 AppState.tempBGImageForTransitionAnimationHack = self.fxBGView.takeSnapshot()

@@ -205,9 +205,9 @@
 			isa = PBXGroup;
 			children = (
 				96DA35AC1EC1264400D2A0BC /* FlightPanelViewController.swift */,
-				962E88DA1EE9A822003DECBF /* journey details screen */,
-				96CE58F21EE8A38100073BD5 /* aircraft select screen */,
-				96CE58F91EE93C6000073BD5 /* ConfirmDetailsScreenVC.swift */,
+				962E88DA1EE9A822003DECBF /* screen - journey details */,
+				96CE58F21EE8A38100073BD5 /* screen - aircraft select */,
+				969EF1C01EEB68CA00A4E6B1 /* screen - confirm */,
 			);
 			name = "pull-up panel screens";
 			sourceTree = "<group>";
@@ -242,14 +242,14 @@
 			name = screens;
 			sourceTree = "<group>";
 		};
-		962E88DA1EE9A822003DECBF /* journey details screen */ = {
+		962E88DA1EE9A822003DECBF /* screen - journey details */ = {
 			isa = PBXGroup;
 			children = (
 				960B50E31EC6392F002B1432 /* JourneyDetailsVC.swift */,
 				96A758B21EE0CA8F00F58A4F /* airport search control */,
 				96CB0A471EE70FA3004ADEA0 /* pax control */,
 			);
-			name = "journey details screen";
+			name = "screen - journey details";
 			sourceTree = "<group>";
 		};
 		962EE1161EBBBA5B00797CD9 /* mapbox */ = {
@@ -285,6 +285,14 @@
 				969EF1BE1EEB294500A4E6B1 /* digi_plink_short.wav */,
 			);
 			name = sound;
+			sourceTree = "<group>";
+		};
+		969EF1C01EEB68CA00A4E6B1 /* screen - confirm */ = {
+			isa = PBXGroup;
+			children = (
+				96CE58F91EE93C6000073BD5 /* ConfirmDetailsScreenVC.swift */,
+			);
+			name = "screen - confirm";
 			sourceTree = "<group>";
 		};
 		96A32C161E96A1A900DA7DC1 /* data */ = {
@@ -336,14 +344,14 @@
 			name = "pax control";
 			sourceTree = "<group>";
 		};
-		96CE58F21EE8A38100073BD5 /* aircraft select screen */ = {
+		96CE58F21EE8A38100073BD5 /* screen - aircraft select */ = {
 			isa = PBXGroup;
 			children = (
 				96CE58F31EE8D3A600073BD5 /* AircraftSelectViewController.swift */,
 				96CE58EE1EE8A12900073BD5 /* AircraftSelectCell.swift */,
 				96CE58EF1EE8A12900073BD5 /* AircraftSelectCell.xib */,
 			);
-			name = "aircraft select screen";
+			name = "screen - aircraft select";
 			sourceTree = "<group>";
 		};
 		96CE58F71EE8FBB900073BD5 /* common */ = {

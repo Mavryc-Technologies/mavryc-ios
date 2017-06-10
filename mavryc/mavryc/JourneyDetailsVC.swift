@@ -116,8 +116,9 @@ class JourneyDetailsVC: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        // animate into setup for current screen state and transition state
-
+        super.viewDidAppear(animated)
+        
+        FlightPanelViewController.currentPanelScreen = .journey
     }
     
     // MARK: - Notification Handlers

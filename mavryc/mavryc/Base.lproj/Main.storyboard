@@ -160,7 +160,14 @@
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </textAttributes>
                                 <items>
-                                    <navigationItem title="SKYLAR" id="U5s-gO-bb5"/>
+                                    <navigationItem title="SKYLAR" id="U5s-gO-bb5">
+                                        <barButtonItem key="leftBarButtonItem" image="BackArrow" id="HS8-RV-pLg">
+                                            <color key="tintColor" red="0.42745098040000001" green="0.82352941180000006" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <connections>
+                                                <action selector="navButtonAction:" destination="BYZ-38-t0r" id="oXq-JC-oTo"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
                                 </items>
                             </navigationBar>
                         </subviews>
@@ -197,6 +204,7 @@
                         <outlet property="joystickToken" destination="cFN-Fj-6Dl" id="NxC-Hh-6kg"/>
                         <outlet property="joystickTokenDisk" destination="qNb-4v-T0Q" id="keT-a6-ANG"/>
                         <outlet property="navBar" destination="zdh-rz-3Oz" id="d33-WK-li5"/>
+                        <outlet property="navLeftButtonHamburgerAndBack" destination="HS8-RV-pLg" id="dPK-RZ-nQs"/>
                         <outlet property="panelHeightConstraint" destination="1IV-fB-Tyl" id="dhZ-fk-0uH"/>
                     </connections>
                 </viewController>
@@ -252,7 +260,7 @@
                                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hKy-Ol-mW2">
                                                 <rect key="frame" x="0.0" y="44" width="375" height="556"/>
                                                 <connections>
-                                                    <segue destination="zVs-XS-9fh" kind="embed" id="3wa-Ka-Cix"/>
+                                                    <segue destination="zVs-XS-9fh" kind="embed" identifier="JourneyDetailsRootSegue" id="3wa-Ka-Cix"/>
                                                 </connections>
                                             </containerView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="header_shadow" translatesAutoresizingMaskIntoConstraints="NO" id="yHO-8i-FGq">
@@ -502,7 +510,7 @@
                                                         <rect key="frame" x="49" y="0.0" width="251" height="48"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25 June 2017" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Poc-p4-48q">
-                                                                <rect key="frame" x="20" y="18.5" width="223" height="14.5"/>
+                                                                <rect key="frame" x="20" y="19" width="223" height="14"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="223" id="fjq-KO-kFX"/>
                                                                 </constraints>
@@ -1109,6 +1117,7 @@
     <resources>
         <image name="ApplePay" width="375" height="472"/>
         <image name="ArriveIconUnselected" width="21" height="20"/>
+        <image name="BackArrow" width="17" height="13"/>
         <image name="CalendarIconFormPDF" width="19" height="19"/>
         <image name="DepartIconFormPDF" width="22" height="18"/>
         <image name="OutboundCellBG" width="300" height="123"/>
