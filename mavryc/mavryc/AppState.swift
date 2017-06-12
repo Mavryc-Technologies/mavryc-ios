@@ -6,7 +6,7 @@
 //  Copyright © 2017 Mavryc Technologies, Inc. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class AppState {
     
@@ -32,4 +32,5 @@ class AppState {
         }
     }
     
+    static var tempBGImageForTransitionAnimationHack: UIImage?
 }

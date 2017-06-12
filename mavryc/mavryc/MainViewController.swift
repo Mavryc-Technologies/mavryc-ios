@@ -18,15 +18,25 @@ class MainViewController: UIViewController {
                                       for: .default)
         }
     }
+    
+    @IBOutlet weak var navLeftButtonHamburgerAndBack: UIBarButtonItem! {
+        didSet {
+            navLeftButtonHamburgerAndBack.image = UIImage(named: "Hamburger.png")
+        }
+    }
+    
     @IBOutlet weak var panelHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var joystick: CDJoystick!
     @IBOutlet weak var joystickToken: UIView!
     @IBOutlet weak var joystickTokenDisk: UIImageView!
     
+    @IBOutlet weak var destinationSearchButton: UIView!
+    
     // Location manager used to start and stop updating location.
     let manager = CLLocationManager()
     var receivedLocationCount = 0
     var isUpdatingLocation = false
+    var lastKnownUserLocation: CLLocation?
     
     // Map
     var mapView: MGLMapView? = nil
@@ -35,14 +45,18 @@ class MainViewController: UIViewController {
     // Joystick & Map
     var joystickMapCoordinator = JoystickMapCoordinator()
     
+    // Panel
+    weak var panel: FlightPanelViewController? = nil
+
+    var hamburgerNavMode = true
+    
     // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // TODO: fix displacement of the joystickToken on varying size screens
-        
-        joystick.delegate = self
-        joystick.trackingHandler = self.joystickTrackingHandler()
+        // TODO: add feature flagging for joystick
+        //joystick.delegate = self
+        //joystick.trackingHandler = self.joystickTrackingHandler()
         
         //mapView.mapType = .satelliteFlyover
         manager.delegate = self
@@ -58,11 +72,54 @@ class MainViewController: UIViewController {
         if segue.identifier == "JourneyPanelSegue" {
             let panel = segue.destination as? FlightPanelViewController
             panel?.delegate = self
+            self.panel = panel
         }
         if segue.identifier == "MapboxSegue" {
             let vc = segue.destination
             self.mapView = (vc.view as! MGLMapView)
         }
+    }
+    
+    // MARK: - Interface Actions
+    @IBAction func distinationSearchButtonAction(_ sender: Any) {
+        self.panel?.openPanelAndSetState()
+    }
+    
+    @IBAction func joystickTapAction(_ sender: UITapGestureRecognizer) {
+        if let userLocation = self.lastKnownUserLocation, let map = self.mapView {
+            self.animateMap(to: userLocation, map: map)
+        }
+    }
+    
+    // MARK: - Navigation
+    
+    
+    @IBAction func navButtonAction(_ sender: Any) {
+        if self.hamburgerNavMode {
+            // TODO: implement hamburger menu trigger
+        } else {
+            // back nav mode
+            NotificationCenter.default.post(name: Notification.Name.PanelScreen.DidTapBackNav, object: self, userInfo:nil)
+        }
+    }
+    
+    func showHamburgerNav() {
+        self.hamburgerNavMode = true
+        self.navLeftButtonHamburgerAndBack.image = UIImage(named: "Hamburger.png")
+    }
+    
+    func showBackButtonNav() {
+        self.hamburgerNavMode = false
+        self.navLeftButtonHamburgerAndBack.image = UIImage(named: "BackArrow.png")
+    }
+    
+    // MARK: - Map misc
+    
+    func animateMap(to location: CLLocation, map: MGLMapView) {
+        self.mapCam.centerCoordinate = location.coordinate
+        self.mapCam.altitude = Double(3000000)
+        //self.mapCam.pitch = 60.0
+        map.setCamera(self.mapCam, withDuration: 2, animationTimingFunction: CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn))
     }
 }
 
@@ -71,24 +128,17 @@ extension MainViewController: CLLocationManagerDelegate {
     
     // MARK: Location Delegation
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
         receivedLocationCount = receivedLocationCount + locations.count
-        //reverseGeocodeLocation(locations: locations)
-//        print("number of received locations: \(receivedLocationCount)")
-//        print("locations: \(locations)")
         if receivedLocationCount > 3 {
             
             manager.stopUpdatingLocation()
             
             if isUpdatingLocation {
-                guard let lat = locations.first?.coordinate.latitude else { return }
-                guard let lon = locations.first?.coordinate.longitude else { return }
-                let center = CLLocationCoordinate2D(latitude: lat, longitude: lon)
-                mapView?.setCenter(center, zoomLevel: 12, animated: true)
-                
-                // Fill an array with point annotations and add it to the map.
-                let userAnnotation = MGLPointAnnotation()
-                userAnnotation.coordinate = center
-                mapView?.addAnnotation(userAnnotation)
+                if let userLocation = locations.first {
+                    self.lastKnownUserLocation = userLocation
+                    self.updateUserLocation(location: userLocation)
+                }
             }
             isUpdatingLocation = false
         }
@@ -118,28 +168,30 @@ extension MainViewController: MGLMapViewDelegate {
     func mapView(_ mapView: MGLMapView, didFinishLoading style: MGLStyle) {
     
         // TODO: comment in code below to show and work on refinement of mapbox's polyline. However, better than this would be implement our own arc core graphics line above the map layer. There are many limitations with the mapbox polyline.
-        self.joystickMapCoordinator.addPolylineLayer(to: style)
+        //self.joystickMapCoordinator.addPolylineLayer(to: style)
+        
+        // add airports to map
+        //self.addAirportAnnotations(to: mapView)
     }
     
     // This delegate method is where you tell the map to load a view for a specific annotation. To load a static MGLAnnotationImage, you would use `-mapView:imageForAnnotation:`.
     func mapView(_ mapView: MGLMapView, viewFor annotation: MGLAnnotation) -> MGLAnnotationView? {
-        // This example is only concerned with point annotations.
+        
+        if let castAnnotation = annotation as? CustomPointAnnotation {
+            if (castAnnotation.willUseImage) {
+                return nil;
+            }
+        }
+        
         guard annotation is MGLPointAnnotation else {
             return nil
         }
         
-        // Use the point annotation’s longitude value (as a string) as the reuse identifier for its view.
         let reuseIdentifier = "\(annotation.coordinate.longitude)"
-        
-        // For better performance, always try to reuse existing annotations.
         var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseIdentifier)
-        
-        // If there’s no reusable annotation view available, initialize a new one.
         if annotationView == nil {
             annotationView = CustomAnnotationView(reuseIdentifier: reuseIdentifier)
             annotationView!.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
-            
-            // Set the annotation view’s background color to a value determined by its longitude.
             let hue = CGFloat(annotation.coordinate.longitude) / 100
             annotationView!.backgroundColor = UIColor(hue: hue, saturation: 0.5, brightness: 1, alpha: 1)
         }
@@ -147,9 +199,92 @@ extension MainViewController: MGLMapViewDelegate {
         return annotationView
     }
     
+    func mapView(_ mapView: MGLMapView, imageFor annotation: MGLAnnotation) -> MGLAnnotationImage? {
+        
+        var isAirport = false
+        if let castAnnotation = annotation as? CustomPointAnnotation {
+            isAirport = castAnnotation.showAirport
+            if (!castAnnotation.willUseImage) {
+                return nil;
+            }
+        }
+        
+        if isAirport {
+            var annotationImage = mapView.dequeueReusableAnnotationImage(withIdentifier: "airportMarker")
+            if annotationImage == nil {
+                var image = UIImage(named: "Depart Icon")!
+                image = image.withAlignmentRectInsets(UIEdgeInsets(top: 0, left: 0, bottom: image.size.height/2, right: 0))
+                annotationImage = MGLAnnotationImage(image: image, reuseIdentifier: "airportMarker")
+                
+            }
+            return annotationImage
+            
+        } else { // is user location
+            var annotationImage = mapView.dequeueReusableAnnotationImage(withIdentifier: "userLocationMaker")
+            if annotationImage == nil {
+                var image = UIImage(named: "LocationMarker")!
+                image = image.withAlignmentRectInsets(UIEdgeInsets(top: 0, left: 0, bottom: image.size.height/2, right: 0))
+                annotationImage = MGLAnnotationImage(image: image, reuseIdentifier: "userLocationMaker")
+            }
+            return annotationImage
+        }
+    }
+    
     func mapView(_ mapView: MGLMapView, annotationCanShowCallout annotation: MGLAnnotation) -> Bool {
         return true
     }
+
+    // TODO: may use this for added functionality
+//    func mapView(_ mapView: MGLMapView, calloutViewFor annotation: MGLAnnotation) -> MGLCalloutView? {
+//        return nil
+//    }
+    
+    // MGLPointAnnotation subclass
+    class CustomPointAnnotation: MGLPointAnnotation {
+        var willUseImage: Bool = false
+        var showAirport: Bool = false
+    }
+    
+    
+    // MARK: - Map Annotation Support
+    func updateUserLocation(location: CLLocation) {
+        
+        // put map center at user location
+        let lat = location.coordinate.latitude
+        let lon = location.coordinate.longitude
+        let center = CLLocationCoordinate2D(latitude: lat, longitude: lon)
+        mapView?.setCenter(center, zoomLevel: 12, animated: true)
+        
+        // Fill an array with point annotations and add it to the map.
+        let userAnnotation = CustomPointAnnotation()
+        userAnnotation.coordinate = center
+        userAnnotation.willUseImage = true
+        mapView?.addAnnotation(userAnnotation)
+    }
+    
+    private func addClusteredAirportMarkers() {
+        
+    }
+    
+    private func addAirportAnnotations(to mapView: MGLMapView) {
+        
+        Airports.requestAirports { (locations) in
+            var annotations = [CustomPointAnnotation]()
+            locations.forEach({ (loc) in
+                let point = CustomPointAnnotation()
+                point.coordinate = loc.location.coordinate
+                point.title = loc.threeLetterCode
+                point.subtitle = loc.airportName
+                point.showAirport = true
+                point.willUseImage = true
+                annotations.append(point)
+            })
+            DispatchQueue.main.async {
+                mapView.addAnnotations(annotations)
+            }
+        }
+    }
+
 }
 
 //
@@ -183,14 +318,10 @@ class CustomAnnotationView: MGLAnnotationView {
 extension MainViewController: JoystickDelegate {
     
     func stickDidResetTo(center: CGPoint) {
-        
         self.updateDiskPosition(for: self.joystickToken, toJoystick: self.joystick, atStickCenter: center)
         UIView.animate(withDuration: 0.25) {
             self.view.layoutIfNeeded()
         }
-        
-        // return map to optimal zoom state now that joystick was released...
-        // self.joystickMapCoordinator.reset()
     }
     
     /// 🕹🕹🕹
@@ -255,10 +386,12 @@ extension MainViewController: PanelDelegate {
     
     func panelDidOpen() {
         SafeLog.print("panel opened")
+        self.showBackButtonNav()
     }
     
     func panelDidClose() {
         SafeLog.print("panel closed")
+        self.showHamburgerNav()
     }
     
     func panelExtendedHeight() -> CGFloat {

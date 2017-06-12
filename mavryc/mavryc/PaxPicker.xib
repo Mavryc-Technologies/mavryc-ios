@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16D30a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Lato-Regular.ttf">
+            <string>Lato-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PaxPicker" customModule="mavryc" customModuleProvider="target">
+            <connections>
+                <outlet property="PaxCountLabel" destination="Nt3-5K-QSf" id="dvG-uE-6xv"/>
+                <outlet property="filledBarsImageView" destination="MQw-C5-paU" id="Azg-4B-9YU"/>
+                <outlet property="iconImageView" destination="gjF-v9-MFG" id="iYo-gs-8qA"/>
+                <outlet property="maskingBar" destination="cZ8-oj-7r4" id="4uI-Hb-MDH"/>
+                <outlet property="maskingBarWidthConstraint" destination="MNn-Cn-C3f" id="ZsF-fa-E96"/>
+                <outlet property="view" destination="NFo-Sn-JcD" id="XQQ-pw-sci"/>
+            </connections>
+        </placeholder>
+        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NFo-Sn-JcD">
+            <rect key="frame" x="0.0" y="0.0" width="300" height="48"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LqQ-hG-Exx" userLabel="right">
+                    <rect key="frame" x="49" y="0.0" width="251" height="48"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nt3-5K-QSf">
+                            <rect key="frame" x="183" y="14" width="48" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="48" id="XVW-ad-jip"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PAX Field BG" translatesAutoresizingMaskIntoConstraints="NO" id="6tU-9R-kZB" userLabel="empty bars">
+                            <rect key="frame" x="20" y="13" width="162" height="22"/>
+                            <gestureRecognizers/>
+                            <connections>
+                                <outletCollection property="gestureRecognizers" destination="KPH-nC-Xe2" appends="YES" id="a6j-cO-Y8D"/>
+                                <outletCollection property="gestureRecognizers" destination="xhE-hc-OLT" appends="YES" id="0X1-Pj-Wg7"/>
+                            </connections>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PAX Field Select" translatesAutoresizingMaskIntoConstraints="NO" id="MQw-C5-paU">
+                            <rect key="frame" x="20" y="13" width="162" height="22"/>
+                        </imageView>
+                        <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cZ8-oj-7r4">
+                            <rect key="frame" x="0.0" y="0.0" width="7" height="49"/>
+                            <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="49" id="6SC-cR-14J"/>
+                                <constraint firstAttribute="width" constant="7" id="MNn-Cn-C3f"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" red="0.058823529409999999" green="0.070588235289999995" blue="0.1058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="Nt3-5K-QSf" secondAttribute="bottom" constant="13" id="0qM-0I-zjO"/>
+                        <constraint firstItem="6tU-9R-kZB" firstAttribute="leading" secondItem="LqQ-hG-Exx" secondAttribute="leading" constant="20" id="6mJ-BJ-5gN"/>
+                        <constraint firstItem="MQw-C5-paU" firstAttribute="top" secondItem="LqQ-hG-Exx" secondAttribute="top" constant="13" id="885-ST-sih"/>
+                        <constraint firstItem="6tU-9R-kZB" firstAttribute="top" secondItem="LqQ-hG-Exx" secondAttribute="top" constant="13" id="KLq-Dj-QHk"/>
+                        <constraint firstAttribute="bottom" secondItem="cZ8-oj-7r4" secondAttribute="bottom" constant="-1" id="OEq-mA-FOe"/>
+                        <constraint firstItem="Nt3-5K-QSf" firstAttribute="leading" secondItem="6tU-9R-kZB" secondAttribute="trailing" constant="1" id="RAA-kw-lhr"/>
+                        <constraint firstAttribute="trailing" secondItem="Nt3-5K-QSf" secondAttribute="trailing" constant="20" id="W3h-J3-by7"/>
+                        <constraint firstItem="Nt3-5K-QSf" firstAttribute="leading" secondItem="MQw-C5-paU" secondAttribute="trailing" constant="1" id="WeN-DL-cdV"/>
+                        <constraint firstItem="MQw-C5-paU" firstAttribute="leading" secondItem="LqQ-hG-Exx" secondAttribute="leading" constant="20" id="cYr-C0-ZSm"/>
+                        <constraint firstAttribute="bottom" secondItem="MQw-C5-paU" secondAttribute="bottom" constant="13" id="oyX-aJ-Phz"/>
+                        <constraint firstItem="cZ8-oj-7r4" firstAttribute="top" secondItem="LqQ-hG-Exx" secondAttribute="top" id="qah-YA-4lb"/>
+                        <constraint firstItem="cZ8-oj-7r4" firstAttribute="leading" secondItem="LqQ-hG-Exx" secondAttribute="leading" id="qjX-2h-hPD"/>
+                        <constraint firstAttribute="bottom" secondItem="6tU-9R-kZB" secondAttribute="bottom" constant="13" id="wZf-mB-NPD"/>
+                        <constraint firstItem="Nt3-5K-QSf" firstAttribute="top" secondItem="LqQ-hG-Exx" secondAttribute="top" constant="14" id="xCm-fy-gHn"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X6G-Am-Oy4" userLabel="left">
+                    <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PAXIconFormPDF" translatesAutoresizingMaskIntoConstraints="NO" id="gjF-v9-MFG">
+                            <rect key="frame" x="15" y="14" width="17" height="21"/>
+                            <color key="backgroundColor" red="0.058823529409999999" green="0.070588235289999995" blue="0.1058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" red="0.058823529409999999" green="0.070588235289999995" blue="0.1058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="48" id="65q-4K-Kd1"/>
+                        <constraint firstAttribute="height" constant="48" id="KI3-VX-8Nm"/>
+                        <constraint firstItem="gjF-v9-MFG" firstAttribute="centerX" secondItem="X6G-Am-Oy4" secondAttribute="centerX" id="MgK-hl-UY7"/>
+                        <constraint firstItem="gjF-v9-MFG" firstAttribute="centerY" secondItem="X6G-Am-Oy4" secondAttribute="centerY" id="Zpd-XU-7ud"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="height" constant="48" id="E5o-63-vHl"/>
+                <constraint firstItem="LqQ-hG-Exx" firstAttribute="leading" secondItem="X6G-Am-Oy4" secondAttribute="trailing" constant="1" id="EkD-1F-K1W"/>
+                <constraint firstItem="LqQ-hG-Exx" firstAttribute="leading" secondItem="X6G-Am-Oy4" secondAttribute="trailing" constant="1" id="KBT-5i-fG2"/>
+                <constraint firstAttribute="trailing" secondItem="LqQ-hG-Exx" secondAttribute="trailing" id="KKf-Yx-ofk"/>
+                <constraint firstItem="LqQ-hG-Exx" firstAttribute="top" secondItem="NFo-Sn-JcD" secondAttribute="top" id="Mg1-hn-8rD"/>
+                <constraint firstItem="X6G-Am-Oy4" firstAttribute="top" secondItem="NFo-Sn-JcD" secondAttribute="top" id="P7N-b8-SY4"/>
+                <constraint firstAttribute="bottom" secondItem="X6G-Am-Oy4" secondAttribute="bottom" id="SP2-Oh-Qkp"/>
+                <constraint firstAttribute="bottom" secondItem="LqQ-hG-Exx" secondAttribute="bottom" id="jnj-QY-kE4"/>
+                <constraint firstItem="X6G-Am-Oy4" firstAttribute="leading" secondItem="NFo-Sn-JcD" secondAttribute="leading" id="wLS-RA-PzX"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="4" y="167"/>
+        </view>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <panGestureRecognizer minimumNumberOfTouches="1" id="KPH-nC-Xe2">
+            <connections>
+                <action selector="panGestureAction:" destination="-1" id="STj-Yr-uh6"/>
+            </connections>
+        </panGestureRecognizer>
+        <tapGestureRecognizer id="xhE-hc-OLT">
+            <connections>
+                <action selector="tapAction:" destination="-1" id="wVb-Ga-uMn"/>
+            </connections>
+        </tapGestureRecognizer>
+    </objects>
+    <resources>
+        <image name="PAX Field BG" width="162" height="22"/>
+        <image name="PAX Field Select" width="162" height="22"/>
+        <image name="PAXIconFormPDF" width="17" height="21"/>
+    </resources>
+</document>

@@ -23,13 +23,28 @@ class AppStyle {
     public static var skylarBlueGrey = #colorLiteral(red: 0.3803921569, green: 0.4431372549, blue: 0.5333333333, alpha: 1)
     public static var skylarBlueGreen = #colorLiteral(red: 0.4274509804, green: 0.8235294118, blue: 0.8392156863, alpha: 1)
     
+    // MARK: - common styled button
+    public static var styledButtonNormalTitleColor: UIColor = AppStyle.skylarGold
+    public static var styledButtonDisabledTitleColor: UIColor = AppStyle.skylarBlueGrey
+    public static var styledButtonHighlightedTextColor: UIColor = AppStyle.skylarGold
+    public static var styledButtonBorderColor: UIColor = AppStyle.skylarBlueGrey.withAlphaComponent(0.5)
+    public static var styledButtonBGColor: UIColor = AppStyle.skylarDeepBlue
+    
     // MARK: - journey detail screen
-    public static var journeyDetailsNextButtonTextColor: UIColor = UIColor.white
-    public static var journeyDetailsNextButtonBorderColor: UIColor = AppStyle.skylarBlueGrey.withAlphaComponent(0.5)
-    public static var journeyDetailsNextButtonBGColor: UIColor = AppStyle.skylarDeepBlue
     
     public static var journeyDetailsSegmentedControllerNormalTextColor: UIColor = skylarBlueGrey.withAlphaComponent(0.5)
     public static var journeyDetailsSegmentedControllerHighlightTextColor: UIColor = AppStyle.skylarGold
     public static var journeyDetailsSegmentedControllerBorderColor: UIColor = AppStyle.skylarBlueGrey.withAlphaComponent(0.5)
     
+    
+    // MARK: - Airport Search components
+    public static var airportSearchTableViewSeparatorColor = AppStyle.skylarDeepBlue
+    public static var airportSearchCellSelectionColor = AppStyle.skylarDeepBlue
+    
+    // MARK: - Aircraft Select Screen
+    public static var aircraftSelectScreenCellHighlightColor = AppStyle.skylarGold
+    public static var aircraftSelectScreenCellNormalColor = AppStyle.skylarDeepBlue
+    public static var aircraftSelectScreenCellTextNormalColor = AppStyle.skylarBlueGrey
+    public static var aircraftSelectScreenCellTextHighlightPrimaryColor = UIColor.white
+    public static var aircraftSelectScreenCellTextHighlightSecondaryColor = AppStyle.skylarGold
 }
