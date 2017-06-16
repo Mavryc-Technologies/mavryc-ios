@@ -20,6 +20,8 @@
 		96395F291EF312070094923F /* UIView+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96395F281EF312070094923F /* UIView+Image.swift */; };
 		96395F2B1EF33D250094923F /* ScreenNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96395F2A1EF33D250094923F /* ScreenNavigator.swift */; };
 		96395F2D1EF340BD0094923F /* Notification+Screens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96395F2C1EF340BD0094923F /* Notification+Screens.swift */; };
+		96395F2F1EF472B80094923F /* LocationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96395F2E1EF472B80094923F /* LocationController.swift */; };
+		96395F311EF48D230094923F /* MapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96395F301EF48D230094923F /* MapController.swift */; };
 		9666A4561E95A9D000CA822F /* FetchFlightsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9666A4551E95A9D000CA822F /* FetchFlightsClient.swift */; };
 		967FF6261E9446BF007B56C6 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967FF6251E9446BF007B56C6 /* Networking.swift */; };
 		967FF6291E945796007B56C6 /* FetchUserClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967FF6281E945796007B56C6 /* FetchUserClient.swift */; };
@@ -99,6 +101,8 @@
 		96395F281EF312070094923F /* UIView+Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Image.swift"; sourceTree = "<group>"; };
 		96395F2A1EF33D250094923F /* ScreenNavigator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenNavigator.swift; sourceTree = "<group>"; };
 		96395F2C1EF340BD0094923F /* Notification+Screens.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Notification+Screens.swift"; sourceTree = "<group>"; };
+		96395F2E1EF472B80094923F /* LocationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationController.swift; sourceTree = "<group>"; };
+		96395F301EF48D230094923F /* MapController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapController.swift; sourceTree = "<group>"; };
 		9666A4551E95A9D000CA822F /* FetchFlightsClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchFlightsClient.swift; sourceTree = "<group>"; };
 		967FF6251E9446BF007B56C6 /* Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		967FF6281E945796007B56C6 /* FetchUserClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchUserClient.swift; sourceTree = "<group>"; };
@@ -307,6 +311,8 @@
 				96B723731EA9E26100B2E322 /* User.swift */,
 				96B1F2CA1EEA0CB500EB5F4A /* Airports.swift */,
 				96B1F2CC1EEA142C00EB5F4A /* AirportLocation.swift */,
+				96395F2E1EF472B80094923F /* LocationController.swift */,
+				96395F301EF48D230094923F /* MapController.swift */,
 			);
 			name = models;
 			sourceTree = "<group>";
@@ -756,6 +762,7 @@
 				96A32C1B1E96A36900DA7DC1 /* Cities.swift in Sources */,
 				96A758B41EE0CAB500F58A4F /* AirportSearchTableViewController.swift in Sources */,
 				961E2AC21E985602000F2D64 /* FetchFlightsDTO.swift in Sources */,
+				96395F311EF48D230094923F /* MapController.swift in Sources */,
 				96B723701EA98B8D00B2E322 /* RealmConfiguration.swift in Sources */,
 				96B063D81ED3A4B7006151E5 /* JoystickMapCoordinator.swift in Sources */,
 				96B1F2CB1EEA0CB500EB5F4A /* Airports.swift in Sources */,
@@ -778,6 +785,7 @@
 				96F2FC981E92D29600C51674 /* SafeLog.swift in Sources */,
 				96DA42371EA7FD670036C227 /* Flight.swift in Sources */,
 				96F2FC9E1E92D8CC00C51674 /* AppState.swift in Sources */,
+				96395F2F1EF472B80094923F /* LocationController.swift in Sources */,
 				96CE58F01EE8A12900073BD5 /* AircraftSelectCell.swift in Sources */,
 				96F2FCAF1E92DF0D00C51674 /* OnboardingViewController.swift in Sources */,
 				96395F2D1EF340BD0094923F /* Notification+Screens.swift in Sources */,
