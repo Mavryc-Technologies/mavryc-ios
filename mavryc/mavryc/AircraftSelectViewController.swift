@@ -34,13 +34,16 @@ class AircraftSelectViewController: UIViewController, UITableViewDelegate, UITab
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        ScreenNavigator.sharedInstance.registerScreen(screen: self, asScreen: .aircraftSelection)
+        
         tableView.register(UINib(nibName: "AircraftSelectCell", bundle: Bundle.main), forCellReuseIdentifier: "cell")
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        FlightPanelViewController.currentPanelScreen = .aircraftSelection
+        ScreenNavigator.sharedInstance.currentPanelScreen = .aircraftSelection
     }
     
     // MARK: - Table view data source
@@ -105,5 +108,16 @@ class AircraftSelectViewController: UIViewController, UITableViewDelegate, UITab
         let attribute = NSMutableAttributedString.init(string: combined)
         attribute.addAttribute(NSForegroundColorAttributeName, value: color , range: range)
         return attribute
+    }
+}
+
+extension AircraftSelectViewController: ScreenNavigable {
+    
+    func screenNavigator(_ screenNavigator: ScreenNavigator, backButtonWasPressed: Bool) {
+        
+    }
+    
+    func screenNavigatorIsScreenVisible(_ screenNavigator: ScreenNavigator) -> Bool? {
+        return nil
     }
 }

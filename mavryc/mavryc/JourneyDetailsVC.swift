@@ -92,7 +92,9 @@ class JourneyDetailsVC: UIViewController {
     // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        ScreenNavigator.sharedInstance.registerScreen(screen: self, asScreen: .journey)
+        
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(panelWillOpen),
                                                name: Notification.Name.PanelScreen.WillOpen,
@@ -118,7 +120,7 @@ class JourneyDetailsVC: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        FlightPanelViewController.currentPanelScreen = .journey
+        ScreenNavigator.sharedInstance.currentPanelScreen = .journey
     }
     
     // MARK: - Notification Handlers
@@ -371,5 +373,16 @@ extension JourneyDetailsVC: UITextFieldDelegate {
     
     // TODO: pressing return on keyboard will cause the appropriate listed item (if present) to become selected, otherwise, just causes a deselect of the search controls
     
+}
+
+extension JourneyDetailsVC: ScreenNavigable {
+    
+    func screenNavigator(_ screenNavigator: ScreenNavigator, backButtonWasPressed: Bool) {
+        
+    }
+    
+    func screenNavigatorIsScreenVisible(_ screenNavigator: ScreenNavigator) -> Bool? {
+        return nil
+    }
 }
 

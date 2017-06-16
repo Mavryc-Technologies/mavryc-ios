@@ -82,7 +82,7 @@ class MainViewController: UIViewController {
     
     // MARK: - Interface Actions
     @IBAction func distinationSearchButtonAction(_ sender: Any) {
-        self.panel?.openPanelAndSetState()
+        self.panel?.triggerPanel(shouldOpen: true)
     }
     
     @IBAction func joystickTapAction(_ sender: UITapGestureRecognizer) {

@@ -17,8 +17,9 @@
 		961E2AC21E985602000F2D64 /* FetchFlightsDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961E2AC11E985602000F2D64 /* FetchFlightsDTO.swift */; };
 		961E2AC71E985A20000F2D64 /* webServiceClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961E2AC61E985A20000F2D64 /* webServiceClientTests.swift */; };
 		962EE1181EBBBA7800797CD9 /* Mapbox.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 962EE1171EBBBA7800797CD9 /* Mapbox.storyboard */; };
-		9652283E1EAAA1280054DA70 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9652283D1EAAA1280054DA70 /* MapViewController.swift */; };
-		965228401EAAA1380054DA70 /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9652283F1EAAA1380054DA70 /* Map.storyboard */; };
+		96395F291EF312070094923F /* UIView+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96395F281EF312070094923F /* UIView+Image.swift */; };
+		96395F2B1EF33D250094923F /* ScreenNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96395F2A1EF33D250094923F /* ScreenNavigator.swift */; };
+		96395F2D1EF340BD0094923F /* Notification+Screens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96395F2C1EF340BD0094923F /* Notification+Screens.swift */; };
 		9666A4561E95A9D000CA822F /* FetchFlightsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9666A4551E95A9D000CA822F /* FetchFlightsClient.swift */; };
 		967FF6261E9446BF007B56C6 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967FF6251E9446BF007B56C6 /* Networking.swift */; };
 		967FF6291E945796007B56C6 /* FetchUserClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967FF6281E945796007B56C6 /* FetchUserClient.swift */; };
@@ -95,8 +96,9 @@
 		961E2AC11E985602000F2D64 /* FetchFlightsDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchFlightsDTO.swift; sourceTree = "<group>"; };
 		961E2AC61E985A20000F2D64 /* webServiceClientTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = webServiceClientTests.swift; sourceTree = "<group>"; };
 		962EE1171EBBBA7800797CD9 /* Mapbox.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Mapbox.storyboard; sourceTree = "<group>"; };
-		9652283D1EAAA1280054DA70 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		9652283F1EAAA1380054DA70 /* Map.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Map.storyboard; sourceTree = "<group>"; };
+		96395F281EF312070094923F /* UIView+Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Image.swift"; sourceTree = "<group>"; };
+		96395F2A1EF33D250094923F /* ScreenNavigator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenNavigator.swift; sourceTree = "<group>"; };
+		96395F2C1EF340BD0094923F /* Notification+Screens.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Notification+Screens.swift"; sourceTree = "<group>"; };
 		9666A4551E95A9D000CA822F /* FetchFlightsClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchFlightsClient.swift; sourceTree = "<group>"; };
 		967FF6251E9446BF007B56C6 /* Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		967FF6281E945796007B56C6 /* FetchUserClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchUserClient.swift; sourceTree = "<group>"; };
@@ -192,16 +194,7 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		960B50E11EC6338B002B1432 /* old-toss-soon */ = {
-			isa = PBXGroup;
-			children = (
-				9652283D1EAAA1280054DA70 /* MapViewController.swift */,
-				9652283F1EAAA1380054DA70 /* Map.storyboard */,
-			);
-			name = "old-toss-soon";
-			sourceTree = "<group>";
-		};
-		960B50E21EC634B9002B1432 /* pull-up panel screens */ = {
+		960B50E21EC634B9002B1432 /* panel screens */ = {
 			isa = PBXGroup;
 			children = (
 				96DA35AC1EC1264400D2A0BC /* FlightPanelViewController.swift */,
@@ -209,7 +202,7 @@
 				96CE58F21EE8A38100073BD5 /* screen - aircraft select */,
 				969EF1C01EEB68CA00A4E6B1 /* screen - confirm */,
 			);
-			name = "pull-up panel screens";
+			name = "panel screens";
 			sourceTree = "<group>";
 		};
 		961E2AC41E985913000F2D64 /* flights */ = {
@@ -236,8 +229,9 @@
 		962E88D91EE9A7A8003DECBF /* screens */ = {
 			isa = PBXGroup;
 			children = (
+				96395F2A1EF33D250094923F /* ScreenNavigator.swift */,
 				96F2FCB11E92DF1F00C51674 /* main screen */,
-				960B50E21EC634B9002B1432 /* pull-up panel screens */,
+				960B50E21EC634B9002B1432 /* panel screens */,
 			);
 			name = screens;
 			sourceTree = "<group>";
@@ -263,9 +257,8 @@
 		9652283C1EAAA0DE0054DA70 /* map */ = {
 			isa = PBXGroup;
 			children = (
-				960B50E11EC6338B002B1432 /* old-toss-soon */,
-				962EE1161EBBBA5B00797CD9 /* mapbox */,
 				9608F2721EDCA3A60028B70D /* MapAnnotationsCoordinator.swift */,
+				962EE1161EBBBA5B00797CD9 /* mapbox */,
 			);
 			name = map;
 			sourceTree = "<group>";
@@ -354,12 +347,12 @@
 			name = "screen - aircraft select";
 			sourceTree = "<group>";
 		};
-		96CE58F71EE8FBB900073BD5 /* common */ = {
+		96CE58F71EE8FBB900073BD5 /* common_ui */ = {
 			isa = PBXGroup;
 			children = (
 				96CE58F51EE8FBAF00073BD5 /* StyledButton.swift */,
 			);
-			name = common;
+			name = common_ui;
 			sourceTree = "<group>";
 		};
 		96DA35AE1EC2731000D2A0BC /* joystick */ = {
@@ -473,12 +466,12 @@
 			isa = PBXGroup;
 			children = (
 				962E88D91EE9A7A8003DECBF /* screens */,
-				96CE58F71EE8FBB900073BD5 /* common */,
 				96DA35AE1EC2731000D2A0BC /* joystick */,
 				9652283C1EAAA0DE0054DA70 /* map */,
 				96F2FCAA1E92DBE800C51674 /* onboarding */,
 				96E53EF41E90387B0045AA06 /* pay */,
 				96E53EF81E903AEC0045AA06 /* signup */,
+				96CE58F71EE8FBB900073BD5 /* common_ui */,
 			);
 			name = features;
 			sourceTree = "<group>";
@@ -493,6 +486,8 @@
 		96E53EF91E903B440045AA06 /* extensions */ = {
 			isa = PBXGroup;
 			children = (
+				96395F281EF312070094923F /* UIView+Image.swift */,
+				96395F2C1EF340BD0094923F /* Notification+Screens.swift */,
 			);
 			name = extensions;
 			sourceTree = "<group>";
@@ -634,7 +629,6 @@
 				96F2FCAC1E92DEE300C51674 /* Onboarding.storyboard in Resources */,
 				96B1F2CF1EEA19A900EB5F4A /* airports.csv in Resources */,
 				96DA35B51EC281E400D2A0BC /* Asap in Resources */,
-				965228401EAAA1380054DA70 /* Map.storyboard in Resources */,
 				962EE1181EBBBA7800797CD9 /* Mapbox.storyboard in Resources */,
 				96B1F2D11EEA294E00EB5F4A /* airports.sqlite3 in Resources */,
 				969EF1BF1EEB294600A4E6B1 /* digi_plink_short.wav in Resources */,
@@ -753,6 +747,7 @@
 				96CE58F41EE8D3A600073BD5 /* AircraftSelectViewController.swift in Sources */,
 				96F2FCA21E92D9DA00C51674 /* StoryboardIdentifiable.swift in Sources */,
 				23B819C81EB19145006017FC /* LoginDTO.swift in Sources */,
+				96395F2B1EF33D250094923F /* ScreenNavigator.swift in Sources */,
 				96CE58FA1EE93C6000073BD5 /* ConfirmDetailsScreenVC.swift in Sources */,
 				967FF6261E9446BF007B56C6 /* Networking.swift in Sources */,
 				96A32C1F1E98153300DA7DC1 /* SignupClient.swift in Sources */,
@@ -766,7 +761,6 @@
 				96B1F2CB1EEA0CB500EB5F4A /* Airports.swift in Sources */,
 				96DA35B01EC2732C00D2A0BC /* Joystick.swift in Sources */,
 				96F2FCA51E92DA3400C51674 /* UIViewController+StoryboardIdentifier.swift in Sources */,
-				9652283E1EAAA1280054DA70 /* MapViewController.swift in Sources */,
 				960B50E41EC6392F002B1432 /* JourneyDetailsVC.swift in Sources */,
 				96A32C1D1E96D1EC00DA7DC1 /* AutoCompletionPredictable.swift in Sources */,
 				96B723741EA9E26100B2E322 /* User.swift in Sources */,
@@ -786,6 +780,8 @@
 				96F2FC9E1E92D8CC00C51674 /* AppState.swift in Sources */,
 				96CE58F01EE8A12900073BD5 /* AircraftSelectCell.swift in Sources */,
 				96F2FCAF1E92DF0D00C51674 /* OnboardingViewController.swift in Sources */,
+				96395F2D1EF340BD0094923F /* Notification+Screens.swift in Sources */,
+				96395F291EF312070094923F /* UIView+Image.swift in Sources */,
 				96E53ED31E90378E0045AA06 /* AppDelegate.swift in Sources */,
 				96F2FCA81E92DA6A00C51674 /* UIStoryboard+Storyboards.swift in Sources */,
 				96B7236D1EA98B5200B2E322 /* AppData.swift in Sources */,

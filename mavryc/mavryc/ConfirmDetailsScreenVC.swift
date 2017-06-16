@@ -61,12 +61,14 @@ class ConfirmDetailsScreenVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        ScreenNavigator.sharedInstance.registerScreen(screen: self, asScreen: .confirmDetails)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        FlightPanelViewController.currentPanelScreen = .confirmDetails
+        ScreenNavigator.sharedInstance.currentPanelScreen = .confirmDetails
     }
     
     
@@ -75,5 +77,16 @@ class ConfirmDetailsScreenVC: UIViewController {
             self.applePayBottomVerticalSpace.constant = self.extendedApplePayBottomVerticalSpaceValue
             self.view.layoutIfNeeded()
         }
+    }
+}
+
+extension ConfirmDetailsScreenVC: ScreenNavigable {
+    
+    func screenNavigator(_ screenNavigator: ScreenNavigator, backButtonWasPressed: Bool) {
+        
+    }
+    
+    func screenNavigatorIsScreenVisible(_ screenNavigator: ScreenNavigator) -> Bool? {
+        return nil
     }
 }
