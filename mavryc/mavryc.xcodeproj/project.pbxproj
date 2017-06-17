@@ -12,7 +12,6 @@
 		23B819CB1EB19493006017FC /* LoginClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B819C91EB19198006017FC /* LoginClient.swift */; };
 		23B819CC1EB194A7006017FC /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967FF6251E9446BF007B56C6 /* Networking.swift */; };
 		23B819CD1EB194AB006017FC /* LoginDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B819C71EB19145006017FC /* LoginDTO.swift */; };
-		9608F2731EDCA3A60028B70D /* MapAnnotationsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9608F2721EDCA3A60028B70D /* MapAnnotationsCoordinator.swift */; };
 		960B50E41EC6392F002B1432 /* JourneyDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960B50E31EC6392F002B1432 /* JourneyDetailsVC.swift */; };
 		961E2AC21E985602000F2D64 /* FetchFlightsDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961E2AC11E985602000F2D64 /* FetchFlightsDTO.swift */; };
 		961E2AC71E985A20000F2D64 /* webServiceClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961E2AC61E985A20000F2D64 /* webServiceClientTests.swift */; };
@@ -93,7 +92,6 @@
 		77E884330154E11441155D61 /* Pods_mavryc.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mavryc.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BB6D2AAAA732FB84064959C /* Pods-mavryc-mavrycTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mavryc-mavrycTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-mavryc-mavrycTests/Pods-mavryc-mavrycTests.release.xcconfig"; sourceTree = "<group>"; };
 		7BF64E167EC734F4C54DBF17 /* Pods-mavryc.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mavryc.debug.xcconfig"; path = "Pods/Target Support Files/Pods-mavryc/Pods-mavryc.debug.xcconfig"; sourceTree = "<group>"; };
-		9608F2721EDCA3A60028B70D /* MapAnnotationsCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapAnnotationsCoordinator.swift; sourceTree = "<group>"; };
 		960B50E31EC6392F002B1432 /* JourneyDetailsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JourneyDetailsVC.swift; sourceTree = "<group>"; };
 		961E2AC11E985602000F2D64 /* FetchFlightsDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchFlightsDTO.swift; sourceTree = "<group>"; };
 		961E2AC61E985A20000F2D64 /* webServiceClientTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = webServiceClientTests.swift; sourceTree = "<group>"; };
@@ -261,7 +259,8 @@
 		9652283C1EAAA0DE0054DA70 /* map */ = {
 			isa = PBXGroup;
 			children = (
-				9608F2721EDCA3A60028B70D /* MapAnnotationsCoordinator.swift */,
+				96395F2E1EF472B80094923F /* LocationController.swift */,
+				96395F301EF48D230094923F /* MapController.swift */,
 				962EE1161EBBBA5B00797CD9 /* mapbox */,
 			);
 			name = map;
@@ -311,8 +310,6 @@
 				96B723731EA9E26100B2E322 /* User.swift */,
 				96B1F2CA1EEA0CB500EB5F4A /* Airports.swift */,
 				96B1F2CC1EEA142C00EB5F4A /* AirportLocation.swift */,
-				96395F2E1EF472B80094923F /* LocationController.swift */,
-				96395F301EF48D230094923F /* MapController.swift */,
 			);
 			name = models;
 			sourceTree = "<group>";
@@ -775,7 +772,6 @@
 				96CB0A491EE75FAA004ADEA0 /* AirportSearchTableViewCell.swift in Sources */,
 				96CE58F61EE8FBAF00073BD5 /* StyledButton.swift in Sources */,
 				96A32C211E98158D00DA7DC1 /* SignupDTO.swift in Sources */,
-				9608F2731EDCA3A60028B70D /* MapAnnotationsCoordinator.swift in Sources */,
 				96CB0A441EE5DB42004ADEA0 /* PaxPicker.swift in Sources */,
 				9666A4561E95A9D000CA822F /* FetchFlightsClient.swift in Sources */,
 				96B1F2CD1EEA142C00EB5F4A /* AirportLocation.swift in Sources */,

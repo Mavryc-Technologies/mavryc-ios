@@ -75,7 +75,7 @@ class MainViewController: UIViewController {
     }
     
     // MARK: - Interface Actions
-    @IBAction func distinationSearchButtonAction(_ sender: Any) {
+    @IBAction func destinationSearchButtonAction(_ sender: Any) {
         self.panel?.triggerPanel(shouldOpen: true)
     }
     
