@@ -108,7 +108,7 @@
                                 </connections>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5mB-pa-23C" userLabel="Joystick" customClass="CDJoystick" customModule="mavryc" customModuleProvider="target">
-                                <rect key="frame" x="112.5" y="425.5" width="150" height="150"/>
+                                <rect key="frame" x="112" y="425" width="150" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="cqp-5L-1To"/>
                                     <constraint firstAttribute="height" constant="150" id="f1J-K1-Gqm"/>
@@ -202,7 +202,6 @@
                         <outlet property="destinationSearchButton" destination="0IC-Vt-fGK" id="8sS-BX-8jN"/>
                         <outlet property="joystick" destination="5mB-pa-23C" id="tqE-8v-IcN"/>
                         <outlet property="joystickToken" destination="cFN-Fj-6Dl" id="NxC-Hh-6kg"/>
-                        <outlet property="joystickTokenDisk" destination="qNb-4v-T0Q" id="keT-a6-ANG"/>
                         <outlet property="navBar" destination="zdh-rz-3Oz" id="d33-WK-li5"/>
                         <outlet property="navLeftButtonHamburgerAndBack" destination="HS8-RV-pLg" id="dPK-RZ-nQs"/>
                         <outlet property="panelHeightConstraint" destination="1IV-fB-Tyl" id="dhZ-fk-0uH"/>
@@ -510,7 +509,7 @@
                                                         <rect key="frame" x="49" y="0.0" width="251" height="48"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25 June 2017" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Poc-p4-48q">
-                                                                <rect key="frame" x="20" y="19.5" width="223" height="14"/>
+                                                                <rect key="frame" x="20" y="19" width="223" height="14"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="223" id="fjq-KO-kFX"/>
                                                                 </constraints>

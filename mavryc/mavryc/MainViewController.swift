@@ -33,12 +33,10 @@ class MainViewController: UIViewController {
     // Joystick & Map
     @IBOutlet weak var joystick: CDJoystick!
     @IBOutlet weak var joystickToken: UIView!
-    @IBOutlet weak var joystickTokenDisk: UIImageView!
-    var joystickMapCoordinator = JoystickMapCoordinator()
+    var joystickController: JoystickController?
     
     // Map
     var mapView: MGLMapView?
-    var mapCam: MGLMapCamera = MGLMapCamera()
     
     var mapController: MapController?
     var locationController = LocationController()
@@ -52,12 +50,9 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // TODO: add feature flagging for joystick
-        //joystick.delegate = self
-        //joystick.trackingHandler = self.joystickTrackingHandler()
-        
         if let mapView = mapView {
             mapController = MapController(locationController: locationController, mapView: mapView)
+            joystickController = JoystickController(joystick: joystick, joystickToken: joystickToken, container: self, mapView: mapView)
         }
     }
 
@@ -105,72 +100,6 @@ class MainViewController: UIViewController {
         self.hamburgerNavMode = false
         self.navLeftButtonHamburgerAndBack.image = UIImage(named: "BackArrow.png")
     }
-}
-
-// MARK: - JoyStick Delegate
-extension MainViewController: JoystickDelegate {
-    
-    func stickDidResetTo(center: CGPoint) {
-        self.updateDiskPosition(for: self.joystickToken, toJoystick: self.joystick, atStickCenter: center)
-        UIView.animate(withDuration: 0.25) {
-            self.view.layoutIfNeeded()
-        }
-    }
-    
-    /// 🕹🕹🕹
-    func joystickTrackingHandler() -> ((CDJoystickData) -> Void)? {
-        return { joystickData in
-            
-            // Joystick Modes: stationary-disk or moving-disk. Comment in below for moving disk.
-            self.updateDiskPosition(for: self.joystickToken, toJoystick: self.joystick, atStickCenter: joystickData.stickCenter)
-            
-            // Map's position
-            let nextCenter = self.joystickMapCoordinator.nextMapCenterPosition(mapView: self.mapView!, mapParentView: self.view, joystickDelta: joystickData.velocity)
-            self.mapCam.centerCoordinate = nextCenter
-            
-            // Add/Update curved Polyline (polyline test code)
-//            let LAX = CLLocation(latitude: 33.9424955, longitude: -118.4080684)
-//            let JFK = CLLocation(latitude: self.mapCam.centerCoordinate.latitude, longitude: self.mapCam.centerCoordinate.longitude)
-//            var coordinates = [LAX.coordinate, JFK.coordinate]
-//            self.joystickMapCoordinator.updatePolylineWithCoordinates(coordinates: coordinates)
-            
-            // Map's altitude
-            var nextAltitude: CLLocationDistance = 0.0
-            if self.joystickMapCoordinator.isForceTouchMode {
-                nextAltitude = self.joystickMapCoordinator.altitudeForForceTouch(joystick: self.joystick, stickCenter: joystickData.stickCenter, force: joystickData.force)
-            } else {
-                //nextAltitude = self.joystickMapCoordinator.altitudeForPixelExponential(joystick: self.joystick, stickCenter: joystickData.stickCenter)
-                
-                nextAltitude = self.joystickMapCoordinator.altitudeForPixelExponentialAndMAASmoothing(joystick: self.joystick, stickCenter: joystickData.stickCenter)
-            }
-            self.mapCam.altitude = nextAltitude
-            
-            // Map's viewing pitch
-            //self.mapCam.pitch = 60.0
-            
-            self.mapView!.setCamera(self.mapCam, withDuration: 0, animationTimingFunction: CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut))
-        }
-    }
-    
-    // MARK: Joystick
-    
-    /// Keeps the disk/token image centered on the virtual joystick center
-    private func updateDiskPosition(for tokenView: UIView, toJoystick: UIView, atStickCenter: CGPoint) {
-        let centerX = ((toJoystick.frame.origin.x + atStickCenter.x))
-        let centerY = ((toJoystick.frame.origin.y + atStickCenter.y))
-        tokenView.center = CGPoint(x: centerX, y: centerY )
-    }
-    
-    
-    /* TODO: Consider the following:
-     - implement dead zone (of perhaps 10-20 pixels) at center of joystickTokenDisk
-     - center the joystick/deadzone on initial touch from initial touch point; ie., don't jump the stick to initial touch point.
-     - reset joystick and animate/transition appropriately on release of stick
-     - fly to certain view of flight leg once destination is set/selected
-     - implement arced/curved polyline or core graphics curved line extending from origin out and above map across and to destination
-     - implement modes and a dev menu for playing with modes: Stationary-disk On/Off, gyro-compass-directed-map On/Off, force-touch On/Off, Joystick On/Off ...
-     - gyro-compass directed mode would use gyro and compass to interact with map; the user to see flat map will hold the phone flat, the compass orientation will orient the map according to the current compass heading; bringing the phone in more of a vertical position will tilt the map accordingly. The experience would be akin to the interaction you might have in an actual room with a map in real life.
-     */
 }
 
 
