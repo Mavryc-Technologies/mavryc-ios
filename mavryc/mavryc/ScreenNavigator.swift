@@ -11,6 +11,7 @@ import UIKit
 protocol ScreenNavigable {
     func screenNavigator(_ screenNavigator: ScreenNavigator, backButtonWasPressed: Bool)
     func screenNavigatorIsScreenVisible(_ screenNavigator: ScreenNavigator) -> Bool?
+    func screenNavigatorRefreshCurrentScreen()
 }
 
 enum Screen {
@@ -58,6 +59,10 @@ class ScreenNavigator {
     
     public func registerPanelController(panelController: ScreenNavigable) {
         self.panelController = panelController
+    }
+    
+    public func refreshCurrentScreen() {
+        self.panelController?.screenNavigatorRefreshCurrentScreen()
     }
     
     // MARK: - Navigation Control

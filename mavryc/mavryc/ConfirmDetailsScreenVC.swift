@@ -106,11 +106,11 @@ class ConfirmDetailsScreenVC: UIViewController {
 
 extension ConfirmDetailsScreenVC: ScreenNavigable {
     
-    func screenNavigator(_ screenNavigator: ScreenNavigator, backButtonWasPressed: Bool) {
-        
-    }
+    func screenNavigator(_ screenNavigator: ScreenNavigator, backButtonWasPressed: Bool) {}
     
     func screenNavigatorIsScreenVisible(_ screenNavigator: ScreenNavigator) -> Bool? {
         return nil
     }
+    
+    func screenNavigatorRefreshCurrentScreen() {}
 }

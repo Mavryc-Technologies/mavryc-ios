@@ -509,7 +509,7 @@
                                                         <rect key="frame" x="49" y="0.0" width="251" height="48"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25 June 2017" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Poc-p4-48q">
-                                                                <rect key="frame" x="20" y="19" width="223" height="14.5"/>
+                                                                <rect key="frame" x="20" y="18.5" width="223" height="14.5"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="223" id="fjq-KO-kFX"/>
                                                                 </constraints>
@@ -825,10 +825,10 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="vF6-RB-7Te" firstAttribute="bottom" secondItem="hE7-Nu-CJ7" secondAttribute="bottom" constant="-20" id="5gk-2C-YQq"/>
                             <constraint firstAttribute="trailing" secondItem="hE7-Nu-CJ7" secondAttribute="trailing" id="7Ee-lD-CJL"/>
                             <constraint firstItem="eNJ-dq-KAF" firstAttribute="top" secondItem="hE7-Nu-CJ7" secondAttribute="bottom" id="Hey-vf-2aI"/>
                             <constraint firstItem="hE7-Nu-CJ7" firstAttribute="leading" secondItem="NMH-gh-H7R" secondAttribute="leading" id="N37-IJ-7BR"/>
-                            <constraint firstItem="eNJ-dq-KAF" firstAttribute="top" secondItem="vF6-RB-7Te" secondAttribute="bottom" constant="20" id="l5H-Nn-LOL"/>
                             <constraint firstItem="vF6-RB-7Te" firstAttribute="centerX" secondItem="NMH-gh-H7R" secondAttribute="centerX" id="llE-KD-I5u"/>
                             <constraint firstItem="hE7-Nu-CJ7" firstAttribute="top" secondItem="mx4-Dm-B4h" secondAttribute="bottom" id="sek-7h-0lE"/>
                         </constraints>
@@ -837,7 +837,7 @@
                     <connections>
                         <outlet property="backgroundImageView" destination="hE7-Nu-CJ7" id="XNk-DX-6cw"/>
                         <outlet property="nextButton" destination="vF6-RB-7Te" id="kdB-bM-CxE"/>
-                        <outlet property="nextButtonBottomVerticalSpaceConstraint" destination="l5H-Nn-LOL" id="O8H-DO-6RG"/>
+                        <outlet property="nextButtonBottomVerticalSpaceConstraint" destination="5gk-2C-YQq" id="ntE-jv-ur8"/>
                         <outlet property="tableView" destination="cPM-ps-Ob4" id="MZS-eP-IaK"/>
                     </connections>
                 </viewController>

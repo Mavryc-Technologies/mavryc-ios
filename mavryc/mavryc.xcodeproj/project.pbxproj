@@ -23,8 +23,9 @@
 		96395F311EF48D230094923F /* MapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96395F301EF48D230094923F /* MapController.swift */; };
 		96395F331EF5B58E0094923F /* JoystickController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96395F321EF5B58E0094923F /* JoystickController.swift */; };
 		96395F371EF5DA310094923F /* FeatureFlag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96395F361EF5DA310094923F /* FeatureFlag.swift */; };
-		964629C81EF89C1800CAA16E /* TransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964629C71EF89C1800CAA16E /* TransitionAnimator.swift */; };
+		964629C81EF89C1800CAA16E /* RightToLeftScreenAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964629C71EF89C1800CAA16E /* RightToLeftScreenAnimator.swift */; };
 		964629CA1EF89C8B00CAA16E /* NavigationControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964629C91EF89C8A00CAA16E /* NavigationControllerDelegate.swift */; };
+		964629CC1EF9B48600CAA16E /* LeftToRightScreenAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964629CB1EF9B48600CAA16E /* LeftToRightScreenAnimator.swift */; };
 		9666A4561E95A9D000CA822F /* FetchFlightsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9666A4551E95A9D000CA822F /* FetchFlightsClient.swift */; };
 		967FF6261E9446BF007B56C6 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967FF6251E9446BF007B56C6 /* Networking.swift */; };
 		967FF6291E945796007B56C6 /* FetchUserClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967FF6281E945796007B56C6 /* FetchUserClient.swift */; };
@@ -108,8 +109,9 @@
 		96395F301EF48D230094923F /* MapController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapController.swift; sourceTree = "<group>"; };
 		96395F321EF5B58E0094923F /* JoystickController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoystickController.swift; sourceTree = "<group>"; };
 		96395F361EF5DA310094923F /* FeatureFlag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureFlag.swift; sourceTree = "<group>"; };
-		964629C71EF89C1800CAA16E /* TransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionAnimator.swift; sourceTree = "<group>"; };
+		964629C71EF89C1800CAA16E /* RightToLeftScreenAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightToLeftScreenAnimator.swift; sourceTree = "<group>"; };
 		964629C91EF89C8A00CAA16E /* NavigationControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationControllerDelegate.swift; sourceTree = "<group>"; };
+		964629CB1EF9B48600CAA16E /* LeftToRightScreenAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftToRightScreenAnimator.swift; sourceTree = "<group>"; };
 		9666A4551E95A9D000CA822F /* FetchFlightsClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchFlightsClient.swift; sourceTree = "<group>"; };
 		967FF6251E9446BF007B56C6 /* Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		967FF6281E945796007B56C6 /* FetchUserClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchUserClient.swift; sourceTree = "<group>"; };
@@ -245,8 +247,9 @@
 				96395F2A1EF33D250094923F /* ScreenNavigator.swift */,
 				96F2FCB11E92DF1F00C51674 /* main screen */,
 				960B50E21EC634B9002B1432 /* panel screens */,
-				964629C71EF89C1800CAA16E /* TransitionAnimator.swift */,
 				964629C91EF89C8A00CAA16E /* NavigationControllerDelegate.swift */,
+				964629C71EF89C1800CAA16E /* RightToLeftScreenAnimator.swift */,
+				964629CB1EF9B48600CAA16E /* LeftToRightScreenAnimator.swift */,
 			);
 			name = screens;
 			sourceTree = "<group>";
@@ -789,12 +792,13 @@
 				96CE58F61EE8FBAF00073BD5 /* StyledButton.swift in Sources */,
 				96A32C211E98158D00DA7DC1 /* SignupDTO.swift in Sources */,
 				96CB0A441EE5DB42004ADEA0 /* PaxPicker.swift in Sources */,
-				964629C81EF89C1800CAA16E /* TransitionAnimator.swift in Sources */,
+				964629C81EF89C1800CAA16E /* RightToLeftScreenAnimator.swift in Sources */,
 				9666A4561E95A9D000CA822F /* FetchFlightsClient.swift in Sources */,
 				96B1F2CD1EEA142C00EB5F4A /* AirportLocation.swift in Sources */,
 				967FF6291E945796007B56C6 /* FetchUserClient.swift in Sources */,
 				23B819CA1EB19198006017FC /* LoginClient.swift in Sources */,
 				96AD3BC41EF87B0100004236 /* CustomSegue.swift in Sources */,
+				964629CC1EF9B48600CAA16E /* LeftToRightScreenAnimator.swift in Sources */,
 				96F2FC9B1E92D6FE00C51674 /* AppStyle.swift in Sources */,
 				96F2FC981E92D29600C51674 /* SafeLog.swift in Sources */,
 				96DA42371EA7FD670036C227 /* Flight.swift in Sources */,

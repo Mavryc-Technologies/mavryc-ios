@@ -365,5 +365,8 @@ extension JourneyDetailsVC: ScreenNavigable {
     func screenNavigatorIsScreenVisible(_ screenNavigator: ScreenNavigator) -> Bool? {
         return nil
     }
+    
+    func screenNavigatorRefreshCurrentScreen() {
+    }
 }
 

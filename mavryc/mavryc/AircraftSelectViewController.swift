@@ -27,11 +27,11 @@ class AircraftSelectViewController: UIViewController, UITableViewDelegate, UITab
         }
     }
     
-    var nextButtonBottomSpaceOriginal: CGFloat = 20.0
+    var nextButtonBottomSpaceOriginal: CGFloat = -20.0
     var nextButtonBottomSpaceRetracted: CGFloat = -80.0
     @IBOutlet weak var nextButtonBottomVerticalSpaceConstraint: NSLayoutConstraint! {
         didSet {
-            self.nextButtonBottomSpaceOriginal = nextButtonBottomVerticalSpaceConstraint.constant
+            //self.nextButtonBottomSpaceOriginal = nextButtonBottomVerticalSpaceConstraint.constant
         }
     }
     
@@ -51,7 +51,6 @@ class AircraftSelectViewController: UIViewController, UITableViewDelegate, UITab
         super.viewDidLoad()
         
         ScreenNavigator.sharedInstance.registerScreen(screen: self, asScreen: .aircraftSelection)
-        
         tableView.register(UINib(nibName: "AircraftSelectCell", bundle: Bundle.main), forCellReuseIdentifier: "cell")
     }
     
@@ -59,19 +58,14 @@ class AircraftSelectViewController: UIViewController, UITableViewDelegate, UITab
         super.viewDidAppear(animated)
         
         ScreenNavigator.sharedInstance.currentPanelScreen = .aircraftSelection
-
-        self.nextButtonBottomVerticalSpaceConstraint.constant = self.nextButtonBottomSpaceOriginal
-        self.nextButton.alpha = 1.0
-        self.view.layoutIfNeeded()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
-        self.nextButton.alpha = 0.0
-        self.nextButtonBottomVerticalSpaceConstraint.constant = self.nextButtonBottomSpaceRetracted
-        self.view.layoutIfNeeded()
+        self.nextButtonBottomVerticalSpaceConstraint.constant = nextButtonBottomSpaceRetracted
     }
+    
     
     // MARK: - Table view data source
     
@@ -177,5 +171,9 @@ extension AircraftSelectViewController: ScreenNavigable {
     
     func screenNavigatorIsScreenVisible(_ screenNavigator: ScreenNavigator) -> Bool? {
         return nil
+    }
+    
+    func screenNavigatorRefreshCurrentScreen() {
+        
     }
 }
