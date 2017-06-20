@@ -23,6 +23,8 @@
 		96395F311EF48D230094923F /* MapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96395F301EF48D230094923F /* MapController.swift */; };
 		96395F331EF5B58E0094923F /* JoystickController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96395F321EF5B58E0094923F /* JoystickController.swift */; };
 		96395F371EF5DA310094923F /* FeatureFlag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96395F361EF5DA310094923F /* FeatureFlag.swift */; };
+		964629C81EF89C1800CAA16E /* TransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964629C71EF89C1800CAA16E /* TransitionAnimator.swift */; };
+		964629CA1EF89C8B00CAA16E /* NavigationControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964629C91EF89C8A00CAA16E /* NavigationControllerDelegate.swift */; };
 		9666A4561E95A9D000CA822F /* FetchFlightsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9666A4551E95A9D000CA822F /* FetchFlightsClient.swift */; };
 		967FF6261E9446BF007B56C6 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967FF6251E9446BF007B56C6 /* Networking.swift */; };
 		967FF6291E945796007B56C6 /* FetchUserClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967FF6281E945796007B56C6 /* FetchUserClient.swift */; };
@@ -33,6 +35,7 @@
 		96A32C1F1E98153300DA7DC1 /* SignupClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A32C1E1E98153300DA7DC1 /* SignupClient.swift */; };
 		96A32C211E98158D00DA7DC1 /* SignupDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A32C201E98158D00DA7DC1 /* SignupDTO.swift */; };
 		96A758B41EE0CAB500F58A4F /* AirportSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A758B31EE0CAB500F58A4F /* AirportSearchTableViewController.swift */; };
+		96AD3BC41EF87B0100004236 /* CustomSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AD3BC31EF87B0100004236 /* CustomSegue.swift */; };
 		96B063D81ED3A4B7006151E5 /* JoystickMapCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B063D71ED3A4B7006151E5 /* JoystickMapCoordinator.swift */; };
 		96B1F2CB1EEA0CB500EB5F4A /* Airports.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B1F2CA1EEA0CB500EB5F4A /* Airports.swift */; };
 		96B1F2CD1EEA142C00EB5F4A /* AirportLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B1F2CC1EEA142C00EB5F4A /* AirportLocation.swift */; };
@@ -105,6 +108,8 @@
 		96395F301EF48D230094923F /* MapController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapController.swift; sourceTree = "<group>"; };
 		96395F321EF5B58E0094923F /* JoystickController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoystickController.swift; sourceTree = "<group>"; };
 		96395F361EF5DA310094923F /* FeatureFlag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureFlag.swift; sourceTree = "<group>"; };
+		964629C71EF89C1800CAA16E /* TransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionAnimator.swift; sourceTree = "<group>"; };
+		964629C91EF89C8A00CAA16E /* NavigationControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationControllerDelegate.swift; sourceTree = "<group>"; };
 		9666A4551E95A9D000CA822F /* FetchFlightsClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchFlightsClient.swift; sourceTree = "<group>"; };
 		967FF6251E9446BF007B56C6 /* Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		967FF6281E945796007B56C6 /* FetchUserClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchUserClient.swift; sourceTree = "<group>"; };
@@ -115,6 +120,7 @@
 		96A32C1E1E98153300DA7DC1 /* SignupClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupClient.swift; sourceTree = "<group>"; };
 		96A32C201E98158D00DA7DC1 /* SignupDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupDTO.swift; sourceTree = "<group>"; };
 		96A758B31EE0CAB500F58A4F /* AirportSearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirportSearchTableViewController.swift; sourceTree = "<group>"; };
+		96AD3BC31EF87B0100004236 /* CustomSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSegue.swift; sourceTree = "<group>"; };
 		96B063D71ED3A4B7006151E5 /* JoystickMapCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoystickMapCoordinator.swift; sourceTree = "<group>"; };
 		96B1F2CA1EEA0CB500EB5F4A /* Airports.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Airports.swift; sourceTree = "<group>"; };
 		96B1F2CC1EEA142C00EB5F4A /* AirportLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirportLocation.swift; sourceTree = "<group>"; };
@@ -207,6 +213,7 @@
 				962E88DA1EE9A822003DECBF /* screen - journey details */,
 				96CE58F21EE8A38100073BD5 /* screen - aircraft select */,
 				969EF1C01EEB68CA00A4E6B1 /* screen - confirm */,
+				96AD3BC31EF87B0100004236 /* CustomSegue.swift */,
 			);
 			name = "panel screens";
 			sourceTree = "<group>";
@@ -238,6 +245,8 @@
 				96395F2A1EF33D250094923F /* ScreenNavigator.swift */,
 				96F2FCB11E92DF1F00C51674 /* main screen */,
 				960B50E21EC634B9002B1432 /* panel screens */,
+				964629C71EF89C1800CAA16E /* TransitionAnimator.swift */,
+				964629C91EF89C8A00CAA16E /* NavigationControllerDelegate.swift */,
 			);
 			name = screens;
 			sourceTree = "<group>";
@@ -780,15 +789,18 @@
 				96CE58F61EE8FBAF00073BD5 /* StyledButton.swift in Sources */,
 				96A32C211E98158D00DA7DC1 /* SignupDTO.swift in Sources */,
 				96CB0A441EE5DB42004ADEA0 /* PaxPicker.swift in Sources */,
+				964629C81EF89C1800CAA16E /* TransitionAnimator.swift in Sources */,
 				9666A4561E95A9D000CA822F /* FetchFlightsClient.swift in Sources */,
 				96B1F2CD1EEA142C00EB5F4A /* AirportLocation.swift in Sources */,
 				967FF6291E945796007B56C6 /* FetchUserClient.swift in Sources */,
 				23B819CA1EB19198006017FC /* LoginClient.swift in Sources */,
+				96AD3BC41EF87B0100004236 /* CustomSegue.swift in Sources */,
 				96F2FC9B1E92D6FE00C51674 /* AppStyle.swift in Sources */,
 				96F2FC981E92D29600C51674 /* SafeLog.swift in Sources */,
 				96DA42371EA7FD670036C227 /* Flight.swift in Sources */,
 				96395F371EF5DA310094923F /* FeatureFlag.swift in Sources */,
 				96F2FC9E1E92D8CC00C51674 /* AppState.swift in Sources */,
+				964629CA1EF89C8B00CAA16E /* NavigationControllerDelegate.swift in Sources */,
 				96395F2F1EF472B80094923F /* LocationController.swift in Sources */,
 				96CE58F01EE8A12900073BD5 /* AircraftSelectCell.swift in Sources */,
 				96F2FCAF1E92DF0D00C51674 /* OnboardingViewController.swift in Sources */,

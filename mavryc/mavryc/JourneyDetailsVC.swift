@@ -87,8 +87,6 @@ class JourneyDetailsVC: UIViewController {
     
     @IBOutlet weak var departureIconImageView: UIImageView!
     
-    //var delegate: JourneyDelegate? = nil
-    
     // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -235,28 +233,11 @@ class JourneyDetailsVC: UIViewController {
             let tvc = segue.destination as? AirportSearchTableViewController
             tvc?.listDelegate = self
             self.destinationSearchList = tvc
-        }
-        if segue.identifier == "DepartureSearchListSegue" {
+        } else if segue.identifier == "DepartureSearchListSegue" {
             let tvc = segue.destination as? AirportSearchTableViewController
             tvc?.listDelegate = self
             self.departureSearchList = tvc
         }
-    }
-
-    // MARK: - View model
-    func reloadForViewModel() { // TODO: add param for viewmodel to be passed in
-        
-        // TODO:
-        // udpate the view model with the passed view model
-        // update the various ui components based on the view model
-        /*
-         - set arrival text field
-         - set departure text field
-         - update search controls based on state
-         - update time control
-         - update pax control
-         - update date control
-         */
     }
 }
 

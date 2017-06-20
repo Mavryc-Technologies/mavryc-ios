@@ -509,7 +509,7 @@
                                                         <rect key="frame" x="49" y="0.0" width="251" height="48"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25 June 2017" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Poc-p4-48q">
-                                                                <rect key="frame" x="20" y="19" width="223" height="14"/>
+                                                                <rect key="frame" x="20" y="19" width="223" height="14.5"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="223" id="fjq-KO-kFX"/>
                                                                 </constraints>
@@ -837,6 +837,7 @@
                     <connections>
                         <outlet property="backgroundImageView" destination="hE7-Nu-CJ7" id="XNk-DX-6cw"/>
                         <outlet property="nextButton" destination="vF6-RB-7Te" id="kdB-bM-CxE"/>
+                        <outlet property="nextButtonBottomVerticalSpaceConstraint" destination="l5H-Nn-LOL" id="O8H-DO-6RG"/>
                         <outlet property="tableView" destination="cPM-ps-Ob4" id="MZS-eP-IaK"/>
                     </connections>
                 </viewController>
@@ -1074,9 +1075,11 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="NextButton" destination="YbE-JY-s3t" id="iUO-Tb-8Zv"/>
                         <outlet property="aircraftServiceSelectedTitle" destination="5aw-pL-iBI" id="lGz-Pj-s3f"/>
                         <outlet property="applePayBottomVerticalSpace" destination="6Ql-PB-yG4" id="aQC-mq-8pT"/>
                         <outlet property="bgView" destination="WvS-SZ-XGt" id="RHX-no-1Jn"/>
+                        <outlet property="nextButtonBottomVerticalSpaceConstraint" destination="0zu-d5-hjt" id="ELF-He-RoA"/>
                         <outlet property="screenTitle" destination="W4Z-Jn-cto" id="5KF-4h-E48"/>
                         <outlet property="totalAmountLabel" destination="XaM-Q2-KBC" id="s9O-Ri-bxt"/>
                         <outlet property="tripSectionTitle" destination="sbM-th-VbJ" id="2Gr-Am-CYo"/>
@@ -1105,10 +1108,12 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
+                        <outlet property="delegate" destination="tFW-kf-9ke" id="EW4-Lc-aT9"/>
                         <segue destination="ELB-y0-PzL" kind="relationship" relationship="rootViewController" id="dcZ-Db-nKc"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t64-I1-Hni" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="tFW-kf-9ke" customClass="NavigationControllerDelegate" customModule="mavryc" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="1489" y="-62"/>
         </scene>
