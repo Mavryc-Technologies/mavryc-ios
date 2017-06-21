@@ -54,10 +54,13 @@ class AircraftSelectViewController: UIViewController, UITableViewDelegate, UITab
         tableView.register(UINib(nibName: "AircraftSelectCell", bundle: Bundle.main), forCellReuseIdentifier: "cell")
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        ScreenNavigator.sharedInstance.currentPanelScreen = .aircraftSelection
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        ScreenNavigator.sharedInstance.currentPanelScreen = .aircraftSelection
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -173,7 +176,6 @@ extension AircraftSelectViewController: ScreenNavigable {
         return nil
     }
     
-    func screenNavigatorRefreshCurrentScreen() {
-        
+    func screenNavigatorRefreshCurrentScreen(_ screenNavigator: ScreenNavigator) {
     }
 }

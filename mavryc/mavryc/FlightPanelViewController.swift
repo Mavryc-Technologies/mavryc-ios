@@ -32,8 +32,12 @@ class FlightPanelViewController: UIViewController, UIGestureRecognizerDelegate {
     
     @IBOutlet weak var fxBGView: UIVisualEffectView!
     
-    @IBOutlet weak var panelButton: UIButton!
+    @IBOutlet weak var panelButton: UIButton! // contains chevron images
+    
     @IBOutlet weak var panelTopBorder: UIView!
+    
+    @IBOutlet weak var panelTitleLabel: UILabel!
+    
     
     var delegate: PanelDelegate?
     
@@ -170,9 +174,9 @@ extension FlightPanelViewController: ScreenNavigable {
         return self.isOpen
     }
     
-    func screenNavigatorRefreshCurrentScreen() {
-        //guard let delegate = delegate else { return }
-        //let panelHeightConstraint = delegate.panelLayoutConstraintToUpdate()
-        //panelHeightConstraint.constant = panelHeightConstraint.constant + 1
+    func screenNavigatorRefreshCurrentScreen(_ screenNavigator: ScreenNavigator) {
+        let screen = screenNavigator.currentPanelScreen
+        self.panelButton.isHidden = !screen.shouldShowChevron()
+        self.panelTitleLabel.text = screen.panelTitle()
     }
 }

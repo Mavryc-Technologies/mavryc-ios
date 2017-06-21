@@ -113,12 +113,12 @@ class JourneyDetailsVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         // setup based on current screen state
+        super.viewWillAppear(animated)
+        ScreenNavigator.sharedInstance.currentPanelScreen = .journey
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        ScreenNavigator.sharedInstance.currentPanelScreen = .journey
     }
     
     // MARK: - Notification Handlers
@@ -366,7 +366,7 @@ extension JourneyDetailsVC: ScreenNavigable {
         return nil
     }
     
-    func screenNavigatorRefreshCurrentScreen() {
+    func screenNavigatorRefreshCurrentScreen(_ screenNavigator: ScreenNavigator) {
     }
 }
 

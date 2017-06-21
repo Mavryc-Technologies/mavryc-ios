@@ -76,16 +76,13 @@ class ConfirmDetailsScreenVC: UIViewController {
         ScreenNavigator.sharedInstance.registerScreen(screen: self, asScreen: .confirmDetails)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        ScreenNavigator.sharedInstance.currentPanelScreen = .confirmDetails
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        ScreenNavigator.sharedInstance.currentPanelScreen = .confirmDetails
-        
-        self.nextButtonBottomVerticalSpaceConstraint.constant = self.nextButtonBottomSpaceOriginal
-        self.NextButton.alpha = 1.0
-        self.view.layoutIfNeeded()
-        self.view.layoutSubviews()
-        self.updateViewConstraints()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -112,5 +109,6 @@ extension ConfirmDetailsScreenVC: ScreenNavigable {
         return nil
     }
     
-    func screenNavigatorRefreshCurrentScreen() {}
+    func screenNavigatorRefreshCurrentScreen(_ screenNavigator: ScreenNavigator) {
+    }
 }

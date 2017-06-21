@@ -11,7 +11,7 @@ import UIKit
 protocol ScreenNavigable {
     func screenNavigator(_ screenNavigator: ScreenNavigator, backButtonWasPressed: Bool)
     func screenNavigatorIsScreenVisible(_ screenNavigator: ScreenNavigator) -> Bool?
-    func screenNavigatorRefreshCurrentScreen()
+    func screenNavigatorRefreshCurrentScreen(_ screenNavigator: ScreenNavigator)
 }
 
 enum Screen {
@@ -35,6 +35,32 @@ enum Screen {
         }
         return self
     }
+    
+    func panelTitle() -> String {
+        switch self {
+        case .retractedHome:
+            return "JOURNEY DETAILS"
+        case .journey:
+            return "JOURNEY DETAILS"
+        case .aircraftSelection:
+            return ""
+        case .confirmDetails:
+            return ""
+        }
+    }
+    
+    func shouldShowChevron() -> Bool {
+        switch self {
+        case .journey:
+            return true
+        case .aircraftSelection:
+            return false
+        case .confirmDetails:
+            return false
+        case .retractedHome:
+            return true
+        }
+    }
 }
 
 class ScreenNavigator {
@@ -42,6 +68,7 @@ class ScreenNavigator {
     public static let sharedInstance = ScreenNavigator()
     
     private init() {
+        self.currentPanelScreen = Screen.retractedHome
         setupNavigationControl()
     }
     
@@ -50,7 +77,11 @@ class ScreenNavigator {
     private var registeredScreens: [Screen:ScreenNavigable] = [:]
     
     /// Set the current screen here (to be used anytime a screen becomes active)
-    public var currentPanelScreen = Screen.retractedHome
+    public var currentPanelScreen: Screen {
+        didSet {
+            self.refreshCurrentScreen()
+        }
+    }
     
     /// Registers a screen and associates its given type
     public func registerScreen(screen: ScreenNavigable, asScreen: Screen) {
@@ -62,7 +93,7 @@ class ScreenNavigator {
     }
     
     public func refreshCurrentScreen() {
-        self.panelController?.screenNavigatorRefreshCurrentScreen()
+        self.panelController?.screenNavigatorRefreshCurrentScreen(self)
     }
     
     // MARK: - Navigation Control

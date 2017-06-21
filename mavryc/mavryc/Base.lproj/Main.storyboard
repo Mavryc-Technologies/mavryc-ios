@@ -341,6 +341,7 @@
                     <connections>
                         <outlet property="fxBGView" destination="P2i-dY-muD" id="sYd-iS-iJf"/>
                         <outlet property="panelButton" destination="s0z-Kr-ev6" id="GCo-0B-IMM"/>
+                        <outlet property="panelTitleLabel" destination="MaC-Sf-4F5" id="xky-Ui-kAE"/>
                         <outlet property="panelTopBorder" destination="CV2-53-iz2" id="i4L-c5-Fsr"/>
                     </connections>
                 </viewController>
@@ -509,7 +510,7 @@
                                                         <rect key="frame" x="49" y="0.0" width="251" height="48"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25 June 2017" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Poc-p4-48q">
-                                                                <rect key="frame" x="20" y="18.5" width="223" height="14.5"/>
+                                                                <rect key="frame" x="20" y="19" width="223" height="14.5"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="223" id="fjq-KO-kFX"/>
                                                                 </constraints>
