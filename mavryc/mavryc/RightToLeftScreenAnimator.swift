@@ -79,11 +79,6 @@ class RightToLeftScreenAnimator: NSObject, UIViewControllerAnimatedTransitioning
                 canvas.removeFromSuperview()
                 transitionContext.completeTransition(true)
             })
-        
-        
-        
-        
-        
     }
 }
 

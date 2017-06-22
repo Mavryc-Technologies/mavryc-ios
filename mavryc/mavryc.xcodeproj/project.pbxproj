@@ -244,12 +244,10 @@
 		962E88D91EE9A7A8003DECBF /* screens */ = {
 			isa = PBXGroup;
 			children = (
+				966CFC0B1EFB2C950045FF34 /* transition animations */,
 				96395F2A1EF33D250094923F /* ScreenNavigator.swift */,
 				96F2FCB11E92DF1F00C51674 /* main screen */,
 				960B50E21EC634B9002B1432 /* panel screens */,
-				964629C91EF89C8A00CAA16E /* NavigationControllerDelegate.swift */,
-				964629C71EF89C1800CAA16E /* RightToLeftScreenAnimator.swift */,
-				964629CB1EF9B48600CAA16E /* LeftToRightScreenAnimator.swift */,
 			);
 			name = screens;
 			sourceTree = "<group>";
@@ -280,6 +278,16 @@
 				962EE1161EBBBA5B00797CD9 /* mapbox */,
 			);
 			name = map;
+			sourceTree = "<group>";
+		};
+		966CFC0B1EFB2C950045FF34 /* transition animations */ = {
+			isa = PBXGroup;
+			children = (
+				964629C91EF89C8A00CAA16E /* NavigationControllerDelegate.swift */,
+				964629C71EF89C1800CAA16E /* RightToLeftScreenAnimator.swift */,
+				964629CB1EF9B48600CAA16E /* LeftToRightScreenAnimator.swift */,
+			);
+			name = "transition animations";
 			sourceTree = "<group>";
 		};
 		967FF6271E945768007B56C6 /* clients */ = {
