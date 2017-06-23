@@ -25,8 +25,6 @@ class AirportSearchTableViewController: UITableViewController {
     
     public var listDelegate: AirportSearchListDelegate? = nil
     
-//    public var isListVisible = false
-    
     // MARK: - Datasource support
     
     private var data: [Any] = []
@@ -47,7 +45,6 @@ class AirportSearchTableViewController: UITableViewController {
         super.viewDidLoad()
         
         self.tableView.separatorColor = AppStyle.airportSearchTableViewSeparatorColor
-
     }
     
     override func viewDidAppear(_ animated: Bool) {

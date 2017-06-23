@@ -200,6 +200,7 @@
                     </view>
                     <connections>
                         <outlet property="destinationSearchButton" destination="0IC-Vt-fGK" id="8sS-BX-8jN"/>
+                        <outlet property="destinationSearchTextField" destination="HER-Xj-oqm" id="s6s-6c-jUK"/>
                         <outlet property="joystick" destination="5mB-pa-23C" id="tqE-8v-IcN"/>
                         <outlet property="joystickToken" destination="cFN-Fj-6Dl" id="NxC-Hh-6kg"/>
                         <outlet property="navBar" destination="zdh-rz-3Oz" id="d33-WK-li5"/>

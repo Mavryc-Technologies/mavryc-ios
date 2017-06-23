@@ -43,7 +43,7 @@ enum Screen {
         case .journey:
             return "JOURNEY DETAILS"
         case .aircraftSelection:
-            return ""
+            return "JOURNEY DETAILS"
         case .confirmDetails:
             return ""
         }
@@ -54,7 +54,7 @@ enum Screen {
         case .journey:
             return true
         case .aircraftSelection:
-            return false
+            return true
         case .confirmDetails:
             return false
         case .retractedHome:
@@ -66,6 +66,9 @@ enum Screen {
 class ScreenNavigator {
     
     public static let sharedInstance = ScreenNavigator()
+    
+    /// stores state for destination/arrival search button
+    public static var destinationSearchButtonWasPressedState = false
     
     private init() {
         self.currentPanelScreen = Screen.retractedHome

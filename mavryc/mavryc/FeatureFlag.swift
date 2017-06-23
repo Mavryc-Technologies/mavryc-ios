@@ -19,13 +19,15 @@ enum FeatureFlag {
         
         switch self {
         case .joystickTrackedMapInteraction:
-            // TODO: implement some mechanism for storage and retrieval, probably UserDefaults or config file or both
-            // since we'd like to set this dynamically from either a web service, and/or the dev settings menu for runtime setting
+            // TODO: utilize AppStore like .googlePlaces feature flag below
             return false
             
         case .googlePlaces:
-            // TODO: implement added mechanism here for dynamic setting/getting of this
-            return true
+            if let isEnabled = AppState.StateLookup.googlePlaces(flag: nil).fetch() as? Bool {
+                return isEnabled
+            } else {
+                return true // default if not set elsewhere
+            }
             
         default:
             return true

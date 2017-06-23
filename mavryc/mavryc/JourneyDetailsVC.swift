@@ -138,7 +138,8 @@ class JourneyDetailsVC: UIViewController {
                     //flight.departureCity = placemark.subLocality
                     guard let city = placemark.locality else { return }
                     guard let state = placemark.administrativeArea else { return }
-                    let cityState = "\(city), \(state)"
+                    guard let country = placemark.country else { return }
+                    let cityState = "\(city), \(state), \(country)"
                     if let trip = TripCoordinator.sharedInstance.currentTripInPlanning {
                         print("updating user location, and found current trip-in-planning")
                         trip.flights[0].departureString = cityState
@@ -148,6 +149,7 @@ class JourneyDetailsVC: UIViewController {
                         flight.departureString = cityState
                         trip.flights.append(flight)
                         self.departureSearchTextField.text = cityState
+                        TripCoordinator.sharedInstance.currentTripInPlanning = trip
                     }
                 }
             }
@@ -173,6 +175,10 @@ class JourneyDetailsVC: UIViewController {
         // was destinationSearch tapped
         // if so, open dest search list
         // reset flag
+        if ScreenNavigator.destinationSearchButtonWasPressedState {
+            //self.triggerArrivalList()
+            arrivalSearchTextField.becomeFirstResponder()
+        }
     }
     
     @objc private func panelWillClose() {
@@ -218,11 +224,17 @@ class JourneyDetailsVC: UIViewController {
 
     func triggerArrivalList() {
         UIView.animate(withDuration: 0.25) {
-            if self.arrivalTableViewHeightConstraint.constant == 0 {
+            if ScreenNavigator.destinationSearchButtonWasPressedState {
+                ScreenNavigator.destinationSearchButtonWasPressedState = false
                 self.arrivalTableViewHeightConstraint.constant = 600
                 self.departureTableViewHeightConstraint.constant = 0
             } else {
-                self.arrivalTableViewHeightConstraint.constant = 0
+                if self.arrivalTableViewHeightConstraint.constant == 0 {
+                    self.arrivalTableViewHeightConstraint.constant = 600
+                    self.departureTableViewHeightConstraint.constant = 0
+                } else {
+                    self.arrivalTableViewHeightConstraint.constant = 0
+                }
             }
             self.view.layoutIfNeeded()
         }
@@ -281,12 +293,14 @@ extension JourneyDetailsVC: AirportSearchListDelegate {
         if self.arrivalSearchTextField.isFirstResponder {
             arrivalSearchTextField.text = airportName
             // TODO: update trip data model for arrival airport
+            TripCoordinator.sharedInstance.currentTripInPlanning?.flights[0].arrivalString = airportName
             updateSearchControlUIForState(control: arrivalSearchTextField)
             
         } else if self.departureSearchTextField.isFirstResponder {
             departureSearchTextField.text = airportName
             updateSearchControlUIForState(control: departureSearchTextField)
             // TODO: update trip data model for departure airport
+            TripCoordinator.sharedInstance.currentTripInPlanning?.flights[0].departureString = airportName
             
         } else {
             print("this shouldn't happen, if so, we have a bug")

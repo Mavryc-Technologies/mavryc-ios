@@ -21,11 +21,7 @@ class AircraftSelectViewController: UIViewController, UITableViewDelegate, UITab
         }
     }
     
-    @IBOutlet weak var backgroundImageView: UIImageView! {
-        didSet {
-            //backgroundImageView.image = AppState.tempBGImageForTransitionAnimationHack
-        }
-    }
+    @IBOutlet weak var backgroundImageView: UIImageView!
     
     var nextButtonBottomSpaceOriginal: CGFloat = -20.0
     var nextButtonBottomSpaceRetracted: CGFloat = -80.0
@@ -168,14 +164,11 @@ class AircraftSelectViewController: UIViewController, UITableViewDelegate, UITab
 
 extension AircraftSelectViewController: ScreenNavigable {
     
-    func screenNavigator(_ screenNavigator: ScreenNavigator, backButtonWasPressed: Bool) {
-        
-    }
+    func screenNavigator(_ screenNavigator: ScreenNavigator, backButtonWasPressed: Bool) {}
     
     func screenNavigatorIsScreenVisible(_ screenNavigator: ScreenNavigator) -> Bool? {
         return nil
     }
     
-    func screenNavigatorRefreshCurrentScreen(_ screenNavigator: ScreenNavigator) {
-    }
+    func screenNavigatorRefreshCurrentScreen(_ screenNavigator: ScreenNavigator) {}
 }

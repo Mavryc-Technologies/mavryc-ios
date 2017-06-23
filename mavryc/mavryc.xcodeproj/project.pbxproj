@@ -17,6 +17,7 @@
 		9606FD8B1EFC85260059AD47 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9606FD8A1EFC85260059AD47 /* Trip.swift */; };
 		9606FD8D1EFC89E50059AD47 /* TripCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9606FD8C1EFC89E50059AD47 /* TripCoordinator.swift */; };
 		9606FD8F1EFCA39C0059AD47 /* FlightInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9606FD8E1EFCA39C0059AD47 /* FlightInfo.swift */; };
+		9606FD9B1EFDBD760059AD47 /* tap5.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9606FD9A1EFDBD760059AD47 /* tap5.wav */; };
 		960B50E41EC6392F002B1432 /* JourneyDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960B50E31EC6392F002B1432 /* JourneyDetailsVC.swift */; };
 		961E2AC21E985602000F2D64 /* FetchFlightsDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961E2AC11E985602000F2D64 /* FetchFlightsDTO.swift */; };
 		961E2AC71E985A20000F2D64 /* webServiceClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961E2AC61E985A20000F2D64 /* webServiceClientTests.swift */; };
@@ -34,7 +35,6 @@
 		9666A4561E95A9D000CA822F /* FetchFlightsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9666A4551E95A9D000CA822F /* FetchFlightsClient.swift */; };
 		967FF6261E9446BF007B56C6 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967FF6251E9446BF007B56C6 /* Networking.swift */; };
 		967FF6291E945796007B56C6 /* FetchUserClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967FF6281E945796007B56C6 /* FetchUserClient.swift */; };
-		969EF1BF1EEB294600A4E6B1 /* digi_plink_short.wav in Resources */ = {isa = PBXBuildFile; fileRef = 969EF1BE1EEB294500A4E6B1 /* digi_plink_short.wav */; };
 		96A32C181E96A30500DA7DC1 /* states-cities.json in Resources */ = {isa = PBXBuildFile; fileRef = 96A32C171E96A30500DA7DC1 /* states-cities.json */; };
 		96A32C1B1E96A36900DA7DC1 /* Cities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A32C1A1E96A36900DA7DC1 /* Cities.swift */; };
 		96A32C1D1E96D1EC00DA7DC1 /* AutoCompletionPredictable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A32C1C1E96D1EC00DA7DC1 /* AutoCompletionPredictable.swift */; };
@@ -108,6 +108,7 @@
 		9606FD8A1EFC85260059AD47 /* Trip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
 		9606FD8C1EFC89E50059AD47 /* TripCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripCoordinator.swift; sourceTree = "<group>"; };
 		9606FD8E1EFCA39C0059AD47 /* FlightInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlightInfo.swift; sourceTree = "<group>"; };
+		9606FD9A1EFDBD760059AD47 /* tap5.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tap5.wav; sourceTree = "<group>"; };
 		960B50E31EC6392F002B1432 /* JourneyDetailsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JourneyDetailsVC.swift; sourceTree = "<group>"; };
 		961E2AC11E985602000F2D64 /* FetchFlightsDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchFlightsDTO.swift; sourceTree = "<group>"; };
 		961E2AC61E985A20000F2D64 /* webServiceClientTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = webServiceClientTests.swift; sourceTree = "<group>"; };
@@ -125,7 +126,6 @@
 		9666A4551E95A9D000CA822F /* FetchFlightsClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchFlightsClient.swift; sourceTree = "<group>"; };
 		967FF6251E9446BF007B56C6 /* Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		967FF6281E945796007B56C6 /* FetchUserClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchUserClient.swift; sourceTree = "<group>"; };
-		969EF1BE1EEB294500A4E6B1 /* digi_plink_short.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = digi_plink_short.wav; sourceTree = "<group>"; };
 		96A32C171E96A30500DA7DC1 /* states-cities.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "states-cities.json"; sourceTree = "<group>"; };
 		96A32C1A1E96A36900DA7DC1 /* Cities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cities.swift; sourceTree = "<group>"; };
 		96A32C1C1E96D1EC00DA7DC1 /* AutoCompletionPredictable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCompletionPredictable.swift; sourceTree = "<group>"; };
@@ -312,7 +312,7 @@
 		969EF1BD1EEB293300A4E6B1 /* sound */ = {
 			isa = PBXGroup;
 			children = (
-				969EF1BE1EEB294500A4E6B1 /* digi_plink_short.wav */,
+				9606FD9A1EFDBD760059AD47 /* tap5.wav */,
 			);
 			name = sound;
 			sourceTree = "<group>";
@@ -672,10 +672,10 @@
 				96DA35B31EC281C600D2A0BC /* skylar.xcassets in Resources */,
 				96F2FCAC1E92DEE300C51674 /* Onboarding.storyboard in Resources */,
 				96B1F2CF1EEA19A900EB5F4A /* airports.csv in Resources */,
+				9606FD9B1EFDBD760059AD47 /* tap5.wav in Resources */,
 				96DA35B51EC281E400D2A0BC /* Asap in Resources */,
 				962EE1181EBBBA7800797CD9 /* Mapbox.storyboard in Resources */,
 				96B1F2D11EEA294E00EB5F4A /* airports.sqlite3 in Resources */,
-				969EF1BF1EEB294600A4E6B1 /* digi_plink_short.wav in Resources */,
 				96CE58F11EE8A12900073BD5 /* AircraftSelectCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

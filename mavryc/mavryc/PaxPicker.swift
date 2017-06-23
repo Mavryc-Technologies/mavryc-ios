@@ -70,7 +70,7 @@ import AVFoundation
     }
     
     func soundPlayer() -> AVAudioPlayer? {
-        if let path = Bundle.main.path(forResource: "digi_plink_short", ofType:"wav") {
+        if let path = Bundle.main.path(forResource: "tap5", ofType:"wav") {
             let url = URL(fileURLWithPath: path)
             
             do {
@@ -131,15 +131,20 @@ import AVFoundation
             let x = gestureRecognizer.location(in: gestureRecognizer.view).x
             let percentTouchOverMaxPixels = x / filledBarsImageView.frame.width
             var numberOfBars = Int(percentTouchOverMaxPixels * 24)
+//            
+//            if previousPaxCount < numberOfBars || previousPaxCount > numberOfBars {
+//                self.triggerUIFeedback()
+//            }
             
-            if previousPaxCount < numberOfBars || previousPaxCount > numberOfBars {
-                self.triggerUIFeedback()
-            }
-            
+            let prev = previousPaxCount
             previousPaxCount = numberOfBars
             
             numberOfBars = max(numberOfBars, 1) // has to be 1 or more
             numberOfBars = min(numberOfBars, 24)  // has to be 24 or less
+            
+            if prev != numberOfBars && !(numberOfBars == 24 || numberOfBars == 1) {
+                self.triggerUIFeedback()
+            }
             
             PaxCountLabel.text = self.formattedIndicatorText(for: numberOfBars)
             

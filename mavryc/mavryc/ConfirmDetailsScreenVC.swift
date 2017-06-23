@@ -10,11 +10,7 @@ import UIKit
 
 class ConfirmDetailsScreenVC: UIViewController {
 
-    @IBOutlet weak var bgView: UIImageView! {
-        didSet {
-            //bgView.image = AppState.tempBGImageForTransitionAnimationHack
-        }
-    }
+    @IBOutlet weak var bgView: UIImageView!
     
     @IBOutlet weak var NextButton: StyledButton!
     

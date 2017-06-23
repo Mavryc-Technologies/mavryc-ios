@@ -29,6 +29,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var panelHeightConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var destinationSearchButton: UIView!
+    @IBOutlet weak var destinationSearchTextField: UITextField!
     
     // Joystick & Map
     @IBOutlet weak var joystick: CDJoystick!
@@ -55,7 +56,7 @@ class MainViewController: UIViewController {
             joystickController = JoystickController(joystick: joystick, joystickToken: joystickToken, container: self, mapView: mapView)
         }
     }
-
+    
     // MARK: Segues
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "JourneyPanelSegue" {
@@ -71,6 +72,7 @@ class MainViewController: UIViewController {
     
     // MARK: - Interface Actions
     @IBAction func destinationSearchButtonAction(_ sender: Any) {
+        ScreenNavigator.destinationSearchButtonWasPressedState = true
         self.panel?.triggerPanel(shouldOpen: true)
     }
     
@@ -109,6 +111,17 @@ extension MainViewController: PanelDelegate {
     func panelDidOpen() {
         SafeLog.print("panel opened")
         self.showBackButtonNav()
+    }
+    
+    func panelWillClose() {
+        if let arrivalCity = TripCoordinator.sharedInstance.currentTripInPlanning?.flights[0].arrivalString {
+            destinationSearchTextField.text = arrivalCity
+        }
+        if destinationSearchTextField.text != "Where To?" {
+            destinationSearchButton.isHidden = true
+        } else {
+            destinationSearchButton.isHidden = false
+        }
     }
     
     func panelDidClose() {

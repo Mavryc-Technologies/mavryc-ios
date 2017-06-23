@@ -15,6 +15,8 @@ protocol PanelDelegate {
     /// notify delegate when panel did close
     func panelDidClose()
     
+    func panelWillClose()
+    
     /// delegate provides desired height of panel in retracted state
     func panelRetractedHeight() -> CGFloat
     
@@ -54,18 +56,15 @@ class FlightPanelViewController: UIViewController, UIGestureRecognizerDelegate {
         self.panelButton.addGestureRecognizer(gesture)
         self.panelButton.isUserInteractionEnabled = true
         gesture.delegate = self
-        
-        
     }
     
-    func refreshCurrentPanelScreen() {
-        
-    }
+    func refreshCurrentPanelScreen() {}
     
     // MARK: - Panel Control
     
     /// Open panel and set to state
     public func triggerPanel(shouldOpen: Bool) {
+        
         self.activatePanel(open: shouldOpen)
     }
     
@@ -86,6 +85,7 @@ class FlightPanelViewController: UIViewController, UIGestureRecognizerDelegate {
         if open {
             NotificationCenter.default.post(name: Notification.Name.PanelScreen.WillOpen, object: self, userInfo:nil)
         } else {
+            delegate.panelWillClose()
             NotificationCenter.default.post(name: Notification.Name.PanelScreen.WillClose, object: self, userInfo:nil)
         }
         
@@ -105,10 +105,7 @@ class FlightPanelViewController: UIViewController, UIGestureRecognizerDelegate {
                     object: self,
                     userInfo: nil
                 )
-                
-                // kludgehack time TODO: replace the hack with real custom anim transitions for nice effect!
-                //AppState.tempBGImageForTransitionAnimationHack = self.fxBGView.takeSnapshot()
-                
+
             } else {
                 delegate.panelDidClose()
                 
@@ -149,7 +146,7 @@ class FlightPanelViewController: UIViewController, UIGestureRecognizerDelegate {
             lastPanIncrement = translation.y // used for determining direction when pan is done
             let intendedHeight = panelHeightConstraint.constant - translation.y
             if intendedHeight >= retractedHeight && intendedHeight <= extendedHeight {
-                //panelHeightConstraint.constant = panelHeightConstraint.constant - translation.y
+                panelHeightConstraint.constant = panelHeightConstraint.constant - translation.y
             }
             recognizer.setTranslation(CGPoint(x: 0, y: 0), in: self.view)
             
