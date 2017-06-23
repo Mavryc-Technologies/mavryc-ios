@@ -12,6 +12,11 @@
 		23B819CB1EB19493006017FC /* LoginClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B819C91EB19198006017FC /* LoginClient.swift */; };
 		23B819CC1EB194A7006017FC /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967FF6251E9446BF007B56C6 /* Networking.swift */; };
 		23B819CD1EB194AB006017FC /* LoginDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B819C71EB19145006017FC /* LoginDTO.swift */; };
+		9606FD871EFC62C50059AD47 /* GooglePlacesClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9606FD861EFC62C50059AD47 /* GooglePlacesClient.swift */; };
+		9606FD891EFC83A50059AD47 /* Notification+Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9606FD881EFC83A50059AD47 /* Notification+Location.swift */; };
+		9606FD8B1EFC85260059AD47 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9606FD8A1EFC85260059AD47 /* Trip.swift */; };
+		9606FD8D1EFC89E50059AD47 /* TripCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9606FD8C1EFC89E50059AD47 /* TripCoordinator.swift */; };
+		9606FD8F1EFCA39C0059AD47 /* FlightInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9606FD8E1EFCA39C0059AD47 /* FlightInfo.swift */; };
 		960B50E41EC6392F002B1432 /* JourneyDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960B50E31EC6392F002B1432 /* JourneyDetailsVC.swift */; };
 		961E2AC21E985602000F2D64 /* FetchFlightsDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961E2AC11E985602000F2D64 /* FetchFlightsDTO.swift */; };
 		961E2AC71E985A20000F2D64 /* webServiceClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961E2AC61E985A20000F2D64 /* webServiceClientTests.swift */; };
@@ -98,6 +103,11 @@
 		77E884330154E11441155D61 /* Pods_mavryc.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mavryc.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BB6D2AAAA732FB84064959C /* Pods-mavryc-mavrycTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mavryc-mavrycTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-mavryc-mavrycTests/Pods-mavryc-mavrycTests.release.xcconfig"; sourceTree = "<group>"; };
 		7BF64E167EC734F4C54DBF17 /* Pods-mavryc.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mavryc.debug.xcconfig"; path = "Pods/Target Support Files/Pods-mavryc/Pods-mavryc.debug.xcconfig"; sourceTree = "<group>"; };
+		9606FD861EFC62C50059AD47 /* GooglePlacesClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GooglePlacesClient.swift; sourceTree = "<group>"; };
+		9606FD881EFC83A50059AD47 /* Notification+Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Notification+Location.swift"; sourceTree = "<group>"; };
+		9606FD8A1EFC85260059AD47 /* Trip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
+		9606FD8C1EFC89E50059AD47 /* TripCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripCoordinator.swift; sourceTree = "<group>"; };
+		9606FD8E1EFCA39C0059AD47 /* FlightInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlightInfo.swift; sourceTree = "<group>"; };
 		960B50E31EC6392F002B1432 /* JourneyDetailsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JourneyDetailsVC.swift; sourceTree = "<group>"; };
 		961E2AC11E985602000F2D64 /* FetchFlightsDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchFlightsDTO.swift; sourceTree = "<group>"; };
 		961E2AC61E985A20000F2D64 /* webServiceClientTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = webServiceClientTests.swift; sourceTree = "<group>"; };
@@ -329,11 +339,15 @@
 			isa = PBXGroup;
 			children = (
 				96A32C1C1E96D1EC00DA7DC1 /* AutoCompletionPredictable.swift */,
+				9606FD861EFC62C50059AD47 /* GooglePlacesClient.swift */,
 				96A32C1A1E96A36900DA7DC1 /* Cities.swift */,
 				96DA42361EA7FD670036C227 /* Flight.swift */,
 				96B723731EA9E26100B2E322 /* User.swift */,
 				96B1F2CA1EEA0CB500EB5F4A /* Airports.swift */,
 				96B1F2CC1EEA142C00EB5F4A /* AirportLocation.swift */,
+				9606FD8A1EFC85260059AD47 /* Trip.swift */,
+				9606FD8C1EFC89E50059AD47 /* TripCoordinator.swift */,
+				9606FD8E1EFCA39C0059AD47 /* FlightInfo.swift */,
 			);
 			name = models;
 			sourceTree = "<group>";
@@ -517,6 +531,7 @@
 			children = (
 				96395F281EF312070094923F /* UIView+Image.swift */,
 				96395F2C1EF340BD0094923F /* Notification+Screens.swift */,
+				9606FD881EFC83A50059AD47 /* Notification+Location.swift */,
 			);
 			name = extensions;
 			sourceTree = "<group>";
@@ -703,7 +718,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		A1A120A974CC6CD1CE67DD80 /* [CP] Embed Pods Frameworks */ = {
@@ -733,7 +748,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		E5BE1DB17A282E23A72A0837 /* [CP] Copy Pods Resources */ = {
@@ -774,7 +789,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				96CE58F41EE8D3A600073BD5 /* AircraftSelectViewController.swift in Sources */,
+				9606FD891EFC83A50059AD47 /* Notification+Location.swift in Sources */,
 				96F2FCA21E92D9DA00C51674 /* StoryboardIdentifiable.swift in Sources */,
+				9606FD8D1EFC89E50059AD47 /* TripCoordinator.swift in Sources */,
 				23B819C81EB19145006017FC /* LoginDTO.swift in Sources */,
 				96395F2B1EF33D250094923F /* ScreenNavigator.swift in Sources */,
 				96CE58FA1EE93C6000073BD5 /* ConfirmDetailsScreenVC.swift in Sources */,
@@ -787,6 +804,7 @@
 				961E2AC21E985602000F2D64 /* FetchFlightsDTO.swift in Sources */,
 				96395F311EF48D230094923F /* MapController.swift in Sources */,
 				96B723701EA98B8D00B2E322 /* RealmConfiguration.swift in Sources */,
+				9606FD8B1EFC85260059AD47 /* Trip.swift in Sources */,
 				96B063D81ED3A4B7006151E5 /* JoystickMapCoordinator.swift in Sources */,
 				96B1F2CB1EEA0CB500EB5F4A /* Airports.swift in Sources */,
 				96DA35B01EC2732C00D2A0BC /* Joystick.swift in Sources */,
@@ -794,6 +812,7 @@
 				960B50E41EC6392F002B1432 /* JourneyDetailsVC.swift in Sources */,
 				96A32C1D1E96D1EC00DA7DC1 /* AutoCompletionPredictable.swift in Sources */,
 				96395F331EF5B58E0094923F /* JoystickController.swift in Sources */,
+				9606FD871EFC62C50059AD47 /* GooglePlacesClient.swift in Sources */,
 				96B723741EA9E26100B2E322 /* User.swift in Sources */,
 				96DA35AD1EC1264400D2A0BC /* FlightPanelViewController.swift in Sources */,
 				96CB0A491EE75FAA004ADEA0 /* AirportSearchTableViewCell.swift in Sources */,
@@ -821,6 +840,7 @@
 				96E53ED31E90378E0045AA06 /* AppDelegate.swift in Sources */,
 				96F2FCA81E92DA6A00C51674 /* UIStoryboard+Storyboards.swift in Sources */,
 				96B7236D1EA98B5200B2E322 /* AppData.swift in Sources */,
+				9606FD8F1EFCA39C0059AD47 /* FlightInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

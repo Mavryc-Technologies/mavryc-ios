@@ -44,6 +44,7 @@ extension LocationController: CLLocationManagerDelegate {
                 if let userLocation = locations.first {
                     LocationController.lastKnownUserLocation = userLocation
                     self.locationReturnedCompletion?(userLocation)
+                    NotificationCenter.default.post(name: Notification.Name.Location.UserLocationDidUpdate, object: self, userInfo: ["location":userLocation])
                 }
             }
             isUpdatingLocation = false
@@ -55,7 +56,7 @@ extension LocationController: CLLocationManagerDelegate {
         print("Error occured: \(error.localizedDescription).")
     }
     
-    func reverseGeocodeLocation(locations: [CLLocation]) {
+    public class func reverseGeocodeLocation(locations: [CLLocation]) {
         locations.forEach { (loc) in
             CLGeocoder().reverseGeocodeLocation(loc) { placemarks, error in
                 placemarks?.forEach({ (placemark) in

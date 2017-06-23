@@ -10,8 +10,9 @@ import UIKit
 
 class AppState {
     
-    private enum StoreLookup: String {
+    enum StateLookup: String {
         case onboardingWasSeen = "onboardingWasSeen"
+        case googlePlaces = "googlePlaces"
 //        case authenticationToken = "authenticationToken"
 //        case deviceId = "deviceId"
         
@@ -25,12 +26,14 @@ class AppState {
     /// Indicates whether onboarding module has been seen by user
     class var onboardingWasSeen: Bool {
         get {
-            return UserDefaults.standard.bool(forKey: AppState.StoreLookup.onboardingWasSeen.key)
+            return UserDefaults.standard.bool(forKey: AppState.StateLookup.onboardingWasSeen.key)
         }
         set (wasSeen) {
-            UserDefaults.standard.set(wasSeen, forKey: AppState.StoreLookup.onboardingWasSeen.key)
+            UserDefaults.standard.set(wasSeen, forKey: AppState.StateLookup.onboardingWasSeen.key)
         }
     }
+    
+    //class func save(state: StateLookup, optionalBool: Bool?, optionalString: String?)
     
     static var tempBGImageForTransitionAnimationHack: UIImage?
 }

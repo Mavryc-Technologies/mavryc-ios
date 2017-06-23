@@ -7,7 +7,8 @@
 //
 
 import UIKit
-
+import ObjectMapper
+import CoreLocation
 
 class JourneyDetailsVC: UIViewController {
 
@@ -108,6 +109,8 @@ class JourneyDetailsVC: UIViewController {
                                                name: Notification.Name.PanelScreen.WillClose,
                                                object: nil)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(userLocationDidUpdate), name: Notification.Name.Location.UserLocationDidUpdate, object: nil)
+        
         self.deselectSearchControls()
     }
     
@@ -122,6 +125,34 @@ class JourneyDetailsVC: UIViewController {
     }
     
     // MARK: - Notification Handlers
+    
+    @objc private func userLocationDidUpdate(notification: Notification) {
+        if let location = notification.userInfo?["location"] as? CLLocation {
+            print("\(location)")
+            
+            var departureCity: String?
+            
+            CLGeocoder().reverseGeocodeLocation(location) { placemarks, error in
+                if let placemark = placemarks?.first {
+                    print("🐸--- user location did Update: \(placemark)")
+                    //flight.departureCity = placemark.subLocality
+                    guard let city = placemark.locality else { return }
+                    guard let state = placemark.administrativeArea else { return }
+                    let cityState = "\(city), \(state)"
+                    if let trip = TripCoordinator.sharedInstance.currentTripInPlanning {
+                        print("updating user location, and found current trip-in-planning")
+                        trip.flights[0].departureString = cityState
+                    } else {
+                        let trip = Trip()
+                        let flight = FlightInfo()
+                        flight.departureString = cityState
+                        trip.flights.append(flight)
+                        self.departureSearchTextField.text = cityState
+                    }
+                }
+            }
+        }
+    }
     
     @objc private func panelWillOpen() {
         print("panelWillOpen notification handler called")
@@ -138,6 +169,10 @@ class JourneyDetailsVC: UIViewController {
             self.nextButtonBottomVerticalSpaceConstraint.constant = self.nextButtonBottomSpaceOriginal
             self.view.layoutIfNeeded()
         }
+        
+        // was destinationSearch tapped
+        // if so, open dest search list
+        // reset flag
     }
     
     @objc private func panelWillClose() {
@@ -212,11 +247,9 @@ class JourneyDetailsVC: UIViewController {
     
     func updateListWithAutocompleteSuggestions(text: String, searchControl: UITextField) {
         
-        let source = Cities.shared
+//        let source = Cities.shared
+        let source = GooglePlacesClient.sharedInstance
         source.autoCompletionSuggestions(for: text, predictions: { list in
-//            list.forEach({ (item) in
-//                print("autocompletion suggestion: \(item)")
-//            })
             
             if searchControl == self.arrivalSearchTextField {
                 self.destinationSearchList?.updateListWithAirports(list: list)
