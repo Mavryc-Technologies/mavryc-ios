@@ -45,7 +45,6 @@ class JourneyDetailsVC: UIViewController {
             departureSearchTextField.tintColor = AppStyle.skylarBlueGrey
 
             departureSearchTextField.addTarget(self, action: #selector(didChangeText(textField:)), for: .editingChanged)
-            
         }
     }
     
@@ -87,6 +86,22 @@ class JourneyDetailsVC: UIViewController {
     @IBOutlet weak var arrivalIconImageView: UIImageView!
     
     @IBOutlet weak var departureIconImageView: UIImageView!
+    
+    
+    @IBOutlet weak var customDatePicker: UIPickerView! {
+        didSet {
+            customDatePicker.backgroundColor = AppStyle.skylarDeepBlue
+            customDatePicker.isHidden = true
+            customDatePicker.delegate = self
+            customDatePicker.dataSource = self
+        }
+    }
+    
+    @IBOutlet weak var dateTextField: UILabel! {
+        didSet {
+            // TODO: set the field to NOW formatted dd mm yy
+        }
+    }
     
     // MARK: Lifecycle
     override func viewDidLoad() {
@@ -206,6 +221,23 @@ class JourneyDetailsVC: UIViewController {
         print("tapped arrival icon")
         self.triggerArrivalList()
     }
+    
+    
+    @IBAction func dateTapAction(_ sender: Any) {
+        print("tapped date section")
+        
+        // if date picker is visible, hide it 
+        // else show it 
+        UIView.animate(withDuration: 0.15) {
+            if self.customDatePicker.isHidden  {
+                self.customDatePicker.isHidden = false
+            } else {
+                self.customDatePicker.isHidden = true
+            }
+            self.view.layoutIfNeeded()
+        }
+    }
+    
     
     // MARK: - Search Control Support
     func triggerDepartureList() {
@@ -356,9 +388,6 @@ extension JourneyDetailsVC: UITextFieldDelegate {
         print("\(id) textFieldDidEndEditing: \(String(describing: textField.text))")
     }
     
-    
-    
-    
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         
         let id = textField == self.arrivalSearchTextField ? "arrival" : "departure"
@@ -414,6 +443,49 @@ extension JourneyDetailsVC: ScreenNavigable {
     }
     
     func screenNavigatorRefreshCurrentScreen(_ screenNavigator: ScreenNavigator) {
+    }
+}
+
+extension JourneyDetailsVC: UIPickerViewDelegate {
+    
+//    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+//        return "25 June 2017"
+//    }
+    
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        let titleData = "25 June 2017"//pickerData[row]
+        //Lato-Regular
+        let myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont(name: "Georgia", size: 14.0)!, NSForegroundColorAttributeName:UIColor.white])
+        return myTitle
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        let text = self.pickerView(pickerView, attributedTitleForRow: row, forComponent: component)
+        let string = text?.string
+        self.dateTextField.text = string
+        print("did select row \(Date())")
+        self.dateTapAction(self) // collapses the pickerview if visible
+    }
+    
+    var nextSixDays: Date {
+        let dt = (Calendar.current as NSCalendar).date(byAdding: .day, value: 8, to: Date(), options: [])!
+        return (Calendar.current as NSCalendar).date(byAdding: .day, value: 8, to: Date(), options: [])!
+    }
+    
+    var previousSixDays: Date {
+        return (Calendar.current as NSCalendar).date(byAdding: .day, value: 8, to: Date(), options: [])!
+        //return (Calendar.current as NSCalendar).date
+    }
+}
+
+extension JourneyDetailsVC: UIPickerViewDataSource {
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return 8
     }
 }
 
