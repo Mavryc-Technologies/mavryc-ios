@@ -155,9 +155,16 @@ class AircraftSelectViewController: UIViewController, UITableViewDelegate, UITab
         let cost = costData[indexPath.row]
         let title = titleData[indexPath.row]
         let combined = title + cost
+        
+        // yellow/gold
         let range = (combined as NSString).range(of: cost)
         let attribute = NSMutableAttributedString.init(string: combined)
         attribute.addAttribute(NSForegroundColorAttributeName, value: color , range: range)
+        
+        // white
+        let whiteRange = (combined as NSString).range(of: title)
+        attribute.addAttribute(NSForegroundColorAttributeName, value: AppStyle.aircraftSelectScreenCellTextHighlightPrimaryColor , range: whiteRange)
+        
         return attribute
     }
 }

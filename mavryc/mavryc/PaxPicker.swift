@@ -27,7 +27,7 @@ import AVFoundation
             if isTimeControl {
                 iconImageView.image = UIImage(named: "TimeIconFormPDF")
                 self.updateUIBarIndicator(to: 50.0) // 5 pixels * 10 bars
-                self.PaxCountLabel.text = "10:00"
+                self.PaxCountLabel.text = "10:00 AM"
             } else {
                 iconImageView.image = UIImage(named: "PAXIconFormPDF")
             }
@@ -112,11 +112,22 @@ import AVFoundation
     private func formattedIndicatorText(for numberOfBars: Int) -> String {
         if self.isTimeControl {
             var formattedTime = String(numberOfBars)
-            if numberOfBars < 10 {
-                formattedTime = "0" + formattedTime + ":00"
+            let amPmString = (numberOfBars >= 12) ? "PM" : "AM"
+            
+            if FeatureFlag.militaryTime.isFeatureEnabled() {
+                if numberOfBars < 10 {
+                    formattedTime = "0" + formattedTime + ":00"
+                } else {
+                    formattedTime = formattedTime + ":00"
+                }
             } else {
-                formattedTime = formattedTime + ":00"
+                if numberOfBars > 12 {
+                    formattedTime = "\(numberOfBars - 12)"
+                }
+                
+                formattedTime = formattedTime + ":00" + " \(amPmString)"
             }
+            
             return formattedTime
         } else {
             return String(numberOfBars)

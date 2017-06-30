@@ -13,6 +13,7 @@ enum FeatureFlag {
     case joystickTrackedMapInteraction
     case mapboxAirportAnnotationClustering
     case googlePlaces
+    case militaryTime
     
     /// feature flag query
     func isFeatureEnabled() -> Bool {
@@ -28,6 +29,9 @@ enum FeatureFlag {
             } else {
                 return true // default if not set elsewhere
             }
+            
+        case .militaryTime:
+            return false
             
         default:
             return true

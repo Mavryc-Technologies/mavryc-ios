@@ -33,6 +33,8 @@ class JoystickController: NSObject {
         // TODO: feature flag here: 
         let joystickMapInteractionEnabled = FeatureFlag.joystickTrackedMapInteraction.isFeatureEnabled()
         
+        self.joystick.isUserInteractionEnabled = joystickMapInteractionEnabled
+        
         if joystickMapInteractionEnabled {
             self.joystickToken.isUserInteractionEnabled = !joystickMapInteractionEnabled
             self.joystick.delegate = self
