@@ -15,36 +15,11 @@ class RightToLeftScreenAnimator: NSObject, UIViewControllerAnimatedTransitioning
     }
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
-        
-//        guard let fromView = transitionContext.view(forKey: .from) else { return }
-//        guard let toView = transitionContext.view(forKey: .to) else { return }
-//        let containerView = transitionContext.containerView
-//        
-//        let screenOffLeft = CGAffineTransform(translationX: -containerView.frame.width, y: 0)
-//        let screenOffRight = CGAffineTransform(translationX: containerView.frame.width + containerView.frame.width, y: 0)
-//        
-//        containerView.addSubview(fromView)
-//        containerView.addSubview(toView)
-//        
-//        toView.transform = screenOffRight
-//        
-//        UIView.animate(withDuration: 0.5,
-//                       delay: 0.0,
-//                       usingSpringWithDamping: 0.8,
-//                       initialSpringVelocity: 0.8,
-//                       options: [],
-//                       animations: {
-//                            fromView.transform = screenOffLeft
-//                            toView.transform = CGAffineTransform.identity
-//                        }) { (finished) in
-//                            transitionContext.completeTransition(finished)
-//                        }
-        
-        
+
         //Get references to the view hierarchy
         let fromViewController: UIViewController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from)!
         let toViewController: UIViewController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to)!
-        let sourceRect: CGRect = transitionContext.initialFrame(for: fromViewController)
+        //let sourceRect: CGRect = transitionContext.initialFrame(for: fromViewController)
         let containerView: UIView = transitionContext.containerView
         
         // The canvas is used for all animation and discarded at the end
