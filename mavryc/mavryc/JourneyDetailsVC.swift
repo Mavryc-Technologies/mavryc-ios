@@ -74,15 +74,6 @@ class JourneyDetailsVC: UIViewController {
     // use to expand or retract arrival city/airport list
     @IBOutlet weak var arrivalTableViewHeightConstraint: NSLayoutConstraint!
     
-    
-    var nextButtonBottomSpaceOriginal: CGFloat = 20.0
-    var nextButtonBottomSpaceRetracted: CGFloat = -80.0
-    @IBOutlet weak var nextButtonBottomVerticalSpaceConstraint: NSLayoutConstraint! {
-        didSet {
-            self.nextButtonBottomSpaceOriginal = nextButtonBottomVerticalSpaceConstraint.constant
-        }
-    }
-    
     @IBOutlet weak var arrivalIconImageView: UIImageView!
     
     @IBOutlet weak var departureIconImageView: UIImageView!
@@ -142,15 +133,13 @@ class JourneyDetailsVC: UIViewController {
     // MARK: - Notification Handlers
     
     @objc private func userLocationDidUpdate(notification: Notification) {
+
         if let location = notification.userInfo?["location"] as? CLLocation {
             print("\(location)")
-            
-            var departureCity: String?
             
             CLGeocoder().reverseGeocodeLocation(location) { placemarks, error in
                 if let placemark = placemarks?.first {
                     print("🐸--- user location did Update: \(placemark)")
-                    //flight.departureCity = placemark.subLocality
                     guard let city = placemark.locality else { return }
                     guard let state = placemark.administrativeArea else { return }
                     guard let country = placemark.country else { return }
@@ -173,25 +162,12 @@ class JourneyDetailsVC: UIViewController {
     
     @objc private func panelWillOpen() {
         print("panelWillOpen notification handler called")
-
-        self.nextButtonBottomVerticalSpaceConstraint.constant = self.nextButtonBottomSpaceRetracted
-        self.nextButton.alpha = 1.0
-        self.view.layoutIfNeeded()
     }
     
     @objc private func panelDidOpen() {
         print("panelDidOpen notification handler called")
         
-        UIView.animate(withDuration: 0.25) {
-            self.nextButtonBottomVerticalSpaceConstraint.constant = self.nextButtonBottomSpaceOriginal
-            self.view.layoutIfNeeded()
-        }
-        
-        // was destinationSearch tapped
-        // if so, open dest search list
-        // reset flag
         if ScreenNavigator.destinationSearchButtonWasPressedState {
-            //self.triggerArrivalList()
             arrivalSearchTextField.becomeFirstResponder()
         }
     }
@@ -199,11 +175,7 @@ class JourneyDetailsVC: UIViewController {
     @objc private func panelWillClose() {
         print("panelWillClose notification handler called")
         
-        UIView.animate(withDuration: 0.10) {
-            self.nextButtonBottomVerticalSpaceConstraint.constant = self.nextButtonBottomSpaceRetracted
-            self.nextButton.alpha = 0.0
-            self.view.layoutIfNeeded()
-        }
+        self.deselectSearchControls()
     }
     
     // MARK: - Control Actions
@@ -241,8 +213,11 @@ class JourneyDetailsVC: UIViewController {
     
     // MARK: - Search Control Support
     func triggerDepartureList() {
+        
+        let isOpening = self.departureTableViewHeightConstraint.constant == 0
+        
         UIView.animate(withDuration: 0.25) {
-            if self.departureTableViewHeightConstraint.constant == 0 {
+            if isOpening {
                 self.arrivalTableViewHeightConstraint.constant = 0
                 self.departureTableViewHeightConstraint.constant = 600
             } else {
@@ -251,10 +226,17 @@ class JourneyDetailsVC: UIViewController {
             self.view.layoutIfNeeded()
         }
         
-        departureSearchTextField.becomeFirstResponder()
+        if isOpening {
+            departureSearchTextField.becomeFirstResponder()
+        } else {
+            departureSearchTextField.resignFirstResponder()
+        }
     }
 
     func triggerArrivalList() {
+        
+        let isOpening = (self.arrivalTableViewHeightConstraint.constant == 0 || ScreenNavigator.destinationSearchButtonWasPressedState)
+        
         UIView.animate(withDuration: 0.25) {
             if ScreenNavigator.destinationSearchButtonWasPressedState {
                 ScreenNavigator.destinationSearchButtonWasPressedState = false
@@ -271,7 +253,11 @@ class JourneyDetailsVC: UIViewController {
             self.view.layoutIfNeeded()
         }
         
-        arrivalSearchTextField.becomeFirstResponder()
+        if isOpening {
+            arrivalSearchTextField.becomeFirstResponder()
+        } else {
+            arrivalSearchTextField.resignFirstResponder()
+        }
     }
     
     func deselectSearchControls() {

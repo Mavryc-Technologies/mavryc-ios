@@ -134,7 +134,7 @@ extension MainViewController: PanelDelegate {
     }
     
     func panelRetractedHeight() -> CGFloat {
-        return 60 // arbitrary staring point for the pull up view that looks good
+        return 58 // arbitrary staring point for the pull up view that looks good
     }
     
     func panelLayoutConstraintToUpdate() -> NSLayoutConstraint {

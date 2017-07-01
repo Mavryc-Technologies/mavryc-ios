@@ -57,14 +57,6 @@ class ConfirmDetailsScreenVC: UIViewController {
         }
     }
     
-    var nextButtonBottomSpaceOriginal: CGFloat = 20.0
-    var nextButtonBottomSpaceRetracted: CGFloat = -80.0
-    @IBOutlet weak var nextButtonBottomVerticalSpaceConstraint: NSLayoutConstraint! {
-        didSet {
-            self.nextButtonBottomSpaceOriginal = nextButtonBottomVerticalSpaceConstraint.constant
-        }
-    }
-    
     // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,10 +75,6 @@ class ConfirmDetailsScreenVC: UIViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        
-        self.NextButton.alpha = 0.0
-        self.nextButtonBottomVerticalSpaceConstraint.constant = self.nextButtonBottomSpaceRetracted
-        self.view.layoutIfNeeded()
     }
     
     @IBAction func bookButtonAction(_ sender: Any) {

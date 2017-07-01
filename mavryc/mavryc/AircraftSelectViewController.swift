@@ -23,14 +23,6 @@ class AircraftSelectViewController: UIViewController, UITableViewDelegate, UITab
     
     @IBOutlet weak var backgroundImageView: UIImageView!
     
-    var nextButtonBottomSpaceOriginal: CGFloat = -20.0
-    var nextButtonBottomSpaceRetracted: CGFloat = -80.0
-    @IBOutlet weak var nextButtonBottomVerticalSpaceConstraint: NSLayoutConstraint! {
-        didSet {
-            //self.nextButtonBottomSpaceOriginal = nextButtonBottomVerticalSpaceConstraint.constant
-        }
-    }
-    
     
     // MARK: Temp Data
 //    var titleData = ["Very Light","Light","MID","SUPER","HEAVY"]
@@ -61,8 +53,6 @@ class AircraftSelectViewController: UIViewController, UITableViewDelegate, UITab
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        
-        self.nextButtonBottomVerticalSpaceConstraint.constant = nextButtonBottomSpaceRetracted
     }
     
     

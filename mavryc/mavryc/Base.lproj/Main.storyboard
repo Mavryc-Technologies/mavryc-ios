@@ -138,10 +138,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sxP-CM-Y4T" userLabel="Panel Container">
-                                <rect key="frame" x="0.0" y="607" width="375" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="1IV-fB-Tyl"/>
-                                </constraints>
+                                <rect key="frame" x="0.0" y="609" width="375" height="603"/>
                                 <connections>
                                     <segue destination="p51-je-yN1" kind="embed" identifier="JourneyPanelSegue" id="wUP-1r-lu4"/>
                                 </connections>
@@ -174,8 +171,9 @@
                         <color key="backgroundColor" red="0.070632614195346832" green="0.082291208207607269" blue="0.11758648604154587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="t7R-Dr-WIp" firstAttribute="top" secondItem="zdh-rz-3Oz" secondAttribute="bottom" id="14j-1A-mjU"/>
+                            <constraint firstItem="sxP-CM-Y4T" firstAttribute="height" secondItem="jUE-lh-mSM" secondAttribute="height" id="8cI-Df-Idj"/>
                             <constraint firstAttribute="trailingMargin" secondItem="DvP-bY-FJA" secondAttribute="trailing" constant="37" id="9Mp-sx-AAP"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="sxP-CM-Y4T" secondAttribute="bottom" id="I4w-48-yoJ"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="sxP-CM-Y4T" secondAttribute="top" constant="58" id="I4w-48-yoJ"/>
                             <constraint firstAttribute="trailing" secondItem="t7R-Dr-WIp" secondAttribute="trailing" id="LFf-lA-ZZH"/>
                             <constraint firstItem="0IC-Vt-fGK" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="LWS-xP-8jW"/>
                             <constraint firstItem="jUE-lh-mSM" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="MCi-3x-s3l"/>
@@ -205,7 +203,7 @@
                         <outlet property="joystickToken" destination="cFN-Fj-6Dl" id="NxC-Hh-6kg"/>
                         <outlet property="navBar" destination="zdh-rz-3Oz" id="d33-WK-li5"/>
                         <outlet property="navLeftButtonHamburgerAndBack" destination="HS8-RV-pLg" id="dPK-RZ-nQs"/>
-                        <outlet property="panelHeightConstraint" destination="1IV-fB-Tyl" id="dhZ-fk-0uH"/>
+                        <outlet property="panelHeightConstraint" destination="I4w-48-yoJ" id="aUE-Kb-v21"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -683,7 +681,6 @@
                         <outlet property="departureSearchTextField" destination="SVy-Sf-uF9" id="RMN-DZ-3Ic"/>
                         <outlet property="departureTableViewHeightConstraint" destination="FrD-uw-vvX" id="ese-HU-wff"/>
                         <outlet property="nextButton" destination="vai-xG-fRo" id="hvq-xi-qQN"/>
-                        <outlet property="nextButtonBottomVerticalSpaceConstraint" destination="r43-0H-S43" id="pEl-yg-ZKD"/>
                         <outlet property="oneWayReturnSegmentControl" destination="HAa-r7-snu" id="uQr-RF-Vnh"/>
                     </connections>
                 </viewController>
@@ -855,7 +852,6 @@
                     <connections>
                         <outlet property="backgroundImageView" destination="hE7-Nu-CJ7" id="XNk-DX-6cw"/>
                         <outlet property="nextButton" destination="vF6-RB-7Te" id="kdB-bM-CxE"/>
-                        <outlet property="nextButtonBottomVerticalSpaceConstraint" destination="5gk-2C-YQq" id="ntE-jv-ur8"/>
                         <outlet property="tableView" destination="cPM-ps-Ob4" id="MZS-eP-IaK"/>
                     </connections>
                 </viewController>
@@ -1097,7 +1093,6 @@
                         <outlet property="aircraftServiceSelectedTitle" destination="5aw-pL-iBI" id="lGz-Pj-s3f"/>
                         <outlet property="applePayBottomVerticalSpace" destination="6Ql-PB-yG4" id="aQC-mq-8pT"/>
                         <outlet property="bgView" destination="WvS-SZ-XGt" id="RHX-no-1Jn"/>
-                        <outlet property="nextButtonBottomVerticalSpaceConstraint" destination="0zu-d5-hjt" id="ELF-He-RoA"/>
                         <outlet property="screenTitle" destination="W4Z-Jn-cto" id="5KF-4h-E48"/>
                         <outlet property="totalAmountLabel" destination="XaM-Q2-KBC" id="s9O-Ri-bxt"/>
                         <outlet property="tripSectionTitle" destination="sbM-th-VbJ" id="2Gr-Am-CYo"/>
