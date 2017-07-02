@@ -40,6 +40,8 @@ class AircraftSelectViewController: UIViewController, UITableViewDelegate, UITab
         
         ScreenNavigator.sharedInstance.registerScreen(screen: self, asScreen: .aircraftSelection)
         tableView.register(UINib(nibName: "AircraftSelectCell", bundle: Bundle.main), forCellReuseIdentifier: "cell")
+        
+        self.setupSwipeGesture()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -54,6 +56,46 @@ class AircraftSelectViewController: UIViewController, UITableViewDelegate, UITab
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
     }
+    
+    func setupSwipeGesture() {
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
+        swipeLeft.direction = .left
+        self.view.addGestureRecognizer(swipeLeft)
+        
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
+        swipeRight.direction = .right
+        self.view.addGestureRecognizer(swipeRight)
+        
+        let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
+        swipeUp.direction = .up
+        self.view.addGestureRecognizer(swipeUp)
+        
+        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
+        swipeDown.direction = .down
+        self.view.addGestureRecognizer(swipeDown)
+    }
+    
+    func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
+        if gesture.direction == UISwipeGestureRecognizerDirection.right {
+            print("Swipe Right")
+            //NotificationCenter.default.post(name: Notification.Name.PanelScreen.DidTapBackNav, object: self, userInfo:nil)
+            ScreenNavigator.sharedInstance.navigateBackward()
+        }
+        else if gesture.direction == UISwipeGestureRecognizerDirection.left {
+            print("Swipe Left")
+            if nextButton.isEnabled {
+                self.performSegue(withIdentifier: "ConfirmDetailsScreenSegue", sender: self)
+            }
+        }
+        else if gesture.direction == UISwipeGestureRecognizerDirection.up {
+            print("Swipe Up")
+        }
+        else if gesture.direction == UISwipeGestureRecognizerDirection.down {
+            print("Swipe Down")
+            ScreenNavigator.sharedInstance.closePanel()
+        }
+    }
+    
     
     
     // MARK: - Table view data source

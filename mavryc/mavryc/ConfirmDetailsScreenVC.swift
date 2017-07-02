@@ -62,6 +62,8 @@ class ConfirmDetailsScreenVC: UIViewController {
         super.viewDidLoad()
         
         ScreenNavigator.sharedInstance.registerScreen(screen: self, asScreen: .confirmDetails)
+        
+        self.setupSwipeGesture()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -76,6 +78,22 @@ class ConfirmDetailsScreenVC: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
     }
+    
+    func setupSwipeGesture() {
+        
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
+        swipeRight.direction = .right
+        self.view.addGestureRecognizer(swipeRight)
+    }
+    
+    func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
+        if gesture.direction == UISwipeGestureRecognizerDirection.right {
+            print("Swipe Right")
+            ScreenNavigator.sharedInstance.navigateBackward()
+        }
+    }
+    
+    
     
     @IBAction func bookButtonAction(_ sender: Any) {
         UIView.animate(withDuration: 0.25) {

@@ -99,15 +99,35 @@ class ScreenNavigator {
         self.panelController?.screenNavigatorRefreshCurrentScreen(self)
     }
     
+    public func navigateBackward() {
+        self.backwardNavigationAction()
+    }
+    
+    public func openPanel() {
+        if let panel = self.panelController as? FlightPanelViewController {
+            panel.triggerPanel(shouldOpen: true)
+        }
+    }
+    
+    public func closePanel() {
+        if let panel = self.panelController as? FlightPanelViewController {
+            panel.triggerPanel(shouldOpen: false)
+        }
+    }
+    
+//    public func navigateForward() {
+//        
+//    }
+    
     // MARK: - Navigation Control
     private func setupNavigationControl() {
         NotificationCenter.default.addObserver(self,
-                                               selector: #selector(didTapBackNavButton),
+                                               selector: #selector(backwardNavigationAction),
                                                name: Notification.Name.PanelScreen.DidTapBackNav,
                                                object: nil)
     }
     
-    @objc private func didTapBackNavButton() {
+    @objc private func backwardNavigationAction() {
         print("didTapBackNavButton notification handler called")
        
         let nav = navController()
