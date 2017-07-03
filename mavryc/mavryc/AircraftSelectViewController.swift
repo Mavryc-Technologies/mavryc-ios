@@ -78,7 +78,6 @@ class AircraftSelectViewController: UIViewController, UITableViewDelegate, UITab
     func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
         if gesture.direction == UISwipeGestureRecognizerDirection.right {
             print("Swipe Right")
-            //NotificationCenter.default.post(name: Notification.Name.PanelScreen.DidTapBackNav, object: self, userInfo:nil)
             ScreenNavigator.sharedInstance.navigateBackward()
         }
         else if gesture.direction == UISwipeGestureRecognizerDirection.left {

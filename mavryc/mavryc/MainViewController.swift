@@ -89,7 +89,6 @@ class MainViewController: UIViewController {
             // TODO: implement hamburger menu trigger
         } else {
             // back nav mode
-            //NotificationCenter.default.post(name: Notification.Name.PanelScreen.DidTapBackNav, object: self, userInfo:nil)
             ScreenNavigator.sharedInstance.navigateBackward()
         }
     }
