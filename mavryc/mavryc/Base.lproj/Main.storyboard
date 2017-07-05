@@ -378,7 +378,7 @@
                                                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                                             </textField>
-                                                            <imageView alpha="0.29999999999999999" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="myloc" translatesAutoresizingMaskIntoConstraints="NO" id="qc0-ng-SQQ">
+                                                            <imageView alpha="0.84999999999999998" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CurrentLocation" translatesAutoresizingMaskIntoConstraints="NO" id="qc0-ng-SQQ">
                                                                 <rect key="frame" x="213" y="9" width="30" height="30"/>
                                                                 <gestureRecognizers/>
                                                                 <constraints>
@@ -1153,13 +1153,13 @@
         <image name="ArriveIconUnselected" width="21" height="20"/>
         <image name="BackArrow" width="17" height="13"/>
         <image name="CalendarIconFormPDF" width="19" height="19"/>
+        <image name="CurrentLocation" width="17" height="17"/>
         <image name="DepartIconFormPDF" width="22" height="18"/>
         <image name="OutboundCellBG" width="300" height="123"/>
         <image name="bg_gradient_bottom" width="375" height="250"/>
         <image name="bg_gradient_top" width="375" height="250"/>
         <image name="header_shadow" width="375" height="13"/>
         <image name="header_shine" width="216" height="156"/>
-        <image name="myloc" width="30" height="30"/>
         <image name="plane_icon" width="35" height="40"/>
         <image name="plane_icon_bg" width="80" height="80"/>
         <image name="plane_icon_glow" width="207" height="207"/>
