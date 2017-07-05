@@ -378,11 +378,24 @@
                                                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                                             </textField>
+                                                            <imageView alpha="0.29999999999999999" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="myloc" translatesAutoresizingMaskIntoConstraints="NO" id="qc0-ng-SQQ">
+                                                                <rect key="frame" x="213" y="9" width="30" height="30"/>
+                                                                <gestureRecognizers/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="30" id="TW3-SL-cxq"/>
+                                                                    <constraint firstAttribute="height" constant="30" id="Vi8-ns-cM1"/>
+                                                                </constraints>
+                                                                <connections>
+                                                                    <outletCollection property="gestureRecognizers" destination="FHm-x6-iba" appends="YES" id="jDh-bu-wFh"/>
+                                                                </connections>
+                                                            </imageView>
                                                         </subviews>
                                                         <color key="backgroundColor" red="0.058823529409999999" green="0.070588235289999995" blue="0.1058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstItem="SVy-Sf-uF9" firstAttribute="leading" secondItem="hgy-DP-d0k" secondAttribute="leading" constant="20" id="GXG-1G-zLm"/>
                                                             <constraint firstAttribute="trailing" secondItem="SVy-Sf-uF9" secondAttribute="trailing" constant="8" id="J5D-Wn-RRG"/>
+                                                            <constraint firstItem="qc0-ng-SQQ" firstAttribute="top" secondItem="hgy-DP-d0k" secondAttribute="top" constant="9" id="QY0-pS-Chb"/>
+                                                            <constraint firstAttribute="trailing" secondItem="qc0-ng-SQQ" secondAttribute="trailing" constant="8" id="YMg-TD-UVE"/>
                                                             <constraint firstAttribute="bottom" secondItem="SVy-Sf-uF9" secondAttribute="bottom" constant="10" id="glN-d6-c4e"/>
                                                             <constraint firstItem="SVy-Sf-uF9" firstAttribute="top" secondItem="hgy-DP-d0k" secondAttribute="top" constant="8" id="rnT-rw-5Vu"/>
                                                         </constraints>
@@ -701,8 +714,13 @@
                         <action selector="dateTapAction:" destination="ELB-y0-PzL" id="5W1-rF-dNu"/>
                     </connections>
                 </tapGestureRecognizer>
+                <tapGestureRecognizer id="FHm-x6-iba">
+                    <connections>
+                        <action selector="myLocationTapAction:" destination="ELB-y0-PzL" id="WD9-Zs-W4f"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2370" y="94"/>
+            <point key="canvasLocation" x="2368.840579710145" y="93.750000000000014"/>
         </scene>
         <!--Airport Search Table View Controller-->
         <scene sceneID="oc7-Cg-M60">
@@ -1114,7 +1132,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="556"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="3ha-Yn-xGq">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="3ha-Yn-xGq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1141,6 +1159,7 @@
         <image name="bg_gradient_top" width="375" height="250"/>
         <image name="header_shadow" width="375" height="13"/>
         <image name="header_shine" width="216" height="156"/>
+        <image name="myloc" width="30" height="30"/>
         <image name="plane_icon" width="35" height="40"/>
         <image name="plane_icon_bg" width="80" height="80"/>
         <image name="plane_icon_glow" width="207" height="207"/>

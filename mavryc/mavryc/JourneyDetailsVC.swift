@@ -177,27 +177,45 @@ class JourneyDetailsVC: UIViewController {
         if let location = notification.userInfo?["location"] as? CLLocation {
             print("\(location)")
             
-            CLGeocoder().reverseGeocodeLocation(location) { placemarks, error in
-                if let placemark = placemarks?.first {
-                    print("🐸--- user location did Update: \(placemark)")
-                    guard let city = placemark.locality else { return }
-                    guard let state = placemark.administrativeArea else { return }
-                    guard let country = placemark.country else { return }
-                    let cityState = "\(city), \(state), \(country)"
-                    if let trip = TripCoordinator.sharedInstance.currentTripInPlanning {
-                        print("updating user location, and found current trip-in-planning")
-                        trip.flights[0].departureString = cityState
-                    } else {
-                        let trip = Trip()
-                        let flight = FlightInfo()
-                        flight.departureString = cityState
-                        trip.flights.append(flight)
-                        self.departureSearchTextField.text = cityState
-                        TripCoordinator.sharedInstance.currentTripInPlanning = trip
-                    }
+            self.updateTripRecord(departure: location, updateDepartureField: true)
+        }
+    }
+    
+    
+    
+    func updateTripRecord(departure location: CLLocation, updateDepartureField: Bool) {
+        
+        CLGeocoder().reverseGeocodeLocation(location) { placemarks, error in
+            if let placemark = placemarks?.first {
+                print("🐸--- user location did Update: \(placemark)")
+                
+                guard let airportCityString = self.airportString(placemark: placemark) else { return }
+                
+                if updateDepartureField {
+                    self.departureSearchTextField.text = airportCityString
+                }
+                
+                if let trip = TripCoordinator.sharedInstance.currentTripInPlanning {
+                    print("updating user location, and found current trip-in-planning")
+                    trip.flights[0].departureString = airportCityString
+                } else {
+                    let trip = Trip()
+                    let flight = FlightInfo()
+                    flight.departureString = airportCityString
+                    trip.flights.append(flight)
+                    TripCoordinator.sharedInstance.currentTripInPlanning = trip
                 }
             }
         }
+    }
+    
+    func airportString(placemark: CLPlacemark) -> String? {
+        
+        guard let city = placemark.locality else { return nil }
+        guard let state = placemark.administrativeArea else { return nil }
+        guard let country = placemark.country else { return nil }
+        let airportCityStateCountry = "\(city), \(state), \(country)"
+        return airportCityStateCountry
     }
     
     @objc private func panelWillOpen() {
@@ -249,6 +267,19 @@ class JourneyDetailsVC: UIViewController {
             self.view.layoutIfNeeded()
         }
     }
+    
+    @IBAction func myLocationTapAction(_ sender: UITapGestureRecognizer) {
+        
+        if let myLoc = LocationController.lastKnownUserLocation {
+            
+            self.updateTripRecord(departure: myLoc, updateDepartureField: true)
+            
+            if self.departureSearchTextField.isFirstResponder {
+                self.deselectSearchControls()
+            }
+        } // TODO: consider adding else support to refresh location request anew.
+    }
+    
     
     // MARK: - Search Control Support
     func triggerDepartureList() {
