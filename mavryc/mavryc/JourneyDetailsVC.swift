@@ -78,13 +78,11 @@ class JourneyDetailsVC: UIViewController {
     
     @IBOutlet weak var departureIconImageView: UIImageView!
     
+    weak var datePickerTVC: DatePickerTableViewController?
     
-    @IBOutlet weak var customDatePicker: UIPickerView! {
+    @IBOutlet weak var datePickerContainer: UIView! {
         didSet {
-            customDatePicker.backgroundColor = AppStyle.skylarDeepBlue
-            customDatePicker.isHidden = true
-            customDatePicker.delegate = self
-            customDatePicker.dataSource = self
+            datePickerContainer.backgroundColor = AppStyle.skylarDeepBlue
         }
     }
     
@@ -120,6 +118,8 @@ class JourneyDetailsVC: UIViewController {
         self.deselectSearchControls()
         
         self.setupSwipeGesture()
+        
+        self.datePickerContainer.isHidden = true
     }
     
     func setupSwipeGesture() {
@@ -180,8 +180,6 @@ class JourneyDetailsVC: UIViewController {
             self.updateTripRecord(departure: location, updateDepartureField: true)
         }
     }
-    
-    
     
     func updateTripRecord(departure location: CLLocation, updateDepartureField: Bool) {
         
@@ -257,12 +255,12 @@ class JourneyDetailsVC: UIViewController {
         print("tapped date section")
         
         // if date picker is visible, hide it 
-        // else show it 
+        // else show it
         UIView.animate(withDuration: 0.15) {
-            if self.customDatePicker.isHidden  {
-                self.customDatePicker.isHidden = false
+            if self.datePickerContainer.isHidden  {
+                self.datePickerContainer.isHidden = false
             } else {
-                self.customDatePicker.isHidden = true
+                self.datePickerContainer.isHidden = true
             }
             self.view.layoutIfNeeded()
         }
@@ -370,6 +368,26 @@ class JourneyDetailsVC: UIViewController {
             let tvc = segue.destination as? AirportSearchTableViewController
             tvc?.listDelegate = self
             self.departureSearchList = tvc
+        } else if segue.identifier == "datePickerTVCSegue" {
+            if let tvc = segue.destination as? DatePickerTableViewController {
+                self.datePickerTVC = tvc
+                tvc.datePickerListDelegate = self
+            }
+        }
+    }
+}
+
+extension JourneyDetailsVC: DatePickerTableViewDelegate {
+    
+    func didSelectDate(string: String, date: Date) {
+
+        print("date was selected: \(string)")
+        self.dateTextField.text = string
+        
+        // update the date
+        UIView.animate(withDuration: 0.15) {
+            self.datePickerContainer.isHidden = true
+            self.view.layoutIfNeeded()
         }
     }
 }
@@ -503,10 +521,6 @@ extension JourneyDetailsVC: ScreenNavigable {
 }
 
 extension JourneyDetailsVC: UIPickerViewDelegate {
-    
-//    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-//        return "25 June 2017"
-//    }
     
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         let titleData = "25 June 2017"//pickerData[row]

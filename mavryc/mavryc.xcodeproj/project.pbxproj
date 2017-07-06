@@ -19,6 +19,8 @@
 		9606FD8F1EFCA39C0059AD47 /* FlightInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9606FD8E1EFCA39C0059AD47 /* FlightInfo.swift */; };
 		9606FD9B1EFDBD760059AD47 /* tap5.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9606FD9A1EFDBD760059AD47 /* tap5.wav */; };
 		960B50E41EC6392F002B1432 /* JourneyDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960B50E31EC6392F002B1432 /* JourneyDetailsVC.swift */; };
+		961144931F0D92A0003033AE /* DatePickerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961144921F0D92A0003033AE /* DatePickerTableViewController.swift */; };
+		961144951F0D92BA003033AE /* DatePickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961144941F0D92BA003033AE /* DatePickerTableViewCell.swift */; };
 		961E2AC21E985602000F2D64 /* FetchFlightsDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961E2AC11E985602000F2D64 /* FetchFlightsDTO.swift */; };
 		961E2AC71E985A20000F2D64 /* webServiceClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961E2AC61E985A20000F2D64 /* webServiceClientTests.swift */; };
 		962EE1181EBBBA7800797CD9 /* Mapbox.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 962EE1171EBBBA7800797CD9 /* Mapbox.storyboard */; };
@@ -111,6 +113,8 @@
 		9606FD8E1EFCA39C0059AD47 /* FlightInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlightInfo.swift; sourceTree = "<group>"; };
 		9606FD9A1EFDBD760059AD47 /* tap5.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tap5.wav; sourceTree = "<group>"; };
 		960B50E31EC6392F002B1432 /* JourneyDetailsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JourneyDetailsVC.swift; sourceTree = "<group>"; };
+		961144921F0D92A0003033AE /* DatePickerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerTableViewController.swift; sourceTree = "<group>"; };
+		961144941F0D92BA003033AE /* DatePickerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerTableViewCell.swift; sourceTree = "<group>"; };
 		961E2AC11E985602000F2D64 /* FetchFlightsDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchFlightsDTO.swift; sourceTree = "<group>"; };
 		961E2AC61E985A20000F2D64 /* webServiceClientTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = webServiceClientTests.swift; sourceTree = "<group>"; };
 		962EE1171EBBBA7800797CD9 /* Mapbox.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Mapbox.storyboard; sourceTree = "<group>"; };
@@ -232,6 +236,15 @@
 			name = "panel screens";
 			sourceTree = "<group>";
 		};
+		961144911F0D924A003033AE /* date picker */ = {
+			isa = PBXGroup;
+			children = (
+				961144921F0D92A0003033AE /* DatePickerTableViewController.swift */,
+				961144941F0D92BA003033AE /* DatePickerTableViewCell.swift */,
+			);
+			name = "date picker";
+			sourceTree = "<group>";
+		};
 		961E2AC41E985913000F2D64 /* flights */ = {
 			isa = PBXGroup;
 			children = (
@@ -270,6 +283,7 @@
 				960B50E31EC6392F002B1432 /* JourneyDetailsVC.swift */,
 				96A758B21EE0CA8F00F58A4F /* airport search control */,
 				96CB0A471EE70FA3004ADEA0 /* pax control */,
+				961144911F0D924A003033AE /* date picker */,
 			);
 			name = "screen - journey details";
 			sourceTree = "<group>";
@@ -832,11 +846,13 @@
 				964629CC1EF9B48600CAA16E /* LeftToRightScreenAnimator.swift in Sources */,
 				96F2FC9B1E92D6FE00C51674 /* AppStyle.swift in Sources */,
 				96F2FC981E92D29600C51674 /* SafeLog.swift in Sources */,
+				961144931F0D92A0003033AE /* DatePickerTableViewController.swift in Sources */,
 				96DA42371EA7FD670036C227 /* Flight.swift in Sources */,
 				96395F371EF5DA310094923F /* FeatureFlag.swift in Sources */,
 				96F2FC9E1E92D8CC00C51674 /* AppState.swift in Sources */,
 				964629CA1EF89C8B00CAA16E /* NavigationControllerDelegate.swift in Sources */,
 				96395F2F1EF472B80094923F /* LocationController.swift in Sources */,
+				961144951F0D92BA003033AE /* DatePickerTableViewCell.swift in Sources */,
 				96CE58F01EE8A12900073BD5 /* AircraftSelectCell.swift in Sources */,
 				96F2FCAF1E92DF0D00C51674 /* OnboardingViewController.swift in Sources */,
 				96395F2D1EF340BD0094923F /* Notification+Screens.swift in Sources */,

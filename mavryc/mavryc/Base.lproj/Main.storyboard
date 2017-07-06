@@ -361,7 +361,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="9hY-kE-cil">
-                                <rect key="frame" x="37" y="35" width="300" height="810"/>
+                                <rect key="frame" x="37" y="35" width="300" height="722"/>
                                 <subviews>
                                     <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="IS3-Mr-D1s">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="198"/>
@@ -513,7 +513,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="uRU-aO-vrB">
-                                        <rect key="frame" x="0.0" y="336" width="300" height="264"/>
+                                        <rect key="frame" x="0.0" y="336" width="300" height="176"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6yE-I0-U4Q" userLabel="protocontrol date">
                                                 <rect key="frame" x="0.0" y="0.0" width="300" height="48"/>
@@ -572,15 +572,20 @@
                                                     <outletCollection property="gestureRecognizers" destination="pXa-cv-UWD" appends="YES" id="fAP-zd-iU9"/>
                                                 </connections>
                                             </view>
-                                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gm9-0i-TiG">
-                                                <rect key="frame" x="0.0" y="48" width="300" height="216"/>
-                                                <color key="backgroundColor" red="0.058823529409999999" green="0.070588235289999995" blue="0.1058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            </pickerView>
+                                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ycY-fN-fie">
+                                                <rect key="frame" x="0.0" y="48" width="300" height="128"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="128" id="YRJ-8V-cH4"/>
+                                                </constraints>
+                                                <connections>
+                                                    <segue destination="0zW-pJ-PKj" kind="embed" identifier="datePickerTVCSegue" id="DOU-YS-Vwa"/>
+                                                </connections>
+                                            </containerView>
                                         </subviews>
                                         <color key="backgroundColor" red="0.058823529409999999" green="0.070588235289999995" blue="0.1058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="SQC-mw-gFA">
-                                        <rect key="frame" x="0.0" y="620" width="300" height="50"/>
+                                        <rect key="frame" x="0.0" y="532" width="300" height="50"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QhX-dX-hcu" customClass="PaxPicker" customModule="mavryc" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="300" height="50"/>
@@ -595,7 +600,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Krs-dy-HPh">
-                                        <rect key="frame" x="0.0" y="690" width="300" height="50"/>
+                                        <rect key="frame" x="0.0" y="602" width="300" height="50"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sAr-MN-uAX" customClass="PaxPicker" customModule="mavryc" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="300" height="50"/>
@@ -610,7 +615,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ExR-qc-OJP">
-                                        <rect key="frame" x="0.0" y="760" width="300" height="50"/>
+                                        <rect key="frame" x="0.0" y="672" width="300" height="50"/>
                                         <subviews>
                                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L4E-wm-wuu">
                                                 <rect key="frame" x="0.0" y="0.0" width="300" height="50"/>
@@ -689,7 +694,7 @@
                         <outlet property="arrivalIconImageView" destination="CZe-ZU-FQb" id="Nfq-r9-2v0"/>
                         <outlet property="arrivalSearchTextField" destination="elu-wX-of4" id="18H-co-K13"/>
                         <outlet property="arrivalTableViewHeightConstraint" destination="99e-Tz-A7e" id="VAm-tT-eg4"/>
-                        <outlet property="customDatePicker" destination="gm9-0i-TiG" id="HOz-Tn-XNR"/>
+                        <outlet property="datePickerContainer" destination="ycY-fN-fie" id="E9N-KU-BqF"/>
                         <outlet property="dateTextField" destination="Poc-p4-48q" id="K9i-X5-YPO"/>
                         <outlet property="departureIconImageView" destination="DKG-kp-BYu" id="jrw-sd-cCl"/>
                         <outlet property="departureSearchTextField" destination="SVy-Sf-uF9" id="RMN-DZ-3Ic"/>
@@ -762,7 +767,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kKu-yG-suW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3130" y="-615"/>
+            <point key="canvasLocation" x="3048" y="-710"/>
         </scene>
         <!--Airport Search Table View Controller-->
         <scene sceneID="PcB-tG-jc4">
@@ -802,7 +807,47 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Bt-Xj-z94" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3131" y="-456"/>
+            <point key="canvasLocation" x="3048" y="-529"/>
+        </scene>
+        <!--Date Picker Table View Controller-->
+        <scene sceneID="aUa-Uh-24k">
+            <objects>
+                <tableViewController id="0zW-pJ-PKj" customClass="DatePickerTableViewController" customModule="mavryc" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="BS0-eQ-87y">
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="128"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.058823529409999999" green="0.070588235289999995" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="datePickerCell" textLabel="roo-jf-BWh" style="IBUITableViewCellStyleDefault" id="EQl-LT-bxq" customClass="DatePickerTableViewCell" customModule="mavryc" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="300" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EQl-LT-bxq" id="ugE-P1-IeO">
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="43.666666666666664"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="roo-jf-BWh">
+                                            <rect key="frame" x="15" y="0.0" width="270" height="43.666666666666664"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.058823529409999999" green="0.070588235289999995" blue="0.1058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="0zW-pJ-PKj" id="uWw-2i-FKo"/>
+                            <outlet property="delegate" destination="0zW-pJ-PKj" id="Cp2-1g-af6"/>
+                        </connections>
+                    </tableView>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="300" height="128"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qWy-NS-ene" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2971" y="247"/>
         </scene>
         <!--Aircraft Select View Controller-->
         <scene sceneID="XMK-Aa-8W7">
@@ -876,7 +921,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7zN-e7-i72" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3264.8000000000002" y="95.352323838080963"/>
+            <point key="canvasLocation" x="3479" y="94"/>
         </scene>
         <!--Confirm Details ScreenVC-->
         <scene sceneID="cG9-Lj-MSB">
