@@ -32,9 +32,13 @@ class MainViewController: UIViewController {
     @IBOutlet weak var destinationSearchTextField: UITextField!
     
     // Joystick & Map
-    @IBOutlet weak var joystick: CDJoystick!
-    @IBOutlet weak var joystickToken: UIView!
     var joystickController: JoystickController?
+    @IBOutlet weak var joystick: CDJoystick!
+    @IBOutlet weak var joystickToken: UIView! {
+        didSet {
+            joystickToken.center =  joystick.center
+        }
+    }
     
     // Map
     var mapView: MGLMapView?
