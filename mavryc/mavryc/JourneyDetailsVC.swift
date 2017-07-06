@@ -88,7 +88,7 @@ class JourneyDetailsVC: UIViewController {
     
     @IBOutlet weak var dateTextField: UILabel! {
         didSet {
-            // TODO: set the field to NOW formatted dd mm yy
+            dateTextField.text = Date.todayString()
         }
     }
     
@@ -523,7 +523,7 @@ extension JourneyDetailsVC: ScreenNavigable {
 extension JourneyDetailsVC: UIPickerViewDelegate {
     
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-        let titleData = "25 June 2017"//pickerData[row]
+        let titleData = Date.todayString()
         //Lato-Regular
         let myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont(name: "Georgia", size: 14.0)!, NSForegroundColorAttributeName:UIColor.white])
         return myTitle

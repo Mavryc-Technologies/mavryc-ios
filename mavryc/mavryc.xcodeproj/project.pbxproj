@@ -53,6 +53,7 @@
 		96B723701EA98B8D00B2E322 /* RealmConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B7236F1EA98B8D00B2E322 /* RealmConfiguration.swift */; };
 		96B723721EA9B53400B2E322 /* databaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B723711EA9B53400B2E322 /* databaseTests.swift */; };
 		96B723741EA9E26100B2E322 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B723731EA9E26100B2E322 /* User.swift */; };
+		96B7476B1F0E9F56006071E5 /* Date+Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B7476A1F0E9F56006071E5 /* Date+Format.swift */; };
 		96CB0A441EE5DB42004ADEA0 /* PaxPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CB0A431EE5DB42004ADEA0 /* PaxPicker.swift */; };
 		96CB0A461EE5DBF9004ADEA0 /* PaxPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 96CB0A451EE5DBF9004ADEA0 /* PaxPicker.xib */; };
 		96CB0A491EE75FAA004ADEA0 /* AirportSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CB0A481EE75FAA004ADEA0 /* AirportSearchTableViewCell.swift */; };
@@ -147,6 +148,7 @@
 		96B7236F1EA98B8D00B2E322 /* RealmConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmConfiguration.swift; sourceTree = "<group>"; };
 		96B723711EA9B53400B2E322 /* databaseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = databaseTests.swift; sourceTree = "<group>"; };
 		96B723731EA9E26100B2E322 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		96B7476A1F0E9F56006071E5 /* Date+Format.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Format.swift"; sourceTree = "<group>"; };
 		96CB0A431EE5DB42004ADEA0 /* PaxPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaxPicker.swift; sourceTree = "<group>"; };
 		96CB0A451EE5DBF9004ADEA0 /* PaxPicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PaxPicker.xib; sourceTree = "<group>"; };
 		96CB0A481EE75FAA004ADEA0 /* AirportSearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirportSearchTableViewCell.swift; sourceTree = "<group>"; };
@@ -549,6 +551,7 @@
 				96395F281EF312070094923F /* UIView+Image.swift */,
 				96395F2C1EF340BD0094923F /* Notification+Screens.swift */,
 				9606FD881EFC83A50059AD47 /* Notification+Location.swift */,
+				96B7476A1F0E9F56006071E5 /* Date+Format.swift */,
 			);
 			name = extensions;
 			sourceTree = "<group>";
@@ -850,6 +853,7 @@
 				96DA42371EA7FD670036C227 /* Flight.swift in Sources */,
 				96395F371EF5DA310094923F /* FeatureFlag.swift in Sources */,
 				96F2FC9E1E92D8CC00C51674 /* AppState.swift in Sources */,
+				96B7476B1F0E9F56006071E5 /* Date+Format.swift in Sources */,
 				964629CA1EF89C8B00CAA16E /* NavigationControllerDelegate.swift in Sources */,
 				96395F2F1EF472B80094923F /* LocationController.swift in Sources */,
 				961144951F0D92BA003033AE /* DatePickerTableViewCell.swift in Sources */,

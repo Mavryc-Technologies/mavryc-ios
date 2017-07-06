@@ -41,8 +41,11 @@ class DatePickerTableViewController: UITableViewController {
         let tomorrow4 = (Calendar.current as NSCalendar).date(byAdding: .day, value: 4, to: Date(), options: [])!
         let tomorrow5 = (Calendar.current as NSCalendar).date(byAdding: .day, value: 5, to: Date(), options: [])!
         let tomorrow6 = (Calendar.current as NSCalendar).date(byAdding: .day, value: 6, to: Date(), options: [])!
+        let tomorrow7 = (Calendar.current as NSCalendar).date(byAdding: .day, value: 7, to: Date(), options: [])!
+        let tomorrow8 = (Calendar.current as NSCalendar).date(byAdding: .day, value: 8, to: Date(), options: [])!
+        let tomorrow9 = (Calendar.current as NSCalendar).date(byAdding: .day, value: 9, to: Date(), options: [])!
         
-        let list = ["\(today.toString()) (today)", "\(tomorrow.toString()) (tomorrow)", "\(tomorrow2.toString())", "\(tomorrow3.toString())", "\(tomorrow4.toString())", "\(tomorrow5.toString())", "\(tomorrow6.toString())"]
+        let list = ["\(today.toString()) (today)", "\(tomorrow.toString()) (tomorrow)", "\(tomorrow2.toString())", "\(tomorrow3.toString())", "\(tomorrow4.toString())", "\(tomorrow5.toString())", "\(tomorrow6.toString())", "\(tomorrow7.toString())", "\(tomorrow8.toString())", "\(tomorrow9.toString())"]
         
         self.updateData(list: list)
     }
@@ -102,13 +105,5 @@ class DatePickerTableViewController: UITableViewController {
                 self.datePickerListDelegate?.didSelectDate(string: text, date: Date())
             }
         }
-    }
-}
-
-extension Date {
-    func toString() -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd MMMM yyyy"
-        return dateFormatter.string(from: self)
     }
 }
