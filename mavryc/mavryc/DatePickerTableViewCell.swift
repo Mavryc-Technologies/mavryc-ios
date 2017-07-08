@@ -22,11 +22,11 @@ class DatePickerTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
         //self.backgroundColor = AppStyle.sk
-        if selected {
-            self.textLabel?.textColor = UIColor.white
-        } else {
-            self.textLabel?.textColor = AppStyle.skylarBlueGrey
-        }
+//        if selected {
+//            self.textLabel?.textColor = UIColor.white
+//        } else {
+//            self.textLabel?.textColor = AppStyle.skylarBlueGrey
+//        }
     }
 
 }

@@ -79,6 +79,12 @@ class DatePickerTableViewController: UITableViewController {
             }
         }
         
+        let row = indexPath.row + 1
+        let diff = (row < 5) ? row : 5
+        let color = AppStyle.skylarBlueGrey
+        let alpha = CGFloat(1 - (CGFloat(diff) * 0.1))
+        cell.textLabel?.textColor = color.withAlphaComponent(alpha)
+        
         return cell
     }
     

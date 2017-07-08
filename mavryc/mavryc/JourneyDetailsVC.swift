@@ -86,9 +86,12 @@ class JourneyDetailsVC: UIViewController {
         }
     }
     
+    @IBOutlet weak var datePickerContainerStackView: UIStackView!
+    
+    
     @IBOutlet weak var dateTextField: UILabel! {
         didSet {
-            dateTextField.text = Date.todayString()
+            dateTextField.text = Date.todayString() + " (today)"
         }
     }
     
@@ -119,7 +122,7 @@ class JourneyDetailsVC: UIViewController {
         
         self.setupSwipeGesture()
         
-        self.datePickerContainer.isHidden = true
+        self.datePickerContainerStackView.isHidden = true
     }
     
     func setupSwipeGesture() {
@@ -257,10 +260,10 @@ class JourneyDetailsVC: UIViewController {
         // if date picker is visible, hide it 
         // else show it
         UIView.animate(withDuration: 0.15) {
-            if self.datePickerContainer.isHidden  {
-                self.datePickerContainer.isHidden = false
+            if self.datePickerContainerStackView.isHidden  {
+                self.datePickerContainerStackView.isHidden = false
             } else {
-                self.datePickerContainer.isHidden = true
+                self.datePickerContainerStackView.isHidden = true
             }
             self.view.layoutIfNeeded()
         }
@@ -386,7 +389,7 @@ extension JourneyDetailsVC: DatePickerTableViewDelegate {
         
         // update the date
         UIView.animate(withDuration: 0.15) {
-            self.datePickerContainer.isHidden = true
+            self.datePickerContainerStackView.isHidden = true
             self.view.layoutIfNeeded()
         }
     }

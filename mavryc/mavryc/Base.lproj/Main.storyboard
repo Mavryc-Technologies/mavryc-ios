@@ -76,7 +76,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ArriveIconUnselected" translatesAutoresizingMaskIntoConstraints="NO" id="NWD-CI-8VF">
-                                                <rect key="frame" x="13.666666666666671" y="14" width="21" height="20"/>
+                                                <rect key="frame" x="14" y="14" width="21" height="20"/>
                                                 <color key="backgroundColor" red="0.058823529409999999" green="0.070588235289999995" blue="0.1058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </imageView>
                                         </subviews>
@@ -472,7 +472,7 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
                                                         <subviews>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ArriveIconUnselected" translatesAutoresizingMaskIntoConstraints="NO" id="CZe-ZU-FQb">
-                                                                <rect key="frame" x="13.666666666666664" y="14" width="21.000000000000007" height="20"/>
+                                                                <rect key="frame" x="14" y="14" width="21" height="20"/>
                                                                 <color key="backgroundColor" red="0.058823529409999999" green="0.070588235289999995" blue="0.1058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </imageView>
                                                         </subviews>
@@ -572,15 +572,28 @@
                                                     <outletCollection property="gestureRecognizers" destination="pXa-cv-UWD" appends="YES" id="fAP-zd-iU9"/>
                                                 </connections>
                                             </view>
-                                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ycY-fN-fie">
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="vpv-bB-Ag0">
                                                 <rect key="frame" x="0.0" y="48" width="300" height="128"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="128" id="YRJ-8V-cH4"/>
-                                                </constraints>
-                                                <connections>
-                                                    <segue destination="0zW-pJ-PKj" kind="embed" identifier="datePickerTVCSegue" id="DOU-YS-Vwa"/>
-                                                </connections>
-                                            </containerView>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qUr-uW-EIM">
+                                                        <rect key="frame" x="0.0" y="0.0" width="48" height="128"/>
+                                                        <color key="backgroundColor" red="0.058823529409999999" green="0.070588235289999995" blue="0.1058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="48" id="L3e-JI-Yf4"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ycY-fN-fie">
+                                                        <rect key="frame" x="49" y="0.0" width="251" height="128"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="251" id="ES7-3l-v4u"/>
+                                                            <constraint firstAttribute="height" constant="128" id="YRJ-8V-cH4"/>
+                                                        </constraints>
+                                                        <connections>
+                                                            <segue destination="0zW-pJ-PKj" kind="embed" identifier="datePickerTVCSegue" id="DOU-YS-Vwa"/>
+                                                        </connections>
+                                                    </containerView>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
                                         <color key="backgroundColor" red="0.058823529409999999" green="0.070588235289999995" blue="0.1058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </stackView>
@@ -695,6 +708,7 @@
                         <outlet property="arrivalSearchTextField" destination="elu-wX-of4" id="18H-co-K13"/>
                         <outlet property="arrivalTableViewHeightConstraint" destination="99e-Tz-A7e" id="VAm-tT-eg4"/>
                         <outlet property="datePickerContainer" destination="ycY-fN-fie" id="E9N-KU-BqF"/>
+                        <outlet property="datePickerContainerStackView" destination="vpv-bB-Ag0" id="kEd-uc-KYl"/>
                         <outlet property="dateTextField" destination="Poc-p4-48q" id="K9i-X5-YPO"/>
                         <outlet property="departureIconImageView" destination="DKG-kp-BYu" id="jrw-sd-cCl"/>
                         <outlet property="departureSearchTextField" destination="SVy-Sf-uF9" id="RMN-DZ-3Ic"/>
@@ -740,11 +754,11 @@
                                 <rect key="frame" x="0.0" y="28" width="300" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ExJ-nC-fRo" id="n1P-Lp-5aE">
-                                    <rect key="frame" x="0.0" y="0.0" width="300" height="43.666666666666664"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" alpha="0.75" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="EUq-TY-Uxh">
-                                            <rect key="frame" x="15" y="0.0" width="270" height="43.666666666666664"/>
+                                            <rect key="frame" x="15" y="0.0" width="270" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="12"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -782,11 +796,11 @@
                                 <rect key="frame" x="0.0" y="28" width="300" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Owt-8m-Wh6" id="njz-A0-wV4">
-                                    <rect key="frame" x="0.0" y="0.0" width="300" height="43.666666666666664"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" alpha="0.75" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="C2c-yH-qwq">
-                                            <rect key="frame" x="15" y="0.0" width="270" height="43.666666666666664"/>
+                                            <rect key="frame" x="15" y="0.0" width="270" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" name="Lato-Light" family="Lato" pointSize="12"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -813,26 +827,27 @@
         <scene sceneID="aUa-Uh-24k">
             <objects>
                 <tableViewController id="0zW-pJ-PKj" customClass="DatePickerTableViewController" customModule="mavryc" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="BS0-eQ-87y">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="30" sectionHeaderHeight="28" sectionFooterHeight="28" id="BS0-eQ-87y">
                         <rect key="frame" x="0.0" y="0.0" width="300" height="128"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.058823529409999999" green="0.070588235289999995" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="datePickerCell" textLabel="roo-jf-BWh" style="IBUITableViewCellStyleDefault" id="EQl-LT-bxq" customClass="DatePickerTableViewCell" customModule="mavryc" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="300" height="44"/>
+                                <rect key="frame" x="0.0" y="28" width="300" height="30"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EQl-LT-bxq" id="ugE-P1-IeO">
-                                    <rect key="frame" x="0.0" y="0.0" width="300" height="43.666666666666664"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="29"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="roo-jf-BWh">
-                                            <rect key="frame" x="15" y="0.0" width="270" height="43.666666666666664"/>
+                                            <rect key="frame" x="15" y="0.0" width="270" height="29"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <color key="backgroundColor" red="0.058823529409999999" green="0.070588235289999995" blue="0.1058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.058823529409999999" green="0.070588235289999995" blue="0.1058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </tableViewCell>
@@ -847,7 +862,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qWy-NS-ene" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2971" y="247"/>
+            <point key="canvasLocation" x="2943" y="271"/>
         </scene>
         <!--Aircraft Select View Controller-->
         <scene sceneID="XMK-Aa-8W7">
@@ -954,7 +969,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OUTBOUND" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sbM-th-VbJ">
-                                <rect key="frame" x="138" y="51" width="100" height="14"/>
+                                <rect key="frame" x="138" y="51" width="100" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="K8E-JO-iYd"/>
                                 </constraints>
@@ -972,7 +987,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MID JET" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5aw-pL-iBI">
-                                <rect key="frame" x="37" y="701.66666666666663" width="300" height="14"/>
+                                <rect key="frame" x="37" y="700" width="300" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="aB6-Op-zio"/>
                                 </constraints>
@@ -990,14 +1005,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="OutboundCellBG" translatesAutoresizingMaskIntoConstraints="NO" id="aAE-6h-EZz">
-                                <rect key="frame" x="37" y="77" width="300" height="123"/>
+                                <rect key="frame" x="37" y="78" width="300" height="123"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="123" id="X01-EG-Wyq"/>
                                     <constraint firstAttribute="width" constant="300" id="etC-50-boX"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jRA-Tk-yfn">
-                                <rect key="frame" x="187" y="76" width="150" height="123"/>
+                                <rect key="frame" x="187" y="77" width="150" height="123"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SJC" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fsa-Jo-dzz">
                                         <rect key="frame" x="24" y="20" width="102" height="30"/>
@@ -1051,7 +1066,7 @@
                                 </constraints>
                             </view>
                             <view autoresizesSubviews="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HSO-fK-aiu">
-                                <rect key="frame" x="37" y="76" width="150" height="123"/>
+                                <rect key="frame" x="37" y="77" width="150" height="123"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PDX" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9td-cX-vTg">
                                         <rect key="frame" x="19" y="20" width="102" height="30"/>
