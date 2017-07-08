@@ -16,10 +16,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PaxPicker" customModule="mavryc" customModuleProvider="target">
             <connections>
                 <outlet property="PaxCountLabel" destination="Nt3-5K-QSf" id="dvG-uE-6xv"/>
-                <outlet property="filledBarsImageView" destination="MQw-C5-paU" id="Azg-4B-9YU"/>
+                <outlet property="barsContainerView" destination="Dj3-78-vwX" id="ILA-SG-a2v"/>
                 <outlet property="iconImageView" destination="gjF-v9-MFG" id="iYo-gs-8qA"/>
-                <outlet property="maskingBar" destination="cZ8-oj-7r4" id="4uI-Hb-MDH"/>
-                <outlet property="maskingBarWidthConstraint" destination="MNn-Cn-C3f" id="ZsF-fa-E96"/>
                 <outlet property="view" destination="NFo-Sn-JcD" id="XQQ-pw-sci"/>
             </connections>
         </placeholder>
@@ -38,41 +36,25 @@
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PAX Field BG" translatesAutoresizingMaskIntoConstraints="NO" id="6tU-9R-kZB" userLabel="empty bars">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dj3-78-vwX">
                             <rect key="frame" x="20" y="13" width="162" height="22"/>
-                            <gestureRecognizers/>
-                            <connections>
-                                <outletCollection property="gestureRecognizers" destination="KPH-nC-Xe2" appends="YES" id="a6j-cO-Y8D"/>
-                                <outletCollection property="gestureRecognizers" destination="xhE-hc-OLT" appends="YES" id="0X1-Pj-Wg7"/>
-                            </connections>
-                        </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PAX Field Select" translatesAutoresizingMaskIntoConstraints="NO" id="MQw-C5-paU">
-                            <rect key="frame" x="20" y="13" width="162" height="22"/>
-                        </imageView>
-                        <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cZ8-oj-7r4">
-                            <rect key="frame" x="0.0" y="0.0" width="7" height="49"/>
-                            <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="49" id="6SC-cR-14J"/>
-                                <constraint firstAttribute="width" constant="7" id="MNn-Cn-C3f"/>
+                                <constraint firstAttribute="width" constant="162" id="1XA-en-T86"/>
+                                <constraint firstAttribute="height" constant="22" id="aw5-Co-rL7"/>
                             </constraints>
+                            <connections>
+                                <outletCollection property="gestureRecognizers" destination="KPH-nC-Xe2" appends="YES" id="kwE-YW-bGW"/>
+                                <outletCollection property="gestureRecognizers" destination="xhE-hc-OLT" appends="YES" id="Nde-Ns-SLW"/>
+                            </connections>
                         </view>
                     </subviews>
                     <color key="backgroundColor" red="0.058823529409999999" green="0.070588235289999995" blue="0.1058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="Nt3-5K-QSf" secondAttribute="bottom" constant="13" id="0qM-0I-zjO"/>
-                        <constraint firstItem="6tU-9R-kZB" firstAttribute="leading" secondItem="LqQ-hG-Exx" secondAttribute="leading" constant="20" id="6mJ-BJ-5gN"/>
-                        <constraint firstItem="MQw-C5-paU" firstAttribute="top" secondItem="LqQ-hG-Exx" secondAttribute="top" constant="13" id="885-ST-sih"/>
-                        <constraint firstItem="6tU-9R-kZB" firstAttribute="top" secondItem="LqQ-hG-Exx" secondAttribute="top" constant="13" id="KLq-Dj-QHk"/>
-                        <constraint firstAttribute="bottom" secondItem="cZ8-oj-7r4" secondAttribute="bottom" constant="-1" id="OEq-mA-FOe"/>
-                        <constraint firstItem="Nt3-5K-QSf" firstAttribute="leading" secondItem="6tU-9R-kZB" secondAttribute="trailing" constant="4" id="RAA-kw-lhr"/>
+                        <constraint firstItem="Dj3-78-vwX" firstAttribute="leading" secondItem="LqQ-hG-Exx" secondAttribute="leading" constant="20" id="IoF-Rw-eVr"/>
                         <constraint firstAttribute="trailing" secondItem="Nt3-5K-QSf" secondAttribute="trailing" constant="4" id="W3h-J3-by7"/>
-                        <constraint firstItem="Nt3-5K-QSf" firstAttribute="leading" secondItem="MQw-C5-paU" secondAttribute="trailing" constant="4" id="WeN-DL-cdV"/>
-                        <constraint firstItem="MQw-C5-paU" firstAttribute="leading" secondItem="LqQ-hG-Exx" secondAttribute="leading" constant="20" id="cYr-C0-ZSm"/>
-                        <constraint firstAttribute="bottom" secondItem="MQw-C5-paU" secondAttribute="bottom" constant="13" id="oyX-aJ-Phz"/>
-                        <constraint firstItem="cZ8-oj-7r4" firstAttribute="top" secondItem="LqQ-hG-Exx" secondAttribute="top" id="qah-YA-4lb"/>
-                        <constraint firstItem="cZ8-oj-7r4" firstAttribute="leading" secondItem="LqQ-hG-Exx" secondAttribute="leading" id="qjX-2h-hPD"/>
-                        <constraint firstAttribute="bottom" secondItem="6tU-9R-kZB" secondAttribute="bottom" constant="13" id="wZf-mB-NPD"/>
+                        <constraint firstItem="Dj3-78-vwX" firstAttribute="top" secondItem="LqQ-hG-Exx" secondAttribute="top" constant="13" id="X8U-ip-xlc"/>
                         <constraint firstItem="Nt3-5K-QSf" firstAttribute="top" secondItem="LqQ-hG-Exx" secondAttribute="top" constant="14" id="xCm-fy-gHn"/>
                     </constraints>
                 </view>
@@ -124,8 +106,6 @@
         </tapGestureRecognizer>
     </objects>
     <resources>
-        <image name="PAX Field BG" width="162" height="22"/>
-        <image name="PAX Field Select" width="162" height="22"/>
         <image name="PAXIconFormPDF" width="17" height="21"/>
     </resources>
 </document>
