@@ -25,4 +25,7 @@ class AirportLocation {
         self.airportCountry = country
     }
     
+    func airport(at location: CLLocation) -> AirportLocation? {
+        return nil
+    }
 }

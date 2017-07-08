@@ -8,32 +8,14 @@
 
 import UIKit
 
-extension Notification.Name {
-    /// Used as a namespace for all `Panel` related notifications.
-    public struct PanelScreen {
-     
-        /// Posted when Panel is about to open.
-        public static let WillOpen = Notification.Name(rawValue: "com.mavryk.notification.name.panel.willOpen")
-        
-        /// Posted when Panel is opened.
-        public static let DidOpen = Notification.Name(rawValue: "com.mavryk.notification.name.panel.didOpen")
-        
-        /// Posted when Panel is about to open.
-        public static let WillClose = Notification.Name(rawValue: "com.mavryk.notification.name.panel.willClose")
-
-        /// Posted when Panel is closed.
-        public static let DidClose = Notification.Name(rawValue: "com.mavryk.notification.name.panel.didClose")
-    
-        public static let DidTapBackNav = Notification.Name(rawValue: "com.mavryk.notification.name.panel.didTapBackNav")
-    }
-}
-
 protocol PanelDelegate {
     /// notify delegate when panel did open
     func panelDidOpen()
     
     /// notify delegate when panel did close
     func panelDidClose()
+    
+    func panelWillClose()
     
     /// delegate provides desired height of panel in retracted state
     func panelRetractedHeight() -> CGFloat
@@ -48,107 +30,42 @@ protocol PanelDelegate {
     func panelParentView() -> UIView
 }
 
-enum PanelScreen {
-    case retractedHome
-    case journey
-    case aircraftSelection
-    case confirmDetails
-    
-    static var isPanelRetrated = true
-    
-    func nextSceenOnBackTap(isPanelRetracted: Bool) -> PanelScreen {
-        
-        if isPanelRetracted {
-           return self
-        } else {
-            switch self {
-            case .journey:
-                return .retractedHome
-            case .aircraftSelection:
-                return .journey
-            case .confirmDetails:
-                return .aircraftSelection
-            default:
-                return self
-            }
-        }
-    }
-}
-
 class FlightPanelViewController: UIViewController, UIGestureRecognizerDelegate {
     
     @IBOutlet weak var fxBGView: UIVisualEffectView!
     
-    @IBOutlet weak var panelButton: UIButton!
+    @IBOutlet weak var panelButton: UIButton! // contains chevron images
+    
     @IBOutlet weak var panelTopBorder: UIView!
+    
+    @IBOutlet weak var panelTitleLabel: UILabel!
+    
     
     var delegate: PanelDelegate?
     
     private var lastPanIncrement: CGFloat = 0
-    private var isOpen: Bool = false
-    
-    public static var currentPanelScreen = PanelScreen.retractedHome
-    
-    private var journeyVC: JourneyDetailsVC?
+    public var isOpen: Bool = false
 
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        ScreenNavigator.sharedInstance.registerPanelController(panelController: self)
+        
         let gesture = UIPanGestureRecognizer(target: self, action: #selector(wasDragged(recognizer:)))
         self.panelButton.addGestureRecognizer(gesture)
         self.panelButton.isUserInteractionEnabled = true
         gesture.delegate = self
-        
-        self.setupNavigationControl()
     }
     
-    // MARK: - Segues
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "JourneyDetailsRootSegue" {
-            guard let navController = segue.destination as? UINavigationController else { return }
-            guard let vc = navController.childViewControllers.first as? JourneyDetailsVC else { return }
-            self.journeyVC = vc
-        }
-    }
-    
-    // MARK: - Navigation Control
-    private func setupNavigationControl() {
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(didTapBackNavButton),
-                                               name: Notification.Name.PanelScreen.DidTapBackNav,
-                                               object: nil)
-    }
-    
-    @objc private func didTapBackNavButton() {
-        print("didTapBackNavButton notification handler called")
-        
-        let isRetracted = !self.isOpen
-        let nextScreen = FlightPanelViewController.currentPanelScreen.nextSceenOnBackTap(isPanelRetracted: isRetracted)
-        
-
-            switch nextScreen {
-            case .aircraftSelection:
-                self.journeyVC?.navigationController?.popViewController(animated: true)
-                break
-            case .journey:
-                self.journeyVC?.navigationController?.popViewController(animated: true)
-                break
-            case .retractedHome:
-                self.activatePanel(open: false)
-            default:
-                break
-            }
-        
-    }
-    
+    func refreshCurrentPanelScreen() {}
     
     // MARK: - Panel Control
     
     /// Open panel and set to state
-    public func openPanelAndSetState() {
-        // TODO: update function to handle diff states
+    public func triggerPanel(shouldOpen: Bool) {
         
-        self.activatePanel(open: true)
+        self.activatePanel(open: shouldOpen)
     }
     
     /// Triggers automatic panel extension/retraction when panelButton is normal pressed
@@ -168,6 +85,7 @@ class FlightPanelViewController: UIViewController, UIGestureRecognizerDelegate {
         if open {
             NotificationCenter.default.post(name: Notification.Name.PanelScreen.WillOpen, object: self, userInfo:nil)
         } else {
+            delegate.panelWillClose()
             NotificationCenter.default.post(name: Notification.Name.PanelScreen.WillClose, object: self, userInfo:nil)
         }
         
@@ -187,12 +105,7 @@ class FlightPanelViewController: UIViewController, UIGestureRecognizerDelegate {
                     object: self,
                     userInfo: nil
                 )
-                
-                
-                
-                // kludgehack time TODO: replace the hack with real custom anim transitions for nice effect!
-                AppState.tempBGImageForTransitionAnimationHack = self.fxBGView.takeSnapshot()
-                
+
             } else {
                 delegate.panelDidClose()
                 
@@ -244,16 +157,23 @@ class FlightPanelViewController: UIViewController, UIGestureRecognizerDelegate {
                 activatePanel(open: false)
             }
         }
-        
     }
 }
 
-extension UIView {
-    func takeSnapshot() -> UIImage {
-        UIGraphicsBeginImageContextWithOptions(bounds.size, false, UIScreen.main.scale)
-        drawHierarchy(in: self.bounds, afterScreenUpdates: true)
-        let image = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
-        return image
+// MARK: - Screen Navigation
+extension FlightPanelViewController: ScreenNavigable {
+    
+    func screenNavigator(_ screenNavigator: ScreenNavigator, backButtonWasPressed: Bool) {
+        self.triggerPanel(shouldOpen: false)
+    }
+    
+    func screenNavigatorIsScreenVisible(_ screenNavigator: ScreenNavigator) -> Bool? {
+        return self.isOpen
+    }
+    
+    func screenNavigatorRefreshCurrentScreen(_ screenNavigator: ScreenNavigator) {
+        let screen = screenNavigator.currentPanelScreen
+        self.panelButton.isHidden = !screen.shouldShowChevron()
+        self.panelTitleLabel.text = screen.panelTitle()
     }
 }

@@ -12,6 +12,7 @@ import Mapbox
 
 class MainViewController: UIViewController {
 
+    // Nav Bar
     @IBOutlet weak var navBar: UINavigationBar! {
         didSet {
             navBar.setBackgroundImage(UIImage(named: "Header.png"),
@@ -26,47 +27,40 @@ class MainViewController: UIViewController {
     }
     
     @IBOutlet weak var panelHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var joystick: CDJoystick!
-    @IBOutlet weak var joystickToken: UIView!
-    @IBOutlet weak var joystickTokenDisk: UIImageView!
     
     @IBOutlet weak var destinationSearchButton: UIView!
-    
-    // Location manager used to start and stop updating location.
-    let manager = CLLocationManager()
-    var receivedLocationCount = 0
-    var isUpdatingLocation = false
-    var lastKnownUserLocation: CLLocation?
-    
-    // Map
-    var mapView: MGLMapView? = nil
-    var mapCam: MGLMapCamera = MGLMapCamera()
+    @IBOutlet weak var destinationSearchTextField: UITextField!
     
     // Joystick & Map
-    var joystickMapCoordinator = JoystickMapCoordinator()
+    var joystickController: JoystickController?
+    @IBOutlet weak var joystick: CDJoystick!
+    @IBOutlet weak var joystickToken: UIView! {
+        didSet {
+            joystickToken.center =  joystick.center
+        }
+    }
+    
+    // Map
+    var mapView: MGLMapView?
+    
+    var mapController: MapController?
+    var locationController = LocationController()
     
     // Panel
-    weak var panel: FlightPanelViewController? = nil
-
+    weak var panel: FlightPanelViewController?
+    
     var hamburgerNavMode = true
     
     // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // TODO: add feature flagging for joystick
-        //joystick.delegate = self
-        //joystick.trackingHandler = self.joystickTrackingHandler()
-        
-        //mapView.mapType = .satelliteFlyover
-        manager.delegate = self
-        manager.requestWhenInUseAuthorization()
-        manager.startUpdatingLocation()
-        isUpdatingLocation = true
-        
-        self.mapView!.delegate = self
+        if let mapView = mapView {
+            mapController = MapController(locationController: locationController, mapView: mapView)
+            joystickController = JoystickController(joystick: joystick, joystickToken: joystickToken, container: self, mapView: mapView)
+        }
     }
-
+    
     // MARK: Segues
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "JourneyPanelSegue" {
@@ -81,25 +75,25 @@ class MainViewController: UIViewController {
     }
     
     // MARK: - Interface Actions
-    @IBAction func distinationSearchButtonAction(_ sender: Any) {
-        self.panel?.openPanelAndSetState()
+    @IBAction func destinationSearchButtonAction(_ sender: Any) {
+        ScreenNavigator.destinationSearchButtonWasPressedState = true
+        self.panel?.triggerPanel(shouldOpen: true)
     }
     
     @IBAction func joystickTapAction(_ sender: UITapGestureRecognizer) {
-        if let userLocation = self.lastKnownUserLocation, let map = self.mapView {
-            self.animateMap(to: userLocation, map: map)
+        if let userLocation = LocationController.lastKnownUserLocation, let map = self.mapView {
+            self.mapController?.animateMap(to: userLocation, map: map, duration: 2)
         }
     }
     
-    // MARK: - Navigation
-    
+    // MARK: - Screen Navigation
     
     @IBAction func navButtonAction(_ sender: Any) {
         if self.hamburgerNavMode {
             // TODO: implement hamburger menu trigger
         } else {
             // back nav mode
-            NotificationCenter.default.post(name: Notification.Name.PanelScreen.DidTapBackNav, object: self, userInfo:nil)
+            ScreenNavigator.sharedInstance.navigateBackward()
         }
     }
     
@@ -112,272 +106,6 @@ class MainViewController: UIViewController {
         self.hamburgerNavMode = false
         self.navLeftButtonHamburgerAndBack.image = UIImage(named: "BackArrow.png")
     }
-    
-    // MARK: - Map misc
-    
-    func animateMap(to location: CLLocation, map: MGLMapView) {
-        self.mapCam.centerCoordinate = location.coordinate
-        self.mapCam.altitude = Double(3000000)
-        //self.mapCam.pitch = 60.0
-        map.setCamera(self.mapCam, withDuration: 2, animationTimingFunction: CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn))
-    }
-}
-
-// MARK: - Location Manager Delegate
-extension MainViewController: CLLocationManagerDelegate {
-    
-    // MARK: Location Delegation
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
-        receivedLocationCount = receivedLocationCount + locations.count
-        if receivedLocationCount > 3 {
-            
-            manager.stopUpdatingLocation()
-            
-            if isUpdatingLocation {
-                if let userLocation = locations.first {
-                    self.lastKnownUserLocation = userLocation
-                    self.updateUserLocation(location: userLocation)
-                }
-            }
-            isUpdatingLocation = false
-        }
-    }
-    
-    /// Log any errors to the console.
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("Error occured: \(error.localizedDescription).")
-    }
-    
-    func reverseGeocodeLocation(locations: [CLLocation]) {
-        locations.forEach { (loc) in
-            CLGeocoder().reverseGeocodeLocation(loc) { placemarks, error in
-                placemarks?.forEach({ (placemark) in
-                    print("🐸--- placemark: \(placemark)")
-                })
-            }
-        }
-    }
-    
-}
-
-
-// MARK: - MapView Delegate
-extension MainViewController: MGLMapViewDelegate {
-    
-    func mapView(_ mapView: MGLMapView, didFinishLoading style: MGLStyle) {
-    
-        // TODO: comment in code below to show and work on refinement of mapbox's polyline. However, better than this would be implement our own arc core graphics line above the map layer. There are many limitations with the mapbox polyline.
-        //self.joystickMapCoordinator.addPolylineLayer(to: style)
-        
-        // add airports to map
-        //self.addAirportAnnotations(to: mapView)
-    }
-    
-    // This delegate method is where you tell the map to load a view for a specific annotation. To load a static MGLAnnotationImage, you would use `-mapView:imageForAnnotation:`.
-    func mapView(_ mapView: MGLMapView, viewFor annotation: MGLAnnotation) -> MGLAnnotationView? {
-        
-        if let castAnnotation = annotation as? CustomPointAnnotation {
-            if (castAnnotation.willUseImage) {
-                return nil;
-            }
-        }
-        
-        guard annotation is MGLPointAnnotation else {
-            return nil
-        }
-        
-        let reuseIdentifier = "\(annotation.coordinate.longitude)"
-        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseIdentifier)
-        if annotationView == nil {
-            annotationView = CustomAnnotationView(reuseIdentifier: reuseIdentifier)
-            annotationView!.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
-            let hue = CGFloat(annotation.coordinate.longitude) / 100
-            annotationView!.backgroundColor = UIColor(hue: hue, saturation: 0.5, brightness: 1, alpha: 1)
-        }
-        
-        return annotationView
-    }
-    
-    func mapView(_ mapView: MGLMapView, imageFor annotation: MGLAnnotation) -> MGLAnnotationImage? {
-        
-        var isAirport = false
-        if let castAnnotation = annotation as? CustomPointAnnotation {
-            isAirport = castAnnotation.showAirport
-            if (!castAnnotation.willUseImage) {
-                return nil;
-            }
-        }
-        
-        if isAirport {
-            var annotationImage = mapView.dequeueReusableAnnotationImage(withIdentifier: "airportMarker")
-            if annotationImage == nil {
-                var image = UIImage(named: "Depart Icon")!
-                image = image.withAlignmentRectInsets(UIEdgeInsets(top: 0, left: 0, bottom: image.size.height/2, right: 0))
-                annotationImage = MGLAnnotationImage(image: image, reuseIdentifier: "airportMarker")
-                
-            }
-            return annotationImage
-            
-        } else { // is user location
-            var annotationImage = mapView.dequeueReusableAnnotationImage(withIdentifier: "userLocationMaker")
-            if annotationImage == nil {
-                var image = UIImage(named: "LocationMarker")!
-                image = image.withAlignmentRectInsets(UIEdgeInsets(top: 0, left: 0, bottom: image.size.height/2, right: 0))
-                annotationImage = MGLAnnotationImage(image: image, reuseIdentifier: "userLocationMaker")
-            }
-            return annotationImage
-        }
-    }
-    
-    func mapView(_ mapView: MGLMapView, annotationCanShowCallout annotation: MGLAnnotation) -> Bool {
-        return true
-    }
-
-    // TODO: may use this for added functionality
-//    func mapView(_ mapView: MGLMapView, calloutViewFor annotation: MGLAnnotation) -> MGLCalloutView? {
-//        return nil
-//    }
-    
-    // MGLPointAnnotation subclass
-    class CustomPointAnnotation: MGLPointAnnotation {
-        var willUseImage: Bool = false
-        var showAirport: Bool = false
-    }
-    
-    
-    // MARK: - Map Annotation Support
-    func updateUserLocation(location: CLLocation) {
-        
-        // put map center at user location
-        let lat = location.coordinate.latitude
-        let lon = location.coordinate.longitude
-        let center = CLLocationCoordinate2D(latitude: lat, longitude: lon)
-        mapView?.setCenter(center, zoomLevel: 12, animated: true)
-        
-        // Fill an array with point annotations and add it to the map.
-        let userAnnotation = CustomPointAnnotation()
-        userAnnotation.coordinate = center
-        userAnnotation.willUseImage = true
-        mapView?.addAnnotation(userAnnotation)
-    }
-    
-    private func addClusteredAirportMarkers() {
-        
-    }
-    
-    private func addAirportAnnotations(to mapView: MGLMapView) {
-        
-        Airports.requestAirports { (locations) in
-            var annotations = [CustomPointAnnotation]()
-            locations.forEach({ (loc) in
-                let point = CustomPointAnnotation()
-                point.coordinate = loc.location.coordinate
-                point.title = loc.threeLetterCode
-                point.subtitle = loc.airportName
-                point.showAirport = true
-                point.willUseImage = true
-                annotations.append(point)
-            })
-            DispatchQueue.main.async {
-                mapView.addAnnotations(annotations)
-            }
-        }
-    }
-
-}
-
-//
-// MGLAnnotationView subclass
-class CustomAnnotationView: MGLAnnotationView {
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        // Force the annotation view to maintain a constant size when the map is tilted.
-        scalesWithViewingDistance = false
-        
-        // Use CALayer’s corner radius to turn this view into a circle.
-        layer.cornerRadius = frame.width / 2
-        layer.borderWidth = 2
-        layer.borderColor = UIColor.white.cgColor
-    }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-        // Animate the border width in/out, creating an iris effect.
-        let animation = CABasicAnimation(keyPath: "borderWidth")
-        animation.duration = 0.1
-        layer.borderWidth = selected ? frame.width / 4 : 2
-        layer.add(animation, forKey: "borderWidth")
-    }
-}
-
-
-// MARK: - JoyStick Delegate
-extension MainViewController: JoystickDelegate {
-    
-    func stickDidResetTo(center: CGPoint) {
-        self.updateDiskPosition(for: self.joystickToken, toJoystick: self.joystick, atStickCenter: center)
-        UIView.animate(withDuration: 0.25) {
-            self.view.layoutIfNeeded()
-        }
-    }
-    
-    /// 🕹🕹🕹
-    func joystickTrackingHandler() -> ((CDJoystickData) -> Void)? {
-        return { joystickData in
-            
-            // Joystick Modes: stationary-disk or moving-disk. Comment in below for moving disk.
-            self.updateDiskPosition(for: self.joystickToken, toJoystick: self.joystick, atStickCenter: joystickData.stickCenter)
-            
-            // Map's position
-            let nextCenter = self.joystickMapCoordinator.nextMapCenterPosition(mapView: self.mapView!, mapParentView: self.view, joystickDelta: joystickData.velocity)
-            self.mapCam.centerCoordinate = nextCenter
-            
-            // Add/Update curved Polyline (polyline test code)
-//            let LAX = CLLocation(latitude: 33.9424955, longitude: -118.4080684)
-//            let JFK = CLLocation(latitude: self.mapCam.centerCoordinate.latitude, longitude: self.mapCam.centerCoordinate.longitude)
-//            var coordinates = [LAX.coordinate, JFK.coordinate]
-//            self.joystickMapCoordinator.updatePolylineWithCoordinates(coordinates: coordinates)
-            
-            // Map's altitude
-            var nextAltitude: CLLocationDistance = 0.0
-            if self.joystickMapCoordinator.isForceTouchMode {
-                nextAltitude = self.joystickMapCoordinator.altitudeForForceTouch(joystick: self.joystick, stickCenter: joystickData.stickCenter, force: joystickData.force)
-            } else {
-                //nextAltitude = self.joystickMapCoordinator.altitudeForPixelExponential(joystick: self.joystick, stickCenter: joystickData.stickCenter)
-                
-                nextAltitude = self.joystickMapCoordinator.altitudeForPixelExponentialAndMAASmoothing(joystick: self.joystick, stickCenter: joystickData.stickCenter)
-            }
-            self.mapCam.altitude = nextAltitude
-            
-            // Map's viewing pitch
-            //self.mapCam.pitch = 60.0
-            
-            self.mapView!.setCamera(self.mapCam, withDuration: 0, animationTimingFunction: CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut))
-        }
-    }
-    
-    // MARK: Joystick
-    
-    /// Keeps the disk/token image centered on the virtual joystick center
-    private func updateDiskPosition(for tokenView: UIView, toJoystick: UIView, atStickCenter: CGPoint) {
-        let centerX = ((toJoystick.frame.origin.x + atStickCenter.x))
-        let centerY = ((toJoystick.frame.origin.y + atStickCenter.y))
-        tokenView.center = CGPoint(x: centerX, y: centerY )
-    }
-    
-    
-    /* TODO: Consider the following:
-     - implement dead zone (of perhaps 10-20 pixels) at center of joystickTokenDisk
-     - center the joystick/deadzone on initial touch from initial touch point; ie., don't jump the stick to initial touch point.
-     - reset joystick and animate/transition appropriately on release of stick
-     - fly to certain view of flight leg once destination is set/selected
-     - implement arced/curved polyline or core graphics curved line extending from origin out and above map across and to destination
-     - implement modes and a dev menu for playing with modes: Stationary-disk On/Off, gyro-compass-directed-map On/Off, force-touch On/Off, Joystick On/Off ...
-     - gyro-compass directed mode would use gyro and compass to interact with map; the user to see flat map will hold the phone flat, the compass orientation will orient the map according to the current compass heading; bringing the phone in more of a vertical position will tilt the map accordingly. The experience would be akin to the interaction you might have in an actual room with a map in real life.
-     */
 }
 
 
@@ -387,6 +115,17 @@ extension MainViewController: PanelDelegate {
     func panelDidOpen() {
         SafeLog.print("panel opened")
         self.showBackButtonNav()
+    }
+    
+    func panelWillClose() {
+        if let arrivalCity = TripCoordinator.sharedInstance.currentTripInPlanning?.flights[0].arrivalString {
+            destinationSearchTextField.text = arrivalCity
+        }
+        if destinationSearchTextField.text != "Where To?" {
+            destinationSearchButton.isHidden = true
+        } else {
+            destinationSearchButton.isHidden = false
+        }
     }
     
     func panelDidClose() {
@@ -399,7 +138,7 @@ extension MainViewController: PanelDelegate {
     }
     
     func panelRetractedHeight() -> CGFloat {
-        return 60 // arbitrary staring point for the pull up view that looks good
+        return 58 // arbitrary staring point for the pull up view that looks good
     }
     
     func panelLayoutConstraintToUpdate() -> NSLayoutConstraint {

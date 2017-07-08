@@ -25,14 +25,17 @@ final class AppCoordinator {
         
         SafeLog.print("👉 NOTE: use SafeLog.print() instead of print() to keep logs safe in that we can turn off from compiler for release builds. We don't want logs printing in release mode. 👈\n")
         
-        let onboardingWasSeen = AppState.onboardingWasSeen
-        if !onboardingWasSeen {
-            print("show onboarding")
-            showOnboarding()
-        } else {
-            print("show main")
-            showMain()
+        if let onboardingWasSeen = AppState.StateLookup.onboardingWasSeen(flag: nil).fetch() as? Bool {
+
+            if onboardingWasSeen {
+                print("show main")
+                showMain()
+                return
+            }
         }
+        
+        print("show onboarding")
+        showOnboarding()
     }
     
     private func showOnboarding() {
@@ -59,7 +62,7 @@ final class AppCoordinator {
     
     public static func dismissFeature(viewController: UIViewController) {
         if viewController is OnboardingViewController {
-            AppState.onboardingWasSeen = true
+            AppState.StateLookup.onboardingWasSeen(flag: true).save()
             shared?.showMain()
         }
     }
