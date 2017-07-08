@@ -281,6 +281,10 @@ class JourneyDetailsVC: UIViewController {
         } // TODO: consider adding else support to refresh location request anew.
     }
     
+    @IBAction func mainViewTapAction(_ sender: UITapGestureRecognizer) {
+        self.deselectSearchControls()
+    }
+    
     
     // MARK: - Search Control Support
     func triggerDepartureList() {

@@ -699,6 +699,9 @@
                             <constraint firstItem="9hY-kE-cil" firstAttribute="centerX" secondItem="wZs-TF-sh2" secondAttribute="centerX" id="elQ-2N-Oek"/>
                             <constraint firstItem="4jq-gL-byN" firstAttribute="top" secondItem="vai-xG-fRo" secondAttribute="bottom" constant="20" id="r43-0H-S43"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="yKD-zQ-hW3" appends="YES" id="pr0-oZ-SlU"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="SfM-aB-l3i"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -736,6 +739,11 @@
                 <tapGestureRecognizer id="FHm-x6-iba">
                     <connections>
                         <action selector="myLocationTapAction:" destination="ELB-y0-PzL" id="WD9-Zs-W4f"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="yKD-zQ-hW3">
+                    <connections>
+                        <action selector="mainViewTapAction:" destination="ELB-y0-PzL" id="KO1-aO-H07"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
