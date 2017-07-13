@@ -361,7 +361,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="9hY-kE-cil">
-                                <rect key="frame" x="37" y="35" width="300" height="722"/>
+                                <rect key="frame" x="37" y="35" width="300" height="732"/>
                                 <subviews>
                                     <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="IS3-Mr-D1s">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="198"/>
@@ -522,7 +522,7 @@
                                                         <rect key="frame" x="49" y="0.0" width="251" height="48"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25 June 2017" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Poc-p4-48q">
-                                                                <rect key="frame" x="20" y="18.5" width="223" height="14.5"/>
+                                                                <rect key="frame" x="20" y="19.5" width="223" height="14"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="223" id="fjq-KO-kFX"/>
                                                                 </constraints>
@@ -627,44 +627,28 @@
                                             </view>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ExR-qc-OJP">
-                                        <rect key="frame" x="0.0" y="672" width="300" height="50"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="LbC-xh-AX5">
+                                        <rect key="frame" x="0.0" y="672" width="300" height="60"/>
                                         <subviews>
-                                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L4E-wm-wuu">
-                                                <rect key="frame" x="0.0" y="0.0" width="300" height="50"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WEP-oo-MCg">
+                                                <rect key="frame" x="0.0" y="0.0" width="300" height="60"/>
                                                 <subviews>
-                                                    <segmentedControl opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="HAa-r7-snu">
-                                                        <rect key="frame" x="52" y="11" width="195" height="29"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="195" id="Enj-tg-kAq"/>
-                                                            <constraint firstAttribute="height" constant="28" id="uWq-Zf-Phg"/>
-                                                        </constraints>
+                                                    <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="WNd-KZ-UPi">
+                                                        <rect key="frame" x="50" y="16" width="200" height="29"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <segments>
                                                             <segment title="ONE WAY"/>
                                                             <segment title="RETURN"/>
                                                         </segments>
                                                         <color key="tintColor" red="0.058823529409999999" green="0.070588235289999995" blue="0.1058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </segmentedControl>
-                                                    <segmentedControl opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="qFb-ki-isz" userLabel="StaticLayoverNoInteractive">
-                                                        <rect key="frame" x="52" y="11" width="195" height="29"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="28" id="MrI-tC-zBJ"/>
-                                                            <constraint firstAttribute="width" constant="195" id="jm2-Sk-IQ6"/>
-                                                        </constraints>
-                                                        <segments>
-                                                            <segment title="" enabled="NO"/>
-                                                            <segment title="" enabled="NO"/>
-                                                        </segments>
-                                                        <color key="tintColor" red="0.3803921569" green="0.4431372549" blue="0.53333333329999999" alpha="0.75" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <connections>
+                                                            <action selector="onewayReturnButtonAction:" destination="ELB-y0-PzL" eventType="valueChanged" id="jem-ay-iax"/>
+                                                        </connections>
                                                     </segmentedControl>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="50" id="1m4-7d-i8h"/>
-                                                    <constraint firstItem="qFb-ki-isz" firstAttribute="centerX" secondItem="L4E-wm-wuu" secondAttribute="centerX" id="6ZQ-bY-2FV"/>
-                                                    <constraint firstItem="HAa-r7-snu" firstAttribute="centerY" secondItem="L4E-wm-wuu" secondAttribute="centerY" id="NjN-9c-4FT"/>
-                                                    <constraint firstItem="qFb-ki-isz" firstAttribute="centerY" secondItem="L4E-wm-wuu" secondAttribute="centerY" id="XH9-c3-SLu"/>
-                                                    <constraint firstItem="HAa-r7-snu" firstAttribute="centerX" secondItem="L4E-wm-wuu" secondAttribute="centerX" id="rIk-YT-NsT"/>
+                                                    <constraint firstAttribute="height" constant="60" id="kQm-t6-PhV"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -704,17 +688,24 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="900"/>
                     <connections>
+                        <outlet property="DateControlVertStackView" destination="uRU-aO-vrB" id="xYS-Yt-7ul"/>
+                        <outlet property="arrivalControlVertStackView" destination="GVt-do-2AH" id="ZzX-FL-fZ0"/>
                         <outlet property="arrivalIconImageView" destination="CZe-ZU-FQb" id="Nfq-r9-2v0"/>
                         <outlet property="arrivalSearchTextField" destination="elu-wX-of4" id="18H-co-K13"/>
                         <outlet property="arrivalTableViewHeightConstraint" destination="99e-Tz-A7e" id="VAm-tT-eg4"/>
                         <outlet property="datePickerContainer" destination="ycY-fN-fie" id="E9N-KU-BqF"/>
                         <outlet property="datePickerContainerStackView" destination="vpv-bB-Ag0" id="kEd-uc-KYl"/>
                         <outlet property="dateTextField" destination="Poc-p4-48q" id="K9i-X5-YPO"/>
+                        <outlet property="departureControlVertStackView" destination="IS3-Mr-D1s" id="Al8-7D-nbE"/>
                         <outlet property="departureIconImageView" destination="DKG-kp-BYu" id="jrw-sd-cCl"/>
                         <outlet property="departureSearchTextField" destination="SVy-Sf-uF9" id="RMN-DZ-3Ic"/>
                         <outlet property="departureTableViewHeightConstraint" destination="FrD-uw-vvX" id="ese-HU-wff"/>
                         <outlet property="nextButton" destination="vai-xG-fRo" id="hvq-xi-qQN"/>
-                        <outlet property="oneWayReturnSegmentControl" destination="HAa-r7-snu" id="uQr-RF-Vnh"/>
+                        <outlet property="oneWayReturnSegmentControl" destination="WNd-KZ-UPi" id="DS9-2s-1JK"/>
+                        <outlet property="paxControl" destination="sAr-MN-uAX" id="AVJ-g3-ueb"/>
+                        <outlet property="paxControlVertStackView" destination="Krs-dy-HPh" id="ZjR-te-x37"/>
+                        <outlet property="timeControl" destination="QhX-dX-hcu" id="FLU-eV-w8a"/>
+                        <outlet property="timeControlVertStackView" destination="SQC-mw-gFA" id="CXD-mi-Loa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VbF-9x-OJB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -739,7 +730,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2368.840579710145" y="93.750000000000014"/>
+            <point key="canvasLocation" x="2368.8000000000002" y="93.553223388305852"/>
         </scene>
         <!--Airport Search Table View Controller-->
         <scene sceneID="oc7-Cg-M60">
@@ -821,7 +812,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Bt-Xj-z94" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3048" y="-529"/>
+            <point key="canvasLocation" x="3048" y="-566"/>
         </scene>
         <!--Date Picker Table View Controller-->
         <scene sceneID="aUa-Uh-24k">
@@ -862,7 +853,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qWy-NS-ene" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2943" y="271"/>
+            <point key="canvasLocation" x="3144" y="-443"/>
         </scene>
         <!--Aircraft Select View Controller-->
         <scene sceneID="XMK-Aa-8W7">
@@ -1192,7 +1183,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="556"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="3ha-Yn-xGq">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="3ha-Yn-xGq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

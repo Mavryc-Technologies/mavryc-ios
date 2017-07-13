@@ -12,5 +12,7 @@ class FlightInfo {
     
     var departureString: String?
     var arrivalString: String?
-    
+    var pax: Int?
+    var time: Int?
+    var date: String?
 }

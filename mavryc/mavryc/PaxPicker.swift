@@ -9,6 +9,10 @@
 import UIKit
 import AVFoundation
 
+protocol PaxPickerDelegate {
+    func paxPicker(paxPicker: PaxPicker, didUpdateBarValue: Int)
+}
+
 @IBDesignable class PaxPicker: UIView {
     
     // MARK: - Outlet Properties
@@ -50,12 +54,22 @@ import AVFoundation
     
     // MARK: - Properties
     
+    var delegate: PaxPickerDelegate?
+    
     var firstTouchPan: CGPoint? = nil
     
     var buttonSound: AVAudioPlayer?
     
     var totalBars = 24
     var barsArray: [UIView] = []
+    
+    
+    // MARK: - API
+    public func updateBarValue(bar: Int) {
+        self.updateUIBarIndicator(to: bar)
+        self.PaxCountLabel.text = self.formattedIndicatorText(for: bar)
+    }
+    
     
     // MARK: - Initialization
     
@@ -184,6 +198,8 @@ import AVFoundation
             barsProgress = min(barsProgress, barsContainerView.frame.width)
 
             self.updateUIBarIndicator(to: numberOfBars)
+            
+            delegate?.paxPicker(paxPicker: self, didUpdateBarValue: numberOfBars)
         }
     }
     
@@ -204,6 +220,8 @@ import AVFoundation
         barsProgress = max(barsProgress, jumpGap)
         barsProgress = min(barsProgress, barsContainerView.frame.width)
         self.updateUIBarIndicator(to: numberOfBars)
+        
+        delegate?.paxPicker(paxPicker: self, didUpdateBarValue: numberOfBars)
     }
     
     // MARK: Support
