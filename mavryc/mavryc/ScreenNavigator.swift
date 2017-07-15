@@ -19,6 +19,7 @@ enum Screen {
     case journey
     case aircraftSelection
     case confirmDetails
+    case splitFare
     
     func nextSceenOnBackTap(isOpen: Bool) -> Screen {
         if isOpen {
@@ -29,6 +30,8 @@ enum Screen {
                 return .journey
             case .confirmDetails:
                 return .aircraftSelection
+            case .splitFare:
+                return .confirmDetails
             default:
                 return self
             }
@@ -46,6 +49,8 @@ enum Screen {
             return "JOURNEY DETAILS"
         case .confirmDetails:
             return ""
+        case .splitFare:
+            return ""
         }
     }
     
@@ -59,6 +64,8 @@ enum Screen {
             return false
         case .retractedHome:
             return true
+        case .splitFare:
+            return false
         }
     }
 }
@@ -140,6 +147,9 @@ class ScreenNavigator {
             nav?.popViewController(animated: true)
             break
         case .journey:
+            nav?.popViewController(animated: true)
+            break
+        case .confirmDetails:
             nav?.popViewController(animated: true)
             break
         case .retractedHome:

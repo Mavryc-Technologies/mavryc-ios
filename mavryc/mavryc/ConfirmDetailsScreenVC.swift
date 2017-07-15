@@ -93,7 +93,7 @@ class ConfirmDetailsScreenVC: UIViewController {
         }
     }
     
-    
+    // MARK: - Control Actions
     
     @IBAction func bookButtonAction(_ sender: Any) {
         UIView.animate(withDuration: 0.25) {
@@ -104,13 +104,9 @@ class ConfirmDetailsScreenVC: UIViewController {
 }
 
 extension ConfirmDetailsScreenVC: ScreenNavigable {
-    
     func screenNavigator(_ screenNavigator: ScreenNavigator, backButtonWasPressed: Bool) {}
-    
+    func screenNavigatorRefreshCurrentScreen(_ screenNavigator: ScreenNavigator) {}
     func screenNavigatorIsScreenVisible(_ screenNavigator: ScreenNavigator) -> Bool? {
         return nil
-    }
-    
-    func screenNavigatorRefreshCurrentScreen(_ screenNavigator: ScreenNavigator) {
     }
 }

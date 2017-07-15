@@ -54,6 +54,9 @@
 		96B723721EA9B53400B2E322 /* databaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B723711EA9B53400B2E322 /* databaseTests.swift */; };
 		96B723741EA9E26100B2E322 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B723731EA9E26100B2E322 /* User.swift */; };
 		96B7476B1F0E9F56006071E5 /* Date+Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B7476A1F0E9F56006071E5 /* Date+Format.swift */; };
+		96C6D0941F1837B9009AF342 /* FareSplittingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C6D0931F1837B9009AF342 /* FareSplittingViewController.swift */; };
+		96C6D0961F194CFB009AF342 /* FareSplitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C6D0951F194CFB009AF342 /* FareSplitter.swift */; };
+		96C6D09A1F195D3A009AF342 /* FareSplitter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 96C6D0991F195D3A009AF342 /* FareSplitter.xib */; };
 		96CB0A441EE5DB42004ADEA0 /* PaxPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CB0A431EE5DB42004ADEA0 /* PaxPicker.swift */; };
 		96CB0A461EE5DBF9004ADEA0 /* PaxPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 96CB0A451EE5DBF9004ADEA0 /* PaxPicker.xib */; };
 		96CB0A491EE75FAA004ADEA0 /* AirportSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CB0A481EE75FAA004ADEA0 /* AirportSearchTableViewCell.swift */; };
@@ -149,6 +152,9 @@
 		96B723711EA9B53400B2E322 /* databaseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = databaseTests.swift; sourceTree = "<group>"; };
 		96B723731EA9E26100B2E322 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		96B7476A1F0E9F56006071E5 /* Date+Format.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Format.swift"; sourceTree = "<group>"; };
+		96C6D0931F1837B9009AF342 /* FareSplittingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FareSplittingViewController.swift; sourceTree = "<group>"; };
+		96C6D0951F194CFB009AF342 /* FareSplitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FareSplitter.swift; sourceTree = "<group>"; };
+		96C6D0991F195D3A009AF342 /* FareSplitter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FareSplitter.xib; sourceTree = "<group>"; };
 		96CB0A431EE5DB42004ADEA0 /* PaxPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaxPicker.swift; sourceTree = "<group>"; };
 		96CB0A451EE5DBF9004ADEA0 /* PaxPicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PaxPicker.xib; sourceTree = "<group>"; };
 		96CB0A481EE75FAA004ADEA0 /* AirportSearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirportSearchTableViewCell.swift; sourceTree = "<group>"; };
@@ -232,6 +238,7 @@
 				96DA35AC1EC1264400D2A0BC /* FlightPanelViewController.swift */,
 				962E88DA1EE9A822003DECBF /* screen - journey details */,
 				96CE58F21EE8A38100073BD5 /* screen - aircraft select */,
+				96C6D0921F183167009AF342 /* screen - fare splitting */,
 				969EF1C01EEB68CA00A4E6B1 /* screen - confirm */,
 				96AD3BC31EF87B0100004236 /* CustomSegue.swift */,
 			);
@@ -385,6 +392,16 @@
 				96B7236F1EA98B8D00B2E322 /* RealmConfiguration.swift */,
 			);
 			name = database;
+			sourceTree = "<group>";
+		};
+		96C6D0921F183167009AF342 /* screen - fare splitting */ = {
+			isa = PBXGroup;
+			children = (
+				96C6D0931F1837B9009AF342 /* FareSplittingViewController.swift */,
+				96C6D0951F194CFB009AF342 /* FareSplitter.swift */,
+				96C6D0991F195D3A009AF342 /* FareSplitter.xib */,
+			);
+			name = "screen - fare splitting";
 			sourceTree = "<group>";
 		};
 		96CB0A471EE70FA3004ADEA0 /* pax control */ = {
@@ -693,6 +710,7 @@
 				96F2FCAC1E92DEE300C51674 /* Onboarding.storyboard in Resources */,
 				96B1F2CF1EEA19A900EB5F4A /* airports.csv in Resources */,
 				9606FD9B1EFDBD760059AD47 /* tap5.wav in Resources */,
+				96C6D09A1F195D3A009AF342 /* FareSplitter.xib in Resources */,
 				96DA35B51EC281E400D2A0BC /* Asap in Resources */,
 				962EE1181EBBBA7800797CD9 /* Mapbox.storyboard in Resources */,
 				96B1F2D11EEA294E00EB5F4A /* airports.sqlite3 in Resources */,
@@ -841,6 +859,7 @@
 				96A32C211E98158D00DA7DC1 /* SignupDTO.swift in Sources */,
 				96CB0A441EE5DB42004ADEA0 /* PaxPicker.swift in Sources */,
 				964629C81EF89C1800CAA16E /* RightToLeftScreenAnimator.swift in Sources */,
+				96C6D0961F194CFB009AF342 /* FareSplitter.swift in Sources */,
 				9666A4561E95A9D000CA822F /* FetchFlightsClient.swift in Sources */,
 				96B1F2CD1EEA142C00EB5F4A /* AirportLocation.swift in Sources */,
 				967FF6291E945796007B56C6 /* FetchUserClient.swift in Sources */,
@@ -857,6 +876,7 @@
 				964629CA1EF89C8B00CAA16E /* NavigationControllerDelegate.swift in Sources */,
 				96395F2F1EF472B80094923F /* LocationController.swift in Sources */,
 				961144951F0D92BA003033AE /* DatePickerTableViewCell.swift in Sources */,
+				96C6D0941F1837B9009AF342 /* FareSplittingViewController.swift in Sources */,
 				96CE58F01EE8A12900073BD5 /* AircraftSelectCell.swift in Sources */,
 				96F2FCAF1E92DF0D00C51674 /* OnboardingViewController.swift in Sources */,
 				96395F2D1EF340BD0094923F /* Notification+Screens.swift in Sources */,
