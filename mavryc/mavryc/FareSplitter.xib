@@ -142,7 +142,7 @@
                         <outletCollection property="gestureRecognizers" destination="XPX-55-0YL" appends="YES" id="RPh-kc-vAh"/>
                     </connections>
                 </view>
-                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Hamburger" translatesAutoresizingMaskIntoConstraints="NO" id="dnO-4d-8ly">
+                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="close_x_temp" translatesAutoresizingMaskIntoConstraints="NO" id="dnO-4d-8ly">
                     <rect key="frame" x="324" y="3" width="20" height="20"/>
                     <gestureRecognizers/>
                     <constraints>
@@ -186,6 +186,6 @@
         </tapGestureRecognizer>
     </objects>
     <resources>
-        <image name="Hamburger" width="16" height="11"/>
+        <image name="close_x_temp" width="33" height="33"/>
     </resources>
 </document>

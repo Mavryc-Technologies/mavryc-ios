@@ -14,6 +14,7 @@ class ConfirmDetailsScreenVC: UIViewController {
     
     @IBOutlet weak var NextButton: StyledButton!
     
+    @IBOutlet weak var returnTripContainterView: UIView!
     
     // MARK: - placeholder ApplePay
     var extendedApplePayBottomVerticalSpaceValue: CGFloat = 0
@@ -69,6 +70,8 @@ class ConfirmDetailsScreenVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         ScreenNavigator.sharedInstance.currentPanelScreen = .confirmDetails
+
+        showReturnTripIfNeeded()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -90,6 +93,14 @@ class ConfirmDetailsScreenVC: UIViewController {
         if gesture.direction == UISwipeGestureRecognizerDirection.right {
             print("Swipe Right")
             ScreenNavigator.sharedInstance.navigateBackward()
+        }
+    }
+    
+    func showReturnTripIfNeeded() {
+        if let _ = TripCoordinator.sharedInstance.currentTripInPlanning?.flights[1].arrivalString {
+            self.returnTripContainterView.isHidden = false
+        } else {
+            self.returnTripContainterView.isHidden = true
         }
     }
     

@@ -12,9 +12,22 @@ import AVFoundation
 protocol FareSplitterDelegate {
     func fareSplitter(fareSplitter: FareSplitter, closeButtonWasTapped:  Bool)
     func fareSplitter(fareSplitter: FareSplitter, didUpdateBarsToVale: Int)
+    func maximumSeatsAvailable() -> Int
+    func priceFor(seatCount: Int) -> String
 }
 
 @IBDesignable class FareSplitter: UIView {
+    
+    // MARK: - API
+    
+    /// Updates the control visuals without sending callbacks or delegate calls/notifications
+    public func updateControlQuietlyWith(seatCount: Int) {
+        guard let price = delegate?.priceFor(seatCount: seatCount) else { return }
+        self.priceLabel.text = price
+        self.updateUIBarIndicator(to: seatCount)
+        self.seatsLabel.text = String(seatCount)
+        self.previousPaxCount = seatCount
+    }
     
     // MARK: - Properties
     
@@ -37,14 +50,8 @@ protocol FareSplitterDelegate {
         didSet {
             if isPrimaryUserControl {
                 closeButton.isHidden = true
-                //                iconImageView.image = UIImage(named: "TimeIconFormPDF")
-                //                self.updateUIBarIndicator(to: 10) // 5 pixels * 10 bars
-                //                self.PaxCountLabel.text = "10:00 AM"
             } else {
                 closeButton.isHidden = false
-                //                iconImageView.image = UIImage(named: "PAXIconFormPDF")
-                //                self.updateUIBarIndicator(to: 1)
-                //                self.PaxCountLabel.text = "1"
             }
         }
     }
@@ -55,6 +62,7 @@ protocol FareSplitterDelegate {
     var barsArray: [UIView] = []
     var buttonSound: AVAudioPlayer?
     var firstTouchPan: CGPoint? = nil
+    var previousPaxCount = 1
     
     // MARK: - Initialization
     @IBOutlet var view: UIView!
@@ -160,7 +168,7 @@ protocol FareSplitterDelegate {
     
     // MARK: Gestures
     
-    var previousPaxCount = 1
+
     @IBAction func panGestureAction(_ gestureRecognizer : UIPanGestureRecognizer) {
         if gestureRecognizer.state == .changed || gestureRecognizer.state == .began {
             
@@ -169,6 +177,17 @@ protocol FareSplitterDelegate {
             var numberOfBars = Int(percentTouchOverMaxPixels * CGFloat(totalBars))
             
             let prev = previousPaxCount
+            
+            if prev == delegate?.maximumSeatsAvailable() {
+                if numberOfBars >= prev {
+                    return
+                }
+            }
+            
+            if numberOfBars > (delegate?.maximumSeatsAvailable())! {
+                return
+            }
+            
             previousPaxCount = numberOfBars
             
             numberOfBars = max(numberOfBars, 1) // has to be 1 or more
@@ -180,12 +199,8 @@ protocol FareSplitterDelegate {
             
             seatsLabel.text = "\(numberOfBars)"
             
-            let jumpGap = barsContainer.frame.width / CGFloat(totalBars)
-            var barsProgress = CGFloat(numberOfBars) * jumpGap
-            barsProgress = max(barsProgress, jumpGap)
-            barsProgress = min(barsProgress, barsContainer.frame.width)
-            
             self.updateUIBarIndicator(to: numberOfBars)
+            self.priceLabel.text = delegate?.priceFor(seatCount: numberOfBars)
             
             delegate?.fareSplitter(fareSplitter: self, didUpdateBarsToVale: numberOfBars)
         }
@@ -193,20 +208,35 @@ protocol FareSplitterDelegate {
     
     @IBAction func tapAction(_ sender: UITapGestureRecognizer) {
         
-        self.triggerUIFeedback()
-        
         let x = sender.location(in: sender.view).x
         let percentTouchOverMaxPixels = x / barsContainer.frame.width
         var numberOfBars = Int(percentTouchOverMaxPixels * CGFloat(totalBars))
+        
+        let prev = previousPaxCount
+        
+        if prev == delegate?.maximumSeatsAvailable() {
+            if numberOfBars >= prev {
+                return
+            }
+        }
+        if numberOfBars > (delegate?.maximumSeatsAvailable())! {
+            return
+        }
+        
+        previousPaxCount = numberOfBars
+        
+        self.triggerUIFeedback()
+        
         numberOfBars = max(numberOfBars, 1) // has to be 1 or more
         numberOfBars = min(numberOfBars, totalBars)  // has to be 24 or less
         
-        seatsLabel.text = "\(numberOfBars)"
+//        guard let maxSeats = delegate?.maximumSeatsAvailable() else { return }
+//        if numberOfBars > maxSeats {
+//            numberOfBars = maxSeats
+//        }
         
-        let jumpGap = barsContainer.frame.width / CGFloat(totalBars)
-        var barsProgress = CGFloat(numberOfBars) * jumpGap
-        barsProgress = max(barsProgress, jumpGap)
-        barsProgress = min(barsProgress, barsContainer.frame.width)
+        seatsLabel.text = "\(numberOfBars)"
+        self.priceLabel.text = delegate?.priceFor(seatCount: numberOfBars)
         self.updateUIBarIndicator(to: numberOfBars)
         
         delegate?.fareSplitter(fareSplitter: self, didUpdateBarsToVale: numberOfBars)

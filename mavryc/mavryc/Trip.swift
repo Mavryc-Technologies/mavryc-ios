@@ -15,4 +15,8 @@ class Trip: NSObject {
     //var arrivalAirport: AirportLocation?
     
     var flights: [FlightInfo] = []
+    
+    func totalPrice() -> String? {
+        return "$14,775"
+    }
 }

@@ -15,4 +15,6 @@ class FlightInfo {
     var pax: Int?
     var time: Int?
     var date: String?
+    
+    var price: String?
 }
