@@ -14,6 +14,9 @@ class ConfirmDetailsScreenVC: UIViewController {
     
     @IBOutlet weak var NextButton: StyledButton!
     
+    @IBOutlet weak var returnTripContainterView: UIView!
+    
+    @IBOutlet weak var splitFareButton: UIButton!
     
     // MARK: - placeholder ApplePay
     var extendedApplePayBottomVerticalSpaceValue: CGFloat = 0
@@ -69,6 +72,9 @@ class ConfirmDetailsScreenVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         ScreenNavigator.sharedInstance.currentPanelScreen = .confirmDetails
+
+        showReturnTripIfNeeded()
+        showSplitFareButtonIfNeeded()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -93,7 +99,27 @@ class ConfirmDetailsScreenVC: UIViewController {
         }
     }
     
+    func showSplitFareButtonIfNeeded() {
+        if let trip = TripCoordinator.sharedInstance.currentTripInPlanning {
+            guard let paxCount = trip.flights[0].pax else { return }
+            if paxCount > 1 {
+                self.splitFareButton.isHidden = false
+                return
+            }
+        }
+        
+        self.splitFareButton.isHidden = true
+    }
     
+    func showReturnTripIfNeeded() {
+        if let _ = TripCoordinator.sharedInstance.currentTripInPlanning?.flights[1].arrivalString {
+            self.returnTripContainterView.isHidden = false
+        } else {
+            self.returnTripContainterView.isHidden = true
+        }
+    }
+    
+    // MARK: - Control Actions
     
     @IBAction func bookButtonAction(_ sender: Any) {
         UIView.animate(withDuration: 0.25) {
@@ -104,13 +130,9 @@ class ConfirmDetailsScreenVC: UIViewController {
 }
 
 extension ConfirmDetailsScreenVC: ScreenNavigable {
-    
     func screenNavigator(_ screenNavigator: ScreenNavigator, backButtonWasPressed: Bool) {}
-    
+    func screenNavigatorRefreshCurrentScreen(_ screenNavigator: ScreenNavigator) {}
     func screenNavigatorIsScreenVisible(_ screenNavigator: ScreenNavigator) -> Bool? {
         return nil
-    }
-    
-    func screenNavigatorRefreshCurrentScreen(_ screenNavigator: ScreenNavigator) {
     }
 }

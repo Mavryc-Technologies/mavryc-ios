@@ -1,89 +1,72 @@
 //
-//  PaxPicker.swift
+//  FareSplitterView.swift
 //  mavryc
 //
-//  Created by Todd Hopkinson on 6/5/17.
+//  Created by Todd Hopkinson on 7/14/17.
 //  Copyright © 2017 Mavryc Technologies, Inc. All rights reserved.
 //
 
 import UIKit
 import AVFoundation
 
-protocol PaxPickerDelegate {
-    func paxPicker(paxPicker: PaxPicker, didUpdateBarValue: Int)
+protocol FareSplitterDelegate {
+    func fareSplitter(fareSplitter: FareSplitter, closeButtonWasTapped:  Bool)
+    func fareSplitter(fareSplitter: FareSplitter, didUpdateBarsToVale: Int)
+    func maximumSeatsAvailable() -> Int
+    func priceFor(seatCount: Int) -> String
 }
 
-@IBDesignable class PaxPicker: UIView {
+@IBDesignable class FareSplitter: UIView {
     
-    // MARK: - Outlet Properties
+    // MARK: - API
     
-    @IBOutlet weak var rightContainerView: UIView! {
-        didSet {
-            rightContainerView.registerToBlockSwipeGestures(up: true, down: true, left: true, right: true)
-        }
+    /// Updates the control visuals without sending callbacks or delegate calls/notifications
+    public func updateControlQuietlyWith(seatCount: Int) {
+        guard let price = delegate?.priceFor(seatCount: seatCount) else { return }
+        self.priceLabel.text = price
+        self.updateUIBarIndicator(to: seatCount)
+        self.seatsLabel.text = String(seatCount)
+        self.previousPaxCount = seatCount
     }
-    
-    @IBOutlet weak var leftContainerView: UIView! {
-        didSet {
-            leftContainerView.registerToBlockSwipeGestures(up: true, down: true, left: true, right: true)
-        }
-    }
-    
-    @IBOutlet weak var iconImageView: UIImageView! {
-        didSet {
-            if self.isTimeControl {
-                iconImageView.image = UIImage(named: "TimeIconFormPDF")
-            } else {
-                iconImageView.image = UIImage(named: "PAXIconFormPDF")
-            }
-        }
-    }
-    
-    @IBInspectable var isTimeControl: Bool = true {
-        didSet {
-            if isTimeControl {
-                iconImageView.image = UIImage(named: "TimeIconFormPDF")
-                self.updateUIBarIndicator(to: 10) // 5 pixels * 10 bars
-                self.PaxCountLabel.text = "10:00 AM"
-            } else {
-                iconImageView.image = UIImage(named: "PAXIconFormPDF")
-                self.updateUIBarIndicator(to: 1)
-                self.PaxCountLabel.text = "1"
-            }
-        }
-    }
-    
-    /// container view for dynamically generated bars
-    @IBOutlet weak var barsContainerView: UIView!
-    
-    @IBOutlet var view: UIView!
-    var nibName: String = "PaxPicker"
-    
-    @IBOutlet weak var PaxCountLabel: UILabel!
-    
-    @IBOutlet weak var maskingBar: UIView!
-    @IBOutlet weak var maskingBarWidthConstraint: NSLayoutConstraint!
     
     // MARK: - Properties
     
-    var delegate: PaxPickerDelegate?
+    var delegate: FareSplitterDelegate?
     
-    var firstTouchPan: CGPoint? = nil
+    @IBOutlet weak var backgroundShapeView: UIView! {
+        didSet {
+            backgroundShapeView.layer.cornerRadius = 6
+        }
+    }
     
-    var buttonSound: AVAudioPlayer?
+    @IBOutlet weak var closeButton: UIImageView!
+    
+    @IBOutlet weak var seatsLabel: UILabel!
+    
+    @IBOutlet weak var barsContainer: UIView!
+    
+    
+    @IBInspectable var isPrimaryUserControl: Bool = false {
+        didSet {
+            if isPrimaryUserControl {
+                closeButton.isHidden = true
+            } else {
+                closeButton.isHidden = false
+            }
+        }
+    }
+    
+    @IBOutlet weak var priceLabel: UILabel!
     
     var totalBars = 24
     var barsArray: [UIView] = []
-    
-    
-    // MARK: - API
-    public func updateBarValue(bar: Int) {
-        self.updateUIBarIndicator(to: bar)
-        self.PaxCountLabel.text = self.formattedIndicatorText(for: bar)
-    }
-    
+    var buttonSound: AVAudioPlayer?
+    var firstTouchPan: CGPoint? = nil
+    var previousPaxCount = 1
     
     // MARK: - Initialization
+    @IBOutlet var view: UIView!
+    var nibName: String = "FareSplitter"
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -107,25 +90,26 @@ protocol PaxPickerDelegate {
         view.frame = self.bounds
         addSubview(view)
         
-        self.buttonSound = soundPlayer()
+        view.backgroundColor = UIColor.clear
         
-        // TODO: setup initial dynamic bars (both underlays and highlights)
+        self.buttonSound = soundPlayer()
+
         for index in 1...totalBars {
-            let containerWidth = barsContainerView.frame.width
-            let barHeight = barsContainerView.frame.height
+            let containerWidth = barsContainer.frame.width
+            let barHeight = barsContainer.frame.height
             let barWidth = 2
             let sectionSpanWidth = containerWidth / CGFloat(totalBars)
-            //let gaps = sectionSpanWidth - CGFloat(barWidth)
             let x = (CGFloat(index) * sectionSpanWidth)
             let aView = UIView(frame: CGRect(x: x, y: 0.0, width: CGFloat(barWidth), height: CGFloat(barHeight)))
             let underView = UIView(frame: CGRect(x: x, y: 0.0, width: CGFloat(barWidth), height: CGFloat(barHeight)))
             underView.backgroundColor = AppStyle.skylarGrey
             aView.backgroundColor = AppStyle.skylarGrey
             aView.tag = index
-            barsContainerView.addSubview(underView)
-            barsContainerView.addSubview(aView)
+            barsContainer.addSubview(underView)
+            barsContainer.addSubview(aView)
             barsArray.append(aView)
         }
+        
     }
     
     func soundPlayer() -> AVAudioPlayer? {
@@ -134,7 +118,7 @@ protocol PaxPickerDelegate {
             
             do {
                 let sound = try AVAudioPlayer(contentsOf: url)
-//                self.player = sound
+                //                self.player = sound
                 sound.numberOfLoops = 1
                 sound.prepareToPlay()
                 return sound
@@ -184,15 +168,26 @@ protocol PaxPickerDelegate {
     
     // MARK: Gestures
     
-    var previousPaxCount = 1
+
     @IBAction func panGestureAction(_ gestureRecognizer : UIPanGestureRecognizer) {
         if gestureRecognizer.state == .changed || gestureRecognizer.state == .began {
             
             let x = gestureRecognizer.location(in: gestureRecognizer.view).x
-            let percentTouchOverMaxPixels = x / barsContainerView.frame.width
+            let percentTouchOverMaxPixels = x / barsContainer.frame.width
             var numberOfBars = Int(percentTouchOverMaxPixels * CGFloat(totalBars))
             
             let prev = previousPaxCount
+            
+            if prev == delegate?.maximumSeatsAvailable() {
+                if numberOfBars >= prev {
+                    return
+                }
+            }
+            
+            if numberOfBars > (delegate?.maximumSeatsAvailable())! {
+                return
+            }
+            
             previousPaxCount = numberOfBars
             
             numberOfBars = max(numberOfBars, 1) // has to be 1 or more
@@ -202,65 +197,56 @@ protocol PaxPickerDelegate {
                 self.triggerUIFeedback()
             }
             
-            PaxCountLabel.text = self.formattedIndicatorText(for: numberOfBars)
+            seatsLabel.text = "\(numberOfBars)"
             
-            let jumpGap = barsContainerView.frame.width / CGFloat(totalBars)
-            var barsProgress = CGFloat(numberOfBars) * jumpGap
-            barsProgress = max(barsProgress, jumpGap)
-            barsProgress = min(barsProgress, barsContainerView.frame.width)
-
             self.updateUIBarIndicator(to: numberOfBars)
+            self.priceLabel.text = delegate?.priceFor(seatCount: numberOfBars)
             
-            delegate?.paxPicker(paxPicker: self, didUpdateBarValue: numberOfBars)
+            delegate?.fareSplitter(fareSplitter: self, didUpdateBarsToVale: numberOfBars)
         }
     }
     
     @IBAction func tapAction(_ sender: UITapGestureRecognizer) {
         
+        let x = sender.location(in: sender.view).x
+        let percentTouchOverMaxPixels = x / barsContainer.frame.width
+        var numberOfBars = Int(percentTouchOverMaxPixels * CGFloat(totalBars))
+        
+        let prev = previousPaxCount
+        
+        if prev == delegate?.maximumSeatsAvailable() {
+            if numberOfBars >= prev {
+                return
+            }
+        }
+        if numberOfBars > (delegate?.maximumSeatsAvailable())! {
+            return
+        }
+        
+        previousPaxCount = numberOfBars
+        
         self.triggerUIFeedback()
         
-        let x = sender.location(in: sender.view).x
-        let percentTouchOverMaxPixels = x / barsContainerView.frame.width
-        var numberOfBars = Int(percentTouchOverMaxPixels * CGFloat(totalBars))
         numberOfBars = max(numberOfBars, 1) // has to be 1 or more
         numberOfBars = min(numberOfBars, totalBars)  // has to be 24 or less
-
-        PaxCountLabel.text = self.formattedIndicatorText(for: numberOfBars)
         
-        let jumpGap = barsContainerView.frame.width / CGFloat(totalBars)
-        var barsProgress = CGFloat(numberOfBars) * jumpGap
-        barsProgress = max(barsProgress, jumpGap)
-        barsProgress = min(barsProgress, barsContainerView.frame.width)
+//        guard let maxSeats = delegate?.maximumSeatsAvailable() else { return }
+//        if numberOfBars > maxSeats {
+//            numberOfBars = maxSeats
+//        }
+        
+        seatsLabel.text = "\(numberOfBars)"
+        self.priceLabel.text = delegate?.priceFor(seatCount: numberOfBars)
         self.updateUIBarIndicator(to: numberOfBars)
         
-        delegate?.paxPicker(paxPicker: self, didUpdateBarValue: numberOfBars)
+        delegate?.fareSplitter(fareSplitter: self, didUpdateBarsToVale: numberOfBars)
+    }
+
+    
+    // MARK: - Control Actions
+    
+    @IBAction func closeButtonTapAction(_ sender: UITapGestureRecognizer) {
+        delegate?.fareSplitter(fareSplitter: self, closeButtonWasTapped: true)
     }
     
-    
-    // MARK: Support
-    
-    private func formattedIndicatorText(for numberOfBars: Int) -> String {
-        if self.isTimeControl {
-            var formattedTime = String(numberOfBars)
-            let amPmString = (numberOfBars >= 12) ? "PM" : "AM"
-            
-            if FeatureFlag.militaryTime.isFeatureEnabled() {
-                if numberOfBars < 10 {
-                    formattedTime = "0" + formattedTime + ":00"
-                } else {
-                    formattedTime = formattedTime + ":00"
-                }
-            } else {
-                if numberOfBars > 12 {
-                    formattedTime = "\(numberOfBars - 12)"
-                }
-                
-                formattedTime = formattedTime + ":00" + " \(amPmString)"
-            }
-            
-            return formattedTime
-        } else {
-            return String(numberOfBars)
-        }
-    }
 }

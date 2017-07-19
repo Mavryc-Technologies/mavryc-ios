@@ -18,6 +18,8 @@
                 <outlet property="PaxCountLabel" destination="Nt3-5K-QSf" id="dvG-uE-6xv"/>
                 <outlet property="barsContainerView" destination="Dj3-78-vwX" id="ILA-SG-a2v"/>
                 <outlet property="iconImageView" destination="gjF-v9-MFG" id="iYo-gs-8qA"/>
+                <outlet property="leftContainerView" destination="X6G-Am-Oy4" id="DCK-rY-nES"/>
+                <outlet property="rightContainerView" destination="LqQ-hG-Exx" id="6yv-tU-HhT"/>
                 <outlet property="view" destination="NFo-Sn-JcD" id="XQQ-pw-sci"/>
             </connections>
         </placeholder>
@@ -50,6 +52,7 @@
                         </view>
                     </subviews>
                     <color key="backgroundColor" red="0.058823529409999999" green="0.070588235289999995" blue="0.1058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <gestureRecognizers/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="Nt3-5K-QSf" secondAttribute="bottom" constant="13" id="0qM-0I-zjO"/>
                         <constraint firstItem="Dj3-78-vwX" firstAttribute="leading" secondItem="LqQ-hG-Exx" secondAttribute="leading" constant="20" id="IoF-Rw-eVr"/>

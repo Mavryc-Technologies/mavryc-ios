@@ -20,12 +20,22 @@ class JourneyDetailsVC: UIViewController {
     var preventEditBecauseDestinationAirportWasSelected = false
     
     // MARK: Outlet Properties
+    
+    // Stack Views
+    @IBOutlet weak var departureControlVertStackView: UIStackView!
+    @IBOutlet weak var arrivalControlVertStackView: UIStackView!
+    @IBOutlet weak var DateControlVertStackView: UIStackView!
+    @IBOutlet weak var timeControlVertStackView: UIStackView!
+    @IBOutlet weak var paxControlVertStackView: UIStackView!
+    
+    // Next Button
     @IBOutlet weak var nextButton: StyledButton! {
         didSet {
             nextButton.isEnabled = true
         }
     }
     
+    // Outbound and Return Segment Control
     @IBOutlet weak var oneWayReturnSegmentControl: UISegmentedControl! {
         didSet {
             oneWayReturnSegmentControl.setTitleTextAttributes([NSForegroundColorAttributeName: AppStyle.journeyDetailsSegmentedControllerHighlightTextColor], for: UIControlState.selected)
@@ -34,6 +44,7 @@ class JourneyDetailsVC: UIViewController {
         }
     }
     
+    // Departure Search Text Field
     @IBOutlet weak var departureSearchTextField: UITextField! {
         didSet {
             departureSearchTextField.delegate = self
@@ -48,6 +59,7 @@ class JourneyDetailsVC: UIViewController {
         }
     }
     
+    // Arrival Search Text Field
     @IBOutlet weak var arrivalSearchTextField: UITextField! {
         didSet {
             arrivalSearchTextField.delegate = self
@@ -78,20 +90,32 @@ class JourneyDetailsVC: UIViewController {
     
     @IBOutlet weak var departureIconImageView: UIImageView!
     
-    weak var datePickerTVC: DatePickerTableViewController?
-    
     @IBOutlet weak var datePickerContainer: UIView! {
         didSet {
             datePickerContainer.backgroundColor = AppStyle.skylarDeepBlue
+            datePickerContainer.layer.cornerRadius = 4
         }
     }
     
+    weak var datePickerTVC: DatePickerTableViewController?
     @IBOutlet weak var datePickerContainerStackView: UIStackView!
-    
-    
     @IBOutlet weak var dateTextField: UILabel! {
         didSet {
             dateTextField.text = Date.todayString() + " (today)"
+        }
+    }
+    
+    // Time Control
+    @IBOutlet weak var timeControl: PaxPicker! {
+        didSet {
+            timeControl.delegate = self
+        }
+    }
+    
+    // Pax Control
+    @IBOutlet weak var paxControl: PaxPicker! {
+        didSet {
+            paxControl.delegate = self
         }
     }
     
@@ -198,12 +222,19 @@ class JourneyDetailsVC: UIViewController {
                 
                 if let trip = TripCoordinator.sharedInstance.currentTripInPlanning {
                     print("updating user location, and found current trip-in-planning")
-                    trip.flights[0].departureString = airportCityString
+                    let index = self.isOutboundTripScreen() == true ? 0 : 1
+                    trip.flights[index].departureString = airportCityString
+                    if let seatCount = self.paxControl.PaxCountLabel.text {
+                        trip.flights[index].pax = Int(seatCount)
+                    }
                 } else {
                     let trip = Trip()
                     let flight = FlightInfo()
+                    let returnTrip = FlightInfo()
                     flight.departureString = airportCityString
+                    flight.pax = 1
                     trip.flights.append(flight)
+                    trip.flights.append(returnTrip)
                     TripCoordinator.sharedInstance.currentTripInPlanning = trip
                 }
             }
@@ -262,8 +293,10 @@ class JourneyDetailsVC: UIViewController {
         UIView.animate(withDuration: 0.15) {
             if self.datePickerContainerStackView.isHidden  {
                 self.datePickerContainerStackView.isHidden = false
+                self.nextButton.isHidden = true
             } else {
                 self.datePickerContainerStackView.isHidden = true
+                self.nextButton.isHidden = false
             }
             self.view.layoutIfNeeded()
         }
@@ -283,6 +316,71 @@ class JourneyDetailsVC: UIViewController {
     
     @IBAction func mainViewTapAction(_ sender: UITapGestureRecognizer) {
         self.deselectSearchControls()
+    }
+    
+    @IBAction func onewayReturnButtonAction(_ sender: Any) {
+        
+        let oneWayMode = isOutboundTripScreen()
+        
+        // if return trip depart and dest not extant yet, invert and assign
+        let index = oneWayMode == true ? 0 : 1
+        if let _ = TripCoordinator.sharedInstance.currentTripInPlanning?.flights[index].departureString {
+            // do nothing
+        } else {
+            // invert for return trip
+            TripCoordinator.sharedInstance.currentTripInPlanning?.flights[index].departureString = TripCoordinator.sharedInstance.currentTripInPlanning?.flights[0].arrivalString
+        }
+        
+        if let _ = TripCoordinator.sharedInstance.currentTripInPlanning?.flights[index].arrivalString {
+            // do nothing
+        } else {
+            // invert for return trip
+            TripCoordinator.sharedInstance.currentTripInPlanning?.flights[index].arrivalString = TripCoordinator.sharedInstance.currentTripInPlanning?.flights[0].departureString
+        }
+        
+        self.transitionToScreenMode(outbound: oneWayMode)
+    }
+    
+    // MARK: - Outbound and Return Screen support
+    func transitionToScreenMode(outbound: Bool) {
+        deselectSearchControls()
+
+        let animFlipDirectionOption = outbound ? UIViewAnimationOptions.transitionFlipFromRight : UIViewAnimationOptions.transitionFlipFromLeft
+        
+        UIView.transition(with: self.view, duration: 0.3, options: animFlipDirectionOption, animations: {
+            self.clearAllControlValues()
+            self.refreshControlsForTripState(outbound: outbound)
+        }) { (isFlipped) in
+        }
+    }
+    
+    func refreshControlsForTripState(outbound: Bool) {
+        let index = outbound == true ? 0 : 1
+        
+        departureSearchTextField.text = TripCoordinator.sharedInstance.currentTripInPlanning?.flights[index].departureString
+        arrivalSearchTextField.text = TripCoordinator.sharedInstance.currentTripInPlanning?.flights[index].arrivalString
+        if let dateString = TripCoordinator.sharedInstance.currentTripInPlanning?.flights[index].date {
+            dateTextField.text = dateString
+        }
+        if let time = TripCoordinator.sharedInstance.currentTripInPlanning?.flights[index].time {
+            timeControl.updateBarValue(bar: time)
+        }
+        if let pax = TripCoordinator.sharedInstance.currentTripInPlanning?.flights[index].pax {
+            paxControl.updateBarValue(bar: pax)
+        }
+    }
+    
+    func clearAllControlValues() {
+        departureSearchTextField.text = nil
+        arrivalSearchTextField.text = nil
+        dateTextField.text = Date.todayString() + " (today)"
+        paxControl.updateBarValue(bar: 1)
+        timeControl.updateBarValue(bar: 1)
+    }
+    
+    fileprivate func isOutboundTripScreen() -> Bool {
+        let outbound = self.oneWayReturnSegmentControl.selectedSegmentIndex == 0
+        return outbound
     }
     
     
@@ -351,8 +449,6 @@ class JourneyDetailsVC: UIViewController {
     }
     
     func updateListWithAutocompleteSuggestions(text: String, searchControl: UITextField) {
-        
-//        let source = Cities.shared
         let source = GooglePlacesClient.sharedInstance
         source.autoCompletionSuggestions(for: text, predictions: { list in
             
@@ -391,11 +487,16 @@ extension JourneyDetailsVC: DatePickerTableViewDelegate {
         print("date was selected: \(string)")
         self.dateTextField.text = string
         
+        let index = self.isOutboundTripScreen() == true ? 0 : 1
+        TripCoordinator.sharedInstance.currentTripInPlanning?.flights[index].date = string
+        
         // update the date
         UIView.animate(withDuration: 0.15) {
             self.datePickerContainerStackView.isHidden = true
             self.view.layoutIfNeeded()
         }
+        
+        self.nextButton.isHidden = false
     }
 }
 
@@ -403,18 +504,18 @@ extension JourneyDetailsVC: AirportSearchListDelegate {
     
     func airportSearchListItemWasSelected(airportName: String) {
 
+        let index = self.isOutboundTripScreen() == true ? 0 : 1
+        
         if self.arrivalSearchTextField.isFirstResponder {
             arrivalSearchTextField.text = airportName
-            // TODO: update trip data model for arrival airport
-            TripCoordinator.sharedInstance.currentTripInPlanning?.flights[0].arrivalString = airportName
+            TripCoordinator.sharedInstance.currentTripInPlanning?.flights[index].arrivalString = airportName
             updateSearchControlUIForState(control: arrivalSearchTextField)
             
         } else if self.departureSearchTextField.isFirstResponder {
             departureSearchTextField.text = airportName
             updateSearchControlUIForState(control: departureSearchTextField)
-            // TODO: update trip data model for departure airport
-            TripCoordinator.sharedInstance.currentTripInPlanning?.flights[0].departureString = airportName
-            
+            TripCoordinator.sharedInstance.currentTripInPlanning?.flights[index].departureString = airportName
+        
         } else {
             print("this shouldn't happen, if so, we have a bug")
         }
@@ -443,7 +544,6 @@ extension JourneyDetailsVC: AirportSearchListDelegate {
             if isAirportLocked {
                 departureIconImageView.image = UIImage(named: "DepartIconFormPDF")
             } else {
-                // TODO: update the icon image to reflect unlocked
                 print("get me an image for unlocked state for departure icon")
             }
         }
@@ -455,8 +555,7 @@ extension JourneyDetailsVC: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         let id = textField == self.arrivalSearchTextField ? "arrival" : "departure"
         print("\(id) textFieldDidBeginEditing: \(String(describing: textField.text))")
-        
-        // TODO: expand appropriate list
+
         if id == "arrival" {
             self.triggerArrivalList()
         } else {
@@ -492,8 +591,6 @@ extension JourneyDetailsVC: UITextFieldDelegate {
     }
     
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
-
-        // TODO: update the appropriate data model
         updateSearchControlUIForState(control: textField)
         return true
     }
@@ -505,64 +602,26 @@ extension JourneyDetailsVC: UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
         return true
     }
-    
-    // TODO: pressing return on keyboard will cause the appropriate listed item (if present) to become selected, otherwise, just causes a deselect of the search controls
-    
 }
 
 extension JourneyDetailsVC: ScreenNavigable {
-    
-    func screenNavigator(_ screenNavigator: ScreenNavigator, backButtonWasPressed: Bool) {
-        
-    }
-    
+    func screenNavigator(_ screenNavigator: ScreenNavigator, backButtonWasPressed: Bool) {}
+    func screenNavigatorRefreshCurrentScreen(_ screenNavigator: ScreenNavigator) {}
     func screenNavigatorIsScreenVisible(_ screenNavigator: ScreenNavigator) -> Bool? {
         return nil
     }
-    
-    func screenNavigatorRefreshCurrentScreen(_ screenNavigator: ScreenNavigator) {
-    }
 }
 
-extension JourneyDetailsVC: UIPickerViewDelegate {
+extension JourneyDetailsVC: PaxPickerDelegate {
     
-    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-        let titleData = Date.todayString()
-        //Lato-Regular
-        let myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont(name: "Georgia", size: 14.0)!, NSForegroundColorAttributeName:UIColor.white])
-        return myTitle
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let text = self.pickerView(pickerView, attributedTitleForRow: row, forComponent: component)
-        let string = text?.string
-        self.dateTextField.text = string
-        print("did select row \(Date())")
-        self.dateTapAction(self) // collapses the pickerview if visible
-    }
-    
-    var nextSixDays: Date {
-        let dt = (Calendar.current as NSCalendar).date(byAdding: .day, value: 8, to: Date(), options: [])!
-        return (Calendar.current as NSCalendar).date(byAdding: .day, value: 8, to: Date(), options: [])!
-    }
-    
-    var previousSixDays: Date {
-        return (Calendar.current as NSCalendar).date(byAdding: .day, value: 8, to: Date(), options: [])!
-        //return (Calendar.current as NSCalendar).date
+    func paxPicker(paxPicker: PaxPicker, didUpdateBarValue: Int) {
+        let index = self.isOutboundTripScreen() == true ? 0 : 1
+        if paxPicker.isTimeControl {
+            TripCoordinator.sharedInstance.currentTripInPlanning?.flights[index].time = didUpdateBarValue
+        } else {
+            TripCoordinator.sharedInstance.currentTripInPlanning?.flights[index].pax = didUpdateBarValue
+        }
     }
 }
-
-extension JourneyDetailsVC: UIPickerViewDataSource {
-    
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return 8
-    }
-}
-
