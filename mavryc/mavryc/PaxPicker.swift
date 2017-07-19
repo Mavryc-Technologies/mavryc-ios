@@ -17,6 +17,18 @@ protocol PaxPickerDelegate {
     
     // MARK: - Outlet Properties
     
+    @IBOutlet weak var rightContainerView: UIView! {
+        didSet {
+            rightContainerView.registerToBlockSwipeGestures(up: true, down: true, left: true, right: true)
+        }
+    }
+    
+    @IBOutlet weak var leftContainerView: UIView! {
+        didSet {
+            leftContainerView.registerToBlockSwipeGestures(up: true, down: true, left: true, right: true)
+        }
+    }
+    
     @IBOutlet weak var iconImageView: UIImageView! {
         didSet {
             if self.isTimeControl {
@@ -223,6 +235,7 @@ protocol PaxPickerDelegate {
         
         delegate?.paxPicker(paxPicker: self, didUpdateBarValue: numberOfBars)
     }
+    
     
     // MARK: Support
     

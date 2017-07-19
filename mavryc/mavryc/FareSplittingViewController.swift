@@ -124,7 +124,13 @@ extension FareSplittingViewController: FareSplitterDelegate {
             let price = 14775
             let perSeatCost = price / totalSeats
             let priceAtSeatCount = seatCount * perSeatCost
-            return "$\(priceAtSeatCount).00"
+            
+            let priceToFormat = priceAtSeatCount as NSNumber
+            let formatter = NumberFormatter()
+            formatter.numberStyle = .currency
+            let output = formatter.string(from: priceToFormat) // "$123.44"
+            
+            return output!
         }
         
         return "$1.00"
@@ -178,3 +184,5 @@ extension FareSplittingViewController: FareSplitterDelegate {
         return seats
     }
 }
+
+

@@ -224,11 +224,15 @@ class JourneyDetailsVC: UIViewController {
                     print("updating user location, and found current trip-in-planning")
                     let index = self.isOutboundTripScreen() == true ? 0 : 1
                     trip.flights[index].departureString = airportCityString
+                    if let seatCount = self.paxControl.PaxCountLabel.text {
+                        trip.flights[index].pax = Int(seatCount)
+                    }
                 } else {
                     let trip = Trip()
                     let flight = FlightInfo()
                     let returnTrip = FlightInfo()
                     flight.departureString = airportCityString
+                    flight.pax = 1
                     trip.flights.append(flight)
                     trip.flights.append(returnTrip)
                     TripCoordinator.sharedInstance.currentTripInPlanning = trip
@@ -289,8 +293,10 @@ class JourneyDetailsVC: UIViewController {
         UIView.animate(withDuration: 0.15) {
             if self.datePickerContainerStackView.isHidden  {
                 self.datePickerContainerStackView.isHidden = false
+                self.nextButton.isHidden = true
             } else {
                 self.datePickerContainerStackView.isHidden = true
+                self.nextButton.isHidden = false
             }
             self.view.layoutIfNeeded()
         }
@@ -313,15 +319,8 @@ class JourneyDetailsVC: UIViewController {
     }
     
     @IBAction func onewayReturnButtonAction(_ sender: Any) {
-        //self.oneWayReturnSegmentControl.selected.text
-        let oneWayMode = isOutboundTripScreen()
         
-        if oneWayMode {
-            print("OUTBOUND screen")
-            
-        } else {
-            print("RETURN screen")
-        }
+        let oneWayMode = isOutboundTripScreen()
         
         // if return trip depart and dest not extant yet, invert and assign
         let index = oneWayMode == true ? 0 : 1
@@ -345,8 +344,14 @@ class JourneyDetailsVC: UIViewController {
     // MARK: - Outbound and Return Screen support
     func transitionToScreenMode(outbound: Bool) {
         deselectSearchControls()
-        clearAllControlValues()
-        refreshControlsForTripState(outbound: outbound)
+
+        let animFlipDirectionOption = outbound ? UIViewAnimationOptions.transitionFlipFromRight : UIViewAnimationOptions.transitionFlipFromLeft
+        
+        UIView.transition(with: self.view, duration: 0.3, options: animFlipDirectionOption, animations: {
+            self.clearAllControlValues()
+            self.refreshControlsForTripState(outbound: outbound)
+        }) { (isFlipped) in
+        }
     }
     
     func refreshControlsForTripState(outbound: Bool) {
@@ -490,6 +495,8 @@ extension JourneyDetailsVC: DatePickerTableViewDelegate {
             self.datePickerContainerStackView.isHidden = true
             self.view.layoutIfNeeded()
         }
+        
+        self.nextButton.isHidden = false
     }
 }
 

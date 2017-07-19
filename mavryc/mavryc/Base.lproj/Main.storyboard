@@ -1110,17 +1110,6 @@
                                     <constraint firstItem="9td-cX-vTg" firstAttribute="top" secondItem="HSO-fK-aiu" secondAttribute="top" constant="20" id="el8-1x-ZqD"/>
                                 </constraints>
                             </view>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ApplePay" translatesAutoresizingMaskIntoConstraints="NO" id="p5d-ib-bX3">
-                                <rect key="frame" x="0.0" y="905" width="375" height="472"/>
-                                <gestureRecognizers/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="375" id="ahA-69-cUT"/>
-                                    <constraint firstAttribute="height" constant="472" id="r6c-nO-K7q"/>
-                                </constraints>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="TZf-pL-uJY" appends="YES" id="HIg-4N-fxE"/>
-                                </connections>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hMe-B7-feu">
                                 <rect key="frame" x="37" y="858" width="300" height="30"/>
                                 <constraints>
@@ -1136,7 +1125,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lz9-iZ-0gb" userLabel="return trip view">
-                                <rect key="frame" x="17" y="196" width="340" height="163"/>
+                                <rect key="frame" x="17" y="178" width="340" height="163"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="OutboundCellBG" translatesAutoresizingMaskIntoConstraints="NO" id="hCV-Xp-zEo">
                                         <rect key="frame" x="20" y="20" width="300" height="123"/>
@@ -1270,6 +1259,17 @@
                                     <constraint firstItem="bTU-GY-UEn" firstAttribute="bottom" secondItem="hCV-Xp-zEo" secondAttribute="bottom" id="uzm-DB-CvV"/>
                                 </constraints>
                             </view>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ApplePay" translatesAutoresizingMaskIntoConstraints="NO" id="p5d-ib-bX3">
+                                <rect key="frame" x="0.0" y="905" width="375" height="472"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="375" id="ahA-69-cUT"/>
+                                    <constraint firstAttribute="height" constant="472" id="r6c-nO-K7q"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="TZf-pL-uJY" appends="YES" id="HIg-4N-fxE"/>
+                                </connections>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -1277,7 +1277,7 @@
                             <constraint firstItem="aAE-6h-EZz" firstAttribute="centerX" secondItem="E9P-km-Agg" secondAttribute="centerX" id="1gf-cz-4db"/>
                             <constraint firstItem="WvS-SZ-XGt" firstAttribute="leading" secondItem="9td-cX-vTg" secondAttribute="trailing" constant="-158" id="1gg-Pg-2Ij"/>
                             <constraint firstItem="YbE-JY-s3t" firstAttribute="top" secondItem="XaM-Q2-KBC" secondAttribute="bottom" constant="33" id="2xV-39-XAB"/>
-                            <constraint firstItem="lz9-iZ-0gb" firstAttribute="top" secondItem="aAE-6h-EZz" secondAttribute="bottom" constant="13" id="4t2-R3-mOc"/>
+                            <constraint firstItem="lz9-iZ-0gb" firstAttribute="top" secondItem="aAE-6h-EZz" secondAttribute="bottom" constant="-5" id="4t2-R3-mOc"/>
                             <constraint firstItem="uUP-gK-Nug" firstAttribute="top" secondItem="p5d-ib-bX3" secondAttribute="bottom" constant="-477" id="6Ql-PB-yG4"/>
                             <constraint firstItem="WvS-SZ-XGt" firstAttribute="leading" secondItem="E9P-km-Agg" secondAttribute="leading" id="KQy-XS-NSW"/>
                             <constraint firstItem="WvS-SZ-XGt" firstAttribute="leading" secondItem="OUR-cj-HxX" secondAttribute="trailing" constant="-158" id="Kc8-w2-5L2"/>
@@ -1316,6 +1316,7 @@
                         <outlet property="bgView" destination="WvS-SZ-XGt" id="RHX-no-1Jn"/>
                         <outlet property="returnTripContainterView" destination="lz9-iZ-0gb" id="9fu-2a-HOx"/>
                         <outlet property="screenTitle" destination="W4Z-Jn-cto" id="5KF-4h-E48"/>
+                        <outlet property="splitFareButton" destination="hMe-B7-feu" id="uzO-MD-Rpk"/>
                         <outlet property="totalAmountLabel" destination="XaM-Q2-KBC" id="s9O-Ri-bxt"/>
                         <outlet property="tripSectionTitle" destination="sbM-th-VbJ" id="2Gr-Am-CYo"/>
                     </connections>
@@ -1387,7 +1388,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yN2-Iw-yEg">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                         <subviews>
-                                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="yellow_add_temp" translatesAutoresizingMaskIntoConstraints="NO" id="srE-GV-DZa">
+                                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AddButton" translatesAutoresizingMaskIntoConstraints="NO" id="srE-GV-DZa">
                                                 <rect key="frame" x="162" y="0.0" width="50" height="50"/>
                                                 <gestureRecognizers/>
                                                 <constraints>
@@ -1490,6 +1491,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="AddButton" width="34" height="34"/>
         <image name="ApplePay" width="375" height="472"/>
         <image name="ArriveIconUnselected" width="21" height="20"/>
         <image name="BackArrow" width="17" height="13"/>
@@ -1505,6 +1507,5 @@
         <image name="plane_icon_bg" width="80" height="80"/>
         <image name="plane_icon_glow" width="207" height="207"/>
         <image name="up_chevron" width="32" height="11"/>
-        <image name="yellow_add_temp" width="59" height="59"/>
     </resources>
 </document>

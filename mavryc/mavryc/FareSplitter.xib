@@ -142,8 +142,8 @@
                         <outletCollection property="gestureRecognizers" destination="XPX-55-0YL" appends="YES" id="RPh-kc-vAh"/>
                     </connections>
                 </view>
-                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="close_x_temp" translatesAutoresizingMaskIntoConstraints="NO" id="dnO-4d-8ly">
-                    <rect key="frame" x="324" y="3" width="20" height="20"/>
+                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CloseIcon" translatesAutoresizingMaskIntoConstraints="NO" id="dnO-4d-8ly">
+                    <rect key="frame" x="327" y="0.0" width="20" height="20"/>
                     <gestureRecognizers/>
                     <constraints>
                         <constraint firstAttribute="width" constant="20" id="8S3-ue-SBO"/>
@@ -157,8 +157,8 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="W1E-gq-hR5" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="106" id="1HI-r0-kFz"/>
-                <constraint firstItem="dnO-4d-8ly" firstAttribute="leading" secondItem="0xo-XF-QxD" secondAttribute="trailing" constant="-13" id="4he-nf-Ibf"/>
-                <constraint firstItem="0xo-XF-QxD" firstAttribute="top" secondItem="dnO-4d-8ly" secondAttribute="bottom" constant="-14" id="MIO-H0-LB8"/>
+                <constraint firstItem="dnO-4d-8ly" firstAttribute="leading" secondItem="0xo-XF-QxD" secondAttribute="trailing" constant="-10" id="4he-nf-Ibf"/>
+                <constraint firstItem="0xo-XF-QxD" firstAttribute="top" secondItem="dnO-4d-8ly" secondAttribute="bottom" constant="-11" id="MIO-H0-LB8"/>
                 <constraint firstItem="0xo-XF-QxD" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="9" id="SaD-Bx-gHN"/>
                 <constraint firstItem="0xo-XF-QxD" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="fYs-hh-z3U"/>
                 <constraint firstItem="W1E-gq-hR5" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="68" id="xOS-jT-jGF"/>
@@ -186,6 +186,6 @@
         </tapGestureRecognizer>
     </objects>
     <resources>
-        <image name="close_x_temp" width="33" height="33"/>
+        <image name="CloseIcon" width="20" height="20"/>
     </resources>
 </document>

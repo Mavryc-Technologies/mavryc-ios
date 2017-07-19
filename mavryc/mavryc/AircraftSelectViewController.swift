@@ -42,6 +42,10 @@ class AircraftSelectViewController: UIViewController, UITableViewDelegate, UITab
         tableView.register(UINib(nibName: "AircraftSelectCell", bundle: Bundle.main), forCellReuseIdentifier: "cell")
         
         self.setupSwipeGesture()
+        
+        //self.tableView(self.tableView, didSelectRowAt: IndexPath(row: 1, section: 0)) // defaults to second item
+        cellWasSelectedAtIndexPath = IndexPath(row: 1, section: 0)
+        nextButton.isEnabled = true
     }
     
     override func viewWillAppear(_ animated: Bool) {

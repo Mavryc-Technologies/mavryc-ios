@@ -16,6 +16,8 @@ class ConfirmDetailsScreenVC: UIViewController {
     
     @IBOutlet weak var returnTripContainterView: UIView!
     
+    @IBOutlet weak var splitFareButton: UIButton!
+    
     // MARK: - placeholder ApplePay
     var extendedApplePayBottomVerticalSpaceValue: CGFloat = 0
     var retractedApplePayBottomVerticalSpaceValue: CGFloat = 0
@@ -72,6 +74,7 @@ class ConfirmDetailsScreenVC: UIViewController {
         ScreenNavigator.sharedInstance.currentPanelScreen = .confirmDetails
 
         showReturnTripIfNeeded()
+        showSplitFareButtonIfNeeded()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -94,6 +97,18 @@ class ConfirmDetailsScreenVC: UIViewController {
             print("Swipe Right")
             ScreenNavigator.sharedInstance.navigateBackward()
         }
+    }
+    
+    func showSplitFareButtonIfNeeded() {
+        if let trip = TripCoordinator.sharedInstance.currentTripInPlanning {
+            guard let paxCount = trip.flights[0].pax else { return }
+            if paxCount > 1 {
+                self.splitFareButton.isHidden = false
+                return
+            }
+        }
+        
+        self.splitFareButton.isHidden = true
     }
     
     func showReturnTripIfNeeded() {
