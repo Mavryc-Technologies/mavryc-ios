@@ -12,13 +12,13 @@ class FareSplittingViewController: UIViewController {
 
     // MARK: - Properties
 
-    var fareSplitterControls: [FareSplitter] = []
-    
-    @IBOutlet weak var primaryFareSplitter: FareSplitter! {
+    @IBOutlet weak var myFareSplitter: FareSplitterCondensed! {
         didSet {
-            primaryFareSplitter.delegate = self
+            myFareSplitter.delegate = self
         }
     }
+    
+    var fareSplitterControls: [FareSplitter] = []
     
     var extendedApplePayBottomVerticalSpaceValue: CGFloat = 0
     var retractedApplePayBottomVerticalSpaceValue: CGFloat = 0
@@ -43,6 +43,9 @@ class FareSplittingViewController: UIViewController {
     
     @IBOutlet weak var fareSplitterAddButton: UIImageView!
     
+    @IBOutlet weak var AddPaymentLabel: UILabel!
+    
+    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -50,7 +53,8 @@ class FareSplittingViewController: UIViewController {
 
         ScreenNavigator.sharedInstance.registerScreen(screen: self, asScreen: .splitFare)
         if let seats = self.tripSeatsTotal() {
-            self.primaryFareSplitter.updateControlQuietlyWith(seatCount: seats)
+            //self.primaryFareSplitter.updateControlQuietlyWith(seatCount: seats)
+            self.myFareSplitter.updateControlQuietlyWith(seatCount: seats)
         }
     }
     
@@ -76,17 +80,35 @@ class FareSplittingViewController: UIViewController {
         let control = FareSplitter(frame: CGRect(x: 0, y: 0, width: 300, height: 150))
         control.heightAnchor.constraint(equalToConstant: 150).isActive = true
         control.widthAnchor.constraint(equalToConstant: 300).isActive = true
+        
+        if fareSplitterControls.count > 0 {
+            // turn the current last to a condensed control before adding this new guy
+            
+            let condensedControl = FareSplitterCondensed(frame: CGRect(x: 0, y: 0, width: 300, height: 57))
+            condensedControl.heightAnchor.constraint(equalToConstant: 57).isActive = true
+            condensedControl.widthAnchor.constraint(equalToConstant: 300).isActive = true
+            if let lastControl = self.fareSplitterControls.last {
+                condensedControl.delegate = self
+                condensedControl.uncondensedCounterpart = lastControl
+                lastControl.isHidden = true
+                condensedControl.priceLabel.text = lastControl.priceLabel.text
+                condensedControl.seatsLabel.text = lastControl.seatsLabel.text
+                fareSplitterControlsStackView.addArrangedSubview(condensedControl)
+                fareSplitterControlsStackView.removeArrangedSubview(lastControl)
+            }
+        }
+        
         fareSplitterControlsStackView.addArrangedSubview(control)
         self.fareSplitterControls.append(control)
         control.delegate = self
-        
-        if self.fareSplitterControls.count > 0 {
-            self.fareSplitterAddButton.isHidden = true
+        control.updateControlQuietlyWith(seatCount: 1)
+        if let seats = Int(myFareSplitter.seatsLabel.text!) {
+            self.myFareSplitter.updateControlQuietlyWith(seatCount: seats - 1)
         }
         
-        if let seats = self.tripSeatsTotal() {
-            self.fareSplitterControls[0].updateControlQuietlyWith(seatCount: 1)
-            self.primaryFareSplitter.updateControlQuietlyWith(seatCount: seats - 1)
+        if self.fareSplitterControls.count > 2 {
+            self.fareSplitterAddButton.isHidden = true
+            self.AddPaymentLabel.isHidden = true
         }
     }
     
@@ -118,6 +140,10 @@ extension FareSplittingViewController: ScreenNavigable {
 
 extension FareSplittingViewController: FareSplitterDelegate {
     
+    func totalBarsAllowedForFareSplitter(fareSplitter: FareSplitter) -> Int {
+        return self.tripSeatsTotal()!
+    }
+    
     func priceFor(seatCount: Int) -> String {
         if let totalSeats = self.tripSeatsTotal(), let totalPrice = self.tripPriceTotal() {
             // TODO: implement NSDecimal price stored in Trip rather than convenience hard coded string here
@@ -138,44 +164,47 @@ extension FareSplittingViewController: FareSplitterDelegate {
     
     func fareSplitter(fareSplitter: FareSplitter, closeButtonWasTapped:  Bool) {
         print("close button was tapped on \(fareSplitter)")
+        let reclaimedSeats = Int(fareSplitter.seatsLabel.text!)!
         self.fareSplitterControlsStackView.removeArrangedSubview(fareSplitter)
         fareSplitter.removeFromSuperview()
         fareSplitterControls.removeLast()
         
-        if fareSplitterControls.count > 0 {
+        if fareSplitterControls.count > 1 {
             fareSplitterAddButton.isHidden = true
+            self.AddPaymentLabel.isHidden = true
         } else {
             fareSplitterAddButton.isHidden = false
+            self.AddPaymentLabel.isHidden = false
         }
         
         // redistribute to primary control
-        if let seats = self.tripSeatsTotal() {
-            self.primaryFareSplitter.updateControlQuietlyWith(seatCount: seats)
-        }
+        let currentSeats = Int(myFareSplitter.seatsLabel.text!)! + reclaimedSeats
+        self.myFareSplitter.updateControlQuietlyWith(seatCount: currentSeats)
     }
     
     func fareSplitter(fareSplitter: FareSplitter, didUpdateBarsToVale: Int) {
         print("bars updated to \(didUpdateBarsToVale) by \(fareSplitter)")
         
-        // determine remainder seats left for other guy, quietly update him
-        guard let totalSeats = self.tripSeatsTotal() else { return }
-        let remainder = totalSeats - didUpdateBarsToVale
-        
-        var control: FareSplitter? = nil
+        var currentCumulativeSeats: Int = 0
+        currentCumulativeSeats = currentCumulativeSeats + Int(myFareSplitter.seatsLabel.text!)!
+        for splitter in fareSplitterControls {
+            currentCumulativeSeats = currentCumulativeSeats + Int(splitter.seatsLabel.text!)!
+        }
+        var delta: Int = 0
         
         if fareSplitter.isPrimaryUserControl {
-            // update the secondary control
-            if self.fareSplitterControls.count > 0 {
-                control = self.fareSplitterControls[0]
-            } else { return }
+            // if My Payment
+            // delta goes to or from Last Control
+            delta = (self.tripSeatsTotal()! - currentCumulativeSeats)
+            if let control = self.fareSplitterControls.last {
+                control.updateControlQuietlyWith(seatCount: delta)
+            }
         } else {
-            // update primary control
-            control = self.primaryFareSplitter
-        }
-        
-        if let control = control {
-            print("All systems check. Greenlight on the quiet update to proceed. Go....3.2.1...")
-            control.updateControlQuietlyWith(seatCount: remainder)
+            // if non my payment
+            // delta goes to or from My Payment
+            delta = (self.tripSeatsTotal()! - currentCumulativeSeats)
+            let myFareSeats = Int(myFareSplitter.seatsLabel.text!)! + delta
+            myFareSplitter.updateControlQuietlyWith(seatCount: myFareSeats)
         }
     }
     

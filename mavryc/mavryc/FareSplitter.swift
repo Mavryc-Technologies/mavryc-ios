@@ -12,6 +12,7 @@ import AVFoundation
 protocol FareSplitterDelegate {
     func fareSplitter(fareSplitter: FareSplitter, closeButtonWasTapped:  Bool)
     func fareSplitter(fareSplitter: FareSplitter, didUpdateBarsToVale: Int)
+    func totalBarsAllowedForFareSplitter(fareSplitter: FareSplitter) -> Int
     func maximumSeatsAvailable() -> Int
     func priceFor(seatCount: Int) -> String
 }
@@ -31,7 +32,11 @@ protocol FareSplitterDelegate {
     
     // MARK: - Properties
     
-    var delegate: FareSplitterDelegate?
+    var delegate: FareSplitterDelegate? {
+        didSet {
+            self.setupBars()
+        }
+    }
     
     @IBOutlet weak var backgroundShapeView: UIView! {
         didSet {
@@ -50,6 +55,7 @@ protocol FareSplitterDelegate {
         didSet {
             if isPrimaryUserControl {
                 closeButton.isHidden = true
+                
             } else {
                 closeButton.isHidden = false
             }
@@ -93,13 +99,18 @@ protocol FareSplitterDelegate {
         view.backgroundColor = UIColor.clear
         
         self.buttonSound = soundPlayer()
-
+    }
+    
+    func setupBars() {
+        if let bars = self.delegate?.totalBarsAllowedForFareSplitter(fareSplitter: self) {
+            self.totalBars = bars
+        }
         for index in 1...totalBars {
             let containerWidth = barsContainer.frame.width
             let barHeight = barsContainer.frame.height
-            let barWidth = 2
             let sectionSpanWidth = containerWidth / CGFloat(totalBars)
-            let x = (CGFloat(index) * sectionSpanWidth)
+            let barWidth = sectionSpanWidth - 5
+            let x = (CGFloat(index-1) * sectionSpanWidth)
             let aView = UIView(frame: CGRect(x: x, y: 0.0, width: CGFloat(barWidth), height: CGFloat(barHeight)))
             let underView = UIView(frame: CGRect(x: x, y: 0.0, width: CGFloat(barWidth), height: CGFloat(barHeight)))
             underView.backgroundColor = AppStyle.skylarGrey
@@ -109,7 +120,6 @@ protocol FareSplitterDelegate {
             barsContainer.addSubview(aView)
             barsArray.append(aView)
         }
-        
     }
     
     func soundPlayer() -> AVAudioPlayer? {

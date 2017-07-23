@@ -522,7 +522,7 @@
                                                         <rect key="frame" x="49" y="0.0" width="251" height="48"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25 June 2017" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Poc-p4-48q">
-                                                                <rect key="frame" x="20" y="19" width="223" height="14"/>
+                                                                <rect key="frame" x="20" y="19.5" width="223" height="14"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="223" id="fjq-KO-kFX"/>
                                                                 </constraints>
@@ -1369,12 +1369,12 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="xSI-7e-3uM">
-                                <rect key="frame" x="0.0" y="22" width="375" height="150"/>
+                                <rect key="frame" x="0.0" y="22" width="375" height="50"/>
                                 <subviews>
-                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5qd-9a-jEd" customClass="FareSplitter" customModule="mavryc" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
+                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tnI-8t-bTS" customClass="FareSplitterCondensed" customModule="mavryc" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="150" id="R9H-E5-7Cd"/>
+                                            <constraint firstAttribute="height" constant="50" id="YYT-DD-QEq"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="isPrimaryUserControl" value="YES"/>
@@ -1382,11 +1382,27 @@
                                     </containerView>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="jIb-9U-5jz">
-                                <rect key="frame" x="1" y="192" width="375" height="50"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="jIb-9U-5jz">
+                                <rect key="frame" x="1" y="92" width="375" height="74"/>
                                 <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WFQ-t8-TiS">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="17"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ADD  PAYMENT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UM9-mG-pgf">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="17"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
+                                                <color key="textColor" red="0.3803921569" green="0.4431372549" blue="0.53333333329999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="17" id="oFP-YJ-ppK"/>
+                                        </constraints>
+                                    </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yN2-Iw-yEg">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                        <rect key="frame" x="0.0" y="24" width="375" height="50"/>
                                         <subviews>
                                             <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AddButton" translatesAutoresizingMaskIntoConstraints="NO" id="srE-GV-DZa">
                                                 <rect key="frame" x="162" y="0.0" width="50" height="50"/>
@@ -1403,7 +1419,7 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="srE-GV-DZa" firstAttribute="top" secondItem="yN2-Iw-yEg" secondAttribute="top" id="CoE-Ef-7na"/>
-                                            <constraint firstAttribute="height" constant="50" id="lZq-QX-fwQ"/>
+                                            <constraint firstAttribute="height" constant="50" id="OsF-yu-tma"/>
                                             <constraint firstAttribute="width" constant="375" id="noe-Mz-ygB"/>
                                             <constraint firstItem="srE-GV-DZa" firstAttribute="centerX" secondItem="yN2-Iw-yEg" secondAttribute="centerX" id="uLx-yJ-Qa4"/>
                                         </constraints>
@@ -1411,7 +1427,7 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="375" id="9XH-an-I9O"/>
-                                    <constraint firstAttribute="height" constant="50" id="RUl-VF-9x6"/>
+                                    <constraint firstAttribute="height" constant="74" id="W2z-iW-OFW"/>
                                 </constraints>
                             </stackView>
                             <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ApplePay" translatesAutoresizingMaskIntoConstraints="NO" id="1oD-uY-qmy">
@@ -1445,10 +1461,11 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="AddPaymentLabel" destination="UM9-mG-pgf" id="x9W-15-hP7"/>
                         <outlet property="applePayBottomVerticalSpace" destination="02Z-yL-bre" id="Y0q-kS-Mgl"/>
                         <outlet property="fareSplitterAddButton" destination="srE-GV-DZa" id="kx9-TS-hbM"/>
                         <outlet property="fareSplitterControlsStackView" destination="xSI-7e-3uM" id="SSf-7e-Dhg"/>
-                        <outlet property="primaryFareSplitter" destination="5qd-9a-jEd" id="Zza-hi-ATj"/>
+                        <outlet property="myFareSplitter" destination="tnI-8t-bTS" id="CQ1-7L-2v8"/>
                         <outlet property="screenTitle" destination="itC-sY-4Yi" id="kFP-tS-9Bf"/>
                     </connections>
                 </viewController>
@@ -1488,6 +1505,19 @@
                 <customObject id="tFW-kf-9ke" customClass="NavigationControllerDelegate" customModule="mavryc" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="1489" y="-62"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="va8-gg-lfV">
+            <objects>
+                <viewController id="DJO-DF-Tju" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xQb-cQ-p96">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ggf-xi-Yhr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
         </scene>
     </scenes>
     <resources>
