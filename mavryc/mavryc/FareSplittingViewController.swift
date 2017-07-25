@@ -19,6 +19,7 @@ class FareSplittingViewController: UIViewController {
     }
     
     var fareSplitterControls: [FareSplitter] = []
+    //var condensedFareSplitterControls: [FareSplitterCondensed] = []
     
     var extendedApplePayBottomVerticalSpaceValue: CGFloat = 0
     var retractedApplePayBottomVerticalSpaceValue: CGFloat = 0
@@ -53,7 +54,6 @@ class FareSplittingViewController: UIViewController {
 
         ScreenNavigator.sharedInstance.registerScreen(screen: self, asScreen: .splitFare)
         if let seats = self.tripSeatsTotal() {
-            //self.primaryFareSplitter.updateControlQuietlyWith(seatCount: seats)
             self.myFareSplitter.updateControlQuietlyWith(seatCount: seats)
         }
     }
@@ -77,13 +77,17 @@ class FareSplittingViewController: UIViewController {
     @IBAction func fareSplitAddButtonAction(_ sender: UITapGestureRecognizer) {
         print("adding a fare splitter control")
         
-        let control = FareSplitter(frame: CGRect(x: 0, y: 0, width: 300, height: 150))
-        control.heightAnchor.constraint(equalToConstant: 150).isActive = true
-        control.widthAnchor.constraint(equalToConstant: 300).isActive = true
+        var isLastControlReadyForReduction: Bool = false
+        if let last = fareSplitterControlsStackView.arrangedSubviews.last {
+            if let uncondensed = fareSplitterControls.last {
+                if last == uncondensed {
+                    isLastControlReadyForReduction = true
+                }
+            }
+        }
         
-        if fareSplitterControls.count > 0 {
+        if isLastControlReadyForReduction {
             // turn the current last to a condensed control before adding this new guy
-            
             let condensedControl = FareSplitterCondensed(frame: CGRect(x: 0, y: 0, width: 300, height: 57))
             condensedControl.heightAnchor.constraint(equalToConstant: 57).isActive = true
             condensedControl.widthAnchor.constraint(equalToConstant: 300).isActive = true
@@ -95,9 +99,16 @@ class FareSplittingViewController: UIViewController {
                 condensedControl.seatsLabel.text = lastControl.seatsLabel.text
                 fareSplitterControlsStackView.addArrangedSubview(condensedControl)
                 fareSplitterControlsStackView.removeArrangedSubview(lastControl)
+                if let tag = fareSplitterControlsStackView.arrangedSubviews.index(of: condensedControl) {
+                    condensedControl.tag = tag
+                    lastControl.tag = tag
+                }
             }
         }
         
+        let control = FareSplitter(frame: CGRect(x: 0, y: 0, width: 300, height: 150))
+        control.heightAnchor.constraint(equalToConstant: 150).isActive = true
+        control.widthAnchor.constraint(equalToConstant: 300).isActive = true
         fareSplitterControlsStackView.addArrangedSubview(control)
         self.fareSplitterControls.append(control)
         control.delegate = self
@@ -145,7 +156,7 @@ extension FareSplittingViewController: FareSplitterDelegate {
     }
     
     func priceFor(seatCount: Int) -> String {
-        if let totalSeats = self.tripSeatsTotal(), let totalPrice = self.tripPriceTotal() {
+        if let totalSeats = self.tripSeatsTotal() {
             // TODO: implement NSDecimal price stored in Trip rather than convenience hard coded string here
             let price = 14775
             let perSeatCost = price / totalSeats
@@ -162,14 +173,43 @@ extension FareSplittingViewController: FareSplitterDelegate {
         return "$1.00"
     }
     
-    func fareSplitter(fareSplitter: FareSplitter, closeButtonWasTapped:  Bool) {
+    func fareSplitter(fareSplitter: FareSplitter,
+                      counterpart: UIView?,
+                      closeButtonWasTapped:  Bool) {
+        
         print("close button was tapped on \(fareSplitter)")
         let reclaimedSeats = Int(fareSplitter.seatsLabel.text!)!
-        self.fareSplitterControlsStackView.removeArrangedSubview(fareSplitter)
-        fareSplitter.removeFromSuperview()
-        fareSplitterControls.removeLast()
+        if let counterpart = counterpart {
+            self.fareSplitterControlsStackView.removeArrangedSubview(counterpart)
+            counterpart.removeFromSuperview()
+        } else {
+            self.fareSplitterControlsStackView.removeArrangedSubview(fareSplitter)
+            fareSplitter.removeFromSuperview()
+        }
         
-        if fareSplitterControls.count > 1 {
+        if let position = fareSplitterControls.index(of: fareSplitter) {
+            fareSplitterControls.remove(at: position)
+        }
+        
+        if fareSplitterControls.count > 0 {
+            // inflate a remaining condensed view
+            if let inflatable = fareSplitterControls.last {
+                if let visibleControl = self.fareSplitterControlsStackView.arrangedSubviews.last {
+                    if inflatable.tag == visibleControl.tag {
+                        // replace visible with counterpart big boy
+                        fareSplitterControlsStackView.removeArrangedSubview(visibleControl)
+                        visibleControl.removeFromSuperview()
+
+                        inflatable.heightAnchor.constraint(equalToConstant: 150).isActive = true
+                        inflatable.widthAnchor.constraint(equalToConstant: 300).isActive = true
+                        fareSplitterControlsStackView.addArrangedSubview(inflatable)
+                        inflatable.isHidden = false
+                    }
+                }
+            }
+        }
+        
+        if fareSplitterControls.count > 2 {
             fareSplitterAddButton.isHidden = true
             self.AddPaymentLabel.isHidden = true
         } else {

@@ -90,7 +90,7 @@ import UIKit
     
     @IBAction func closeButtonTapAction(_ sender: UITapGestureRecognizer) {
         if let counterpart = self.uncondensedCounterpart {
-            delegate?.fareSplitter(fareSplitter: counterpart, closeButtonWasTapped: true)
+            delegate?.fareSplitter(fareSplitter: counterpart, counterpart: self, closeButtonWasTapped: true)
         }
     }
     

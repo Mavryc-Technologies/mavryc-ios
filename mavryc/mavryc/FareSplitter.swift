@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 
 protocol FareSplitterDelegate {
-    func fareSplitter(fareSplitter: FareSplitter, closeButtonWasTapped:  Bool)
+    func fareSplitter(fareSplitter: FareSplitter, counterpart: UIView?, closeButtonWasTapped:  Bool)
     func fareSplitter(fareSplitter: FareSplitter, didUpdateBarsToVale: Int)
     func totalBarsAllowedForFareSplitter(fareSplitter: FareSplitter) -> Int
     func maximumSeatsAvailable() -> Int
@@ -256,7 +256,7 @@ protocol FareSplitterDelegate {
     // MARK: - Control Actions
     
     @IBAction func closeButtonTapAction(_ sender: UITapGestureRecognizer) {
-        delegate?.fareSplitter(fareSplitter: self, closeButtonWasTapped: true)
+        delegate?.fareSplitter(fareSplitter: self, counterpart: nil, closeButtonWasTapped: true)
     }
     
 }
