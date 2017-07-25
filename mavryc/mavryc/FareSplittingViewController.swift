@@ -75,6 +75,9 @@ class FareSplittingViewController: UIViewController {
     }
     
     @IBAction func fareSplitAddButtonAction(_ sender: UITapGestureRecognizer) {
+        
+        if Int(myFareSplitter.seatsLabel.text!)! == 1 { return }
+        
         print("adding a fare splitter control")
         
         var isLastControlReadyForReduction: Bool = false
@@ -150,6 +153,41 @@ extension FareSplittingViewController: ScreenNavigable {
 }
 
 extension FareSplittingViewController: FareSplitterDelegate {
+    
+    func seatOperationAllowed(fareSplitter: FareSplitter, currentCountRequested: Int) -> Bool {
+        // add up cumulative
+        var currentCumulativeSeats: Int = 0
+        currentCumulativeSeats = currentCumulativeSeats + Int(myFareSplitter.seatsLabel.text!)!
+        for splitter in fareSplitterControls {
+            if splitter == fareSplitter {
+                currentCumulativeSeats = currentCumulativeSeats + currentCountRequested
+            } else {
+                currentCumulativeSeats = currentCumulativeSeats + Int(splitter.seatsLabel.text!)!
+            }
+        }
+        var delta: Int = 0
+        
+        if fareSplitter.isPrimaryUserControl {
+            // if My Payment
+            // delta goes to or from Last Control
+            delta = (self.tripSeatsTotal()! - currentCumulativeSeats)
+            if let control = self.fareSplitterControls.last {
+                let controlSeats = Int(control.seatsLabel.text!)! + delta
+                if controlSeats < 1 {
+                    return false
+                }
+            }
+        } else {
+            // if non my payment
+            // delta goes to or from My Payment
+            delta = (self.tripSeatsTotal()! - currentCumulativeSeats)
+            let myFareSeats = Int(myFareSplitter.seatsLabel.text!)! + delta
+            if myFareSeats < 1 {
+                return false
+            }
+        }
+        return true
+    }
     
     func totalBarsAllowedForFareSplitter(fareSplitter: FareSplitter) -> Int {
         return self.tripSeatsTotal()!

@@ -12,6 +12,7 @@ import AVFoundation
 protocol FareSplitterDelegate {
     func fareSplitter(fareSplitter: FareSplitter, counterpart: UIView?, closeButtonWasTapped:  Bool)
     func fareSplitter(fareSplitter: FareSplitter, didUpdateBarsToVale: Int)
+    func seatOperationAllowed(fareSplitter: FareSplitter, currentCountRequested: Int) -> Bool
     func totalBarsAllowedForFareSplitter(fareSplitter: FareSplitter) -> Int
     func maximumSeatsAvailable() -> Int
     func priceFor(seatCount: Int) -> String
@@ -198,6 +199,12 @@ protocol FareSplitterDelegate {
                 return
             }
             
+            if let delegate = delegate {
+                if !delegate.seatOperationAllowed(fareSplitter: self, currentCountRequested: numberOfBars) {
+                    return
+                }
+            }
+            
             previousPaxCount = numberOfBars
             
             numberOfBars = max(numberOfBars, 1) // has to be 1 or more
@@ -233,17 +240,18 @@ protocol FareSplitterDelegate {
             return
         }
         
+        if let delegate = delegate {
+            if !delegate.seatOperationAllowed(fareSplitter: self, currentCountRequested: numberOfBars) {
+                return
+            }
+        }
+        
         previousPaxCount = numberOfBars
         
         self.triggerUIFeedback()
         
         numberOfBars = max(numberOfBars, 1) // has to be 1 or more
         numberOfBars = min(numberOfBars, totalBars)  // has to be 24 or less
-        
-//        guard let maxSeats = delegate?.maximumSeatsAvailable() else { return }
-//        if numberOfBars > maxSeats {
-//            numberOfBars = maxSeats
-//        }
         
         seatsLabel.text = "\(numberOfBars)"
         self.priceLabel.text = delegate?.priceFor(seatCount: numberOfBars)
