@@ -522,7 +522,7 @@
                                                         <rect key="frame" x="49" y="0.0" width="251" height="48"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25 June 2017" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Poc-p4-48q">
-                                                                <rect key="frame" x="20" y="18.5" width="223" height="14.5"/>
+                                                                <rect key="frame" x="20" y="19.5" width="223" height="14"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="223" id="fjq-KO-kFX"/>
                                                                 </constraints>
@@ -978,7 +978,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MID JET" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5aw-pL-iBI">
-                                <rect key="frame" x="37" y="701" width="300" height="14"/>
+                                <rect key="frame" x="37" y="702" width="300" height="14"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="aB6-Op-zio"/>
                                 </constraints>
@@ -987,7 +987,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$14,775.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XaM-Q2-KBC">
-                                <rect key="frame" x="37" y="723" width="300" height="36"/>
+                                <rect key="frame" x="37" y="724" width="300" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="8Qb-T9-wFn"/>
                                 </constraints>
@@ -1342,22 +1342,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="900"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NTx-ef-8Cx" customClass="StyledButton" customModule="mavryc" customModuleProvider="target">
-                                <rect key="frame" x="106" y="799" width="164" height="58"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="164" id="bp3-D0-kXm"/>
-                                    <constraint firstAttribute="height" constant="58" id="tXL-Fc-13J"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="24"/>
-                                <state key="normal" title="BOOK">
-                                    <color key="titleColor" red="0.3803921569" green="0.4431372549" blue="0.53333333329999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="bookButtonAction:" destination="5wU-uY-rp3" eventType="touchUpInside" id="Aum-dh-gBd"/>
-                                    <action selector="bookButtonAction:" destination="joM-ax-yNf" eventType="touchUpInside" id="Idh-jI-jLa"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SPLIT FARE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="itC-sY-4Yi">
                                 <rect key="frame" x="87" y="-3" width="200" height="17"/>
                                 <constraints>
@@ -1430,6 +1414,22 @@
                                     <constraint firstAttribute="height" constant="74" id="W2z-iW-OFW"/>
                                 </constraints>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NTx-ef-8Cx" customClass="StyledButton" customModule="mavryc" customModuleProvider="target">
+                                <rect key="frame" x="106" y="799" width="164" height="58"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="164" id="bp3-D0-kXm"/>
+                                    <constraint firstAttribute="height" constant="58" id="tXL-Fc-13J"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="24"/>
+                                <state key="normal" title="BOOK">
+                                    <color key="titleColor" red="0.3803921569" green="0.4431372549" blue="0.53333333329999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="bookButtonAction:" destination="5wU-uY-rp3" eventType="touchUpInside" id="Aum-dh-gBd"/>
+                                    <action selector="bookButtonAction:" destination="joM-ax-yNf" eventType="touchUpInside" id="Idh-jI-jLa"/>
+                                </connections>
+                            </button>
                             <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ApplePay" translatesAutoresizingMaskIntoConstraints="NO" id="1oD-uY-qmy">
                                 <rect key="frame" x="0.0" y="901" width="375" height="472"/>
                                 <gestureRecognizers/>
@@ -1510,6 +1510,10 @@
         <scene sceneID="va8-gg-lfV">
             <objects>
                 <viewController id="DJO-DF-Tju" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Zgk-eq-Hj8"/>
+                        <viewControllerLayoutGuide type="bottom" id="PuM-GB-cGZ"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="xQb-cQ-p96">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

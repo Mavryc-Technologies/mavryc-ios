@@ -51,7 +51,6 @@ protocol FareSplitterDelegate {
     
     @IBOutlet weak var barsContainer: UIView!
     
-    
     @IBInspectable var isPrimaryUserControl: Bool = false {
         didSet {
             if isPrimaryUserControl {
@@ -62,6 +61,9 @@ protocol FareSplitterDelegate {
             }
         }
     }
+    
+    @IBOutlet weak var payerContactLabel: UILabel!
+    
     
     @IBOutlet weak var priceLabel: UILabel!
     

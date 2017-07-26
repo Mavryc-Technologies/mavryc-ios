@@ -18,6 +18,7 @@
                 <outlet property="backgroundShapeView" destination="0xo-XF-QxD" id="Lbx-LF-fWS"/>
                 <outlet property="barsContainer" destination="W1E-gq-hR5" id="WpX-qE-8Ne"/>
                 <outlet property="closeButton" destination="dnO-4d-8ly" id="en5-kw-Dss"/>
+                <outlet property="payerContactLabel" destination="Arp-TQ-SxY" id="zlE-wH-Y4f"/>
                 <outlet property="priceLabel" destination="I9q-N8-icR" id="ghG-AB-hTX"/>
                 <outlet property="seatsLabel" destination="tng-lu-PdF" id="EhN-wI-bgj"/>
                 <outlet property="view" destination="iN0-l3-epB" id="o2p-xA-nlx"/>

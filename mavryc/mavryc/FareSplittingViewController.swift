@@ -78,6 +78,13 @@ class FareSplittingViewController: UIViewController {
         
         if Int(myFareSplitter.seatsLabel.text!)! == 1 { return }
         
+        // launch contact picker
+        let contactPicker = ContactPickerViewController(nibName: "ContactPickerViewController", bundle: Bundle.main)
+        contactPicker.delegate = self
+        self.present(contactPicker, animated: true)
+     }
+    
+    func addFareSplitter(contact: SkylarContact) {
         print("adding a fare splitter control")
         
         var isLastControlReadyForReduction: Bool = false
@@ -95,6 +102,7 @@ class FareSplittingViewController: UIViewController {
             condensedControl.heightAnchor.constraint(equalToConstant: 57).isActive = true
             condensedControl.widthAnchor.constraint(equalToConstant: 300).isActive = true
             if let lastControl = self.fareSplitterControls.last {
+                condensedControl.contactInfoLabel.text = lastControl.payerContactLabel.text
                 condensedControl.delegate = self
                 condensedControl.uncondensedCounterpart = lastControl
                 lastControl.isHidden = true
@@ -110,6 +118,7 @@ class FareSplittingViewController: UIViewController {
         }
         
         let control = FareSplitter(frame: CGRect(x: 0, y: 0, width: 300, height: 150))
+        control.payerContactLabel.text = (contact.email != nil) ? contact.phone : contact.firstname
         control.heightAnchor.constraint(equalToConstant: 150).isActive = true
         control.widthAnchor.constraint(equalToConstant: 300).isActive = true
         fareSplitterControlsStackView.addArrangedSubview(control)
@@ -289,6 +298,26 @@ extension FareSplittingViewController: FareSplitterDelegate {
     func maximumSeatsAvailable() -> Int {
         guard let seats = self.tripSeatsTotal() else { return 1 }
         return seats
+    }
+}
+
+extension FareSplittingViewController: ContactPickerProtocol {
+    
+    func contactPicker(contactPicker: ContactPickerViewController, closeButtonWasTapped: Bool) {
+        contactPicker.dismiss(animated: true) { 
+            print("contact picker was closed by close button tap")
+        }
+    }
+    
+    func contactPicker(contactPicker: ContactPickerViewController, didSelectContact: SkylarContact) {
+        contactPicker.dismiss(animated: true)
+        
+        let contact = SkylarContact(firstname: didSelectContact.firstname,
+                                    lastname: didSelectContact.lastname,
+                                    phone: didSelectContact.phone,
+                                    email: didSelectContact.email)
+        
+        self.addFareSplitter(contact: contact)
     }
 }
 

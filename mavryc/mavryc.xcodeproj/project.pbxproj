@@ -35,6 +35,11 @@
 		964629CA1EF89C8B00CAA16E /* NavigationControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964629C91EF89C8A00CAA16E /* NavigationControllerDelegate.swift */; };
 		964629CC1EF9B48600CAA16E /* LeftToRightScreenAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964629CB1EF9B48600CAA16E /* LeftToRightScreenAnimator.swift */; };
 		9666A4561E95A9D000CA822F /* FetchFlightsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9666A4551E95A9D000CA822F /* FetchFlightsClient.swift */; };
+		966744581F28159C007445CE /* ContactPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966744561F28159C007445CE /* ContactPickerViewController.swift */; };
+		966744591F28159C007445CE /* ContactPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 966744571F28159C007445CE /* ContactPickerViewController.xib */; };
+		9667445B1F281A95007445CE /* SkylarContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9667445A1F281A95007445CE /* SkylarContact.swift */; };
+		966744601F282BCB007445CE /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9667445E1F282BCB007445CE /* ContactTableViewCell.swift */; };
+		966744611F282BCB007445CE /* ContactTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9667445F1F282BCB007445CE /* ContactTableViewCell.xib */; };
 		9677165C1F23D5F100A9DB39 /* FareSplitterCondensed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9677165B1F23D5F100A9DB39 /* FareSplitterCondensed.swift */; };
 		967716621F2409AB00A9DB39 /* FareSplitterCondensed.xib in Resources */ = {isa = PBXBuildFile; fileRef = 967716611F2409AB00A9DB39 /* FareSplitterCondensed.xib */; };
 		967FF6261E9446BF007B56C6 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967FF6251E9446BF007B56C6 /* Networking.swift */; };
@@ -136,6 +141,11 @@
 		964629C91EF89C8A00CAA16E /* NavigationControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationControllerDelegate.swift; sourceTree = "<group>"; };
 		964629CB1EF9B48600CAA16E /* LeftToRightScreenAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftToRightScreenAnimator.swift; sourceTree = "<group>"; };
 		9666A4551E95A9D000CA822F /* FetchFlightsClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchFlightsClient.swift; sourceTree = "<group>"; };
+		966744561F28159C007445CE /* ContactPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactPickerViewController.swift; sourceTree = "<group>"; };
+		966744571F28159C007445CE /* ContactPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactPickerViewController.xib; sourceTree = "<group>"; };
+		9667445A1F281A95007445CE /* SkylarContact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkylarContact.swift; sourceTree = "<group>"; };
+		9667445E1F282BCB007445CE /* ContactTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
+		9667445F1F282BCB007445CE /* ContactTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactTableViewCell.xib; sourceTree = "<group>"; };
 		9677165B1F23D5F100A9DB39 /* FareSplitterCondensed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FareSplitterCondensed.swift; sourceTree = "<group>"; };
 		967716611F2409AB00A9DB39 /* FareSplitterCondensed.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FareSplitterCondensed.xib; sourceTree = "<group>"; };
 		967FF6251E9446BF007B56C6 /* Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
@@ -321,6 +331,18 @@
 			name = map;
 			sourceTree = "<group>";
 		};
+		966744531F281240007445CE /* Contacts */ = {
+			isa = PBXGroup;
+			children = (
+				966744561F28159C007445CE /* ContactPickerViewController.swift */,
+				966744571F28159C007445CE /* ContactPickerViewController.xib */,
+				9667445A1F281A95007445CE /* SkylarContact.swift */,
+				9667445E1F282BCB007445CE /* ContactTableViewCell.swift */,
+				9667445F1F282BCB007445CE /* ContactTableViewCell.xib */,
+			);
+			name = Contacts;
+			sourceTree = "<group>";
+		};
 		966CFC0B1EFB2C950045FF34 /* transition animations */ = {
 			isa = PBXGroup;
 			children = (
@@ -408,6 +430,7 @@
 				96C6D0991F195D3A009AF342 /* FareSplitter.xib */,
 				9677165B1F23D5F100A9DB39 /* FareSplitterCondensed.swift */,
 				967716611F2409AB00A9DB39 /* FareSplitterCondensed.xib */,
+				966744531F281240007445CE /* Contacts */,
 			);
 			name = "screen - fare splitting";
 			sourceTree = "<group>";
@@ -714,6 +737,7 @@
 				96CB0A461EE5DBF9004ADEA0 /* PaxPicker.xib in Resources */,
 				96E53EDA1E90378E0045AA06 /* Assets.xcassets in Resources */,
 				96A32C181E96A30500DA7DC1 /* states-cities.json in Resources */,
+				966744591F28159C007445CE /* ContactPickerViewController.xib in Resources */,
 				96E53ED81E90378E0045AA06 /* Main.storyboard in Resources */,
 				96DA35B31EC281C600D2A0BC /* skylar.xcassets in Resources */,
 				96F2FCAC1E92DEE300C51674 /* Onboarding.storyboard in Resources */,
@@ -721,6 +745,7 @@
 				967716621F2409AB00A9DB39 /* FareSplitterCondensed.xib in Resources */,
 				9606FD9B1EFDBD760059AD47 /* tap5.wav in Resources */,
 				96C6D09A1F195D3A009AF342 /* FareSplitter.xib in Resources */,
+				966744611F282BCB007445CE /* ContactTableViewCell.xib in Resources */,
 				96DA35B51EC281E400D2A0BC /* Asap in Resources */,
 				962EE1181EBBBA7800797CD9 /* Mapbox.storyboard in Resources */,
 				96B1F2D11EEA294E00EB5F4A /* airports.sqlite3 in Resources */,
@@ -840,6 +865,7 @@
 				9606FD891EFC83A50059AD47 /* Notification+Location.swift in Sources */,
 				96F2FCA21E92D9DA00C51674 /* StoryboardIdentifiable.swift in Sources */,
 				9606FD8D1EFC89E50059AD47 /* TripCoordinator.swift in Sources */,
+				966744601F282BCB007445CE /* ContactTableViewCell.swift in Sources */,
 				23B819C81EB19145006017FC /* LoginDTO.swift in Sources */,
 				96395F2B1EF33D250094923F /* ScreenNavigator.swift in Sources */,
 				96CE58FA1EE93C6000073BD5 /* ConfirmDetailsScreenVC.swift in Sources */,
@@ -885,8 +911,10 @@
 				96395F371EF5DA310094923F /* FeatureFlag.swift in Sources */,
 				96F2FC9E1E92D8CC00C51674 /* AppState.swift in Sources */,
 				96B7476B1F0E9F56006071E5 /* Date+Format.swift in Sources */,
+				966744581F28159C007445CE /* ContactPickerViewController.swift in Sources */,
 				964629CA1EF89C8B00CAA16E /* NavigationControllerDelegate.swift in Sources */,
 				96395F2F1EF472B80094923F /* LocationController.swift in Sources */,
+				9667445B1F281A95007445CE /* SkylarContact.swift in Sources */,
 				961144951F0D92BA003033AE /* DatePickerTableViewCell.swift in Sources */,
 				96C6D0941F1837B9009AF342 /* FareSplittingViewController.swift in Sources */,
 				96CE58F01EE8A12900073BD5 /* AircraftSelectCell.swift in Sources */,
