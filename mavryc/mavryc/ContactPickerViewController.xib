@@ -17,7 +17,9 @@
             <connections>
                 <outlet property="contactSearchFieldView" destination="FZP-UP-V5Q" id="7AG-eA-gbC"/>
                 <outlet property="contactSearchTextField" destination="NAh-49-I0u" id="cqJ-pT-kfI"/>
+                <outlet property="contactsIconImageView" destination="gJG-t8-TJq" id="nOf-n3-WNf"/>
                 <outlet property="phoneFieldView" destination="c5o-3Q-EeG" id="3uh-1e-MXu"/>
+                <outlet property="phoneIconImageView" destination="e7f-7k-p6S" id="WRB-gY-xZS"/>
                 <outlet property="phoneNumberTextField" destination="Qi2-Si-Inu" id="NZs-7B-gL3"/>
                 <outlet property="tableView" destination="mjd-F4-tta" id="B3c-Nx-Pex"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -49,7 +51,7 @@
                                         <constraint firstAttribute="width" constant="1" id="qGh-6a-UWp"/>
                                     </constraints>
                                 </view>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PhoneIconForm" translatesAutoresizingMaskIntoConstraints="NO" id="e7f-7k-p6S">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="phoneIcon" highlightedImage="phoneIconHilite" translatesAutoresizingMaskIntoConstraints="NO" id="e7f-7k-p6S">
                                     <rect key="frame" x="13" y="14" width="22" height="21"/>
                                 </imageView>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Add Phone Number" borderStyle="roundedRect" placeholder="Add Phone Number" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="Qi2-Si-Inu">
@@ -58,7 +60,7 @@
                                     <color key="tintColor" red="0.3803921569" green="0.4431372549" blue="0.53333333329999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="textColor" red="0.3803921569" green="0.4431372549" blue="0.53333333329999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="phonePad" keyboardAppearance="alert" returnKeyType="done"/>
+                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numbersAndPunctuation" keyboardAppearance="alert" returnKeyType="done"/>
                                 </textField>
                             </subviews>
                             <color key="backgroundColor" red="0.058823529409999999" green="0.070588235289999995" blue="0.1058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -89,7 +91,7 @@
                                         <constraint firstAttribute="width" constant="1" id="wdH-fS-XEf"/>
                                     </constraints>
                                 </view>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Contact Icon" translatesAutoresizingMaskIntoConstraints="NO" id="gJG-t8-TJq">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="contactIcon" highlightedImage="contactIconHilite" translatesAutoresizingMaskIntoConstraints="NO" id="gJG-t8-TJq">
                                     <rect key="frame" x="12" y="12" width="24" height="24"/>
                                 </imageView>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Search Contacts" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="NAh-49-I0u">
@@ -154,7 +156,9 @@
     </objects>
     <resources>
         <image name="AddButtonClose" width="34" height="34"/>
-        <image name="Contact Icon" width="24" height="24"/>
-        <image name="PhoneIconForm" width="22" height="21"/>
+        <image name="contactIcon" width="24" height="24"/>
+        <image name="contactIconHilite" width="24" height="24"/>
+        <image name="phoneIcon" width="22" height="21"/>
+        <image name="phoneIconHilite" width="22" height="21"/>
     </resources>
 </document>

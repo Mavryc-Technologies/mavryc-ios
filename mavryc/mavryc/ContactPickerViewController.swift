@@ -50,6 +50,11 @@ class ContactPickerViewController: UIViewController {
         }
     }
     
+    
+    @IBOutlet weak var phoneIconImageView: UIImageView!
+    
+    @IBOutlet weak var contactsIconImageView: UIImageView!
+
     func didChangeText(textField: UITextField) {
 //        if let text = textField.text {
 //            //self.updateListWithAutocompleteSuggestions(text: text, searchControl: textField)
@@ -191,11 +196,25 @@ extension ContactPickerViewController: UITextFieldDelegate {
         let id = textField == self.contactSearchTextField ? "contacts" : "add number"
         print("\(id) textFieldDidBeginEditing: \(String(describing: textField.text))")
         
-//        if id == "contacts" {
-//            //self.triggerArrivalList()
-//        } else {
-//            //self.triggerDepartureList()
-//        }
+        if id == "contacts" {
+            self.contactsIconImageView.isHighlighted = true
+            self.phoneIconImageView.isHighlighted = false
+            self.contactSearchTextField.textColor = UIColor.white
+            self.phoneNumberTextField.textColor = AppStyle.skylarBlueGrey
+        } else {
+            self.phoneIconImageView.isHighlighted = true
+            self.contactsIconImageView.isHighlighted = false
+            self.phoneNumberTextField.textColor = UIColor.white
+            self.contactSearchTextField.textColor = AppStyle.skylarBlueGrey
+        }
+        
+        if id == "contacts" {
+            if let str = textField.text {
+                if str.characters.count > 0 {
+                    self.fetchAndUpdateTableWithContactsMatching(term: str)
+                }
+            }
+        }
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
@@ -217,17 +236,9 @@ extension ContactPickerViewController: UITextFieldDelegate {
         print("\(id) textFieldShouldBeginEditing: \(String(describing: textField.text))")
         
         if textField == self.phoneNumberTextField {
-//            if self.preventEditBecauseDepartureAirportWasSelected {
-//                self.preventEditBecauseDepartureAirportWasSelected = false
-//                return false
-//            }
         }
             
         else if textField == self.contactSearchTextField {
-//            if self.preventEditBecauseDestinationAirportWasSelected {
-//                self.preventEditBecauseDestinationAirportWasSelected = false
-//                return false
-//            }
         }
         
         return true
@@ -260,6 +271,13 @@ extension ContactPickerViewController: UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        print("replacementString: \(string)")
+        if let currText = textField.text {
+            let searchTerm = currText + string
+            if searchTerm.characters.count > 0 {
+                self.fetchAndUpdateTableWithContactsMatching(term: searchTerm)
+            }
+        }
         return true
     }
     
