@@ -522,7 +522,7 @@
                                                         <rect key="frame" x="49" y="0.0" width="251" height="48"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25 June 2017" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Poc-p4-48q">
-                                                                <rect key="frame" x="20" y="19.5" width="223" height="14"/>
+                                                                <rect key="frame" x="20" y="18.5" width="223" height="14.5"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="223" id="fjq-KO-kFX"/>
                                                                 </constraints>
@@ -870,17 +870,19 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hE7-Nu-CJ7">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="900"/>
                             </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="79" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cPM-ps-Ob4">
-                                <rect key="frame" x="0.0" y="20" width="375" height="606"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="79" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cPM-ps-Ob4">
+                                <rect key="frame" x="38" y="20" width="300" height="794"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="flt-OA-Ude"/>
+                                </constraints>
                                 <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" shouldIndentWhileEditing="NO" reuseIdentifier="cell" rowHeight="79" id="I8H-8D-od7" customClass="AircraftSelectCell" customModule="mavryc" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="79"/>
+                                        <rect key="frame" x="0.0" y="28" width="300" height="79"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="I8H-8D-od7" id="xXd-k0-4oY">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="79"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="300" height="79"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </tableViewCellContentView>
@@ -910,12 +912,15 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="cPM-ps-Ob4" firstAttribute="top" secondItem="mx4-Dm-B4h" secondAttribute="bottom" constant="20" id="0Ep-f0-bHY"/>
+                            <constraint firstItem="cPM-ps-Ob4" firstAttribute="centerX" secondItem="NMH-gh-H7R" secondAttribute="centerX" id="1Q3-qW-j6L"/>
                             <constraint firstItem="vF6-RB-7Te" firstAttribute="bottom" secondItem="hE7-Nu-CJ7" secondAttribute="bottom" constant="-20" id="5gk-2C-YQq"/>
                             <constraint firstAttribute="trailing" secondItem="hE7-Nu-CJ7" secondAttribute="trailing" id="7Ee-lD-CJL"/>
                             <constraint firstItem="eNJ-dq-KAF" firstAttribute="top" secondItem="hE7-Nu-CJ7" secondAttribute="bottom" id="Hey-vf-2aI"/>
                             <constraint firstItem="hE7-Nu-CJ7" firstAttribute="leading" secondItem="NMH-gh-H7R" secondAttribute="leading" id="N37-IJ-7BR"/>
                             <constraint firstItem="vF6-RB-7Te" firstAttribute="centerX" secondItem="NMH-gh-H7R" secondAttribute="centerX" id="llE-KD-I5u"/>
                             <constraint firstItem="hE7-Nu-CJ7" firstAttribute="top" secondItem="mx4-Dm-B4h" secondAttribute="bottom" id="sek-7h-0lE"/>
+                            <constraint firstItem="vF6-RB-7Te" firstAttribute="top" secondItem="cPM-ps-Ob4" secondAttribute="bottom" constant="8" id="tqH-0c-lP2"/>
                         </constraints>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
@@ -927,7 +932,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7zN-e7-i72" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3479" y="94"/>
+            <point key="canvasLocation" x="3477.5999999999999" y="93.553223388305852"/>
         </scene>
         <!--Confirm Details ScreenVC-->
         <scene sceneID="cG9-Lj-MSB">
@@ -978,7 +983,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MID JET" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5aw-pL-iBI">
-                                <rect key="frame" x="37" y="702" width="300" height="14"/>
+                                <rect key="frame" x="37" y="701" width="300" height="14"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="aB6-Op-zio"/>
                                 </constraints>
@@ -987,7 +992,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$14,775.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XaM-Q2-KBC">
-                                <rect key="frame" x="37" y="724" width="300" height="35"/>
+                                <rect key="frame" x="37" y="723" width="300" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="8Qb-T9-wFn"/>
                                 </constraints>
