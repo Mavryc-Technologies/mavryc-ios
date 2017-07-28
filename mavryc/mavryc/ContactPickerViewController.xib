@@ -54,8 +54,8 @@
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="phoneIcon" highlightedImage="phoneIconHilite" translatesAutoresizingMaskIntoConstraints="NO" id="e7f-7k-p6S">
                                     <rect key="frame" x="13" y="14" width="22" height="21"/>
                                 </imageView>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Add Phone Number" borderStyle="roundedRect" placeholder="Add Phone Number" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="Qi2-Si-Inu">
-                                    <rect key="frame" x="57" y="9" width="235" height="30"/>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Add Phone Number" placeholder="Add Phone Number" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="Qi2-Si-Inu">
+                                    <rect key="frame" x="60" y="9" width="235" height="30"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <color key="tintColor" red="0.3803921569" green="0.4431372549" blue="0.53333333329999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="textColor" red="0.3803921569" green="0.4431372549" blue="0.53333333329999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -68,13 +68,13 @@
                                 <constraint firstAttribute="width" constant="300" id="29b-Eq-4k3"/>
                                 <constraint firstItem="e7f-7k-p6S" firstAttribute="top" secondItem="c5o-3Q-EeG" secondAttribute="top" constant="14" id="5CY-Hm-IOs"/>
                                 <constraint firstItem="Qi2-Si-Inu" firstAttribute="top" secondItem="c5o-3Q-EeG" secondAttribute="top" constant="9" id="GZ8-tE-scc"/>
-                                <constraint firstItem="Qi2-Si-Inu" firstAttribute="leading" secondItem="N0p-W9-aTO" secondAttribute="trailing" constant="8" id="JcQ-Qd-FMw"/>
+                                <constraint firstItem="Qi2-Si-Inu" firstAttribute="leading" secondItem="N0p-W9-aTO" secondAttribute="trailing" constant="11" id="JcQ-Qd-FMw"/>
                                 <constraint firstItem="e7f-7k-p6S" firstAttribute="leading" secondItem="c5o-3Q-EeG" secondAttribute="leading" constant="13" id="Sm2-7Q-X1c"/>
                                 <constraint firstItem="N0p-W9-aTO" firstAttribute="top" secondItem="c5o-3Q-EeG" secondAttribute="top" id="W9x-fy-fCJ"/>
                                 <constraint firstAttribute="bottom" secondItem="N0p-W9-aTO" secondAttribute="bottom" id="XMV-Vb-j15"/>
                                 <constraint firstAttribute="height" constant="48" id="YDI-cr-cFW"/>
                                 <constraint firstAttribute="bottom" secondItem="e7f-7k-p6S" secondAttribute="bottom" constant="13" id="d1F-Ry-NMx"/>
-                                <constraint firstAttribute="trailing" secondItem="Qi2-Si-Inu" secondAttribute="trailing" constant="8" id="gTL-nh-1am"/>
+                                <constraint firstAttribute="trailing" secondItem="Qi2-Si-Inu" secondAttribute="trailing" constant="5" id="gTL-nh-1am"/>
                                 <constraint firstItem="N0p-W9-aTO" firstAttribute="leading" secondItem="e7f-7k-p6S" secondAttribute="trailing" constant="13" id="hum-1c-cmn"/>
                                 <constraint firstItem="N0p-W9-aTO" firstAttribute="leading" secondItem="c5o-3Q-EeG" secondAttribute="leading" constant="48" id="kM6-ML-Q7n"/>
                                 <constraint firstAttribute="bottom" secondItem="Qi2-Si-Inu" secondAttribute="bottom" constant="9" id="zr5-2J-cpk"/>
@@ -94,8 +94,8 @@
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="contactIcon" highlightedImage="contactIconHilite" translatesAutoresizingMaskIntoConstraints="NO" id="gJG-t8-TJq">
                                     <rect key="frame" x="12" y="12" width="24" height="24"/>
                                 </imageView>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Search Contacts" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="NAh-49-I0u">
-                                    <rect key="frame" x="57" y="9" width="235" height="30"/>
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Search Contacts" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="NAh-49-I0u">
+                                    <rect key="frame" x="60" y="9" width="235" height="30"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <color key="tintColor" red="0.3803921569" green="0.4431372549" blue="0.53333333329999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="textColor" red="0.3803921569" green="0.4431372549" blue="0.53333333329999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -107,14 +107,14 @@
                             <constraints>
                                 <constraint firstItem="gJG-t8-TJq" firstAttribute="leading" secondItem="FZP-UP-V5Q" secondAttribute="leading" constant="12" id="4DM-CW-lld"/>
                                 <constraint firstItem="gJG-t8-TJq" firstAttribute="top" secondItem="FZP-UP-V5Q" secondAttribute="top" constant="12" id="6vh-Pj-i0w"/>
-                                <constraint firstItem="NAh-49-I0u" firstAttribute="leading" secondItem="lZV-Yd-74Q" secondAttribute="trailing" constant="8" id="M7f-rf-uFb"/>
+                                <constraint firstItem="NAh-49-I0u" firstAttribute="leading" secondItem="lZV-Yd-74Q" secondAttribute="trailing" constant="11" id="M7f-rf-uFb"/>
                                 <constraint firstAttribute="height" constant="48" id="NXc-b9-5E8"/>
                                 <constraint firstAttribute="bottom" secondItem="lZV-Yd-74Q" secondAttribute="bottom" id="PKD-Bp-0P6"/>
                                 <constraint firstItem="lZV-Yd-74Q" firstAttribute="leading" secondItem="FZP-UP-V5Q" secondAttribute="leading" constant="48" id="POJ-tT-JXm"/>
                                 <constraint firstAttribute="bottom" secondItem="gJG-t8-TJq" secondAttribute="bottom" constant="12" id="bIi-hP-FTW"/>
                                 <constraint firstAttribute="width" constant="300" id="cae-xx-rQY"/>
                                 <constraint firstItem="lZV-Yd-74Q" firstAttribute="leading" secondItem="gJG-t8-TJq" secondAttribute="trailing" constant="12" id="gql-yh-rI6"/>
-                                <constraint firstAttribute="trailing" secondItem="NAh-49-I0u" secondAttribute="trailing" constant="8" id="wsJ-Ph-JVP"/>
+                                <constraint firstAttribute="trailing" secondItem="NAh-49-I0u" secondAttribute="trailing" constant="5" id="wsJ-Ph-JVP"/>
                                 <constraint firstAttribute="bottom" secondItem="NAh-49-I0u" secondAttribute="bottom" constant="9" id="xT7-qu-ogr"/>
                                 <constraint firstItem="lZV-Yd-74Q" firstAttribute="top" secondItem="FZP-UP-V5Q" secondAttribute="top" id="xVT-uJ-8ZR"/>
                                 <constraint firstItem="NAh-49-I0u" firstAttribute="top" secondItem="FZP-UP-V5Q" secondAttribute="top" constant="9" id="yk1-Wl-SMN"/>

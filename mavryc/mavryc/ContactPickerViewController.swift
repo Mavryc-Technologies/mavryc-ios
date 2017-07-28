@@ -219,12 +219,15 @@ extension ContactPickerViewController: UITableViewDelegate, UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? ContactTableViewCell else { return UITableViewCell() }
+        
+        //cell.textLabel?.textColor = UIColor.white
+        //cell.textLabel?.font = UIFont(name: "Lato-Light", size: 8.0)
         
         let sectionTitle: String = contactsSectionTitles[indexPath.section]
         if let sectionNames: [Any] = contactsDictionary[sectionTitle] as? [Any] {
             if let nameAtIndex = sectionNames[indexPath.row] as? String {
-                cell.textLabel?.text = nameAtIndex
+                cell.title?.text = nameAtIndex
             }
         }
         
@@ -236,10 +239,12 @@ extension ContactPickerViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int){
+        //view.tintColor = AppStyle.skylarDeepBlue
+//        view.backgroundColor = AppStyle.skylarDeepBlue
         view.tintColor = AppStyle.skylarDeepBlue
-        view.backgroundColor = AppStyle.skylarDeepBlue
         let header = view as! UITableViewHeaderFooterView
         header.textLabel?.textColor = UIColor.white
+        header.textLabel?.font = UIFont(name: "Lato", size: 12.0)
     }
 }
 
