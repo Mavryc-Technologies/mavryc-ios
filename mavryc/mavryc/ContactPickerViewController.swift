@@ -80,10 +80,40 @@ class ContactPickerViewController: UIViewController {
     }
     
     // MARK: - Datasource support
+    
     fileprivate var data: [String] = [] // replace String with CNContact
+    fileprivate var contactsDictionary: [String:Any] = [:]
+    fileprivate var contactsSectionTitles: [String] = []
+    fileprivate let abcIndexTitles = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+    
     
     private func updateData(list: [String]) {
+        
+        // TODO: remove when not needed
         self.data = list
+        
+        // TODO: process the data into a indexedAlphabeticalDictionary
+        let sorted = list.sorted()
+        
+        contactsDictionary.removeAll()
+        contactsSectionTitles.removeAll()
+        
+        abcIndexTitles.forEach { (letter) in
+            let matches = sorted.filter({ (candidateName) -> Bool in
+                if let letterFirst = candidateName.characters.first, let letterChar = letter.characters.first {
+                    if letterFirst == letterChar {
+                        return true
+                    }
+                }
+                return false
+            })
+            
+            if matches.count > 0 {
+                contactsSectionTitles.append(letter)
+                contactsDictionary[letter] = matches
+            }
+        }
+        
         self.tableView.reloadData()
     }
     
@@ -94,8 +124,6 @@ class ContactPickerViewController: UIViewController {
         tableView.register(UINib(nibName: "ContactTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "cell")
 
         self.fetchInitialContactsAndUpdate()
-//        let list = ["bobert", "dilbert", "dogbert", "elmo", "cheapcheap"]
-//        self.updateData(list: list)
     }
     
     func fetchInitialContactsAndUpdate() {
@@ -159,17 +187,33 @@ class ContactPickerViewController: UIViewController {
 extension ContactPickerViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return self.contactsSectionTitles.count
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return contactsSectionTitles[section]
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.count
+        //return data.count
+        
+        let sectionTitle: String = contactsSectionTitles[section]
+        if let sectionNames: [Any] = contactsDictionary[sectionTitle] as? [Any] {
+            return sectionNames.count
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let phone = self.data[indexPath.row]
+        
+        let letterKey = contactsSectionTitles[indexPath.section]
+        guard let theContacts: [Any] = contactsDictionary[letterKey] as? [Any] else { return }
+        guard let selectedContactName = theContacts[indexPath.row] as? String else { return }
+        
+        //let phone = self.data[indexPath.row]
+        let phone = selectedContactName
         let email = ""
-        let skContact = SkylarContact(firstname: "jimb", lastname: "jomb", phone: phone, email: email)
+        let skContact = SkylarContact(firstname: "tom", lastname: "thumb", phone: phone, email: email)
         delegate?.contactPicker(contactPicker: self, didSelectContact: skContact)
     }
     
@@ -177,16 +221,25 @@ extension ContactPickerViewController: UITableViewDelegate, UITableViewDataSourc
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
-        if data.count >= indexPath.row {
-            let string = data[indexPath.row]
-            cell.textLabel?.text = string
+        let sectionTitle: String = contactsSectionTitles[indexPath.section]
+        if let sectionNames: [Any] = contactsDictionary[sectionTitle] as? [Any] {
+            if let nameAtIndex = sectionNames[indexPath.row] as? String {
+                cell.textLabel?.text = nameAtIndex
+            }
         }
         
         return cell
     }
     
-    func filterTableView(filterString: String) {
-        // TODO: show only contacts matching this string
+    func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        return contactsSectionTitles
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int){
+        view.tintColor = AppStyle.skylarDeepBlue
+        view.backgroundColor = AppStyle.skylarDeepBlue
+        let header = view as! UITableViewHeaderFooterView
+        header.textLabel?.textColor = UIColor.white
     }
 }
 
