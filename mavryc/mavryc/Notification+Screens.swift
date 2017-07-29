@@ -27,4 +27,8 @@ extension Notification.Name {
         
         public static let DidTapBackNav = Notification.Name(rawValue: "com.mavryk.notification.name.panel.didTapBackNav")
     }
+    
+    public struct SubscreenEvents {
+        public static let AircraftCellInfoButtonTap = Notification.Name(rawValue: "com.mavryk.notification.name.panel.subscreen.event.AircraftCellInfoButtonTap")
+    }
 }

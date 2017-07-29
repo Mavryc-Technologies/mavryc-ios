@@ -44,6 +44,7 @@
 		967716621F2409AB00A9DB39 /* FareSplitterCondensed.xib in Resources */ = {isa = PBXBuildFile; fileRef = 967716611F2409AB00A9DB39 /* FareSplitterCondensed.xib */; };
 		967FF6261E9446BF007B56C6 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967FF6251E9446BF007B56C6 /* Networking.swift */; };
 		967FF6291E945796007B56C6 /* FetchUserClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967FF6281E945796007B56C6 /* FetchUserClient.swift */; };
+		968BCA401F2C15AC00B3C9EF /* AircraftDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968BCA3F1F2C15AB00B3C9EF /* AircraftDetailViewController.swift */; };
 		96A32C181E96A30500DA7DC1 /* states-cities.json in Resources */ = {isa = PBXBuildFile; fileRef = 96A32C171E96A30500DA7DC1 /* states-cities.json */; };
 		96A32C1B1E96A36900DA7DC1 /* Cities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A32C1A1E96A36900DA7DC1 /* Cities.swift */; };
 		96A32C1D1E96D1EC00DA7DC1 /* AutoCompletionPredictable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A32C1C1E96D1EC00DA7DC1 /* AutoCompletionPredictable.swift */; };
@@ -150,6 +151,7 @@
 		967716611F2409AB00A9DB39 /* FareSplitterCondensed.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FareSplitterCondensed.xib; sourceTree = "<group>"; };
 		967FF6251E9446BF007B56C6 /* Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		967FF6281E945796007B56C6 /* FetchUserClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchUserClient.swift; sourceTree = "<group>"; };
+		968BCA3F1F2C15AB00B3C9EF /* AircraftDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AircraftDetailViewController.swift; sourceTree = "<group>"; };
 		96A32C171E96A30500DA7DC1 /* states-cities.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "states-cities.json"; sourceTree = "<group>"; };
 		96A32C1A1E96A36900DA7DC1 /* Cities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cities.swift; sourceTree = "<group>"; };
 		96A32C1C1E96D1EC00DA7DC1 /* AutoCompletionPredictable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCompletionPredictable.swift; sourceTree = "<group>"; };
@@ -450,6 +452,7 @@
 				96CE58F31EE8D3A600073BD5 /* AircraftSelectViewController.swift */,
 				96CE58EE1EE8A12900073BD5 /* AircraftSelectCell.swift */,
 				96CE58EF1EE8A12900073BD5 /* AircraftSelectCell.xib */,
+				968BCA3F1F2C15AB00B3C9EF /* AircraftDetailViewController.swift */,
 			);
 			name = "screen - aircraft select";
 			sourceTree = "<group>";
@@ -885,6 +888,7 @@
 				96DA35B01EC2732C00D2A0BC /* Joystick.swift in Sources */,
 				96F2FCA51E92DA3400C51674 /* UIViewController+StoryboardIdentifier.swift in Sources */,
 				960B50E41EC6392F002B1432 /* JourneyDetailsVC.swift in Sources */,
+				968BCA401F2C15AC00B3C9EF /* AircraftDetailViewController.swift in Sources */,
 				96A32C1D1E96D1EC00DA7DC1 /* AutoCompletionPredictable.swift in Sources */,
 				96395F331EF5B58E0094923F /* JoystickController.swift in Sources */,
 				9606FD871EFC62C50059AD47 /* GooglePlacesClient.swift in Sources */,
