@@ -36,8 +36,17 @@ class AircraftDetailViewController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.primaryLabel.text = ""
+        self.secondaryLabel.text = ""
+        self.unattributedTitle = self.primaryLabel.text! + " $12,000"
+        self.highlightCell()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
+        self.selectionTapAction()
+        self.highlightCell()
     }
     
     func selectionTapAction() {

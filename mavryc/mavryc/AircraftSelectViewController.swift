@@ -19,15 +19,23 @@ class AircraftSelectViewController: UIViewController, UITableViewDelegate, UITab
     // note: upon didSet, this the origin needs to be (totalSuperview width - 300) / 2 in order to center it, and then the offscreen
     @IBOutlet weak var subscreen1LeadingSpaceConstraint: NSLayoutConstraint! {
         didSet {
-            //self.subscreen1VisibleX = (self.view.frame.size.width - 300) / 2
-            //subscreen1LeadingSpaceConstraint.constant = self.subscreen1VisibleX
-            
             self.onscreenX = subscreen1LeadingSpaceConstraint.constant
-            
-            // put subscreen1 offscreen
             subscreen1LeadingSpaceConstraint.constant = self.offscreenRight
         }
     }
+    
+    @IBOutlet weak var subscreen2SpaceConstraint: NSLayoutConstraint! {
+        didSet {
+            subscreen2SpaceConstraint.constant = self.offscreenRight
+        }
+    }
+    
+    @IBOutlet weak var subscreen3SpaceConstraint: NSLayoutConstraint! {
+        didSet {
+            subscreen3SpaceConstraint.constant = self.offscreenRight
+        }
+    }
+    
     
     @IBOutlet weak var tableView: UITableView!
 
@@ -62,6 +70,9 @@ class AircraftSelectViewController: UIViewController, UITableViewDelegate, UITab
     
     // MARK: - Screen and Subscreen support
     var currentSubscreenIndex = 0 // 0, 1, 2, or 3 where = represents main screen
+    var subscreen1VC: AircraftDetailViewController? = nil
+    var subscreen2VC: AircraftDetailViewController? = nil
+    var subscreen3VC: AircraftDetailViewController? = nil
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -94,6 +105,26 @@ class AircraftSelectViewController: UIViewController, UITableViewDelegate, UITab
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        self.setupDetailSubscreens()
+    }
+    
+    func setupDetailSubscreens() {
+        if let vc = self.subscreen1VC {
+            vc.costData = self.costData[0]
+            vc.titleData = self.titleData[0]
+            vc.subtitleData = self.subtitleData[0]
+        }
+        if let vc2 = self.subscreen2VC {
+            vc2.costData = self.costData[1]
+            vc2.titleData = self.titleData[1]
+            vc2.subtitleData = self.subtitleData[1]
+        }
+        if let vc3 = self.subscreen3VC {
+            vc3.costData = self.costData[2]
+            vc3.titleData = self.titleData[2]
+            vc3.subtitleData = self.subtitleData[2]
+        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -167,13 +198,22 @@ class AircraftSelectViewController: UIViewController, UITableViewDelegate, UITab
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "AircraftDetailsViewControllerSegue1" {
             let vc = segue.destination as? AircraftDetailViewController
+            self.subscreen1VC = vc
             vc?.costData = self.costData[0]
             vc?.titleData = self.titleData[0]
             vc?.subtitleData = self.subtitleData[0]
-        } else if segue.identifier == "e" {
-
-        } else if segue.identifier == "t" {
-
+        } else if segue.identifier == "AircraftDetailsViewControllerSegue2" {
+            let vc = segue.destination as? AircraftDetailViewController
+            self.subscreen2VC = vc
+            vc?.costData = self.costData[1]
+            vc?.titleData = self.titleData[1]
+            vc?.subtitleData = self.subtitleData[1]
+        } else if segue.identifier == "AircraftDetailsViewControllerSegue3" {
+            let vc = segue.destination as? AircraftDetailViewController
+            self.subscreen3VC = vc
+            vc?.costData = self.costData[1]
+            vc?.titleData = self.titleData[1]
+            vc?.subtitleData = self.subtitleData[1]
         }
     }
     
@@ -214,9 +254,8 @@ class AircraftSelectViewController: UIViewController, UITableViewDelegate, UITab
                     UIView.animate(withDuration: 0.3, animations: { 
                         // move subscreens off screen
                         self.subscreen1LeadingSpaceConstraint.constant = self.offscreenRight
-                        // and 2 = offscreenRight
-                        // and 3 = offscreenRight
-                        
+                        self.subscreen2SpaceConstraint.constant = self.offscreenRight
+                        self.subscreen3SpaceConstraint.constant = self.offscreenRight
                         self.view.layoutIfNeeded()
                     }, completion: { (done) in
                         UIView.animate(withDuration: 0.2, animations: { 
@@ -232,71 +271,67 @@ class AircraftSelectViewController: UIViewController, UITableViewDelegate, UITab
                     
                     if goScreen2LeftFrom3 {
                         self.tableView.isHidden = true
-                        // TODO: screen2 = offscreenLeft
-                        // here... then, animate...
+                        self.subscreen2SpaceConstraint.constant = self.offscreenLeft
                         UIView.animate(withDuration: 0.3, animations: { 
                             self.leftChevron.isHidden = false
                             self.rightChevron.isHidden = false
 
                             self.subscreen1LeadingSpaceConstraint.constant = self.offscreenLeft
-                            // 2 = ONSCREENX
-                            // and 3 = offscreenXRight
+                            self.subscreen2SpaceConstraint.constant = self.onscreenX
+                            self.subscreen3SpaceConstraint.constant = self.offscreenRight
+                            self.view.layoutIfNeeded()
                         })
 
                     } else if goScreen1LeftFrom2 {
 
                         self.subscreen1LeadingSpaceConstraint.constant = self.offscreenLeft
-                        //self.tableView.isHidden = true
                         UIView.animate(withDuration: 0.3, animations: {
                             self.leftChevron.isHidden = false
                             self.rightChevron.isHidden = false
+                            self.subscreen2SpaceConstraint.constant = self.offscreenRight
                             self.subscreen1LeadingSpaceConstraint.constant = self.onscreenX
-                            // TODO: screen2 = offscreenRight
-                            // and 2 = onscreenXRight
-                            // and 3 = offscreenXRight
+                            self.subscreen3SpaceConstraint.constant = self.offscreenRight
+                            self.view.layoutIfNeeded()
                         })
                     }
 
                 }
-            } else { // GOING RIGHT
+            } else { //  ------ GOING RIGHT ------
                 let goScreen1RightFrom0 = targetScreen == 1
                 if goScreen1RightFrom0 {
                     
                     self.subscreen1LeadingSpaceConstraint.constant = self.offscreenRight
+                    self.subscreen2SpaceConstraint.constant = self.offscreenRight
+                    self.subscreen3SpaceConstraint.constant = self.offscreenRight
                     UIView.animate(withDuration: 0.3, animations: {
                         self.tableView.isHidden = true
                         self.leftChevron.isHidden = false
                         self.rightChevron.isHidden = false
-                        
                         self.subscreen1LeadingSpaceConstraint.constant = self.onscreenX
-                        // and 2 = offscreenRight
-                        // and 3 = offscreenRight
                         self.view.layoutIfNeeded()
                     })
                 } else if targetScreen == 2 { // from left to right
-                    // 2 offscreenRight
+                    self.subscreen2SpaceConstraint.constant = self.offscreenRight
                     UIView.animate(withDuration: 0.3, animations: {
                         self.tableView.isHidden = true
                         self.leftChevron.isHidden = false
                         self.rightChevron.isHidden = false
-
                         self.subscreen1LeadingSpaceConstraint.constant = self.offscreenLeft
-                        // and 2 ONSCREEN
-                        // and 3 offscreenRight
+                        self.subscreen2SpaceConstraint.constant = self.onscreenX
+                        self.subscreen3SpaceConstraint.constant = self.offscreenRight
                         
                         self.view.layoutIfNeeded()
                     })
                 } else {
-                    // 3 offscreenRight
+                    self.subscreen3SpaceConstraint.constant = self.offscreenRight
                     UIView.animate(withDuration: 0.3, animations: {
                         self.tableView.isHidden = true
                         self.leftChevron.isHidden = false
                         self.rightChevron.isHidden = false
                         
                         self.subscreen1LeadingSpaceConstraint.constant = self.offscreenLeft
-                        // hide the others subviews not targeted too
-                        // 2 offscreenLeft
-                        // 3 ONSCREEN
+                        self.subscreen2SpaceConstraint.constant = self.offscreenLeft
+                        self.subscreen3SpaceConstraint.constant = self.onscreenX
                         
                         self.view.layoutIfNeeded()
                     })

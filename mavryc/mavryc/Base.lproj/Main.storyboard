@@ -945,11 +945,32 @@
                                     <segue destination="4g1-Rf-dCt" kind="embed" identifier="AircraftDetailsViewControllerSegue1" id="WOs-Lt-MIl"/>
                                 </connections>
                             </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dxs-MZ-BNI">
+                                <rect key="frame" x="37" y="20" width="300" height="761"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="761" id="otF-3n-r6b"/>
+                                    <constraint firstAttribute="width" constant="300" id="pPN-Bi-nCD"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="4g1-Rf-dCt" kind="embed" identifier="AircraftDetailsViewControllerSegue2" id="hhs-F2-slY"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uaa-Y0-YiZ">
+                                <rect key="frame" x="37" y="20" width="300" height="761"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="761" id="01P-SL-roX"/>
+                                    <constraint firstAttribute="width" constant="300" id="QIl-pK-Tvk"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="4g1-Rf-dCt" kind="embed" identifier="AircraftDetailsViewControllerSegue3" id="btM-Oi-tum"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="vF6-RB-7Te" firstAttribute="bottom" secondItem="hE7-Nu-CJ7" secondAttribute="bottom" constant="-20" id="5gk-2C-YQq"/>
                             <constraint firstAttribute="trailing" secondItem="hE7-Nu-CJ7" secondAttribute="trailing" id="7Ee-lD-CJL"/>
+                            <constraint firstItem="dxs-MZ-BNI" firstAttribute="top" secondItem="mx4-Dm-B4h" secondAttribute="bottom" constant="20" id="Eeq-Tk-fYP"/>
                             <constraint firstItem="eNJ-dq-KAF" firstAttribute="top" secondItem="hE7-Nu-CJ7" secondAttribute="bottom" id="Hey-vf-2aI"/>
                             <constraint firstItem="rsT-fl-D8s" firstAttribute="top" secondItem="mx4-Dm-B4h" secondAttribute="bottom" constant="20" id="IX1-vw-gfs"/>
                             <constraint firstItem="hE7-Nu-CJ7" firstAttribute="leading" secondItem="NMH-gh-H7R" secondAttribute="leading" id="N37-IJ-7BR"/>
@@ -958,11 +979,14 @@
                             <constraint firstItem="7H0-B8-gdF" firstAttribute="centerY" secondItem="JRB-rI-vHl" secondAttribute="centerY" id="ixI-Wz-9g4"/>
                             <constraint firstItem="vF6-RB-7Te" firstAttribute="centerX" secondItem="NMH-gh-H7R" secondAttribute="centerX" id="llE-KD-I5u"/>
                             <constraint firstAttribute="trailing" secondItem="7H0-B8-gdF" secondAttribute="trailing" id="ogI-g2-EPR"/>
+                            <constraint firstItem="Uaa-Y0-YiZ" firstAttribute="leading" secondItem="NMH-gh-H7R" secondAttribute="leading" constant="37" id="rRn-Jl-6Hc"/>
                             <constraint firstItem="rsT-fl-D8s" firstAttribute="leading" secondItem="NMH-gh-H7R" secondAttribute="leading" constant="37" id="rka-rW-MZU"/>
+                            <constraint firstItem="Uaa-Y0-YiZ" firstAttribute="top" secondItem="mx4-Dm-B4h" secondAttribute="bottom" constant="20" id="sHP-zJ-FRt"/>
                             <constraint firstItem="hE7-Nu-CJ7" firstAttribute="top" secondItem="mx4-Dm-B4h" secondAttribute="bottom" id="sek-7h-0lE"/>
                             <constraint firstItem="JRB-rI-vHl" firstAttribute="centerY" secondItem="NMH-gh-H7R" secondAttribute="centerY" constant="-1.5" id="u6y-dT-pAK"/>
                             <constraint firstItem="cPM-ps-Ob4" firstAttribute="centerX" secondItem="NMH-gh-H7R" secondAttribute="centerX" id="v1I-3B-e9R"/>
                             <constraint firstItem="JRB-rI-vHl" firstAttribute="leading" secondItem="NMH-gh-H7R" secondAttribute="leadingMargin" constant="-16" id="wpL-Vv-ySk"/>
+                            <constraint firstItem="dxs-MZ-BNI" firstAttribute="leading" secondItem="NMH-gh-H7R" secondAttribute="leading" constant="37" id="yTl-45-8Km"/>
                         </constraints>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
@@ -972,6 +996,8 @@
                         <outlet property="nextButton" destination="vF6-RB-7Te" id="kdB-bM-CxE"/>
                         <outlet property="rightChevron" destination="7H0-B8-gdF" id="XUI-bq-RiE"/>
                         <outlet property="subscreen1LeadingSpaceConstraint" destination="rka-rW-MZU" id="h9d-Tc-MtW"/>
+                        <outlet property="subscreen2SpaceConstraint" destination="yTl-45-8Km" id="Lyz-SA-LAu"/>
+                        <outlet property="subscreen3SpaceConstraint" destination="rRn-Jl-6Hc" id="Vht-sg-aOR"/>
                         <outlet property="tableView" destination="cPM-ps-Ob4" id="MZS-eP-IaK"/>
                     </connections>
                 </viewController>
@@ -1716,6 +1742,19 @@
             </objects>
             <point key="canvasLocation" x="5184" y="496"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="SvR-pN-MK3">
+            <objects>
+                <viewController id="Cxj-fp-Tu7" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="x8l-Zs-clc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="URo-nb-M6a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
     </scenes>
     <resources>
         <image name="AddButton" width="34" height="34"/>
@@ -1739,4 +1778,7 @@
         <image name="rightChevronIcon" width="9" height="27"/>
         <image name="up_chevron" width="32" height="11"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="hhs-F2-slY"/>
+    </inferredMetricsTieBreakers>
 </document>
