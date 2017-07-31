@@ -8,9 +8,16 @@
 
 import UIKit
 
+@objc protocol AircraftDetailProtocol {
+    func selectedAircraftIndex() -> Int
+    func aircraftWasSelected(atIndex: Int)
+}
+
 class AircraftDetailViewController: UIViewController {
 
     // MARK: - Properties
+    public weak var delegate: AircraftDetailProtocol? = nil
+    
     //weak var cell: AircraftSelectCell? = nil
     public var titleData: String = ""
     public var costData: String = ""
@@ -45,11 +52,33 @@ class AircraftDetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.selectionTapAction()
-        self.highlightCell()
+        self.refreshView()
     }
     
-    func selectionTapAction() {
+    public func refreshView() {
+        self.refreshCell()
+        self.highlightCell()
+        
+        // get current selected index, if it is this one, hilight background
+        // else delight background
+        if let del = delegate {
+            let idx = del.selectedAircraftIndex()
+            if idx == self.view.tag {
+                self.highlightBackground()
+            }
+        }
+    }
+    
+    @IBAction func aircraftSelectionTapAction(_ sender: UITapGestureRecognizer) {
+        
+        delegate?.aircraftWasSelected(atIndex: self.view.tag)
+        
+        refreshCell()
+        highlightCell()
+        highlightBackground()
+    }
+    
+    func refreshCell() {
         
         self.lefthandView.backgroundColor = AppStyle.aircraftSelectScreenCellNormalColor
         

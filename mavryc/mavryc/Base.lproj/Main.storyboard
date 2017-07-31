@@ -933,7 +933,7 @@
                                     <outlet property="delegate" destination="Tz8-Ej-wO7" id="yRe-Ru-2bt"/>
                                 </connections>
                             </tableView>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rsT-fl-D8s" userLabel="sub screens container view">
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rsT-fl-D8s" userLabel="subscreen1">
                                 <rect key="frame" x="37" y="20" width="300" height="761"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -945,7 +945,7 @@
                                     <segue destination="4g1-Rf-dCt" kind="embed" identifier="AircraftDetailsViewControllerSegue1" id="WOs-Lt-MIl"/>
                                 </connections>
                             </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dxs-MZ-BNI">
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dxs-MZ-BNI" userLabel="subscreen2">
                                 <rect key="frame" x="37" y="20" width="300" height="761"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="761" id="otF-3n-r6b"/>
@@ -955,7 +955,7 @@
                                     <segue destination="4g1-Rf-dCt" kind="embed" identifier="AircraftDetailsViewControllerSegue2" id="hhs-F2-slY"/>
                                 </connections>
                             </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uaa-Y0-YiZ">
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uaa-Y0-YiZ" userLabel="subscreen3">
                                 <rect key="frame" x="37" y="20" width="300" height="761"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="761" id="01P-SL-roX"/>
@@ -1577,7 +1577,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="556"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="3ha-Yn-xGq">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="3ha-Yn-xGq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1624,7 +1624,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aKw-8Y-hN2">
                                 <rect key="frame" x="0.0" y="0.0" width="300" height="69"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DT0-az-LjA" userLabel="left">
+                                    <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DT0-az-LjA" userLabel="left">
                                         <rect key="frame" x="0.0" y="0.0" width="99" height="69"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AircraftIconSuper" translatesAutoresizingMaskIntoConstraints="NO" id="PLE-qt-k8q">
@@ -1642,7 +1642,7 @@
                                             <constraint firstItem="PLE-qt-k8q" firstAttribute="centerX" secondItem="DT0-az-LjA" secondAttribute="centerX" id="ynK-CM-lTi"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I65-y8-58y" userLabel="right">
+                                    <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I65-y8-58y" userLabel="right">
                                         <rect key="frame" x="100" y="0.0" width="200" height="69"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y8P-Tf-ZxG">
@@ -1686,6 +1686,7 @@
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstItem="I65-y8-58y" firstAttribute="leading" secondItem="DT0-az-LjA" secondAttribute="trailing" constant="1" id="5Y5-Qc-3ak"/>
                                     <constraint firstItem="DT0-az-LjA" firstAttribute="top" secondItem="aKw-8Y-hN2" secondAttribute="top" id="H9x-JE-Lhg"/>
@@ -1695,6 +1696,9 @@
                                     <constraint firstItem="DT0-az-LjA" firstAttribute="leading" secondItem="aKw-8Y-hN2" secondAttribute="leading" id="WOE-H8-eqc"/>
                                     <constraint firstAttribute="bottom" secondItem="DT0-az-LjA" secondAttribute="bottom" id="jrU-R6-VQe"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="DhG-hd-RkX" appends="YES" id="DxY-Pb-z1k"/>
+                                </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lm4-iZ-zKW">
                                 <rect key="frame" x="0.0" y="70" width="300" height="317"/>
@@ -1739,6 +1743,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WKb-Kf-IWZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="DhG-hd-RkX" userLabel="SelectAircraftTapGesture">
+                    <connections>
+                        <action selector="aircraftSelectionTapAction:" destination="4g1-Rf-dCt" id="mcA-o9-FXl"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="5184" y="496"/>
         </scene>
@@ -1746,6 +1755,10 @@
         <scene sceneID="SvR-pN-MK3">
             <objects>
                 <viewController id="Cxj-fp-Tu7" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="KqM-sb-EUs"/>
+                        <viewControllerLayoutGuide type="bottom" id="0gH-pH-RLC"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="x8l-Zs-clc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -111,20 +111,35 @@ class AircraftSelectViewController: UIViewController, UITableViewDelegate, UITab
     
     func setupDetailSubscreens() {
         if let vc = self.subscreen1VC {
+            vc.view.tag = 0
             vc.costData = self.costData[0]
             vc.titleData = self.titleData[0]
             vc.subtitleData = self.subtitleData[0]
+            vc.delegate = self
+            vc.refreshView()
         }
         if let vc2 = self.subscreen2VC {
+            vc2.view.tag = 1
             vc2.costData = self.costData[1]
             vc2.titleData = self.titleData[1]
             vc2.subtitleData = self.subtitleData[1]
+            vc2.delegate = self
+            vc2.refreshView()
         }
         if let vc3 = self.subscreen3VC {
+            vc3.view.tag = 2
             vc3.costData = self.costData[2]
             vc3.titleData = self.titleData[2]
             vc3.subtitleData = self.subtitleData[2]
+            vc3.delegate = self
+            vc3.refreshView()
         }
+    }
+    
+    func refreshSubscreens() {
+        self.subscreen1VC?.refreshView()
+        self.subscreen2VC?.refreshView()
+        self.subscreen3VC?.refreshView()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -171,6 +186,8 @@ class AircraftSelectViewController: UIViewController, UITableViewDelegate, UITab
                 print("SUB SCREEN Swipe Left")
                 self.navigateSubscreenRight()
             }
+            
+            self.refreshSubscreens()
             
             return
         }
@@ -339,6 +356,7 @@ class AircraftSelectViewController: UIViewController, UITableViewDelegate, UITab
             }
             
             self.currentSubscreenIndex = targetScreen
+            self.refreshSubscreens()
         }
     }
     
@@ -459,4 +477,21 @@ extension AircraftSelectViewController: ScreenNavigable {
     }
     
     func screenNavigatorRefreshCurrentScreen(_ screenNavigator: ScreenNavigator) {}
+}
+
+extension AircraftSelectViewController: AircraftDetailProtocol {
+    
+    func selectedAircraftIndex() -> Int {
+        if let indexpath = self.cellWasSelectedAtIndexPath {
+            return indexpath.row
+        } else {
+            return 1
+        }
+    }
+    
+    func aircraftWasSelected(atIndex: Int) {
+        cellWasSelectedAtIndexPath = IndexPath(row: atIndex, section: 0)
+        self.tableView.reloadData()
+    }
+    
 }
