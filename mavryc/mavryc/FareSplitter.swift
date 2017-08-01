@@ -10,8 +10,10 @@ import UIKit
 import AVFoundation
 
 protocol FareSplitterDelegate {
-    func fareSplitter(fareSplitter: FareSplitter, closeButtonWasTapped:  Bool)
+    func fareSplitter(fareSplitter: FareSplitter, counterpart: UIView?, closeButtonWasTapped:  Bool)
     func fareSplitter(fareSplitter: FareSplitter, didUpdateBarsToVale: Int)
+    func seatOperationAllowed(fareSplitter: FareSplitter, currentCountRequested: Int) -> Bool
+    func totalBarsAllowedForFareSplitter(fareSplitter: FareSplitter) -> Int
     func maximumSeatsAvailable() -> Int
     func priceFor(seatCount: Int) -> String
 }
@@ -31,7 +33,11 @@ protocol FareSplitterDelegate {
     
     // MARK: - Properties
     
-    var delegate: FareSplitterDelegate?
+    var delegate: FareSplitterDelegate? {
+        didSet {
+            self.setupBars()
+        }
+    }
     
     @IBOutlet weak var backgroundShapeView: UIView! {
         didSet {
@@ -45,16 +51,19 @@ protocol FareSplitterDelegate {
     
     @IBOutlet weak var barsContainer: UIView!
     
-    
     @IBInspectable var isPrimaryUserControl: Bool = false {
         didSet {
             if isPrimaryUserControl {
                 closeButton.isHidden = true
+                
             } else {
                 closeButton.isHidden = false
             }
         }
     }
+    
+    @IBOutlet weak var payerContactLabel: UILabel!
+    
     
     @IBOutlet weak var priceLabel: UILabel!
     
@@ -93,13 +102,18 @@ protocol FareSplitterDelegate {
         view.backgroundColor = UIColor.clear
         
         self.buttonSound = soundPlayer()
-
+    }
+    
+    func setupBars() {
+        if let bars = self.delegate?.totalBarsAllowedForFareSplitter(fareSplitter: self) {
+            self.totalBars = bars
+        }
         for index in 1...totalBars {
             let containerWidth = barsContainer.frame.width
             let barHeight = barsContainer.frame.height
-            let barWidth = 2
             let sectionSpanWidth = containerWidth / CGFloat(totalBars)
-            let x = (CGFloat(index) * sectionSpanWidth)
+            let barWidth = sectionSpanWidth - 5
+            let x = (CGFloat(index-1) * sectionSpanWidth)
             let aView = UIView(frame: CGRect(x: x, y: 0.0, width: CGFloat(barWidth), height: CGFloat(barHeight)))
             let underView = UIView(frame: CGRect(x: x, y: 0.0, width: CGFloat(barWidth), height: CGFloat(barHeight)))
             underView.backgroundColor = AppStyle.skylarGrey
@@ -109,7 +123,6 @@ protocol FareSplitterDelegate {
             barsContainer.addSubview(aView)
             barsArray.append(aView)
         }
-        
     }
     
     func soundPlayer() -> AVAudioPlayer? {
@@ -188,6 +201,12 @@ protocol FareSplitterDelegate {
                 return
             }
             
+            if let delegate = delegate {
+                if !delegate.seatOperationAllowed(fareSplitter: self, currentCountRequested: numberOfBars) {
+                    return
+                }
+            }
+            
             previousPaxCount = numberOfBars
             
             numberOfBars = max(numberOfBars, 1) // has to be 1 or more
@@ -223,17 +242,18 @@ protocol FareSplitterDelegate {
             return
         }
         
+        if let delegate = delegate {
+            if !delegate.seatOperationAllowed(fareSplitter: self, currentCountRequested: numberOfBars) {
+                return
+            }
+        }
+        
         previousPaxCount = numberOfBars
         
         self.triggerUIFeedback()
         
         numberOfBars = max(numberOfBars, 1) // has to be 1 or more
         numberOfBars = min(numberOfBars, totalBars)  // has to be 24 or less
-        
-//        guard let maxSeats = delegate?.maximumSeatsAvailable() else { return }
-//        if numberOfBars > maxSeats {
-//            numberOfBars = maxSeats
-//        }
         
         seatsLabel.text = "\(numberOfBars)"
         self.priceLabel.text = delegate?.priceFor(seatCount: numberOfBars)
@@ -246,7 +266,7 @@ protocol FareSplitterDelegate {
     // MARK: - Control Actions
     
     @IBAction func closeButtonTapAction(_ sender: UITapGestureRecognizer) {
-        delegate?.fareSplitter(fareSplitter: self, closeButtonWasTapped: true)
+        delegate?.fareSplitter(fareSplitter: self, counterpart: nil, closeButtonWasTapped: true)
     }
     
 }

@@ -624,4 +624,12 @@ extension JourneyDetailsVC: PaxPickerDelegate {
             TripCoordinator.sharedInstance.currentTripInPlanning?.flights[index].pax = didUpdateBarValue
         }
     }
+    
+    func totalBarsAllowedForPaxPicker(paxPicker: PaxPicker) -> Int {
+        if paxPicker.isTimeControl {
+            return 24
+        } else {
+            return 16 // for now we're defaulting to 16 until we have server integration to give us an operator's defualt seat amount
+        }
+    }
 }

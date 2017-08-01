@@ -11,6 +11,7 @@ import AVFoundation
 
 protocol PaxPickerDelegate {
     func paxPicker(paxPicker: PaxPicker, didUpdateBarValue: Int)
+    func totalBarsAllowedForPaxPicker(paxPicker: PaxPicker) -> Int
 }
 
 @IBDesignable class PaxPicker: UIView {
@@ -39,19 +40,7 @@ protocol PaxPickerDelegate {
         }
     }
     
-    @IBInspectable var isTimeControl: Bool = true {
-        didSet {
-            if isTimeControl {
-                iconImageView.image = UIImage(named: "TimeIconFormPDF")
-                self.updateUIBarIndicator(to: 10) // 5 pixels * 10 bars
-                self.PaxCountLabel.text = "10:00 AM"
-            } else {
-                iconImageView.image = UIImage(named: "PAXIconFormPDF")
-                self.updateUIBarIndicator(to: 1)
-                self.PaxCountLabel.text = "1"
-            }
-        }
-    }
+    @IBInspectable var isTimeControl: Bool = true
     
     /// container view for dynamically generated bars
     @IBOutlet weak var barsContainerView: UIView!
@@ -66,7 +55,12 @@ protocol PaxPickerDelegate {
     
     // MARK: - Properties
     
-    var delegate: PaxPickerDelegate?
+    var delegate: PaxPickerDelegate? {
+        didSet {
+            self.setupBars()
+            self.setupDefaults()
+        }
+    }
     
     var firstTouchPan: CGPoint? = nil
     
@@ -108,15 +102,34 @@ protocol PaxPickerDelegate {
         addSubview(view)
         
         self.buttonSound = soundPlayer()
+    }
+    
+    func setupDefaults() {
+        if isTimeControl {
+            iconImageView.image = UIImage(named: "TimeIconFormPDF")
+            self.updateUIBarIndicator(to: 10) // 5 pixels * 10 bars
+            self.PaxCountLabel.text = "10:00 AM"
+        } else {
+            iconImageView.image = UIImage(named: "PAXIconFormPDF")
+            self.updateUIBarIndicator(to: 1)
+            self.PaxCountLabel.text = "1"
+        }
+    }
+    
+    func setupBars() {
+        if let bars = self.delegate?.totalBarsAllowedForPaxPicker(paxPicker: self) {
+            self.totalBars = bars
+        }
         
         // TODO: setup initial dynamic bars (both underlays and highlights)
         for index in 1...totalBars {
             let containerWidth = barsContainerView.frame.width
             let barHeight = barsContainerView.frame.height
-            let barWidth = 2
             let sectionSpanWidth = containerWidth / CGFloat(totalBars)
+            //let barWidth = 2
             //let gaps = sectionSpanWidth - CGFloat(barWidth)
-            let x = (CGFloat(index) * sectionSpanWidth)
+            let barWidth = sectionSpanWidth - 5
+            let x = (CGFloat(index-1) * sectionSpanWidth)
             let aView = UIView(frame: CGRect(x: x, y: 0.0, width: CGFloat(barWidth), height: CGFloat(barHeight)))
             let underView = UIView(frame: CGRect(x: x, y: 0.0, width: CGFloat(barWidth), height: CGFloat(barHeight)))
             underView.backgroundColor = AppStyle.skylarGrey
@@ -242,7 +255,10 @@ protocol PaxPickerDelegate {
     private func formattedIndicatorText(for numberOfBars: Int) -> String {
         if self.isTimeControl {
             var formattedTime = String(numberOfBars)
-            let amPmString = (numberOfBars >= 12) ? "PM" : "AM"
+            var amPmString = (numberOfBars >= 12) ? "PM" : "AM"
+            if numberOfBars == 24 {
+                amPmString = "AM"
+            }
             
             if FeatureFlag.militaryTime.isFeatureEnabled() {
                 if numberOfBars < 10 {

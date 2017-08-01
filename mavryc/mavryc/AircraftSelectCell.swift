@@ -8,6 +8,10 @@
 
 import UIKit
 
+//protocol AircraftSelectCellProtocol {
+//    func aircraftSelectCell(cell: AircraftSelectCell, infoDetailsWasTapped: Bool)
+//}
+
 class AircraftSelectCell: UITableViewCell {
 
     @IBOutlet weak var lefthandView: UIView!
@@ -18,12 +22,28 @@ class AircraftSelectCell: UITableViewCell {
     
     @IBOutlet weak var subtitle: UILabel!
     
+    @IBOutlet weak var infoButtonImageView: UIImageView!
+    
     var unattributedTitle: String?
+    
+//    public var cellDelegate: AircraftSelectCellProtocol?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
         selectionStyle = .none
+        
+        if let infoButton = self.infoButtonImageView {
+            let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+            infoButton.addGestureRecognizer(tap)
+        }
+    }
+    
+    func handleTap(gesture: UITapGestureRecognizer) -> Void {
+        let cellTag = self.tag
+        print("Todd! It Worked!! - you tapped the info button on cell #\(cellTag)")
+        
+        NotificationCenter.default.post(name: Notification.Name.SubscreenEvents.AircraftCellInfoButtonTap, object: self, userInfo:["tag":cellTag])
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
