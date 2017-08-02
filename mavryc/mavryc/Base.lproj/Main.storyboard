@@ -870,21 +870,6 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hE7-Nu-CJ7">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="900"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vF6-RB-7Te" customClass="StyledButton" customModule="mavryc" customModuleProvider="target">
-                                <rect key="frame" x="105" y="822" width="164" height="58"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="164" id="n7G-09-j4k"/>
-                                    <constraint firstAttribute="height" constant="58" id="ops-xM-hJU"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="24"/>
-                                <state key="normal" title="NEXT">
-                                    <color key="titleColor" red="0.3803921569" green="0.4431372549" blue="0.53333333329999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <segue destination="joM-ax-yNf" kind="show" identifier="ConfirmDetailsScreenSegue" id="WgM-ge-Tcc"/>
-                                </connections>
-                            </button>
                             <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="leftChevronIcon" translatesAutoresizingMaskIntoConstraints="NO" id="JRB-rI-vHl">
                                 <rect key="frame" x="0.0" y="435" width="39" height="27"/>
                                 <gestureRecognizers/>
@@ -965,6 +950,21 @@
                                     <segue destination="4g1-Rf-dCt" kind="embed" identifier="AircraftDetailsViewControllerSegue3" id="btM-Oi-tum"/>
                                 </connections>
                             </containerView>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vF6-RB-7Te" customClass="StyledButton" customModule="mavryc" customModuleProvider="target">
+                                <rect key="frame" x="105" y="822" width="164" height="58"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="164" id="n7G-09-j4k"/>
+                                    <constraint firstAttribute="height" constant="58" id="ops-xM-hJU"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="24"/>
+                                <state key="normal" title="NEXT">
+                                    <color key="titleColor" red="0.3803921569" green="0.4431372549" blue="0.53333333329999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="joM-ax-yNf" kind="show" identifier="ConfirmDetailsScreenSegue" id="WgM-ge-Tcc"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -1577,7 +1577,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="556"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="3ha-Yn-xGq">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="3ha-Yn-xGq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1663,26 +1663,35 @@
                                                 <color key="textColor" red="0.3803921569" green="0.4431372549" blue="0.53333333329999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AddButtonClose" highlightedImage="AddButton" translatesAutoresizingMaskIntoConstraints="NO" id="SAQ-GR-cVX">
-                                                <rect key="frame" x="169" y="19" width="30" height="30"/>
-                                                <gestureRecognizers/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="30" id="25r-be-ORC"/>
-                                                </constraints>
-                                            </imageView>
                                         </subviews>
                                         <color key="backgroundColor" red="0.058823529409999999" green="0.070588235289999995" blue="0.1058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="aud-Zc-R0R" firstAttribute="top" secondItem="Y8P-Tf-ZxG" secondAttribute="bottom" constant="-3" id="1vU-9t-IKS"/>
                                             <constraint firstItem="aud-Zc-R0R" firstAttribute="leading" secondItem="I65-y8-58y" secondAttribute="leading" constant="19" id="5IQ-Q1-JKG"/>
-                                            <constraint firstAttribute="bottom" secondItem="SAQ-GR-cVX" secondAttribute="bottom" constant="20" id="6zf-XY-6O4"/>
                                             <constraint firstItem="Y8P-Tf-ZxG" firstAttribute="leading" secondItem="I65-y8-58y" secondAttribute="leading" constant="19" id="8Dh-iV-GsR"/>
                                             <constraint firstItem="Y8P-Tf-ZxG" firstAttribute="top" secondItem="I65-y8-58y" secondAttribute="top" constant="15" id="DBu-7X-k1I"/>
-                                            <constraint firstItem="SAQ-GR-cVX" firstAttribute="top" secondItem="I65-y8-58y" secondAttribute="top" constant="19" id="EuT-yz-lUa"/>
-                                            <constraint firstAttribute="trailing" secondItem="SAQ-GR-cVX" secondAttribute="trailing" constant="1" id="aOT-Ab-PpA"/>
                                             <constraint firstAttribute="trailing" secondItem="Y8P-Tf-ZxG" secondAttribute="trailing" constant="21" id="kJz-rX-cxX"/>
                                             <constraint firstAttribute="trailing" secondItem="aud-Zc-R0R" secondAttribute="trailing" constant="21" id="obr-4c-Ryy"/>
                                         </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wjs-hk-5fq" userLabel="ClearButtonView">
+                                        <rect key="frame" x="265" y="17" width="35" height="35"/>
+                                        <subviews>
+                                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Clear Icon" highlightedImage="Clear Icon" translatesAutoresizingMaskIntoConstraints="NO" id="SAQ-GR-cVX">
+                                                <rect key="frame" x="11" y="11" width="13" height="13"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <gestureRecognizers/>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="35" id="VWe-53-agS"/>
+                                            <constraint firstAttribute="height" constant="35" id="htl-o8-K9x"/>
+                                        </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="mqZ-Lg-ZHX" appends="YES" id="C7P-4z-XMp"/>
+                                        </connections>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1691,10 +1700,12 @@
                                     <constraint firstItem="I65-y8-58y" firstAttribute="leading" secondItem="DT0-az-LjA" secondAttribute="trailing" constant="1" id="5Y5-Qc-3ak"/>
                                     <constraint firstItem="DT0-az-LjA" firstAttribute="top" secondItem="aKw-8Y-hN2" secondAttribute="top" id="H9x-JE-Lhg"/>
                                     <constraint firstAttribute="trailing" secondItem="I65-y8-58y" secondAttribute="trailing" id="NXp-cO-XHR"/>
+                                    <constraint firstItem="wjs-hk-5fq" firstAttribute="trailing" secondItem="I65-y8-58y" secondAttribute="trailing" id="NtS-0X-nsm"/>
                                     <constraint firstItem="DT0-az-LjA" firstAttribute="top" secondItem="I65-y8-58y" secondAttribute="top" id="QKB-kL-ZVr"/>
                                     <constraint firstItem="DT0-az-LjA" firstAttribute="bottom" secondItem="I65-y8-58y" secondAttribute="bottom" id="W1n-gc-nKP"/>
                                     <constraint firstItem="DT0-az-LjA" firstAttribute="leading" secondItem="aKw-8Y-hN2" secondAttribute="leading" id="WOE-H8-eqc"/>
                                     <constraint firstAttribute="bottom" secondItem="DT0-az-LjA" secondAttribute="bottom" id="jrU-R6-VQe"/>
+                                    <constraint firstItem="wjs-hk-5fq" firstAttribute="centerY" secondItem="I65-y8-58y" secondAttribute="centerY" id="syh-lr-Eqz"/>
                                 </constraints>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="DhG-hd-RkX" appends="YES" id="DxY-Pb-z1k"/>
@@ -1736,6 +1747,7 @@
                     <connections>
                         <outlet property="aircraftIconImageView" destination="PLE-qt-k8q" id="uMf-Gz-F88"/>
                         <outlet property="bodyTextView" destination="wwu-Bp-BLN" id="8IE-2a-3Kg"/>
+                        <outlet property="clearButtonView" destination="wjs-hk-5fq" id="qu9-eh-oSG"/>
                         <outlet property="closeButtonImageView" destination="SAQ-GR-cVX" id="CaY-Xg-ETg"/>
                         <outlet property="lefthandView" destination="DT0-az-LjA" id="SDV-Ej-Dkk"/>
                         <outlet property="primaryLabel" destination="Y8P-Tf-ZxG" id="xz1-yJ-uco"/>
@@ -1746,6 +1758,11 @@
                 <tapGestureRecognizer id="DhG-hd-RkX" userLabel="SelectAircraftTapGesture">
                     <connections>
                         <action selector="aircraftSelectionTapAction:" destination="4g1-Rf-dCt" id="mcA-o9-FXl"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="mqZ-Lg-ZHX" userLabel="ClearButtonTapGesture">
+                    <connections>
+                        <action selector="closeButtonWasTapped:" destination="4g1-Rf-dCt" id="d1c-xB-sVP"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -1771,12 +1788,12 @@
     </scenes>
     <resources>
         <image name="AddButton" width="34" height="34"/>
-        <image name="AddButtonClose" width="34" height="34"/>
         <image name="AircraftIconSuper" width="60" height="29"/>
         <image name="ApplePay" width="375" height="472"/>
         <image name="ArriveIconUnselected" width="21" height="20"/>
         <image name="BackArrow" width="17" height="13"/>
         <image name="CalendarIconFormPDF" width="19" height="19"/>
+        <image name="Clear Icon" width="13" height="13"/>
         <image name="CurrentLocation" width="17" height="17"/>
         <image name="DepartIconFormPDF" width="22" height="18"/>
         <image name="OutboundCellBG" width="300" height="123"/>

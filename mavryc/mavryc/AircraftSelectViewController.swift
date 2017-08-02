@@ -494,4 +494,7 @@ extension AircraftSelectViewController: AircraftDetailProtocol {
         self.tableView.reloadData()
     }
     
+    func closeButtonWasTapped() {
+        self.transitionToSubscreen(currentScreenIndex: self.currentSubscreenIndex, targetScreenIndex: 0)
+    }
 }

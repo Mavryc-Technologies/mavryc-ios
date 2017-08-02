@@ -24,6 +24,9 @@ class AircraftSelectCell: UITableViewCell {
     
     @IBOutlet weak var infoButtonImageView: UIImageView!
     
+    @IBOutlet weak var infoButtonView: UIView!
+    
+    
     var unattributedTitle: String?
     
 //    public var cellDelegate: AircraftSelectCellProtocol?
@@ -33,7 +36,7 @@ class AircraftSelectCell: UITableViewCell {
         
         selectionStyle = .none
         
-        if let infoButton = self.infoButtonImageView {
+        if let infoButton = self.infoButtonView {
             let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
             infoButton.addGestureRecognizer(tap)
         }
