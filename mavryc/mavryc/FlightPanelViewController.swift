@@ -176,4 +176,8 @@ extension FlightPanelViewController: ScreenNavigable {
         self.panelButton.isHidden = !screen.shouldShowChevron()
         self.panelTitleLabel.text = screen.panelTitle()
     }
+    
+    func screenTitleAndChevron() -> String? {
+        return nil
+    }
 }

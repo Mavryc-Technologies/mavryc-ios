@@ -112,10 +112,12 @@ class ConfirmDetailsScreenVC: UIViewController {
     }
     
     func showReturnTripIfNeeded() {
-        if let _ = TripCoordinator.sharedInstance.currentTripInPlanning?.flights[1].arrivalString {
-            self.returnTripContainterView.isHidden = false
-        } else {
-            self.returnTripContainterView.isHidden = true
+        if let trip = TripCoordinator.sharedInstance.currentTripInPlanning {
+            if !trip.isOneWayOnly {
+                self.returnTripContainterView.isHidden = false
+            } else {
+                self.returnTripContainterView.isHidden = true
+            }
         }
     }
     
@@ -133,6 +135,9 @@ extension ConfirmDetailsScreenVC: ScreenNavigable {
     func screenNavigator(_ screenNavigator: ScreenNavigator, backButtonWasPressed: Bool) {}
     func screenNavigatorRefreshCurrentScreen(_ screenNavigator: ScreenNavigator) {}
     func screenNavigatorIsScreenVisible(_ screenNavigator: ScreenNavigator) -> Bool? {
+        return nil
+    }
+    func screenTitleAndChevron() -> String? {
         return nil
     }
 }

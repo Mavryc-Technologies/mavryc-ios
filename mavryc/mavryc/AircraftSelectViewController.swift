@@ -477,6 +477,9 @@ extension AircraftSelectViewController: ScreenNavigable {
     }
     
     func screenNavigatorRefreshCurrentScreen(_ screenNavigator: ScreenNavigator) {}
+    func screenTitleAndChevron() -> String? {
+        return nil
+    }
 }
 
 extension AircraftSelectViewController: AircraftDetailProtocol {

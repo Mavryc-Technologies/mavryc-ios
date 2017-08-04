@@ -30,5 +30,9 @@ extension Notification.Name {
     
     public struct SubscreenEvents {
         public static let AircraftCellInfoButtonTap = Notification.Name(rawValue: "com.mavryk.notification.name.panel.subscreen.event.AircraftCellInfoButtonTap")
+        
+        public static let OutboundReturnAddOrCloseButtonTap = Notification.Name(rawValue: "com.mavryk.notification.name.panel.subscreen.event.OutboundReturnAddOrCloseButtonTap")
+        
+        public static let oneWayOnlyKey = "oneWayOnlyKey"
     }
 }

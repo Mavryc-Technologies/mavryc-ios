@@ -12,6 +12,7 @@ protocol ScreenNavigable {
     func screenNavigator(_ screenNavigator: ScreenNavigator, backButtonWasPressed: Bool)
     func screenNavigatorIsScreenVisible(_ screenNavigator: ScreenNavigator) -> Bool?
     func screenNavigatorRefreshCurrentScreen(_ screenNavigator: ScreenNavigator)
+    func screenTitleAndChevron() -> String?
 }
 
 enum Screen {
@@ -44,6 +45,24 @@ enum Screen {
         case .retractedHome:
             return "JOURNEY DETAILS"
         case .journey:
+            if let trip = TripCoordinator.sharedInstance.currentTripInPlanning {
+                if trip.isOneWayOnly {
+                    return "JOURNEY DETAILS"
+                } else {
+                    var retVal: String = "JOURNEY DETAILS"
+                    ScreenNavigator.sharedInstance.registeredScreens.forEach({ (screen, screenNav) in
+                        if screen == Screen.journey {
+                            if let screenNav = screenNav as? ScreenNavigable {
+                                if let screenTitleString = screenNav.screenTitleAndChevron() {
+                                    retVal = screenTitleString
+                                }
+                            }
+                        }
+                    })
+                    return retVal
+                }
+            }
+            
             return "JOURNEY DETAILS"
         case .aircraftSelection:
             return "JOURNEY DETAILS"
@@ -59,7 +78,7 @@ enum Screen {
         case .journey:
             return true
         case .aircraftSelection:
-            return true
+            return false
         case .confirmDetails:
             return false
         case .retractedHome:
@@ -84,7 +103,7 @@ class ScreenNavigator {
     
     private var panelController: ScreenNavigable?
     
-    private var registeredScreens: [Screen:ScreenNavigable] = [:]
+    fileprivate var registeredScreens: [Screen:ScreenNavigable] = [:]
     
     /// Set the current screen here (to be used anytime a screen becomes active)
     public var currentPanelScreen: Screen {

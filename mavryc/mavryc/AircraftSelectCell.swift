@@ -44,8 +44,6 @@ class AircraftSelectCell: UITableViewCell {
     
     func handleTap(gesture: UITapGestureRecognizer) -> Void {
         let cellTag = self.tag
-        print("Todd! It Worked!! - you tapped the info button on cell #\(cellTag)")
-        
         NotificationCenter.default.post(name: Notification.Name.SubscreenEvents.AircraftCellInfoButtonTap, object: self, userInfo:["tag":cellTag])
     }
 
