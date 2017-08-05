@@ -24,6 +24,8 @@ class JourneyDetailsVC: UIViewController {
     var offscreenLeft: CGFloat = -1000.0
     var onscreenX: CGFloat = 20.0
     
+    var isMainViewControllerOffscreen = false
+    
     weak var outboundVC: OutboundReturnViewController? = nil
     
     @IBOutlet weak var outboundTripXConstraint: NSLayoutConstraint! {
@@ -75,6 +77,11 @@ class JourneyDetailsVC: UIViewController {
                                                selector: #selector(addOrCloseWasTapped),
                                                name: Notification.Name.SubscreenEvents.OutboundReturnAddOrCloseButtonTap,
                                                object: nil)
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(flightNavSubScreenControlWasTapped),
+                                               name: Notification.Name.SubscreenEvents.FlightNavigationSubscreenControlButtonWasTapped,
+                                               object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -84,11 +91,36 @@ class JourneyDetailsVC: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+        self.isMainViewControllerOffscreen = false
         self.onscreenX = ((self.view.frame.size.width - 300) / 2)
         outboundTripXConstraint.constant = onscreenX
         returnTripXConstraint.constant = offscreenRight
         transitionToSubscreen(screen: 0)
+        updateScreenNavigationForSubscreen()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.isMainViewControllerOffscreen = true
+        self.updateScreenNavigationForSubscreen()
+    }
+    
+    // MARK: - Outbound Return Subscreen Support
+    
+    @objc private func flightNavSubScreenControlWasTapped(notification: NSNotification) {
+        let state = self.subscreenState()
+        if state == .ignoreSubscreenStates {
+            return
+        }
+        if state == .oneWayOnly {
+            return
+        }
+        if state == .outboundVisible {
+            self.transitionToSubscreen(screen: 1)
+        }
+        if state == .returnVisible {
+            self.transitionToSubscreen(screen: 0)
+        }
     }
     
     @objc private func addOrCloseWasTapped(notif: NSNotification) {
@@ -96,7 +128,7 @@ class JourneyDetailsVC: UIViewController {
         if let userInfo = notif.userInfo as? [String: Int] {
             if let isOneWayOnlyFlag = userInfo[Notification.Name.SubscreenEvents.oneWayOnlyKey] {
                 let isOneWay = isOneWayOnlyFlag == 1 ? true : false
-                if isOneWay {
+                if isOneWay { // meaning no round trip exists
                     // set title to OUTBOUND JOURNEY (no chevron)
                     transitionToSubscreen(screen: 0)
                 } else {
@@ -116,10 +148,10 @@ class JourneyDetailsVC: UIViewController {
     func transitionToSubscreen(screen: Int) {
         let isOneWay = screen == 0 ? true : false
         if isOneWay {
-            UIView.animate(withDuration: 0.3, animations: {
+            UIView.animate(withDuration: 0.3, animations: { 
                 if let trip = TripCoordinator.sharedInstance.currentTripInPlanning {
                     if trip.isOneWayOnly {
-                         // set title to OUTBOUND JOURNEY (no chevron)
+                        // set title to OUTBOUND JOURNEY (no chevron)
                     } else {
                         // set title to OUTBOUND JOURNEY (Greater than chevron)
                     }
@@ -127,19 +159,48 @@ class JourneyDetailsVC: UIViewController {
                 self.outboundTripXConstraint.constant = self.onscreenX
                 self.returnTripXConstraint.constant = self.offscreenRight
                 self.view.layoutIfNeeded()
+            }, completion: { (done) in
+                self.updateScreenNavigationForSubscreen()
             })
         } else {
-            returnTripXConstraint.constant = self.onscreenX
-            UIView.animate(withDuration: 0.3, animations: {
+            returnTripXConstraint.constant = self.offscreenRight
+            UIView.animate(withDuration: 0.3, animations: { 
                 self.returnTripXConstraint.constant = self.onscreenX
                 self.outboundTripXConstraint.constant = self.offscreenLeft
                 // set title to RETURN JOURNEY (less than chevron)
                 self.view.layoutIfNeeded()
+            }, completion: { (done) in
+                    self.updateScreenNavigationForSubscreen()
             })
         }
         
-        ScreenNavigator.sharedInstance.refreshCurrentScreen()
     }
+    
+    func updateScreenNavigationForSubscreen() {
+        NotificationCenter.default.post(name: Notification.Name.SubscreenEvents.JourneySubscreenStateDidUpdate, object: self, userInfo:[Notification.Name.SubscreenEvents.journeySubscreenStateEnumKey:self.subscreenState().rawValue])
+    }
+    
+    func subscreenState() -> Notification.Name.SubscreenEvents.JourneySubcreenState {
+
+        if self.isMainViewControllerOffscreen {
+            return .ignoreSubscreenStates
+        }
+        
+        if let trip = TripCoordinator.sharedInstance.currentTripInPlanning {
+            if !trip.isOneWayOnly {
+                if self.returnTripXConstraint.constant == onscreenX {
+                    return .returnVisible
+                } else {
+                    return .outboundVisible
+                }
+            }
+        }
+
+        return .oneWayOnly
+    }
+    
+    
+    // MARK: - swipe support
     
     func setupSwipeGesture() {
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
@@ -162,33 +223,28 @@ class JourneyDetailsVC: UIViewController {
     func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
         if gesture.direction == UISwipeGestureRecognizerDirection.right {
             print("Swipe Right")
-            
-            // check for roundtrip subscreen presence and visibility before transitioning back to one way
-            if let trip = TripCoordinator.sharedInstance.currentTripInPlanning {
-                let roundTrip = !trip.isOneWayOnly
-                let roundTripIsVisible = returnTripXConstraint.constant == self.onscreenX
-                if roundTrip && roundTripIsVisible {
-                    self.transitionToSubscreen(screen: 0)
-                    return
-                }
+
+            if subscreenState() == .returnVisible {
+                self.transitionToSubscreen(screen: 0)
+                return
             }
             
-            ScreenNavigator.sharedInstance.navigateBackward()
+            if subscreenState() == .oneWayOnly || subscreenState() == .ignoreSubscreenStates {
+                ScreenNavigator.sharedInstance.navigateBackward()
+            }
         }
         else if gesture.direction == UISwipeGestureRecognizerDirection.left {
             print("Swipe Left")
             
-            if let trip = TripCoordinator.sharedInstance.currentTripInPlanning {
-                let roundTrip = !trip.isOneWayOnly
-                let roundTripIsVisible = returnTripXConstraint.constant == self.onscreenX
-                if roundTrip && !roundTripIsVisible {
-                    self.transitionToSubscreen(screen: 1)
-                    return
-                }
+            if subscreenState() == .outboundVisible {
+                self.transitionToSubscreen(screen: 1)
+                return
             }
             
             if nextButton.isEnabled {
-                self.performSegue(withIdentifier: "AircraftSelectionScreenSegue", sender: self)
+                if subscreenState() == .oneWayOnly || subscreenState() == .ignoreSubscreenStates {
+                    self.performSegue(withIdentifier: "AircraftSelectionScreenSegue", sender: self)
+                }
             }
         }
         else if gesture.direction == UISwipeGestureRecognizerDirection.up {
@@ -196,7 +252,9 @@ class JourneyDetailsVC: UIViewController {
         }
         else if gesture.direction == UISwipeGestureRecognizerDirection.down {
             print("Swipe Down")
-            ScreenNavigator.sharedInstance.closePanel()
+            if subscreenState() == .oneWayOnly || subscreenState() == .ignoreSubscreenStates {
+                ScreenNavigator.sharedInstance.closePanel()
+            }
         }
     }
     
@@ -220,10 +278,13 @@ class JourneyDetailsVC: UIViewController {
     
     @objc private func panelDidOpen() {
         print("panelDidOpen notification handler called")
+        self.isMainViewControllerOffscreen = false
         
         if ScreenNavigator.destinationSearchButtonWasPressedState {
             self.outboundVC?.arrivalSearchTextField.becomeFirstResponder()
         }
+        
+        updateScreenNavigationForSubscreen()
     }
     
     @objc private func panelWillClose() {
@@ -231,6 +292,8 @@ class JourneyDetailsVC: UIViewController {
         
         self.outboundVC?.deselectSearchControls()
         self.returnVC?.deselectSearchControls()
+        self.isMainViewControllerOffscreen = true
+        self.updateScreenNavigationForSubscreen()
     }
     
     // MARK: - Control Actions
@@ -271,12 +334,5 @@ extension JourneyDetailsVC: ScreenNavigable {
     func screenNavigatorRefreshCurrentScreen(_ screenNavigator: ScreenNavigator) {}
     func screenNavigatorIsScreenVisible(_ screenNavigator: ScreenNavigator) -> Bool? {
         return nil
-    }
-    func screenTitleAndChevron() -> String? {
-        if outboundTripXConstraint.constant != onscreenX {
-            return "< RETURN JOURNEY"
-        } else {
-            return "OUTBOUND JOURNEY > "
-        }
     }
 }

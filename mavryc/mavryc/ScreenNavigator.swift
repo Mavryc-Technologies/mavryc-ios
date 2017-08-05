@@ -12,7 +12,6 @@ protocol ScreenNavigable {
     func screenNavigator(_ screenNavigator: ScreenNavigator, backButtonWasPressed: Bool)
     func screenNavigatorIsScreenVisible(_ screenNavigator: ScreenNavigator) -> Bool?
     func screenNavigatorRefreshCurrentScreen(_ screenNavigator: ScreenNavigator)
-    func screenTitleAndChevron() -> String?
 }
 
 enum Screen {
@@ -44,25 +43,7 @@ enum Screen {
         switch self {
         case .retractedHome:
             return "JOURNEY DETAILS"
-        case .journey:
-            if let trip = TripCoordinator.sharedInstance.currentTripInPlanning {
-                if trip.isOneWayOnly {
-                    return "JOURNEY DETAILS"
-                } else {
-                    var retVal: String = "JOURNEY DETAILS"
-                    ScreenNavigator.sharedInstance.registeredScreens.forEach({ (screen, screenNav) in
-                        if screen == Screen.journey {
-                            if let screenNav = screenNav as? ScreenNavigable {
-                                if let screenTitleString = screenNav.screenTitleAndChevron() {
-                                    retVal = screenTitleString
-                                }
-                            }
-                        }
-                    })
-                    return retVal
-                }
-            }
-            
+        case .journey:            
             return "JOURNEY DETAILS"
         case .aircraftSelection:
             return "JOURNEY DETAILS"

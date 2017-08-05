@@ -40,6 +40,11 @@ class FlightPanelViewController: UIViewController, UIGestureRecognizerDelegate {
     
     @IBOutlet weak var panelTitleLabel: UILabel!
     
+    @IBOutlet weak var subscreenActionButton: UIButton!
+    
+    @IBOutlet weak var leftChevron: UIImageView!
+    
+    @IBOutlet weak var rightChevron: UIImageView!
     
     var delegate: PanelDelegate?
     
@@ -56,15 +61,74 @@ class FlightPanelViewController: UIViewController, UIGestureRecognizerDelegate {
         self.panelButton.addGestureRecognizer(gesture)
         self.panelButton.isUserInteractionEnabled = true
         gesture.delegate = self
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(journeySubscreenStateDidUpdate),
+                                               name: Notification.Name.SubscreenEvents.JourneySubscreenStateDidUpdate,
+                                               object: nil)
     }
     
-    func refreshCurrentPanelScreen() {}
+    // MARK: - Subscreens Support
+    
+    @IBAction func subscreenButtonAction(_ sender: Any) {
+        print("subscreenButtonAction BOOM! - put some conditional logic and call a notification post so the journey details can transition")
+        NotificationCenter.default.post(name: Notification.Name.SubscreenEvents.FlightNavigationSubscreenControlButtonWasTapped, object: self, userInfo:[:])
+    }
+    
+    var subscreenState: Notification.Name.SubscreenEvents.JourneySubcreenState = .ignoreSubscreenStates
+    
+    @objc private func journeySubscreenStateDidUpdate(notification: NSNotification) {
+        
+        if let userInfo = notification.userInfo as? [String: String] {
+            if let substateString = userInfo[Notification.Name.SubscreenEvents.journeySubscreenStateEnumKey] {
+                switch substateString {
+                case Notification.Name.SubscreenEvents.JourneySubcreenState.ignoreSubscreenStates.rawValue:
+                    self.resetTitleNormal()
+                    self.panelButton.isHidden = false
+                    self.rightChevron.isHidden = true
+                    self.leftChevron.isHidden = true
+                    self.subscreenActionButton.isHidden = true
+                    break
+                case Notification.Name.SubscreenEvents.JourneySubcreenState.oneWayOnly.rawValue:
+                    self.panelTitleLabel.text = "JOURNEY DETAILS"
+                    self.subscreenActionButton.isHidden = true
+                    self.rightChevron.isHidden = true
+                    self.leftChevron.isHidden = true
+                    self.panelButton.isHidden = false
+                    return
+                case Notification.Name.SubscreenEvents.JourneySubcreenState.outboundVisible.rawValue:
+                    self.panelTitleLabel.text = "OUTBOUND JOURNEY"
+                    self.rightChevron.isHidden = false
+                    self.leftChevron.isHidden = true
+                    self.subscreenActionButton.isHidden = false
+                    self.panelButton.isHidden = true
+                    return
+                case Notification.Name.SubscreenEvents.JourneySubcreenState.returnVisible.rawValue:
+                    self.panelTitleLabel.text = "RETURN JOURNEY"
+                    self.rightChevron.isHidden = true
+                    self.leftChevron.isHidden = false
+                    self.subscreenActionButton.isHidden = false
+                    self.panelButton.isHidden = true
+                    return
+                default:
+                    return
+                }
+            }
+        }
+    }
+    
+    func resetTitleNormal() {
+        self.subscreenActionButton.isHidden = true
+        self.panelButton.isHidden = false
+        self.rightChevron.isHidden = true
+        self.leftChevron.isHidden = true
+        ScreenNavigator.sharedInstance.refreshCurrentScreen()
+    }
     
     // MARK: - Panel Control
     
     /// Open panel and set to state
     public func triggerPanel(shouldOpen: Bool) {
-        
         self.activatePanel(open: shouldOpen)
     }
     
@@ -110,7 +174,7 @@ class FlightPanelViewController: UIViewController, UIGestureRecognizerDelegate {
                 delegate.panelDidClose()
                 
                 NotificationCenter.default.post(
-                    name: Notification.Name.PanelScreen.DidOpen,
+                    name: Notification.Name.PanelScreen.DidClose,
                     object: self,
                     userInfo: nil
                 )
@@ -175,9 +239,5 @@ extension FlightPanelViewController: ScreenNavigable {
         let screen = screenNavigator.currentPanelScreen
         self.panelButton.isHidden = !screen.shouldShowChevron()
         self.panelTitleLabel.text = screen.panelTitle()
-    }
-    
-    func screenTitleAndChevron() -> String? {
-        return nil
     }
 }

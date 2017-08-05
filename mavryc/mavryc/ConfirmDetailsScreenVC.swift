@@ -137,7 +137,4 @@ extension ConfirmDetailsScreenVC: ScreenNavigable {
     func screenNavigatorIsScreenVisible(_ screenNavigator: ScreenNavigator) -> Bool? {
         return nil
     }
-    func screenTitleAndChevron() -> String? {
-        return nil
-    }
 }

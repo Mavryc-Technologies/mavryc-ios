@@ -262,7 +262,6 @@
 				96CE58F21EE8A38100073BD5 /* screen - aircraft select */,
 				96C6D0921F183167009AF342 /* screen - fare splitting */,
 				969EF1C01EEB68CA00A4E6B1 /* screen - confirm */,
-				96AD3BC31EF87B0100004236 /* CustomSegue.swift */,
 			);
 			name = "panel screens";
 			sourceTree = "<group>";
@@ -300,10 +299,10 @@
 		962E88D91EE9A7A8003DECBF /* screens */ = {
 			isa = PBXGroup;
 			children = (
-				966CFC0B1EFB2C950045FF34 /* transition animations */,
 				96395F2A1EF33D250094923F /* ScreenNavigator.swift */,
 				96F2FCB11E92DF1F00C51674 /* main screen */,
 				960B50E21EC634B9002B1432 /* panel screens */,
+				966CFC0B1EFB2C950045FF34 /* transition animations */,
 			);
 			name = screens;
 			sourceTree = "<group>";
@@ -312,10 +311,10 @@
 			isa = PBXGroup;
 			children = (
 				960B50E31EC6392F002B1432 /* JourneyDetailsVC.swift */,
+				96459DD91F32F5E8001E2BCC /* OutboundReturnViewController.swift */,
 				96A758B21EE0CA8F00F58A4F /* airport search control */,
 				96CB0A471EE70FA3004ADEA0 /* pax control */,
 				961144911F0D924A003033AE /* date picker */,
-				96459DD91F32F5E8001E2BCC /* OutboundReturnViewController.swift */,
 			);
 			name = "screen - journey details";
 			sourceTree = "<group>";
@@ -610,6 +609,7 @@
 				9606FD881EFC83A50059AD47 /* Notification+Location.swift */,
 				96B7476A1F0E9F56006071E5 /* Date+Format.swift */,
 				96ADF82B1F1FFF5C003EF578 /* UIView+Gestures.swift */,
+				96AD3BC31EF87B0100004236 /* CustomSegue.swift */,
 			);
 			name = extensions;
 			sourceTree = "<group>";

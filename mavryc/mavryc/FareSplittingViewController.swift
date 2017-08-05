@@ -159,9 +159,6 @@ extension FareSplittingViewController: ScreenNavigable {
     func screenNavigatorIsScreenVisible(_ screenNavigator: ScreenNavigator) -> Bool? {
         return nil
     }
-    func screenTitleAndChevron() -> String? {
-        return nil
-    }
 }
 
 extension FareSplittingViewController: FareSplitterDelegate {

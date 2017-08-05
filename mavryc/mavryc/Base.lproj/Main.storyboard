@@ -218,7 +218,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-183.19999999999999" y="-61.619190404797607"/>
+            <point key="canvasLocation" x="122" y="94"/>
         </scene>
         <!--Mapbox-->
         <scene sceneID="dma-UD-nl2">
@@ -226,7 +226,7 @@
                 <viewControllerPlaceholder storyboardName="Mapbox" id="mZC-ty-qVi" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SB1-wR-eGw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-184" y="399"/>
+            <point key="canvasLocation" x="122" y="528"/>
         </scene>
         <!--Flight Panel View Controller-->
         <scene sceneID="ckd-8V-0qh">
@@ -295,12 +295,39 @@
                                                 <color key="textColor" red="0.3803921569" green="0.4431372549" blue="0.53333333329999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Back Arrow Return" translatesAutoresizingMaskIntoConstraints="NO" id="ywk-IG-Tjr">
+                                                <rect key="frame" x="122" y="33" width="7" height="14"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="14" id="Zxy-Be-Bg6"/>
+                                                    <constraint firstAttribute="width" constant="7" id="oaD-hg-Myv"/>
+                                                </constraints>
+                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Combined Shape" translatesAutoresizingMaskIntoConstraints="NO" id="dmj-78-q9F">
+                                                <rect key="frame" x="246" y="33" width="7" height="14"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="14" id="NcH-Da-vl6"/>
+                                                    <constraint firstAttribute="width" constant="7" id="k73-q2-NIr"/>
+                                                </constraints>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mKC-T7-Env">
+                                                <rect key="frame" x="22" y="3" width="331" height="57"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Button"/>
+                                                <connections>
+                                                    <action selector="subscreenButtonAction:" destination="p51-je-yN1" eventType="touchUpInside" id="IIM-L4-9i3"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
+                                            <constraint firstItem="MaC-Sf-4F5" firstAttribute="leading" secondItem="ywk-IG-Tjr" secondAttribute="trailing" constant="-113" id="9JT-MZ-bEu"/>
+                                            <constraint firstItem="dmj-78-q9F" firstAttribute="leading" secondItem="MaC-Sf-4F5" secondAttribute="trailing" constant="-113" id="AkP-fU-7bn"/>
                                             <constraint firstItem="s0z-Kr-ev6" firstAttribute="leading" secondItem="gAu-7U-q8k" secondAttribute="leading" constant="16" id="Dm3-TC-MTS"/>
                                             <constraint firstItem="MaC-Sf-4F5" firstAttribute="leading" secondItem="gAu-7U-q8k" secondAttribute="leading" constant="16" id="Dn4-Gg-OBt"/>
+                                            <constraint firstItem="dmj-78-q9F" firstAttribute="top" secondItem="MaC-Sf-4F5" secondAttribute="bottom" constant="-17" id="GV1-VK-r7h"/>
                                             <constraint firstItem="CV2-53-iz2" firstAttribute="top" secondItem="gAu-7U-q8k" secondAttribute="top" id="Hre-Ax-Okm"/>
                                             <constraint firstAttribute="trailing" secondItem="MaC-Sf-4F5" secondAttribute="trailing" constant="16" id="cqh-nl-xUx"/>
                                             <constraint firstAttribute="trailing" secondItem="hKy-Ol-mW2" secondAttribute="trailing" id="eqK-xA-f3Q"/>
@@ -309,6 +336,7 @@
                                             <constraint firstItem="hKy-Ol-mW2" firstAttribute="top" secondItem="s0z-Kr-ev6" secondAttribute="bottom" constant="2" id="k0N-eD-6DE"/>
                                             <constraint firstItem="MaC-Sf-4F5" firstAttribute="top" secondItem="s0z-Kr-ev6" secondAttribute="bottom" constant="-13" id="mFi-Rk-HBS"/>
                                             <constraint firstItem="s0z-Kr-ev6" firstAttribute="top" secondItem="gAu-7U-q8k" secondAttribute="top" id="nkG-HT-fN4"/>
+                                            <constraint firstItem="ywk-IG-Tjr" firstAttribute="top" secondItem="MaC-Sf-4F5" secondAttribute="bottom" constant="-17" id="oj6-gH-oFi"/>
                                             <constraint firstItem="CV2-53-iz2" firstAttribute="leading" secondItem="gAu-7U-q8k" secondAttribute="leading" id="sZ4-ej-Frp"/>
                                             <constraint firstAttribute="trailing" secondItem="CV2-53-iz2" secondAttribute="trailing" id="svw-aZ-Tm7"/>
                                             <constraint firstAttribute="bottom" secondItem="hKy-Ol-mW2" secondAttribute="bottom" id="wdB-RU-HbP"/>
@@ -339,14 +367,17 @@
                     <size key="freeformSize" width="375" height="600"/>
                     <connections>
                         <outlet property="fxBGView" destination="P2i-dY-muD" id="sYd-iS-iJf"/>
+                        <outlet property="leftChevron" destination="ywk-IG-Tjr" id="v4D-UT-GqS"/>
                         <outlet property="panelButton" destination="s0z-Kr-ev6" id="GCo-0B-IMM"/>
                         <outlet property="panelTitleLabel" destination="MaC-Sf-4F5" id="xky-Ui-kAE"/>
                         <outlet property="panelTopBorder" destination="CV2-53-iz2" id="i4L-c5-Fsr"/>
+                        <outlet property="rightChevron" destination="dmj-78-q9F" id="xXK-Iu-Z7x"/>
+                        <outlet property="subscreenActionButton" destination="mKC-T7-Env" id="QUp-S1-Z0q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d6A-W2-JYH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="593" y="-62"/>
+            <point key="canvasLocation" x="829.71014492753625" y="93.750000000000014"/>
         </scene>
         <!--Journey DetailsVC-->
         <scene sceneID="ZlQ-CV-lzl">
@@ -420,7 +451,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VbF-9x-OJB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2257.2463768115945" y="93.750000000000014"/>
+            <point key="canvasLocation" x="1536" y="883"/>
         </scene>
         <!--Airport Search Table View Controller-->
         <scene sceneID="oc7-Cg-M60">
@@ -462,7 +493,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kKu-yG-suW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1333" y="1304"/>
+            <point key="canvasLocation" x="2151" y="1824"/>
         </scene>
         <!--Airport Search Table View Controller-->
         <scene sceneID="PcB-tG-jc4">
@@ -502,7 +533,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Bt-Xj-z94" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1809" y="1263"/>
+            <point key="canvasLocation" x="2151" y="1703"/>
         </scene>
         <!--Date Picker Table View Controller-->
         <scene sceneID="aUa-Uh-24k">
@@ -543,7 +574,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qWy-NS-ene" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2284" y="1295"/>
+            <point key="canvasLocation" x="2151" y="1576"/>
         </scene>
         <!--Outbound Return View Controller-->
         <scene sceneID="TVe-lK-4ct">
@@ -920,7 +951,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3029" y="451"/>
+            <point key="canvasLocation" x="1535" y="1703"/>
         </scene>
         <!--Aircraft Select View Controller-->
         <scene sceneID="XMK-Aa-8W7">
@@ -1080,7 +1111,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="4096.8000000000002" y="182.60869565217394"/>
+            <point key="canvasLocation" x="2388" y="883"/>
         </scene>
         <!--Confirm Details ScreenVC-->
         <scene sceneID="cG9-Lj-MSB">
@@ -1481,7 +1512,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="6415" y="94"/>
+            <point key="canvasLocation" x="3760" y="883"/>
         </scene>
         <!--Fare Splitting View Controller-->
         <scene sceneID="Sy2-Sf-Q3N">
@@ -1634,7 +1665,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="7703" y="94"/>
+            <point key="canvasLocation" x="4480" y="883"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="oW0-fZ-0dj">
@@ -1644,7 +1675,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="556"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="3ha-Yn-xGq">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="3ha-Yn-xGq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1657,24 +1688,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t64-I1-Hni" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <customObject id="tFW-kf-9ke" customClass="NavigationControllerDelegate" customModule="mavryc" customModuleProvider="target"/>
             </objects>
-            <point key="canvasLocation" x="1489" y="-62"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="eZI-Vu-Ls3">
-            <objects>
-                <viewController id="mt4-Hh-vyq" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="DHu-88-a68"/>
-                        <viewControllerLayoutGuide type="bottom" id="1zI-bb-aE0"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="555-ua-eZg">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Azw-o7-6qi" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
+            <point key="canvasLocation" x="1536" y="94"/>
         </scene>
         <!--Aircraft Detail View Controller-->
         <scene sceneID="MIf-3C-hI6">
@@ -1833,20 +1847,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="5184" y="496"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="uZr-lA-tA5">
-            <objects>
-                <viewController id="8Dn-pJ-6A6" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Lkd-cz-uGk">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="JfF-9r-UyI" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
+            <point key="canvasLocation" x="3072" y="864"/>
         </scene>
     </scenes>
     <resources>
@@ -1854,9 +1855,11 @@
         <image name="AircraftIconSuper" width="60" height="29"/>
         <image name="ApplePay" width="375" height="472"/>
         <image name="ArriveIconUnselected" width="21" height="20"/>
+        <image name="Back Arrow Return" width="7" height="14"/>
         <image name="BackArrow" width="17" height="13"/>
         <image name="CalendarIconFormPDF" width="19" height="19"/>
         <image name="Clear Icon" width="13" height="13"/>
+        <image name="Combined Shape" width="7" height="13"/>
         <image name="CurrentLocation" width="17" height="17"/>
         <image name="DepartIconFormPDF" width="22" height="18"/>
         <image name="OutboundCellBG" width="300" height="123"/>
