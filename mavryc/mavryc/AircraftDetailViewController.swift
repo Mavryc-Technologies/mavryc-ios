@@ -11,6 +11,7 @@ import UIKit
 @objc protocol AircraftDetailProtocol {
     func selectedAircraftIndex() -> Int
     func aircraftWasSelected(atIndex: Int)
+    func closeButtonWasTapped()
 }
 
 class AircraftDetailViewController: UIViewController {
@@ -37,6 +38,7 @@ class AircraftDetailViewController: UIViewController {
     
     @IBOutlet weak var aircraftIconImageView: UIImageView!
     
+    @IBOutlet weak var clearButtonView: UIView!
     
     @IBOutlet weak var lefthandView: UIView!
     
@@ -59,8 +61,6 @@ class AircraftDetailViewController: UIViewController {
         self.refreshCell()
         self.highlightCell()
         
-        // get current selected index, if it is this one, hilight background
-        // else delight background
         if let del = delegate {
             let idx = del.selectedAircraftIndex()
             if idx == self.view.tag {
@@ -70,6 +70,14 @@ class AircraftDetailViewController: UIViewController {
     }
     
     @IBAction func aircraftSelectionTapAction(_ sender: UITapGestureRecognizer) {
+        
+//        // hittest on ...
+//        let p = sender.location(ofTouch: 0, in: sender.view)
+//        let v = self.clearButtonView?.hitTest(p, with: nil)
+//        if let v = v as? UIView {
+//            print("a hit!")
+//            return
+//        }
         
         delegate?.aircraftWasSelected(atIndex: self.view.tag)
         
@@ -115,5 +123,9 @@ class AircraftDetailViewController: UIViewController {
             let attributedString = self.applyColorToTitle(color: AppStyle.aircraftSelectScreenCellTextHighlightSecondaryColor)
             self.primaryLabel.attributedText = attributedString
         }
+    }
+    
+    @IBAction func closeButtonWasTapped(_ sender: Any) {
+        delegate?.closeButtonWasTapped()
     }
 }

@@ -43,7 +43,7 @@ enum Screen {
         switch self {
         case .retractedHome:
             return "JOURNEY DETAILS"
-        case .journey:
+        case .journey:            
             return "JOURNEY DETAILS"
         case .aircraftSelection:
             return "JOURNEY DETAILS"
@@ -59,7 +59,7 @@ enum Screen {
         case .journey:
             return true
         case .aircraftSelection:
-            return true
+            return false
         case .confirmDetails:
             return false
         case .retractedHome:
@@ -84,7 +84,7 @@ class ScreenNavigator {
     
     private var panelController: ScreenNavigable?
     
-    private var registeredScreens: [Screen:ScreenNavigable] = [:]
+    fileprivate var registeredScreens: [Screen:ScreenNavigable] = [:]
     
     /// Set the current screen here (to be used anytime a screen becomes active)
     public var currentPanelScreen: Screen {

@@ -11,10 +11,9 @@ import CoreLocation
 
 class Trip: NSObject {
     
-    //var departureAirport: AirportLocation?
-    //var arrivalAirport: AirportLocation?
-    
     var flights: [FlightInfo] = []
+    
+    var isOneWayOnly: Bool = true
     
     func totalPrice() -> String? {
         return "$14,775"

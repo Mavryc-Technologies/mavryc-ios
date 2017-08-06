@@ -112,10 +112,12 @@ class ConfirmDetailsScreenVC: UIViewController {
     }
     
     func showReturnTripIfNeeded() {
-        if let _ = TripCoordinator.sharedInstance.currentTripInPlanning?.flights[1].arrivalString {
-            self.returnTripContainterView.isHidden = false
-        } else {
-            self.returnTripContainterView.isHidden = true
+        if let trip = TripCoordinator.sharedInstance.currentTripInPlanning {
+            if !trip.isOneWayOnly {
+                self.returnTripContainterView.isHidden = false
+            } else {
+                self.returnTripContainterView.isHidden = true
+            }
         }
     }
     

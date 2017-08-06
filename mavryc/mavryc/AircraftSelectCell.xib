@@ -67,24 +67,34 @@
                                         <color key="textColor" red="0.3803921569" green="0.4431372549" blue="0.53333333329999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AddButtonClose" highlightedImage="AddButton" translatesAutoresizingMaskIntoConstraints="NO" id="BpS-c6-gOb">
-                                        <rect key="frame" x="169" y="19" width="30" height="30"/>
-                                        <gestureRecognizers/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yGL-0j-UXO">
+                                        <rect key="frame" x="162" y="19" width="30" height="30"/>
+                                        <subviews>
+                                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="info-icon" highlightedImage="info-icon" translatesAutoresizingMaskIntoConstraints="NO" id="BpS-c6-gOb">
+                                                <rect key="frame" x="10" y="10" width="11" height="11"/>
+                                                <gestureRecognizers/>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="30" id="d3W-v0-DpV"/>
+                                            <constraint firstAttribute="width" constant="30" id="8py-74-802"/>
+                                            <constraint firstAttribute="height" constant="30" id="Kuv-5a-eou"/>
+                                            <constraint firstItem="BpS-c6-gOb" firstAttribute="top" secondItem="yGL-0j-UXO" secondAttribute="top" constant="10" id="T5z-Ep-dor"/>
+                                            <constraint firstAttribute="trailing" secondItem="BpS-c6-gOb" secondAttribute="trailing" constant="9" id="ZfU-ZZ-PK4"/>
+                                            <constraint firstItem="BpS-c6-gOb" firstAttribute="leading" secondItem="yGL-0j-UXO" secondAttribute="leading" constant="10" id="lbi-rc-uhI"/>
+                                            <constraint firstAttribute="bottom" secondItem="BpS-c6-gOb" secondAttribute="bottom" constant="9" id="rDZ-9Z-RCQ"/>
                                         </constraints>
-                                    </imageView>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.058823529409999999" green="0.070588235289999995" blue="0.1058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="qYx-lh-2yI" secondAttribute="trailing" constant="21" id="2L5-xJ-LGc"/>
-                                    <constraint firstAttribute="trailing" secondItem="BpS-c6-gOb" secondAttribute="trailing" constant="1" id="ByE-7G-zdE"/>
-                                    <constraint firstItem="BpS-c6-gOb" firstAttribute="top" secondItem="oYg-Nh-bWw" secondAttribute="top" constant="19" id="Itg-2l-Rd1"/>
                                     <constraint firstItem="G0u-Gm-hsI" firstAttribute="leading" secondItem="oYg-Nh-bWw" secondAttribute="leading" constant="19" id="QfD-2g-Q5I"/>
+                                    <constraint firstAttribute="trailing" secondItem="yGL-0j-UXO" secondAttribute="trailing" constant="8" id="XDd-82-OKW"/>
                                     <constraint firstItem="qYx-lh-2yI" firstAttribute="top" secondItem="oYg-Nh-bWw" secondAttribute="top" constant="15" id="k0K-FM-Hxk"/>
                                     <constraint firstItem="G0u-Gm-hsI" firstAttribute="top" secondItem="qYx-lh-2yI" secondAttribute="bottom" constant="-3" id="oHn-UB-j7Y"/>
+                                    <constraint firstItem="yGL-0j-UXO" firstAttribute="top" secondItem="oYg-Nh-bWw" secondAttribute="top" constant="19" id="shi-ac-nqA"/>
                                     <constraint firstItem="qYx-lh-2yI" firstAttribute="leading" secondItem="oYg-Nh-bWw" secondAttribute="leading" constant="19" id="vrR-xx-m1b"/>
-                                    <constraint firstAttribute="bottom" secondItem="BpS-c6-gOb" secondAttribute="bottom" constant="20" id="xkA-du-5R3"/>
                                     <constraint firstAttribute="trailing" secondItem="G0u-Gm-hsI" secondAttribute="trailing" constant="21" id="yKo-RC-SkV"/>
                                 </constraints>
                             </view>
@@ -113,6 +123,7 @@
             <connections>
                 <outlet property="iconImageView" destination="NQE-b7-kVK" id="S28-mV-TbN"/>
                 <outlet property="infoButtonImageView" destination="BpS-c6-gOb" id="UId-iu-mpp"/>
+                <outlet property="infoButtonView" destination="yGL-0j-UXO" id="Udz-fU-VMw"/>
                 <outlet property="lefthandView" destination="XFd-MN-0kH" id="Cas-dv-PA4"/>
                 <outlet property="subtitle" destination="G0u-Gm-hsI" id="t3A-PL-TBo"/>
                 <outlet property="title" destination="qYx-lh-2yI" id="q3S-WC-jnu"/>
@@ -121,8 +132,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="AddButton" width="34" height="34"/>
-        <image name="AddButtonClose" width="34" height="34"/>
         <image name="AircraftIconSuper" width="60" height="29"/>
+        <image name="info-icon" width="12" height="12"/>
     </resources>
 </document>

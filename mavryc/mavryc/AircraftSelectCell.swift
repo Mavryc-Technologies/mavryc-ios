@@ -24,6 +24,9 @@ class AircraftSelectCell: UITableViewCell {
     
     @IBOutlet weak var infoButtonImageView: UIImageView!
     
+    @IBOutlet weak var infoButtonView: UIView!
+    
+    
     var unattributedTitle: String?
     
 //    public var cellDelegate: AircraftSelectCellProtocol?
@@ -33,7 +36,7 @@ class AircraftSelectCell: UITableViewCell {
         
         selectionStyle = .none
         
-        if let infoButton = self.infoButtonImageView {
+        if let infoButton = self.infoButtonView {
             let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
             infoButton.addGestureRecognizer(tap)
         }
@@ -41,8 +44,6 @@ class AircraftSelectCell: UITableViewCell {
     
     func handleTap(gesture: UITapGestureRecognizer) -> Void {
         let cellTag = self.tag
-        print("Todd! It Worked!! - you tapped the info button on cell #\(cellTag)")
-        
         NotificationCenter.default.post(name: Notification.Name.SubscreenEvents.AircraftCellInfoButtonTap, object: self, userInfo:["tag":cellTag])
     }
 

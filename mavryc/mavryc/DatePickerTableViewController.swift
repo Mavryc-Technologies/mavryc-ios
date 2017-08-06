@@ -30,24 +30,27 @@ class DatePickerTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //self.tableView.separatorColor = AppStyle.airportSearchTableViewSeparatorColor
         self.tableView.separatorStyle = .none
         
-        // make list of dates starting today through next 7 days
-        let today = Date()
-        let tomorrow = (Calendar.current as NSCalendar).date(byAdding: .day, value: 1, to: Date(), options: [])!
-        let tomorrow2 = (Calendar.current as NSCalendar).date(byAdding: .day, value: 2, to: Date(), options: [])!
-        let tomorrow3 = (Calendar.current as NSCalendar).date(byAdding: .day, value: 3, to: Date(), options: [])!
-        let tomorrow4 = (Calendar.current as NSCalendar).date(byAdding: .day, value: 4, to: Date(), options: [])!
-        let tomorrow5 = (Calendar.current as NSCalendar).date(byAdding: .day, value: 5, to: Date(), options: [])!
-        let tomorrow6 = (Calendar.current as NSCalendar).date(byAdding: .day, value: 6, to: Date(), options: [])!
-        let tomorrow7 = (Calendar.current as NSCalendar).date(byAdding: .day, value: 7, to: Date(), options: [])!
-        let tomorrow8 = (Calendar.current as NSCalendar).date(byAdding: .day, value: 8, to: Date(), options: [])!
-        let tomorrow9 = (Calendar.current as NSCalendar).date(byAdding: .day, value: 9, to: Date(), options: [])!
+        var loopedList: [Any] = []
+        let loopedToday = Date()
+        for i in 0...200 {
+            if i == 0 {
+                loopedList.append(loopedToday.toString() + " (today)")
+                continue
+            } else {
+                let nextDay = (Calendar.current as NSCalendar).date(byAdding: .day, value: i, to: Date(), options: [])!
+                if i == 1 {
+                    let formattedDay = "\(nextDay.toString()) (tomorrow)"
+                    loopedList.append(formattedDay)
+                    continue
+                }
+                
+                loopedList.append(nextDay.toString())
+            }
+        }
         
-        let list = ["\(today.toString()) (today)", "\(tomorrow.toString()) (tomorrow)", "\(tomorrow2.toString())", "\(tomorrow3.toString())", "\(tomorrow4.toString())", "\(tomorrow5.toString())", "\(tomorrow6.toString())", "\(tomorrow7.toString())", "\(tomorrow8.toString())", "\(tomorrow9.toString())"]
-        
-        self.updateData(list: list)
+        self.updateData(list: loopedList)
     }
     
     override func viewDidAppear(_ animated: Bool) {
