@@ -287,7 +287,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="JOURNEY DETAILS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MaC-Sf-4F5">
-                                                <rect key="frame" x="16" y="29" width="343" height="21"/>
+                                                <rect key="frame" x="113" y="29" width="150" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="6Jg-iQ-5Ge"/>
                                                 </constraints>
@@ -296,7 +296,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Back Arrow Return" translatesAutoresizingMaskIntoConstraints="NO" id="ywk-IG-Tjr">
-                                                <rect key="frame" x="122" y="33" width="7" height="14"/>
+                                                <rect key="frame" x="103" y="33" width="7" height="14"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="14" id="Zxy-Be-Bg6"/>
@@ -304,7 +304,7 @@
                                                 </constraints>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Combined Shape" translatesAutoresizingMaskIntoConstraints="NO" id="dmj-78-q9F">
-                                                <rect key="frame" x="246" y="33" width="7" height="14"/>
+                                                <rect key="frame" x="266" y="33" width="7" height="14"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="14" id="NcH-Da-vl6"/>
@@ -323,20 +323,20 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="MaC-Sf-4F5" firstAttribute="leading" secondItem="ywk-IG-Tjr" secondAttribute="trailing" constant="-113" id="9JT-MZ-bEu"/>
-                                            <constraint firstItem="dmj-78-q9F" firstAttribute="leading" secondItem="MaC-Sf-4F5" secondAttribute="trailing" constant="-113" id="AkP-fU-7bn"/>
                                             <constraint firstItem="s0z-Kr-ev6" firstAttribute="leading" secondItem="gAu-7U-q8k" secondAttribute="leading" constant="16" id="Dm3-TC-MTS"/>
-                                            <constraint firstItem="MaC-Sf-4F5" firstAttribute="leading" secondItem="gAu-7U-q8k" secondAttribute="leading" constant="16" id="Dn4-Gg-OBt"/>
+                                            <constraint firstItem="MaC-Sf-4F5" firstAttribute="leading" secondItem="gAu-7U-q8k" secondAttribute="leading" constant="113" id="Dn4-Gg-OBt"/>
                                             <constraint firstItem="dmj-78-q9F" firstAttribute="top" secondItem="MaC-Sf-4F5" secondAttribute="bottom" constant="-17" id="GV1-VK-r7h"/>
                                             <constraint firstItem="CV2-53-iz2" firstAttribute="top" secondItem="gAu-7U-q8k" secondAttribute="top" id="Hre-Ax-Okm"/>
-                                            <constraint firstAttribute="trailing" secondItem="MaC-Sf-4F5" secondAttribute="trailing" constant="16" id="cqh-nl-xUx"/>
+                                            <constraint firstAttribute="trailing" secondItem="MaC-Sf-4F5" secondAttribute="trailing" constant="112" id="cqh-nl-xUx"/>
                                             <constraint firstAttribute="trailing" secondItem="hKy-Ol-mW2" secondAttribute="trailing" id="eqK-xA-f3Q"/>
                                             <constraint firstItem="hKy-Ol-mW2" firstAttribute="leading" secondItem="gAu-7U-q8k" secondAttribute="leading" id="evj-0l-Mng"/>
                                             <constraint firstAttribute="trailing" secondItem="s0z-Kr-ev6" secondAttribute="trailing" constant="16" id="hSl-d6-Ge8"/>
                                             <constraint firstItem="hKy-Ol-mW2" firstAttribute="top" secondItem="s0z-Kr-ev6" secondAttribute="bottom" constant="2" id="k0N-eD-6DE"/>
                                             <constraint firstItem="MaC-Sf-4F5" firstAttribute="top" secondItem="s0z-Kr-ev6" secondAttribute="bottom" constant="-13" id="mFi-Rk-HBS"/>
+                                            <constraint firstItem="MaC-Sf-4F5" firstAttribute="leading" secondItem="ywk-IG-Tjr" secondAttribute="trailing" constant="3" id="nOO-FI-ckG"/>
                                             <constraint firstItem="s0z-Kr-ev6" firstAttribute="top" secondItem="gAu-7U-q8k" secondAttribute="top" id="nkG-HT-fN4"/>
                                             <constraint firstItem="ywk-IG-Tjr" firstAttribute="top" secondItem="MaC-Sf-4F5" secondAttribute="bottom" constant="-17" id="oj6-gH-oFi"/>
+                                            <constraint firstItem="dmj-78-q9F" firstAttribute="leading" secondItem="MaC-Sf-4F5" secondAttribute="trailing" constant="3" id="pcT-9d-2Og"/>
                                             <constraint firstItem="CV2-53-iz2" firstAttribute="leading" secondItem="gAu-7U-q8k" secondAttribute="leading" id="sZ4-ej-Frp"/>
                                             <constraint firstAttribute="trailing" secondItem="CV2-53-iz2" secondAttribute="trailing" id="svw-aZ-Tm7"/>
                                             <constraint firstAttribute="bottom" secondItem="hKy-Ol-mW2" secondAttribute="bottom" id="wdB-RU-HbP"/>
