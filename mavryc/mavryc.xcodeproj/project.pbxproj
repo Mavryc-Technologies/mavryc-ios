@@ -41,6 +41,7 @@
 		9667445B1F281A95007445CE /* SkylarContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9667445A1F281A95007445CE /* SkylarContact.swift */; };
 		966744601F282BCB007445CE /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9667445E1F282BCB007445CE /* ContactTableViewCell.swift */; };
 		966744611F282BCB007445CE /* ContactTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9667445F1F282BCB007445CE /* ContactTableViewCell.xib */; };
+		966BD5721F3E72B500F0F585 /* TintTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966BD5711F3E72B500F0F585 /* TintTextField.swift */; };
 		9677165C1F23D5F100A9DB39 /* FareSplitterCondensed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9677165B1F23D5F100A9DB39 /* FareSplitterCondensed.swift */; };
 		967716621F2409AB00A9DB39 /* FareSplitterCondensed.xib in Resources */ = {isa = PBXBuildFile; fileRef = 967716611F2409AB00A9DB39 /* FareSplitterCondensed.xib */; };
 		967FF6261E9446BF007B56C6 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967FF6251E9446BF007B56C6 /* Networking.swift */; };
@@ -160,6 +161,7 @@
 		9667445A1F281A95007445CE /* SkylarContact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkylarContact.swift; sourceTree = "<group>"; };
 		9667445E1F282BCB007445CE /* ContactTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
 		9667445F1F282BCB007445CE /* ContactTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactTableViewCell.xib; sourceTree = "<group>"; };
+		966BD5711F3E72B500F0F585 /* TintTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TintTextField.swift; sourceTree = "<group>"; };
 		9677165B1F23D5F100A9DB39 /* FareSplitterCondensed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FareSplitterCondensed.swift; sourceTree = "<group>"; };
 		967716611F2409AB00A9DB39 /* FareSplitterCondensed.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FareSplitterCondensed.xib; sourceTree = "<group>"; };
 		967FF6251E9446BF007B56C6 /* Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
@@ -499,6 +501,7 @@
 			isa = PBXGroup;
 			children = (
 				96CE58F51EE8FBAF00073BD5 /* StyledButton.swift */,
+				966BD5711F3E72B500F0F585 /* TintTextField.swift */,
 			);
 			name = common_ui;
 			sourceTree = "<group>";
@@ -925,6 +928,7 @@
 				96C506571F3CE8F2001E41DB /* UIWindow+View.swift in Sources */,
 				96F2FCB31E92DF4E00C51674 /* MainViewController.swift in Sources */,
 				96F2FC961E92CD0000C51674 /* AppCoordinator.swift in Sources */,
+				966BD5721F3E72B500F0F585 /* TintTextField.swift in Sources */,
 				96A32C1B1E96A36900DA7DC1 /* Cities.swift in Sources */,
 				96A758B41EE0CAB500F58A4F /* AirportSearchTableViewController.swift in Sources */,
 				961E2AC21E985602000F2D64 /* FetchFlightsDTO.swift in Sources */,
