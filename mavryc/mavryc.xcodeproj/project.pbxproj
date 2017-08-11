@@ -88,6 +88,9 @@
 		96DA35B51EC281E400D2A0BC /* Asap in Resources */ = {isa = PBXBuildFile; fileRef = 96DA35B41EC281E400D2A0BC /* Asap */; };
 		96DA35B71EC281F400D2A0BC /* Lato in Resources */ = {isa = PBXBuildFile; fileRef = 96DA35B61EC281F400D2A0BC /* Lato */; };
 		96DA42371EA7FD670036C227 /* Flight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DA42361EA7FD670036C227 /* Flight.swift */; };
+		96DC0DB31F3D3BBF00B9A9C1 /* Bundle+Versioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DC0DB21F3D3BBF00B9A9C1 /* Bundle+Versioning.swift */; };
+		96DC0DB51F3D3D6600B9A9C1 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96DC0DB41F3D3D6600B9A9C1 /* Profile.storyboard */; };
+		96DC0DB71F3D3D9400B9A9C1 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DC0DB61F3D3D9400B9A9C1 /* ProfileViewController.swift */; };
 		96E53ED31E90378E0045AA06 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E53ED21E90378E0045AA06 /* AppDelegate.swift */; };
 		96E53ED81E90378E0045AA06 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96E53ED61E90378E0045AA06 /* Main.storyboard */; };
 		96E53EDA1E90378E0045AA06 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96E53ED91E90378E0045AA06 /* Assets.xcassets */; };
@@ -204,6 +207,9 @@
 		96DA35B41EC281E400D2A0BC /* Asap */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Asap; sourceTree = "<group>"; };
 		96DA35B61EC281F400D2A0BC /* Lato */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Lato; sourceTree = "<group>"; };
 		96DA42361EA7FD670036C227 /* Flight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Flight.swift; sourceTree = "<group>"; };
+		96DC0DB21F3D3BBF00B9A9C1 /* Bundle+Versioning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle+Versioning.swift"; sourceTree = "<group>"; };
+		96DC0DB41F3D3D6600B9A9C1 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		96DC0DB61F3D3D9400B9A9C1 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		96E53ECF1E90378E0045AA06 /* mavryc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mavryc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		96E53ED21E90378E0045AA06 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		96E53ED71E90378E0045AA06 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -450,6 +456,8 @@
 				96C5065B1F3CEB86001E41DB /* SlideoutMenuViewController.swift */,
 				96C506611F3D19E3001E41DB /* SlideoutMenuTableViewCell.swift */,
 				96C506621F3D19E3001E41DB /* SlideoutMenuTableViewCell.xib */,
+				96DC0DB41F3D3D6600B9A9C1 /* Profile.storyboard */,
+				96DC0DB61F3D3D9400B9A9C1 /* ProfileViewController.swift */,
 			);
 			name = "slideout menu";
 			sourceTree = "<group>";
@@ -639,6 +647,7 @@
 				96AD3BC31EF87B0100004236 /* CustomSegue.swift */,
 				96C506561F3CE8F2001E41DB /* UIWindow+View.swift */,
 				96C506651F3D1D4F001E41DB /* String+Utils.swift */,
+				96DC0DB21F3D3BBF00B9A9C1 /* Bundle+Versioning.swift */,
 			);
 			name = extensions;
 			sourceTree = "<group>";
@@ -782,6 +791,7 @@
 				96B1F2CF1EEA19A900EB5F4A /* airports.csv in Resources */,
 				967716621F2409AB00A9DB39 /* FareSplitterCondensed.xib in Resources */,
 				9606FD9B1EFDBD760059AD47 /* tap5.wav in Resources */,
+				96DC0DB51F3D3D6600B9A9C1 /* Profile.storyboard in Resources */,
 				96C6D09A1F195D3A009AF342 /* FareSplitter.xib in Resources */,
 				966744611F282BCB007445CE /* ContactTableViewCell.xib in Resources */,
 				96C5065A1F3CEB52001E41DB /* SlideoutMenu.storyboard in Resources */,
@@ -935,11 +945,13 @@
 				96ADF82C1F1FFF5C003EF578 /* UIView+Gestures.swift in Sources */,
 				96C506661F3D1D4F001E41DB /* String+Utils.swift in Sources */,
 				96E7DBA41F05A2C700AA850E /* JoystickView.swift in Sources */,
+				96DC0DB71F3D3D9400B9A9C1 /* ProfileViewController.swift in Sources */,
 				96DA35AD1EC1264400D2A0BC /* FlightPanelViewController.swift in Sources */,
 				96CB0A491EE75FAA004ADEA0 /* AirportSearchTableViewCell.swift in Sources */,
 				96CE58F61EE8FBAF00073BD5 /* StyledButton.swift in Sources */,
 				96A32C211E98158D00DA7DC1 /* SignupDTO.swift in Sources */,
 				96CB0A441EE5DB42004ADEA0 /* PaxPicker.swift in Sources */,
+				96DC0DB31F3D3BBF00B9A9C1 /* Bundle+Versioning.swift in Sources */,
 				964629C81EF89C1800CAA16E /* RightToLeftScreenAnimator.swift in Sources */,
 				96C6D0961F194CFB009AF342 /* FareSplitter.swift in Sources */,
 				9666A4561E95A9D000CA822F /* FetchFlightsClient.swift in Sources */,

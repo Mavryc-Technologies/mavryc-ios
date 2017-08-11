@@ -55,7 +55,7 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ApplePay" translatesAutoresizingMaskIntoConstraints="NO" id="9rG-zT-kUa">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="the-rock-studio71" translatesAutoresizingMaskIntoConstraints="NO" id="9rG-zT-kUa">
                                         <rect key="frame" x="35" y="31" width="70" height="70"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="70" id="009-1p-tDy"/>
@@ -64,6 +64,7 @@
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="129" id="SAx-ci-GE6"/>
                                     <constraint firstItem="rXD-w8-ufX" firstAttribute="leading" secondItem="9rG-zT-kUa" secondAttribute="trailing" constant="8" id="UYe-Qn-LMo"/>
@@ -73,6 +74,9 @@
                                     <constraint firstItem="9rG-zT-kUa" firstAttribute="leading" secondItem="O0m-ot-8PQ" secondAttribute="leading" constant="35" id="rDL-Un-YEb"/>
                                     <constraint firstAttribute="trailing" secondItem="rXD-w8-ufX" secondAttribute="trailing" constant="8" id="zSU-6q-6g5"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="tcu-Oi-Iok" appends="YES" id="Lo8-qP-4g0"/>
+                                </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FcP-uS-Upf" userLabel="screenFooter">
                                 <rect key="frame" x="0.0" y="592" width="300" height="75"/>
@@ -125,11 +129,16 @@
                         <action selector="dismissalTapAction:" destination="96B-co-06t" id="UY5-kP-Ad0"/>
                     </connections>
                 </tapGestureRecognizer>
+                <tapGestureRecognizer id="tcu-Oi-Iok" userLabel="profileHeader Tap">
+                    <connections>
+                        <action selector="profileHeaderTapAction:" destination="96B-co-06t" id="Eeo-Dh-TxV"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="317.60000000000002" y="-247.82608695652175"/>
         </scene>
     </scenes>
     <resources>
-        <image name="ApplePay" width="375" height="472"/>
+        <image name="the-rock-studio71" width="100" height="84"/>
     </resources>
 </document>

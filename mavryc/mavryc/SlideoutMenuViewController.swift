@@ -45,6 +45,17 @@ class SlideoutMenuViewController: UIViewController {
         tableView.register(UINib(nibName: "SlideoutMenuTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "menuCell")
         
         profileNameLabel.text = "John Appleseed"
+        
+        profileImageView.layer.cornerRadius = profileImageView.frame.size.width / 2
+        profileImageView.layer.masksToBounds = true
+
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        profileImageView.layer.cornerRadius = profileImageView.frame.size.width / 2
+        profileImageView.layer.masksToBounds = true
     }
     
     
@@ -54,14 +65,34 @@ class SlideoutMenuViewController: UIViewController {
                 NotificationCenter.default.post(name: Notification.Name.SlideoutMenu.CloseWasTapped, object: self, userInfo:[:])
     }
     
+    @IBAction func profileHeaderTapAction(_ sender: UITapGestureRecognizer) {
+        
+        self.presentScreen(menuItem: .profile)
+    }
+    
+    
+    
     // MARK: - Present Menu Screens
+    
     func presentScreen(menuItem: Menu) {
         switch menuItem {
         case .help:
+            let sb = UIStoryboard.init(name: "Profile", bundle: Bundle.main)
+            if let vc = sb.instantiateInitialViewController(){
+                self.show(vc, sender: self)
+            }
             break
         case .profile:
+            let sb = UIStoryboard.init(name: "Profile", bundle: Bundle.main)
+            if let vc = sb.instantiateInitialViewController(){
+             self.show(vc, sender: self)
+            }
             break
         case .settings:
+            let sb = UIStoryboard.init(name: "Profile", bundle: Bundle.main)
+            if let vc = sb.instantiateInitialViewController(){
+                self.show(vc, sender: self)
+            }
             break
         }
     }
@@ -87,24 +118,4 @@ extension SlideoutMenuViewController: UITableViewDelegate, UITableViewDataSource
         cell.title?.text = menuList[indexPath.row].rawValue.capitalizingFirstLetter()
         return cell
     }
-}
-
-extension Bundle {
-    
-    var appName: String {
-        return infoDictionary?["CFBundleName"] as! String
-    }
-    
-    var bundleId: String {
-        return bundleIdentifier!
-    }
-    
-    var versionNumber: String {
-        return infoDictionary?["CFBundleShortVersionString"] as! String
-    }
-    
-    var buildNumber: String {
-        return infoDictionary?["CFBundleVersion"] as! String
-    }
-    
 }

@@ -13,7 +13,9 @@ extension Notification.Name {
     /// Used as a namespace for all `Panel` related notifications.
     public struct SlideoutMenu {
         
-        /// Posted when Panel is about to open.
         public static let CloseWasTapped = Notification.Name(rawValue: "com.mavryk.notification.name.SlideoutMenu.CloseWasTapped")
+        
+
+        public static let MenuSubScreenCloseWasTapped = Notification.Name(rawValue: "com.mavryk.notification.name.SlideoutMenu.MenuSubScreenCloseWasTapped")
     }
 }

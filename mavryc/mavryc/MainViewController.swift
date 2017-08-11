@@ -67,6 +67,11 @@ class MainViewController: UIViewController {
                                                selector: #selector(slideoutMenuCloseWasTapped),
                                                name: Notification.Name.SlideoutMenu.CloseWasTapped,
                                                object: nil)
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(slideoutMenuSubscreenCloseWasTapped),
+                                               name: Notification.Name.SlideoutMenu.MenuSubScreenCloseWasTapped,
+                                               object: nil)
     }
     
     // MARK: Segues
@@ -113,11 +118,15 @@ class MainViewController: UIViewController {
     @objc private func slideoutMenuCloseWasTapped(notification: NSNotification) {
         self.triggerHamburgerMenu()
     }
+
+    @objc private func slideoutMenuSubscreenCloseWasTapped(notification: NSNotification) {
+        self.triggerHamburgerMenu()
+    }
     
     func triggerHamburgerMenu() {
         
         if isSlideOutMenuVisible {
-            self.dismissSlideOutMenu()
+            self.dismissSlideOutMenu(animated: true)
         } else {
             self.presentSlideOutMenu(animated: true)
         }
@@ -156,7 +165,7 @@ class MainViewController: UIViewController {
         }
     }
     
-    func dismissSlideOutMenu() {
+    func dismissSlideOutMenu(animated: Bool) {
         // make it go away
         if let vc = self.slideoutMenuViewController, let _ = slideOutMenuPresentingViewController {
             
