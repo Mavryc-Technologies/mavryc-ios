@@ -177,7 +177,9 @@ class JourneyDetailsVC: UIViewController {
     }
     
     func updateScreenNavigationForSubscreen() {
-        NotificationCenter.default.post(name: Notification.Name.SubscreenEvents.JourneySubscreenStateDidUpdate, object: self, userInfo:[Notification.Name.SubscreenEvents.journeySubscreenStateEnumKey:self.subscreenState().rawValue])
+        NotificationCenter.default.post(name: Notification.Name.SubscreenEvents.JourneySubscreenStateDidUpdate,
+                                        object: self,
+                                        userInfo:[Notification.Name.SubscreenEvents.journeySubscreenStateEnumKey:self.subscreenState().rawValue])
     }
     
     func subscreenState() -> Notification.Name.SubscreenEvents.JourneySubcreenState {

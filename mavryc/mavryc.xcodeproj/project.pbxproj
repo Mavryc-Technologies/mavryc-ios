@@ -64,6 +64,13 @@
 		96B723721EA9B53400B2E322 /* databaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B723711EA9B53400B2E322 /* databaseTests.swift */; };
 		96B723741EA9E26100B2E322 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B723731EA9E26100B2E322 /* User.swift */; };
 		96B7476B1F0E9F56006071E5 /* Date+Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B7476A1F0E9F56006071E5 /* Date+Format.swift */; };
+		96C506571F3CE8F2001E41DB /* UIWindow+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C506561F3CE8F2001E41DB /* UIWindow+View.swift */; };
+		96C5065A1F3CEB52001E41DB /* SlideoutMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96C506591F3CEB52001E41DB /* SlideoutMenu.storyboard */; };
+		96C5065C1F3CEB86001E41DB /* SlideoutMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C5065B1F3CEB86001E41DB /* SlideoutMenuViewController.swift */; };
+		96C506601F3CFADE001E41DB /* Notification+Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C5065F1F3CFADE001E41DB /* Notification+Menu.swift */; };
+		96C506631F3D19E3001E41DB /* SlideoutMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C506611F3D19E3001E41DB /* SlideoutMenuTableViewCell.swift */; };
+		96C506641F3D19E3001E41DB /* SlideoutMenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 96C506621F3D19E3001E41DB /* SlideoutMenuTableViewCell.xib */; };
+		96C506661F3D1D4F001E41DB /* String+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C506651F3D1D4F001E41DB /* String+Utils.swift */; };
 		96C6D0941F1837B9009AF342 /* FareSplittingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C6D0931F1837B9009AF342 /* FareSplittingViewController.swift */; };
 		96C6D0961F194CFB009AF342 /* FareSplitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C6D0951F194CFB009AF342 /* FareSplitter.swift */; };
 		96C6D09A1F195D3A009AF342 /* FareSplitter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 96C6D0991F195D3A009AF342 /* FareSplitter.xib */; };
@@ -173,6 +180,13 @@
 		96B723711EA9B53400B2E322 /* databaseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = databaseTests.swift; sourceTree = "<group>"; };
 		96B723731EA9E26100B2E322 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		96B7476A1F0E9F56006071E5 /* Date+Format.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Format.swift"; sourceTree = "<group>"; };
+		96C506561F3CE8F2001E41DB /* UIWindow+View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIWindow+View.swift"; sourceTree = "<group>"; };
+		96C506591F3CEB52001E41DB /* SlideoutMenu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SlideoutMenu.storyboard; sourceTree = "<group>"; };
+		96C5065B1F3CEB86001E41DB /* SlideoutMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideoutMenuViewController.swift; sourceTree = "<group>"; };
+		96C5065F1F3CFADE001E41DB /* Notification+Menu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Notification+Menu.swift"; sourceTree = "<group>"; };
+		96C506611F3D19E3001E41DB /* SlideoutMenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideoutMenuTableViewCell.swift; sourceTree = "<group>"; };
+		96C506621F3D19E3001E41DB /* SlideoutMenuTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SlideoutMenuTableViewCell.xib; sourceTree = "<group>"; };
+		96C506651F3D1D4F001E41DB /* String+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Utils.swift"; sourceTree = "<group>"; };
 		96C6D0931F1837B9009AF342 /* FareSplittingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FareSplittingViewController.swift; sourceTree = "<group>"; };
 		96C6D0951F194CFB009AF342 /* FareSplitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FareSplitter.swift; sourceTree = "<group>"; };
 		96C6D0991F195D3A009AF342 /* FareSplitter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FareSplitter.xib; sourceTree = "<group>"; };
@@ -429,6 +443,17 @@
 			name = database;
 			sourceTree = "<group>";
 		};
+		96C506581F3CEB32001E41DB /* slideout menu */ = {
+			isa = PBXGroup;
+			children = (
+				96C506591F3CEB52001E41DB /* SlideoutMenu.storyboard */,
+				96C5065B1F3CEB86001E41DB /* SlideoutMenuViewController.swift */,
+				96C506611F3D19E3001E41DB /* SlideoutMenuTableViewCell.swift */,
+				96C506621F3D19E3001E41DB /* SlideoutMenuTableViewCell.xib */,
+			);
+			name = "slideout menu";
+			sourceTree = "<group>";
+		};
 		96C6D0921F183167009AF342 /* screen - fare splitting */ = {
 			isa = PBXGroup;
 			children = (
@@ -584,6 +609,7 @@
 			isa = PBXGroup;
 			children = (
 				962E88D91EE9A7A8003DECBF /* screens */,
+				96C506581F3CEB32001E41DB /* slideout menu */,
 				96DA35AE1EC2731000D2A0BC /* joystick */,
 				9652283C1EAAA0DE0054DA70 /* map */,
 				96F2FCAA1E92DBE800C51674 /* onboarding */,
@@ -607,9 +633,12 @@
 				96395F281EF312070094923F /* UIView+Image.swift */,
 				96395F2C1EF340BD0094923F /* Notification+Screens.swift */,
 				9606FD881EFC83A50059AD47 /* Notification+Location.swift */,
+				96C5065F1F3CFADE001E41DB /* Notification+Menu.swift */,
 				96B7476A1F0E9F56006071E5 /* Date+Format.swift */,
 				96ADF82B1F1FFF5C003EF578 /* UIView+Gestures.swift */,
 				96AD3BC31EF87B0100004236 /* CustomSegue.swift */,
+				96C506561F3CE8F2001E41DB /* UIWindow+View.swift */,
+				96C506651F3D1D4F001E41DB /* String+Utils.swift */,
 			);
 			name = extensions;
 			sourceTree = "<group>";
@@ -755,10 +784,12 @@
 				9606FD9B1EFDBD760059AD47 /* tap5.wav in Resources */,
 				96C6D09A1F195D3A009AF342 /* FareSplitter.xib in Resources */,
 				966744611F282BCB007445CE /* ContactTableViewCell.xib in Resources */,
+				96C5065A1F3CEB52001E41DB /* SlideoutMenu.storyboard in Resources */,
 				96DA35B51EC281E400D2A0BC /* Asap in Resources */,
 				962EE1181EBBBA7800797CD9 /* Mapbox.storyboard in Resources */,
 				96B1F2D11EEA294E00EB5F4A /* airports.sqlite3 in Resources */,
 				96CE58F11EE8A12900073BD5 /* AircraftSelectCell.xib in Resources */,
+				96C506641F3D19E3001E41DB /* SlideoutMenuTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -871,6 +902,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				96CE58F41EE8D3A600073BD5 /* AircraftSelectViewController.swift in Sources */,
+				96C506631F3D19E3001E41DB /* SlideoutMenuTableViewCell.swift in Sources */,
 				9606FD891EFC83A50059AD47 /* Notification+Location.swift in Sources */,
 				96F2FCA21E92D9DA00C51674 /* StoryboardIdentifiable.swift in Sources */,
 				9606FD8D1EFC89E50059AD47 /* TripCoordinator.swift in Sources */,
@@ -880,6 +912,7 @@
 				96CE58FA1EE93C6000073BD5 /* ConfirmDetailsScreenVC.swift in Sources */,
 				967FF6261E9446BF007B56C6 /* Networking.swift in Sources */,
 				96A32C1F1E98153300DA7DC1 /* SignupClient.swift in Sources */,
+				96C506571F3CE8F2001E41DB /* UIWindow+View.swift in Sources */,
 				96F2FCB31E92DF4E00C51674 /* MainViewController.swift in Sources */,
 				96F2FC961E92CD0000C51674 /* AppCoordinator.swift in Sources */,
 				96A32C1B1E96A36900DA7DC1 /* Cities.swift in Sources */,
@@ -900,6 +933,7 @@
 				9606FD871EFC62C50059AD47 /* GooglePlacesClient.swift in Sources */,
 				96B723741EA9E26100B2E322 /* User.swift in Sources */,
 				96ADF82C1F1FFF5C003EF578 /* UIView+Gestures.swift in Sources */,
+				96C506661F3D1D4F001E41DB /* String+Utils.swift in Sources */,
 				96E7DBA41F05A2C700AA850E /* JoystickView.swift in Sources */,
 				96DA35AD1EC1264400D2A0BC /* FlightPanelViewController.swift in Sources */,
 				96CB0A491EE75FAA004ADEA0 /* AirportSearchTableViewCell.swift in Sources */,
@@ -934,9 +968,11 @@
 				96395F291EF312070094923F /* UIView+Image.swift in Sources */,
 				96E53ED31E90378E0045AA06 /* AppDelegate.swift in Sources */,
 				96F2FCA81E92DA6A00C51674 /* UIStoryboard+Storyboards.swift in Sources */,
+				96C506601F3CFADE001E41DB /* Notification+Menu.swift in Sources */,
 				96B7236D1EA98B5200B2E322 /* AppData.swift in Sources */,
 				96459DDA1F32F5E8001E2BCC /* OutboundReturnViewController.swift in Sources */,
 				9606FD8F1EFCA39C0059AD47 /* FlightInfo.swift in Sources */,
+				96C5065C1F3CEB86001E41DB /* SlideoutMenuViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1079,7 +1115,7 @@
 			baseConfigurationReference = 7BF64E167EC734F4C54DBF17 /* Pods-mavryc.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CURRENT_PROJECT_VERSION = 33;
+				CURRENT_PROJECT_VERSION = 34;
 				DEVELOPMENT_TEAM = 8H5S399Z5A;
 				INFOPLIST_FILE = mavryc/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -1099,7 +1135,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CURRENT_PROJECT_VERSION = 33;
+				CURRENT_PROJECT_VERSION = 34;
 				DEVELOPMENT_TEAM = 8H5S399Z5A;
 				INFOPLIST_FILE = mavryc/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;

@@ -49,6 +49,9 @@ class MainViewController: UIViewController {
     // Panel
     weak var panel: FlightPanelViewController?
     
+    var isSlideOutMenuVisible = false
+    var slideoutMenuViewController: UIViewController? = nil
+    var slideOutMenuPresentingViewController: UIViewController? = nil
     var hamburgerNavMode = true
     
     // MARK: Lifecycle
@@ -59,6 +62,11 @@ class MainViewController: UIViewController {
             mapController = MapController(locationController: locationController, mapView: mapView)
             joystickController = JoystickController(joystick: joystick, joystickToken: joystickToken, container: self, mapView: mapView)
         }
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(slideoutMenuCloseWasTapped),
+                                               name: Notification.Name.SlideoutMenu.CloseWasTapped,
+                                               object: nil)
     }
     
     // MARK: Segues
@@ -90,7 +98,7 @@ class MainViewController: UIViewController {
     
     @IBAction func navButtonAction(_ sender: Any) {
         if self.hamburgerNavMode {
-            // TODO: implement hamburger menu trigger
+            self.triggerHamburgerMenu()
         } else {
             // back nav mode
             ScreenNavigator.sharedInstance.navigateBackward()
@@ -100,6 +108,71 @@ class MainViewController: UIViewController {
     func showHamburgerNav() {
         self.hamburgerNavMode = true
         self.navLeftButtonHamburgerAndBack.image = UIImage(named: "Hamburger.png")
+    }
+    
+    @objc private func slideoutMenuCloseWasTapped(notification: NSNotification) {
+        self.triggerHamburgerMenu()
+    }
+    
+    func triggerHamburgerMenu() {
+        
+        if isSlideOutMenuVisible {
+            self.dismissSlideOutMenu()
+        } else {
+            self.presentSlideOutMenu(animated: true)
+        }
+        
+        isSlideOutMenuVisible = !isSlideOutMenuVisible
+    }
+    
+    func presentSlideOutMenu(animated: Bool) {
+        // make it visible
+        if let visibleViewCtrl = UIApplication.shared.keyWindow?.visibleViewController {
+            let sb = UIStoryboard.init(name: "SlideoutMenu", bundle: Bundle.main)
+            if let vc = sb.instantiateInitialViewController() {
+                self.slideoutMenuViewController = vc
+                self.slideOutMenuPresentingViewController = visibleViewCtrl
+                
+                var offScreenFrame = vc.view.frame
+                let onScreenFrame = vc.view.frame
+                offScreenFrame.origin.x = (vc.view.frame.width * -1) - 1
+                vc.view.frame = offScreenFrame
+                
+                visibleViewCtrl.view.addSubview(vc.view)
+                UIApplication.shared.isStatusBarHidden = true
+                
+                UIView.animate(withDuration: 0.3, animations: {
+                    vc.view.frame = onScreenFrame
+                    vc.view.layoutIfNeeded()
+                    self.view.layoutIfNeeded()
+                }, completion: { (done) in
+                    // nothing for now
+                })
+                
+                
+            } else {
+                print("sad - it didn't work😫")
+            }
+        }
+    }
+    
+    func dismissSlideOutMenu() {
+        // make it go away
+        if let vc = self.slideoutMenuViewController, let _ = slideOutMenuPresentingViewController {
+            
+            var offScreenFrame = vc.view.frame
+            offScreenFrame.origin.x = (vc.view.frame.width * -1) - 1
+            
+            UIView.animate(withDuration: 0.3, animations: { 
+                vc.view.frame = offScreenFrame
+                vc.view.layoutIfNeeded()
+                self.view.layoutIfNeeded()
+            }, completion: { (done) in
+                vc.view.removeFromSuperview()
+                self.slideoutMenuViewController = nil
+                UIApplication.shared.isStatusBarHidden = false
+            })
+        }
     }
     
     func showBackButtonNav() {
