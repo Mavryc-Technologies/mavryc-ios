@@ -212,7 +212,26 @@ protocol PaxPickerDelegate {
             numberOfBars = min(numberOfBars, totalBars)  // has to be 24 or less
             
             if prev != numberOfBars && !(numberOfBars == totalBars || numberOfBars == 1) {
-                self.triggerUIFeedback()
+                
+                var diff: Int = 0
+                if numberOfBars > prev {
+                    diff = numberOfBars - prev
+                } else {
+                    diff = prev - numberOfBars
+                }
+                
+                if diff > 1 {
+                    // trigger the feedback in a loop of calls
+                    for i in 1...diff {
+                        //dDispatchQueue.
+                        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(i*16)) {
+                            //os_log("(16 * i) msec seconds later")
+                            self.triggerUIFeedback()
+                        }
+                    }
+                } else {
+                    self.triggerUIFeedback()
+                }
             }
             
             PaxCountLabel.text = self.formattedIndicatorText(for: numberOfBars)
