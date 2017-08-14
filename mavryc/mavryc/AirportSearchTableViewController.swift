@@ -97,6 +97,10 @@ class AirportSearchTableViewController: UITableViewController {
             
             if let text = cell.textLabel?.text {
                 self.listDelegate?.airportSearchListItemWasSelected(airportName: text)
+                if #available(iOS 10.0, *) {
+                    let generator = UIImpactFeedbackGenerator(style: .light)
+                    generator.impactOccurred()
+                }
             }
         }
     }

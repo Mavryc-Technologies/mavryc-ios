@@ -49,7 +49,7 @@ class OutboundReturnViewController: UIViewController {
     @IBOutlet weak var addTripLabel: UILabel!
     
     // Departure Search Text Field
-    @IBOutlet weak var departureSearchTextField: UITextField! {
+    @IBOutlet weak var departureSearchTextField: TintTextField! {
         didSet {
             departureSearchTextField.delegate = self
             departureSearchTextField.keyboardAppearance = .dark
@@ -64,7 +64,7 @@ class OutboundReturnViewController: UIViewController {
     }
     
     // Destination Search Text Field
-    @IBOutlet weak var arrivalSearchTextField: UITextField! {
+    @IBOutlet weak var arrivalSearchTextField: TintTextField! {
         didSet {
             arrivalSearchTextField.delegate = self
             arrivalSearchTextField.keyboardAppearance = .dark
@@ -73,6 +73,8 @@ class OutboundReturnViewController: UIViewController {
             arrivalSearchTextField.attributedPlaceholder = placeholder
             
             arrivalSearchTextField.tintColor = AppStyle.skylarBlueGrey
+            
+
             
             arrivalSearchTextField.addTarget(self, action: #selector(didChangeText(textField:)), for: .editingChanged)
         }

@@ -82,18 +82,23 @@ class DatePickerTableViewController: UITableViewController {
             }
         }
         
-        let row = indexPath.row + 1
+        cell.textLabel?.textColor = colorForCellText(atRow: indexPath.row)
+        
+        return cell
+    }
+    
+    func colorForCellText(atRow: Int) -> UIColor {
+        let row = atRow
         let diff = (row < 5) ? row : 5
         let color = AppStyle.skylarBlueGrey
         let alpha = CGFloat(1 - (CGFloat(diff) * 0.1))
-        cell.textLabel?.textColor = color.withAlphaComponent(alpha)
-        
-        return cell
+        return color.withAlphaComponent(alpha)
     }
     
     override func tableView(_ tableView: UITableView, willDeselectRowAt indexPath: IndexPath) -> IndexPath? {
         if let cell = tableView.cellForRow(at: indexPath) {
             cell.backgroundColor = UIColor.clear
+            cell.textLabel?.textColor = colorForCellText(atRow: indexPath.row)
         }
         return indexPath
     }
@@ -103,15 +108,19 @@ class DatePickerTableViewController: UITableViewController {
         if let cell = tableView.cellForRow(at: indexPath) {
             if cell.isSelected {
                 cell.backgroundColor = UIColor.clear
-                //cell.backgroundColor = AppStyle.airportSearchCellSelectionColor
+                //cell.backgroundColor = AppStyle.skylarBlueGrey
+                cell.textLabel?.textColor = UIColor.white
             } else {
-                //cell.backgroundColor = UIColor.clear
                 cell.backgroundColor = UIColor.clear
             }
             
             if let text = cell.textLabel?.text {
                 // TODO: get the actual date and pass it
                 self.datePickerListDelegate?.didSelectDate(string: text, date: Date())
+                if #available(iOS 10.0, *) {
+                    let generator = UIImpactFeedbackGenerator(style: .light)
+                    generator.impactOccurred()
+                }
             }
         }
     }
