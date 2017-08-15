@@ -31,7 +31,7 @@ class MapController: NSObject {
     public func animateMap(to location: CLLocation, map: MGLMapView, duration: TimeInterval) {
         self.mapCam.centerCoordinate = location.coordinate
         self.mapCam.altitude = Double(3000000)
-        //self.mapCam.pitch = 60.0
+        self.mapCam.pitch = 60.0
         map.setCamera(self.mapCam, withDuration: duration, animationTimingFunction: CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn))
     }
     
@@ -43,6 +43,10 @@ class MapController: NSObject {
         let lon = location.coordinate.longitude
         let center = CLLocationCoordinate2D(latitude: lat, longitude: lon)
         mapView?.setCenter(center, zoomLevel: 12, animated: true)
+        self.mapCam.centerCoordinate = location.coordinate
+        self.mapCam.altitude = Double(500000)
+        self.mapCam.pitch = 60.0
+        mapView?.setCamera(self.mapCam, withDuration: 0.5, animationTimingFunction: CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn))
         
         // Fill an array with point annotations and add it to the map.
         let userAnnotation = CustomPointAnnotation()
