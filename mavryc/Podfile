@@ -15,6 +15,7 @@ target 'mavryc' do
   pod 'GooglePlaces'
   pod 'GooglePlacePicker'
   pod 'GoogleMaps'
+  pod 'LFLoginController'
 
   target 'mavrycTests' do
     pod 'SwiftyJSON', '~> 3.1.1'

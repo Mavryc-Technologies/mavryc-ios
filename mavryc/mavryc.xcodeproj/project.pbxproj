@@ -46,6 +46,8 @@
 		967716621F2409AB00A9DB39 /* FareSplitterCondensed.xib in Resources */ = {isa = PBXBuildFile; fileRef = 967716611F2409AB00A9DB39 /* FareSplitterCondensed.xib */; };
 		967FF6261E9446BF007B56C6 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967FF6251E9446BF007B56C6 /* Networking.swift */; };
 		967FF6291E945796007B56C6 /* FetchUserClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967FF6281E945796007B56C6 /* FetchUserClient.swift */; };
+		968A079A1F451B5C0086BAB4 /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968A07991F451B5C0086BAB4 /* LoginManager.swift */; };
+		968A079C1F451ECE0086BAB4 /* LoginUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968A079B1F451ECE0086BAB4 /* LoginUser.swift */; };
 		968BCA401F2C15AC00B3C9EF /* AircraftDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968BCA3F1F2C15AB00B3C9EF /* AircraftDetailViewController.swift */; };
 		96A32C181E96A30500DA7DC1 /* states-cities.json in Resources */ = {isa = PBXBuildFile; fileRef = 96A32C171E96A30500DA7DC1 /* states-cities.json */; };
 		96A32C1B1E96A36900DA7DC1 /* Cities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A32C1A1E96A36900DA7DC1 /* Cities.swift */; };
@@ -98,6 +100,9 @@
 		96E53EDD1E90378E0045AA06 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96E53EDB1E90378E0045AA06 /* LaunchScreen.storyboard */; };
 		96E53EE81E90378E0045AA06 /* mavrycTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E53EE71E90378E0045AA06 /* mavrycTests.swift */; };
 		96E7DBA41F05A2C700AA850E /* JoystickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E7DBA31F05A2C700AA850E /* JoystickView.swift */; };
+		96E9DAA11F4506E100E73279 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96E9DAA01F4506E100E73279 /* Login.storyboard */; };
+		96E9DAA31F4506FA00E73279 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E9DAA21F4506FA00E73279 /* LoginViewController.swift */; };
+		96E9DAA51F45070600E73279 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E9DAA41F45070600E73279 /* RegistrationViewController.swift */; };
 		96F2FC961E92CD0000C51674 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F2FC951E92CD0000C51674 /* AppCoordinator.swift */; };
 		96F2FC981E92D29600C51674 /* SafeLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F2FC971E92D29600C51674 /* SafeLog.swift */; };
 		96F2FC9B1E92D6FE00C51674 /* AppStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F2FC9A1E92D6FE00C51674 /* AppStyle.swift */; };
@@ -166,6 +171,8 @@
 		967716611F2409AB00A9DB39 /* FareSplitterCondensed.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FareSplitterCondensed.xib; sourceTree = "<group>"; };
 		967FF6251E9446BF007B56C6 /* Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		967FF6281E945796007B56C6 /* FetchUserClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchUserClient.swift; sourceTree = "<group>"; };
+		968A07991F451B5C0086BAB4 /* LoginManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
+		968A079B1F451ECE0086BAB4 /* LoginUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginUser.swift; sourceTree = "<group>"; };
 		968BCA3F1F2C15AB00B3C9EF /* AircraftDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AircraftDetailViewController.swift; sourceTree = "<group>"; };
 		96A32C171E96A30500DA7DC1 /* states-cities.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "states-cities.json"; sourceTree = "<group>"; };
 		96A32C1A1E96A36900DA7DC1 /* Cities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cities.swift; sourceTree = "<group>"; };
@@ -222,6 +229,9 @@
 		96E53EE71E90378E0045AA06 /* mavrycTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mavrycTests.swift; sourceTree = "<group>"; };
 		96E53EE91E90378E0045AA06 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		96E7DBA31F05A2C700AA850E /* JoystickView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoystickView.swift; sourceTree = "<group>"; };
+		96E9DAA01F4506E100E73279 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		96E9DAA21F4506FA00E73279 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		96E9DAA41F45070600E73279 /* RegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		96F2FC951E92CD0000C51674 /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		96F2FC971E92D29600C51674 /* SafeLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SafeLog.swift; sourceTree = "<group>"; };
 		96F2FC9A1E92D6FE00C51674 /* AppStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppStyle.swift; sourceTree = "<group>"; };
@@ -625,17 +635,21 @@
 				9652283C1EAAA0DE0054DA70 /* map */,
 				96F2FCAA1E92DBE800C51674 /* onboarding */,
 				96E53EF41E90387B0045AA06 /* pay */,
-				96E53EF81E903AEC0045AA06 /* signup */,
+				96E9DAA61F45078A00E73279 /* login */,
+				96E53EF81E903AEC0045AA06 /* signup - WIP */,
 				96CE58F71EE8FBB900073BD5 /* common_ui */,
 			);
 			name = features;
 			sourceTree = "<group>";
 		};
-		96E53EF81E903AEC0045AA06 /* signup */ = {
+		96E53EF81E903AEC0045AA06 /* signup - WIP */ = {
 			isa = PBXGroup;
 			children = (
+				96E9DAA01F4506E100E73279 /* Login.storyboard */,
+				96E9DAA21F4506FA00E73279 /* LoginViewController.swift */,
+				96E9DAA41F45070600E73279 /* RegistrationViewController.swift */,
 			);
-			name = signup;
+			name = "signup - WIP";
 			sourceTree = "<group>";
 		};
 		96E53EF91E903B440045AA06 /* extensions */ = {
@@ -653,6 +667,15 @@
 				96DC0DB21F3D3BBF00B9A9C1 /* Bundle+Versioning.swift */,
 			);
 			name = extensions;
+			sourceTree = "<group>";
+		};
+		96E9DAA61F45078A00E73279 /* login */ = {
+			isa = PBXGroup;
+			children = (
+				968A07991F451B5C0086BAB4 /* LoginManager.swift */,
+				968A079B1F451ECE0086BAB4 /* LoginUser.swift */,
+			);
+			name = login;
 			sourceTree = "<group>";
 		};
 		96F2FCA01E92D9A900C51674 /* storyboard support */ = {
@@ -792,6 +815,7 @@
 				96DA35B31EC281C600D2A0BC /* skylar.xcassets in Resources */,
 				96F2FCAC1E92DEE300C51674 /* Onboarding.storyboard in Resources */,
 				96B1F2CF1EEA19A900EB5F4A /* airports.csv in Resources */,
+				96E9DAA11F4506E100E73279 /* Login.storyboard in Resources */,
 				967716621F2409AB00A9DB39 /* FareSplitterCondensed.xib in Resources */,
 				9606FD9B1EFDBD760059AD47 /* tap5.wav in Resources */,
 				96DC0DB51F3D3D6600B9A9C1 /* Profile.storyboard in Resources */,
@@ -844,7 +868,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		A1A120A974CC6CD1CE67DD80 /* [CP] Embed Pods Frameworks */ = {
@@ -874,7 +898,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		E5BE1DB17A282E23A72A0837 /* [CP] Copy Pods Resources */ = {
@@ -918,6 +942,8 @@
 				96C506631F3D19E3001E41DB /* SlideoutMenuTableViewCell.swift in Sources */,
 				9606FD891EFC83A50059AD47 /* Notification+Location.swift in Sources */,
 				96F2FCA21E92D9DA00C51674 /* StoryboardIdentifiable.swift in Sources */,
+				96E9DAA31F4506FA00E73279 /* LoginViewController.swift in Sources */,
+				968A079A1F451B5C0086BAB4 /* LoginManager.swift in Sources */,
 				9606FD8D1EFC89E50059AD47 /* TripCoordinator.swift in Sources */,
 				966744601F282BCB007445CE /* ContactTableViewCell.swift in Sources */,
 				23B819C81EB19145006017FC /* LoginDTO.swift in Sources */,
@@ -938,6 +964,7 @@
 				96B063D81ED3A4B7006151E5 /* JoystickMapCoordinator.swift in Sources */,
 				9677165C1F23D5F100A9DB39 /* FareSplitterCondensed.swift in Sources */,
 				96B1F2CB1EEA0CB500EB5F4A /* Airports.swift in Sources */,
+				96E9DAA51F45070600E73279 /* RegistrationViewController.swift in Sources */,
 				96DA35B01EC2732C00D2A0BC /* Joystick.swift in Sources */,
 				96F2FCA51E92DA3400C51674 /* UIViewController+StoryboardIdentifier.swift in Sources */,
 				960B50E41EC6392F002B1432 /* JourneyDetailsVC.swift in Sources */,
@@ -950,6 +977,7 @@
 				96C506661F3D1D4F001E41DB /* String+Utils.swift in Sources */,
 				96E7DBA41F05A2C700AA850E /* JoystickView.swift in Sources */,
 				96DC0DB71F3D3D9400B9A9C1 /* ProfileViewController.swift in Sources */,
+				968A079C1F451ECE0086BAB4 /* LoginUser.swift in Sources */,
 				96DA35AD1EC1264400D2A0BC /* FlightPanelViewController.swift in Sources */,
 				96CB0A491EE75FAA004ADEA0 /* AirportSearchTableViewCell.swift in Sources */,
 				96CE58F61EE8FBAF00073BD5 /* StyledButton.swift in Sources */,

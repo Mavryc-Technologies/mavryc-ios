@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import LFLoginController
 
 class SlideoutMenuViewController: UIViewController {
 
@@ -83,10 +84,14 @@ class SlideoutMenuViewController: UIViewController {
             }
             break
         case .profile:
-            let sb = UIStoryboard.init(name: "Profile", bundle: Bundle.main)
-            if let vc = sb.instantiateInitialViewController(){
-             self.show(vc, sender: self)
-            }
+//            let sb = UIStoryboard.init(name: "Profile", bundle: Bundle.main)
+//            if let vc = sb.instantiateInitialViewController(){
+//             self.show(vc, sender: self)
+//            }
+            
+            let controller = LFLoginController()
+            self.show(controller, sender: self)
+            
             break
         case .settings:
             let sb = UIStoryboard.init(name: "Profile", bundle: Bundle.main)
