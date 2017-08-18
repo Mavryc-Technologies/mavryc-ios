@@ -100,9 +100,6 @@
 		96E53EDD1E90378E0045AA06 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96E53EDB1E90378E0045AA06 /* LaunchScreen.storyboard */; };
 		96E53EE81E90378E0045AA06 /* mavrycTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E53EE71E90378E0045AA06 /* mavrycTests.swift */; };
 		96E7DBA41F05A2C700AA850E /* JoystickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E7DBA31F05A2C700AA850E /* JoystickView.swift */; };
-		96E9DAA11F4506E100E73279 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96E9DAA01F4506E100E73279 /* Login.storyboard */; };
-		96E9DAA31F4506FA00E73279 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E9DAA21F4506FA00E73279 /* LoginViewController.swift */; };
-		96E9DAA51F45070600E73279 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E9DAA41F45070600E73279 /* RegistrationViewController.swift */; };
 		96F2FC961E92CD0000C51674 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F2FC951E92CD0000C51674 /* AppCoordinator.swift */; };
 		96F2FC981E92D29600C51674 /* SafeLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F2FC971E92D29600C51674 /* SafeLog.swift */; };
 		96F2FC9B1E92D6FE00C51674 /* AppStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F2FC9A1E92D6FE00C51674 /* AppStyle.swift */; };
@@ -229,9 +226,6 @@
 		96E53EE71E90378E0045AA06 /* mavrycTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mavrycTests.swift; sourceTree = "<group>"; };
 		96E53EE91E90378E0045AA06 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		96E7DBA31F05A2C700AA850E /* JoystickView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoystickView.swift; sourceTree = "<group>"; };
-		96E9DAA01F4506E100E73279 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
-		96E9DAA21F4506FA00E73279 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		96E9DAA41F45070600E73279 /* RegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		96F2FC951E92CD0000C51674 /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		96F2FC971E92D29600C51674 /* SafeLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SafeLog.swift; sourceTree = "<group>"; };
 		96F2FC9A1E92D6FE00C51674 /* AppStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppStyle.swift; sourceTree = "<group>"; };
@@ -464,8 +458,8 @@
 		96C506581F3CEB32001E41DB /* slideout menu */ = {
 			isa = PBXGroup;
 			children = (
-				96C506591F3CEB52001E41DB /* SlideoutMenu.storyboard */,
 				96C5065B1F3CEB86001E41DB /* SlideoutMenuViewController.swift */,
+				96C506591F3CEB52001E41DB /* SlideoutMenu.storyboard */,
 				96C506611F3D19E3001E41DB /* SlideoutMenuTableViewCell.swift */,
 				96C506621F3D19E3001E41DB /* SlideoutMenuTableViewCell.xib */,
 				96DC0DB41F3D3D6600B9A9C1 /* Profile.storyboard */,
@@ -636,20 +630,9 @@
 				96F2FCAA1E92DBE800C51674 /* onboarding */,
 				96E53EF41E90387B0045AA06 /* pay */,
 				96E9DAA61F45078A00E73279 /* login */,
-				96E53EF81E903AEC0045AA06 /* signup - WIP */,
 				96CE58F71EE8FBB900073BD5 /* common_ui */,
 			);
 			name = features;
-			sourceTree = "<group>";
-		};
-		96E53EF81E903AEC0045AA06 /* signup - WIP */ = {
-			isa = PBXGroup;
-			children = (
-				96E9DAA01F4506E100E73279 /* Login.storyboard */,
-				96E9DAA21F4506FA00E73279 /* LoginViewController.swift */,
-				96E9DAA41F45070600E73279 /* RegistrationViewController.swift */,
-			);
-			name = "signup - WIP";
 			sourceTree = "<group>";
 		};
 		96E53EF91E903B440045AA06 /* extensions */ = {
@@ -815,7 +798,6 @@
 				96DA35B31EC281C600D2A0BC /* skylar.xcassets in Resources */,
 				96F2FCAC1E92DEE300C51674 /* Onboarding.storyboard in Resources */,
 				96B1F2CF1EEA19A900EB5F4A /* airports.csv in Resources */,
-				96E9DAA11F4506E100E73279 /* Login.storyboard in Resources */,
 				967716621F2409AB00A9DB39 /* FareSplitterCondensed.xib in Resources */,
 				9606FD9B1EFDBD760059AD47 /* tap5.wav in Resources */,
 				96DC0DB51F3D3D6600B9A9C1 /* Profile.storyboard in Resources */,
@@ -942,7 +924,6 @@
 				96C506631F3D19E3001E41DB /* SlideoutMenuTableViewCell.swift in Sources */,
 				9606FD891EFC83A50059AD47 /* Notification+Location.swift in Sources */,
 				96F2FCA21E92D9DA00C51674 /* StoryboardIdentifiable.swift in Sources */,
-				96E9DAA31F4506FA00E73279 /* LoginViewController.swift in Sources */,
 				968A079A1F451B5C0086BAB4 /* LoginManager.swift in Sources */,
 				9606FD8D1EFC89E50059AD47 /* TripCoordinator.swift in Sources */,
 				966744601F282BCB007445CE /* ContactTableViewCell.swift in Sources */,
@@ -964,7 +945,6 @@
 				96B063D81ED3A4B7006151E5 /* JoystickMapCoordinator.swift in Sources */,
 				9677165C1F23D5F100A9DB39 /* FareSplitterCondensed.swift in Sources */,
 				96B1F2CB1EEA0CB500EB5F4A /* Airports.swift in Sources */,
-				96E9DAA51F45070600E73279 /* RegistrationViewController.swift in Sources */,
 				96DA35B01EC2732C00D2A0BC /* Joystick.swift in Sources */,
 				96F2FCA51E92DA3400C51674 /* UIViewController+StoryboardIdentifier.swift in Sources */,
 				960B50E41EC6392F002B1432 /* JourneyDetailsVC.swift in Sources */,

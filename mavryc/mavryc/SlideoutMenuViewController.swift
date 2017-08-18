@@ -84,13 +84,7 @@ class SlideoutMenuViewController: UIViewController {
             }
             break
         case .profile:
-//            let sb = UIStoryboard.init(name: "Profile", bundle: Bundle.main)
-//            if let vc = sb.instantiateInitialViewController(){
-//             self.show(vc, sender: self)
-//            }
-            
-            let controller = LFLoginController()
-            self.show(controller, sender: self)
+            LoginManager.shared.presentLoginScreen(sender: self)
             
             break
         case .settings:
@@ -102,6 +96,27 @@ class SlideoutMenuViewController: UIViewController {
         }
     }
 }
+
+extension SlideoutMenuViewController: LoginMulticastDelegate {
+    
+    func identifier() -> String {
+        return self.description
+    }
+    
+    func onLogin(success: Bool, manager: LoginManager, Login: LoginUser) {
+        print("onLogin")
+        
+        if success {
+            print("login success")
+            manager.dismissLoginScreen()
+        }
+    }
+    
+    func onLogout(manager: LoginManager) {
+        print("onLogout")
+    }
+}
+
 
 extension SlideoutMenuViewController: UITableViewDelegate, UITableViewDataSource {
     

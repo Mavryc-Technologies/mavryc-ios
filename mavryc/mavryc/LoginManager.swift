@@ -9,17 +9,61 @@
 import UIKit
 import LFLoginController
 
-protocol LoginProtocol {
+protocol LoginMulticastDelegate {
+    func identifier() -> String
     func onLogin(success: Bool, manager: LoginManager, Login: LoginUser)
     func onLogout(manager: LoginManager)
 //    func onForgotPassword(manager: LoginManager)
+}
+
+func ==(lhs: LoginMulticastDelegate, rhs: LoginMulticastDelegate) -> Bool {
+    return lhs.identifier() == rhs.identifier()
+}
+
+func !=(lhs: LoginMulticastDelegate, rhs: LoginMulticastDelegate) -> Bool {
+    return lhs.identifier() != rhs.identifier()
 }
 
 class LoginManager {
     
     static let shared = LoginManager()
     
-    var listeners: [LoginProtocol] = []
+    public weak var loginViewController: LFLoginController? = nil
+    
+    fileprivate var listeners: [LoginMulticastDelegate] = []
+    
+    public func registerLoginMulticastDelegate(listener: LoginMulticastDelegate) {
+        
+        let listenerId = listener.identifier()
+        
+        if let foundIndex = self.listeners.index(where: { (aListener) -> Bool in
+            if listenerId == aListener.identifier() { return true }
+            return false
+        })
+        {
+            self.listeners.remove(at: foundIndex)
+        }
+        
+        self.listeners.append(listener)
+    }
+    
+    public func presentLoginScreen(sender: UIViewController) {
+        let login = LFLoginController()
+        login.view.backgroundColor = AppStyle.skylarDeepBlue
+        login.loginButtonColor = AppStyle.skylarGold
+        
+        self.loginViewController = login
+        login.delegate = self
+        self.registerLoginMulticastDelegate(listener: sender as! LoginMulticastDelegate)
+        
+        sender.show(login, sender: self)
+    }
+    
+    public func dismissLoginScreen() {
+        self.loginViewController?.dismiss(animated: true, completion: {
+            print("login dismissed")
+        })
+    }
 }
 
 extension LoginManager: LFLoginControllerDelegate {
