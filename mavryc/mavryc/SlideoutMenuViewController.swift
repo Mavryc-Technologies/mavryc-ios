@@ -62,6 +62,10 @@ class SlideoutMenuViewController: UIViewController {
     
     // MARK: - control actions
     
+    @IBAction func xButtonTapAction(_ sender: Any) {
+        NotificationCenter.default.post(name: Notification.Name.SlideoutMenu.CloseWasTapped, object: self, userInfo:[:])
+    }
+    
     @IBAction func dismissalTapAction(_ sender: UITapGestureRecognizer) {
                 NotificationCenter.default.post(name: Notification.Name.SlideoutMenu.CloseWasTapped, object: self, userInfo:[:])
     }
@@ -125,7 +129,7 @@ extension SlideoutMenuViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 49.5
+        return 60
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
