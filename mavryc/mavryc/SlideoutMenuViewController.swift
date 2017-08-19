@@ -32,6 +32,17 @@ class SlideoutMenuViewController: UIViewController {
         case settings
         case help
         case profile
+        
+        func iconImage() -> UIImage? {
+            switch self {
+            case .settings:
+                return UIImage(named: "Settings Icon")
+            case .profile:
+                return UIImage(named: "Profile Icon")
+            case .help:
+                return UIImage(named: "HELP Icon")
+            }
+        }
     }
     
     var menuList: [Menu] = [.settings,.help,.profile]
@@ -140,6 +151,8 @@ extension SlideoutMenuViewController: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "menuCell", for: indexPath) as? SlideoutMenuTableViewCell else { return UITableViewCell() }
         cell.title?.text = menuList[indexPath.row].rawValue.capitalizingFirstLetter()
+        let menuType = menuList[indexPath.row]
+        cell.iconImageView.image = menuType.iconImage()
         return cell
     }
 }

@@ -108,7 +108,7 @@ protocol PaxPickerDelegate {
         if isTimeControl {
             iconImageView.image = UIImage(named: "TimeIconFormPDF")
             self.updateUIBarIndicator(to: 10) // 5 pixels * 10 bars
-            self.PaxCountLabel.text = "10:00 AM"
+            self.PaxCountLabel.text = "10 AM"
         } else {
             iconImageView.image = UIImage(named: "PAXIconFormPDF")
             self.updateUIBarIndicator(to: 1)
@@ -281,16 +281,14 @@ protocol PaxPickerDelegate {
             
             if FeatureFlag.militaryTime.isFeatureEnabled() {
                 if numberOfBars < 10 {
-                    formattedTime = "0" + formattedTime + ":00"
-                } else {
-                    formattedTime = formattedTime + ":00"
+                    formattedTime = "0" + formattedTime
                 }
             } else {
                 if numberOfBars > 12 {
                     formattedTime = "\(numberOfBars - 12)"
                 }
                 
-                formattedTime = formattedTime + ":00" + " \(amPmString)"
+                formattedTime = formattedTime + " \(amPmString)"
             }
             
             return formattedTime
