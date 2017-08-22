@@ -18,6 +18,7 @@
 		9606FD8D1EFC89E50059AD47 /* TripCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9606FD8C1EFC89E50059AD47 /* TripCoordinator.swift */; };
 		9606FD8F1EFCA39C0059AD47 /* FlightInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9606FD8E1EFCA39C0059AD47 /* FlightInfo.swift */; };
 		9606FD9B1EFDBD760059AD47 /* tap5.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9606FD9A1EFDBD760059AD47 /* tap5.wav */; };
+		96085F271F4CE75A0049B567 /* DevSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96085F261F4CE75A0049B567 /* DevSettingsTableViewController.swift */; };
 		960B50E41EC6392F002B1432 /* JourneyDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960B50E31EC6392F002B1432 /* JourneyDetailsVC.swift */; };
 		961144931F0D92A0003033AE /* DatePickerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961144921F0D92A0003033AE /* DatePickerTableViewController.swift */; };
 		961144951F0D92BA003033AE /* DatePickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961144941F0D92BA003033AE /* DatePickerTableViewCell.swift */; };
@@ -140,6 +141,7 @@
 		9606FD8C1EFC89E50059AD47 /* TripCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripCoordinator.swift; sourceTree = "<group>"; };
 		9606FD8E1EFCA39C0059AD47 /* FlightInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlightInfo.swift; sourceTree = "<group>"; };
 		9606FD9A1EFDBD760059AD47 /* tap5.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tap5.wav; sourceTree = "<group>"; };
+		96085F261F4CE75A0049B567 /* DevSettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DevSettingsTableViewController.swift; sourceTree = "<group>"; };
 		960B50E31EC6392F002B1432 /* JourneyDetailsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JourneyDetailsVC.swift; sourceTree = "<group>"; };
 		961144921F0D92A0003033AE /* DatePickerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerTableViewController.swift; sourceTree = "<group>"; };
 		961144941F0D92BA003033AE /* DatePickerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerTableViewCell.swift; sourceTree = "<group>"; };
@@ -464,6 +466,7 @@
 				96C506621F3D19E3001E41DB /* SlideoutMenuTableViewCell.xib */,
 				96DC0DB41F3D3D6600B9A9C1 /* Profile.storyboard */,
 				96DC0DB61F3D3D9400B9A9C1 /* ProfileViewController.swift */,
+				96085F261F4CE75A0049B567 /* DevSettingsTableViewController.swift */,
 			);
 			name = "slideout menu";
 			sourceTree = "<group>";
@@ -986,6 +989,7 @@
 				9667445B1F281A95007445CE /* SkylarContact.swift in Sources */,
 				961144951F0D92BA003033AE /* DatePickerTableViewCell.swift in Sources */,
 				96C6D0941F1837B9009AF342 /* FareSplittingViewController.swift in Sources */,
+				96085F271F4CE75A0049B567 /* DevSettingsTableViewController.swift in Sources */,
 				96CE58F01EE8A12900073BD5 /* AircraftSelectCell.swift in Sources */,
 				96F2FCAF1E92DF0D00C51674 /* OnboardingViewController.swift in Sources */,
 				96395F2D1EF340BD0094923F /* Notification+Screens.swift in Sources */,

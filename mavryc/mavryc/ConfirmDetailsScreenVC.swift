@@ -100,6 +100,12 @@ class ConfirmDetailsScreenVC: UIViewController {
     }
     
     func showSplitFareButtonIfNeeded() {
+        
+        if !FeatureFlag.splitFareOnConfirmScreen.isFeatureEnabled() {
+            self.splitFareButton.isHidden = true
+            return
+        }
+        
         if let trip = TripCoordinator.sharedInstance.currentTripInPlanning {
             guard let paxCount = trip.flights[0].pax else { return }
             if paxCount > 1 {
