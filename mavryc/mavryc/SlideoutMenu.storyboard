@@ -143,7 +143,7 @@
                                         <color key="textColor" red="0.3803921569" green="0.4431372549" blue="0.53333333329999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rlW-Xx-gYV">
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rlW-Xx-gYV">
                                         <rect key="frame" x="244" y="3" width="48" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="48" id="Twr-BD-JoA"/>
@@ -210,10 +210,10 @@
             </objects>
             <point key="canvasLocation" x="317.60000000000002" y="-247.82608695652175"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Dev Settings Table View Controller-->
         <scene sceneID="6SG-Hh-YXe">
             <objects>
-                <tableViewController id="fFi-qv-oUD" sceneMemberID="viewController">
+                <tableViewController id="fFi-qv-oUD" customClass="DevSettingsTableViewController" customModule="mavryc" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Ztp-Qr-TMM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
