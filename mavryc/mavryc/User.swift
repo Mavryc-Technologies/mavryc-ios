@@ -7,29 +7,16 @@
 //
 
 import Foundation
-import RealmSwift
-import ObjectMapper
 
-class User: Object, Mappable {
-    dynamic var firstName: String!
-    dynamic var lastName: String!
-    dynamic var email: String! // is the username
-    dynamic var phone: String? = nil
-    dynamic var birthdate: Date? = nil
+class User {
+    var firstName: String?
+    var lastName: String?
+    var email: String? // is the username
+    var phone: String? = nil
+    var birthdate: Date? = nil
     
-    required convenience init?(map: Map) {
-        self.init()
-    }
-    
-    override class func primaryKey() -> String? {
-        return "email"
-    }
-    
-    func mapping(map: Map) {
-        firstName <- map["firstname"]
-        lastName <- map["lastname"]
-        email <- map["email"]
-        phone <- map["phone"]
-        birthdate <- (map["birthdate"], DateTransform())
+    static func isUserLoggedIn() -> Bool {
+        // :TODO: go look at user data and see if there is a user
+        return false
     }
 }

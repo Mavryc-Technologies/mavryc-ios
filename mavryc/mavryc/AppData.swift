@@ -13,8 +13,6 @@ class AppData {
     
     class func setup() {
         
-        RealmConfiguration.setDefaultConfigurationEncrypted()
-        
         if FeatureFlag.googlePlaces.isFeatureEnabled() {
             self.setupGooglePlaces()
         }

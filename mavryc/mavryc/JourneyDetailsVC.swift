@@ -28,11 +28,7 @@ class JourneyDetailsVC: UIViewController {
     
     weak var outboundVC: OutboundReturnViewController? = nil
     
-    @IBOutlet weak var outboundTripXConstraint: NSLayoutConstraint! {
-        didSet {
-            //self.onscreenX = outboundTripXConstraint.constant
-        }
-    }
+    @IBOutlet weak var outboundTripXConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var returnTripXConstraint: NSLayoutConstraint! {
         didSet {
@@ -179,7 +175,7 @@ class JourneyDetailsVC: UIViewController {
     func updateScreenNavigationForSubscreen() {
         NotificationCenter.default.post(name: Notification.Name.SubscreenEvents.JourneySubscreenStateDidUpdate,
                                         object: self,
-                                        userInfo:[Notification.Name.SubscreenEvents.journeySubscreenStateEnumKey:self.subscreenState().rawValue])
+                                        userInfo:[Notification.Name.SubscreenEvents.journeySubscreenStateEnumKey: self.subscreenState().rawValue])
     }
     
     func subscreenState() -> Notification.Name.SubscreenEvents.JourneySubcreenState {

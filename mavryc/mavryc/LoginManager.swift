@@ -47,6 +47,19 @@ class LoginManager {
         self.listeners.append(listener)
     }
     
+    public func presentLoginScreen(sender: UIViewController, delegate: LoginMulticastDelegate) {
+        let login = LFLoginController()
+        login.view.backgroundColor = AppStyle.skylarDeepBlue
+        login.loginButtonColor = AppStyle.skylarGold
+        
+        self.loginViewController = login
+        login.delegate = self
+        
+        self.registerLoginMulticastDelegate(listener: delegate)
+        
+        sender.show(login, sender: self)
+    }
+    
     public func presentLoginScreen(sender: UIViewController) {
         let login = LFLoginController()
         login.view.backgroundColor = AppStyle.skylarDeepBlue
@@ -54,7 +67,10 @@ class LoginManager {
         
         self.loginViewController = login
         login.delegate = self
-        self.registerLoginMulticastDelegate(listener: sender as! LoginMulticastDelegate)
+        
+        if let sendr = sender as? LoginMulticastDelegate {
+            self.registerLoginMulticastDelegate(listener: sendr)
+        }
         
         sender.show(login, sender: self)
     }

@@ -140,6 +140,11 @@ class OutboundReturnViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        
+//        if FeatureFlag.
+//        addRemoveReturnTripButton.isHidden = true
+//        addTripLabel.isHidden = true
+        
         refreshUI()
     }
     

@@ -130,11 +130,44 @@ class ConfirmDetailsScreenVC: UIViewController {
     // MARK: - Control Actions
     
     @IBAction func bookButtonAction(_ sender: Any) {
-        UIView.animate(withDuration: 0.25) {
-            self.applePayBottomVerticalSpace.constant = self.extendedApplePayBottomVerticalSpaceValue
-            self.view.layoutIfNeeded()
+        
+        // if user isn't logged in, do that first, then return here and try again
+        if !User.isUserLoggedIn() {
+//            LoginManager.shared.presentLoginScreen(sender: self)
+            self.presentLogin(animated: true)
+        } else {
+            UIView.animate(withDuration: 0.25) {
+                self.applePayBottomVerticalSpace.constant = self.extendedApplePayBottomVerticalSpaceValue
+                self.view.layoutIfNeeded()
+            }
         }
     }
+    
+    // MARK: - present/dismiss login support
+    func presentLogin(animated: Bool) {
+        if let visibleViewCtrl = UIApplication.shared.keyWindow?.visibleViewController {
+            LoginManager.shared.presentLoginScreen(sender: visibleViewCtrl, delegate: self)
+        }
+    }
+    
+//    func dismissSlideOutMenu(animated: Bool) {
+//        // make it go away
+//        if let vc = self.slideoutMenuViewController, let _ = slideOutMenuPresentingViewController {
+//            
+//            var offScreenFrame = vc.view.frame
+//            offScreenFrame.origin.x = (vc.view.frame.width * -1) - 1
+//            
+//            UIView.animate(withDuration: 0.3, animations: {
+//                vc.view.frame = offScreenFrame
+//                vc.view.layoutIfNeeded()
+//                self.view.layoutIfNeeded()
+//            }, completion: { (done) in
+//                vc.view.removeFromSuperview()
+//                self.slideoutMenuViewController = nil
+//                UIApplication.shared.isStatusBarHidden = false
+//            })
+//        }
+//    }
 }
 
 extension ConfirmDetailsScreenVC: ScreenNavigable {
@@ -142,5 +175,25 @@ extension ConfirmDetailsScreenVC: ScreenNavigable {
     func screenNavigatorRefreshCurrentScreen(_ screenNavigator: ScreenNavigator) {}
     func screenNavigatorIsScreenVisible(_ screenNavigator: ScreenNavigator) -> Bool? {
         return nil
+    }
+}
+
+extension ConfirmDetailsScreenVC: LoginMulticastDelegate {
+    
+    func identifier() -> String {
+        return self.description
+    }
+    
+    func onLogin(success: Bool, manager: LoginManager, Login: LoginUser) {
+        print("onLogin")
+        
+        if success {
+            print("login success")
+            manager.dismissLoginScreen()
+        }
+    }
+    
+    func onLogout(manager: LoginManager) {
+        print("onLogout")
     }
 }
