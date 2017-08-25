@@ -14,11 +14,6 @@ PODS:
   - Locksmith (3.0.0)
   - Mapbox-iOS-SDK (3.5.4)
   - ObjectMapper (2.2.7)
-  - Realm (2.8.0):
-    - Realm/Headers (= 2.8.0)
-  - Realm/Headers (2.8.0)
-  - RealmSwift (2.8.0):
-    - Realm (= 2.8.0)
   - SQLite.swift (0.11.3):
     - SQLite.swift/standard (= 0.11.3)
   - SQLite.swift/standard (0.11.3)
@@ -34,7 +29,6 @@ DEPENDENCIES:
   - Locksmith (~> 3.0)
   - Mapbox-iOS-SDK (~> 3.5)
   - ObjectMapper (~> 2.2)
-  - RealmSwift
   - SQLite.swift (~> 0.11.3)
   - SwiftyJSON (~> 3.1.1)
   - SwiftySound
@@ -48,12 +42,10 @@ SPEC CHECKSUMS:
   Locksmith: 310b4cc5031af5728bf4db5d4de547a5100c6a3b
   Mapbox-iOS-SDK: 81197829dcf4c4ed9a593b7a95462881b5f1309a
   ObjectMapper: 65abcfd9a61cf7396cbd14a4fb22fddfcc46577e
-  Realm: 929243ad2b618b3232e70658bedc61110e7563f1
-  RealmSwift: 5b7079b891f2833d1849294161ba3e092bbda3f6
   SQLite.swift: 99b36c22084427f0abbeb957556ce1528cf10bb3
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   SwiftySound: 4897b230859801982700bb08ec40fa000ea2e59a
 
-PODFILE CHECKSUM: b92e53f1d07610d77ea0f4cec0fa3c58ce601157
+PODFILE CHECKSUM: bf0373a6002fb6d32ae93812d092722894e6f6b7
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.2.0

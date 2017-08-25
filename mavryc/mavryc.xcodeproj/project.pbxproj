@@ -64,7 +64,6 @@
 		96B1F2CF1EEA19A900EB5F4A /* airports.csv in Resources */ = {isa = PBXBuildFile; fileRef = 96B1F2CE1EEA19A900EB5F4A /* airports.csv */; };
 		96B1F2D11EEA294E00EB5F4A /* airports.sqlite3 in Resources */ = {isa = PBXBuildFile; fileRef = 96B1F2D01EEA294E00EB5F4A /* airports.sqlite3 */; };
 		96B7236D1EA98B5200B2E322 /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B7236C1EA98B5200B2E322 /* AppData.swift */; };
-		96B723701EA98B8D00B2E322 /* RealmConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B7236F1EA98B8D00B2E322 /* RealmConfiguration.swift */; };
 		96B723721EA9B53400B2E322 /* databaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B723711EA9B53400B2E322 /* databaseTests.swift */; };
 		96B723741EA9E26100B2E322 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B723731EA9E26100B2E322 /* User.swift */; };
 		96B7476B1F0E9F56006071E5 /* Date+Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B7476A1F0E9F56006071E5 /* Date+Format.swift */; };
@@ -187,7 +186,6 @@
 		96B1F2CE1EEA19A900EB5F4A /* airports.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = airports.csv; sourceTree = "<group>"; };
 		96B1F2D01EEA294E00EB5F4A /* airports.sqlite3 */ = {isa = PBXFileReference; lastKnownFileType = file; path = airports.sqlite3; sourceTree = "<group>"; };
 		96B7236C1EA98B5200B2E322 /* AppData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppData.swift; sourceTree = "<group>"; };
-		96B7236F1EA98B8D00B2E322 /* RealmConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmConfiguration.swift; sourceTree = "<group>"; };
 		96B723711EA9B53400B2E322 /* databaseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = databaseTests.swift; sourceTree = "<group>"; };
 		96B723731EA9E26100B2E322 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		96B7476A1F0E9F56006071E5 /* Date+Format.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Format.swift"; sourceTree = "<group>"; };
@@ -452,7 +450,6 @@
 		96B7236E1EA98B7000B2E322 /* database */ = {
 			isa = PBXGroup;
 			children = (
-				96B7236F1EA98B8D00B2E322 /* RealmConfiguration.swift */,
 			);
 			name = database;
 			sourceTree = "<group>";
@@ -853,7 +850,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		A1A120A974CC6CD1CE67DD80 /* [CP] Embed Pods Frameworks */ = {
@@ -883,7 +880,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		E5BE1DB17A282E23A72A0837 /* [CP] Copy Pods Resources */ = {
@@ -943,7 +940,6 @@
 				96A758B41EE0CAB500F58A4F /* AirportSearchTableViewController.swift in Sources */,
 				961E2AC21E985602000F2D64 /* FetchFlightsDTO.swift in Sources */,
 				96395F311EF48D230094923F /* MapController.swift in Sources */,
-				96B723701EA98B8D00B2E322 /* RealmConfiguration.swift in Sources */,
 				9606FD8B1EFC85260059AD47 /* Trip.swift in Sources */,
 				96B063D81ED3A4B7006151E5 /* JoystickMapCoordinator.swift in Sources */,
 				9677165C1F23D5F100A9DB39 /* FareSplitterCondensed.swift in Sources */,

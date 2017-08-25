@@ -99,7 +99,11 @@ class SlideoutMenuViewController: UIViewController {
             }
             break
         case .profile:
-            LoginManager.shared.presentLoginScreen(sender: self)
+            if User.isUserLoggedIn() {
+                print("should show profile screen here")
+            } else {
+                LoginManager.shared.presentLoginScreen(sender: self)
+            }
             
             break
         case .settings:

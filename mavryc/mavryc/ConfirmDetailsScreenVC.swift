@@ -133,7 +133,6 @@ class ConfirmDetailsScreenVC: UIViewController {
         
         // if user isn't logged in, do that first, then return here and try again
         if !User.isUserLoggedIn() {
-//            LoginManager.shared.presentLoginScreen(sender: self)
             self.presentLogin(animated: true)
         } else {
             UIView.animate(withDuration: 0.25) {
@@ -149,25 +148,7 @@ class ConfirmDetailsScreenVC: UIViewController {
             LoginManager.shared.presentLoginScreen(sender: visibleViewCtrl, delegate: self)
         }
     }
-    
-//    func dismissSlideOutMenu(animated: Bool) {
-//        // make it go away
-//        if let vc = self.slideoutMenuViewController, let _ = slideOutMenuPresentingViewController {
-//            
-//            var offScreenFrame = vc.view.frame
-//            offScreenFrame.origin.x = (vc.view.frame.width * -1) - 1
-//            
-//            UIView.animate(withDuration: 0.3, animations: {
-//                vc.view.frame = offScreenFrame
-//                vc.view.layoutIfNeeded()
-//                self.view.layoutIfNeeded()
-//            }, completion: { (done) in
-//                vc.view.removeFromSuperview()
-//                self.slideoutMenuViewController = nil
-//                UIApplication.shared.isStatusBarHidden = false
-//            })
-//        }
-//    }
+
 }
 
 extension ConfirmDetailsScreenVC: ScreenNavigable {

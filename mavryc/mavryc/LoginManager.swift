@@ -86,21 +86,28 @@ extension LoginManager: LFLoginControllerDelegate {
     
     func loginDidFinish(email: String, password: String, type: LFLoginController.SendType) {
         
-        if type == .Login {
-        
-            // TODO: implement API call to login - returns LoginUser on success
-            let user = LoginUser(email: email, password: password)
+        if !email.isEmpty && !password.isEmpty {
             
-            self.listeners.forEach { (listener) in
-                listener.onLogin(success: true, manager: self, Login: user)
-            }
-        } else {
+            // TODO: proceed for demonstration purposes as if LoginAPI or Signin API succeeded
+            let appUser = User(email: email, password: password)
+            appUser.save()
             
-            // TODO: implement API call to signup - returns LoginUser on success
-            let user = LoginUser(email: email, password: password)
-            
-            self.listeners.forEach { (listener) in
-                listener.onLogin(success: true, manager: self, Login: user)
+            if type == .Login {
+                
+                // TODO: implement API call to login - returns LoginUser on success
+                let user = LoginUser(email: email, password: password)
+                
+                self.listeners.forEach { (listener) in
+                    listener.onLogin(success: true, manager: self, Login: user)
+                }
+            } else {
+                
+                // TODO: implement API call to signup - returns LoginUser on success
+                let user = LoginUser(email: email, password: password)
+                
+                self.listeners.forEach { (listener) in
+                    listener.onLogin(success: true, manager: self, Login: user)
+                }
             }
         }
     }
