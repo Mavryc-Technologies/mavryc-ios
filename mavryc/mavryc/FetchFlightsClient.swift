@@ -21,6 +21,8 @@ class FetchFlightsClient {
         
         Networking.sharedInstance.sessionManager.request(url, method: method, parameters: params, encoding: URLEncoding.default, headers: nil).validate().responseJSON { response in
             
+            print("\(response)")
+            
             switch response.result {
             case .success(let jsonData):
                 

@@ -80,4 +80,23 @@ class webServiceClientTests: XCTestCase {
         waitForExpectations(timeout: 20.0, handler:nil)
     }
     
+    func testFetchFlightsWithParamsClient() {
+        let exp = expectation(description: "fetch flights web service expectation")
+        
+        var dto = FetchFlightsDTO()
+        dto.arrivalDateTime = Date().toString()
+        dto.departureDateTime = Date().toString()
+        dto.origin = "Huntington Beach, California"
+        dto.destination = "Miami, Florida"
+        dto.jetServiceType = "light"
+        FetchFlightsClient().makeRequest(dto: dto, success: { flights in
+            print("flights: \(flights)")
+            exp.fulfill()
+        }, failure: { error in
+            XCTFail()
+        })
+        
+        waitForExpectations(timeout: 20.0, handler:nil)
+    }
+    
 }

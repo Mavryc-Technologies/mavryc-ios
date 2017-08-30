@@ -30,7 +30,7 @@ enum PlatformAPI {
 //}
 
 enum PlatformBaseUrl: String {
-    case apiaryMock = "https://private-6f3e2-mavrycswaggerapi.apiary-mock.com/v1"
+    case apiaryMock = "https://private-6f3e2-mavrycswaggerapi.apiary-mock.com"
     case development = "https://mavryc.herokuapp.com"
     case production = "https://www.mavrycapp.com" // TODO: update prod base url
 }
