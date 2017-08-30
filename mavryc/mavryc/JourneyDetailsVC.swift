@@ -241,7 +241,8 @@ class JourneyDetailsVC: UIViewController {
             
             if nextButton.isEnabled {
                 if subscreenState() == .oneWayOnly || subscreenState() == .ignoreSubscreenStates {
-                    self.performSegue(withIdentifier: "AircraftSelectionScreenSegue", sender: self)
+//                    self.performSegue(withIdentifier: "AircraftSelectionScreenSegue", sender: self)
+                    self.nextButtonAction(self)
                 }
             }
         }
@@ -297,7 +298,31 @@ class JourneyDetailsVC: UIViewController {
     // MARK: - Control Actions
     
     @IBAction func nextButtonAction(_ sender: Any) {
-        print("next button pressed")
+        
+        // if available flights already retrieved...
+        if let _ = AircraftServiceProvider.shared.availableFlightsViewModel {
+            self.performSegue(withIdentifier: "AircraftSelectionScreenSegue", sender: self)
+            return
+        }
+        
+        // :TODO: show spinner
+        
+        // else
+        var dto = FetchFlightsDTO()
+        dto.arrivalDateTime = Date().toString()
+        dto.departureDateTime = Date().toString()
+        dto.origin = self.outboundVC?.departureSearchTextField.text
+        dto.destination = self.outboundVC?.arrivalSearchTextField.text
+        FetchFlightsClient().makeRequest(dto: dto, success: { [weak self] flights in
+            AircraftServiceProvider.shared.availableFlightsViewModel = AircraftServicesViewModel(flights: flights)
+            print("✈️ ✈️ ✈️ available flights fetched: \(String(describing: AircraftServiceProvider.shared.availableFlightsViewModel?.flights))")
+            if let welf = self {
+                welf.performSegue(withIdentifier: "AircraftSelectionScreenSegue", sender: welf)
+                // :TODO: hide spinner
+            }
+        }, failure: { error in
+            print("FAILED to retrieve available flights")
+        })
     }
     
     // MARK: - Segues
@@ -313,6 +338,16 @@ class JourneyDetailsVC: UIViewController {
             self.returnVC = vc
             vc?.screenCompletableDelegate = self
         }
+    }
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if identifier == "AircraftSelectionScreenSegue" {
+            if AircraftServiceProvider.shared.availableFlightsViewModel != nil {
+                return true
+            }
+            return false
+        }
+        return true
     }
 }
 

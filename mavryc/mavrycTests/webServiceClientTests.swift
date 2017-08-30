@@ -91,8 +91,8 @@ class webServiceClientTests: XCTestCase {
         dto.jetServiceType = "light"
         FetchFlightsClient().makeRequest(dto: dto, success: { flights in
             //print("flights: \(flights)")
-            AircraftServiceProvider.shared.viewModel = AircraftServicesViewModel(flights: flights)
-            print("flights: \(String(describing: AircraftServiceProvider.shared.viewModel?.flights))")
+            AircraftServiceProvider.shared.availableFlightsViewModel = AircraftServicesViewModel(flights: flights)
+            print("flights: \(String(describing: AircraftServiceProvider.shared.availableFlightsViewModel?.flights))")
             exp.fulfill()
         }, failure: { error in
             XCTFail()

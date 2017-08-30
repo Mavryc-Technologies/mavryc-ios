@@ -11,7 +11,7 @@ import Foundation
 class AircraftServiceProvider {
     static let shared = AircraftServiceProvider()
     
-    var viewModel: AircraftServicesViewModel?
+    var availableFlightsViewModel: AircraftServicesViewModel?
 }
 
 struct AircraftServicesViewModel {
