@@ -25,6 +25,8 @@ struct Flight: Mappable {
     var flightId: String?
     var flightDuration: String?
     var boardingTime: String?
+    var flightCost: String?
+    var flightType: String?
     
     init?(map: Map) {
         // check if a required "name" property exists within the JSON.
@@ -61,5 +63,8 @@ struct Flight: Mappable {
         
         seat <- map["seat"]
         boardingTime <- map["boardingTime"]
+        
+        flightCost <- map["flightCost"]
+        flightType <- map["serviceType"]
     }
 }
