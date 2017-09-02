@@ -11,6 +11,8 @@ import CoreLocation
 
 class Trip: NSObject {
     
+    var jetServiceType: String?
+    
     var flights: [FlightInfo] = []
     
     var isOneWayOnly: Bool = true

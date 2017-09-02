@@ -451,6 +451,14 @@ class AircraftSelectViewController: UIViewController, UITableViewDelegate, UITab
                 
                 nextButton.isEnabled = true
                 
+                // TODO: update the data model for TripDataModelProvider
+                if let flight = AircraftServiceProvider.shared.availableFlightsViewModel?.flights[indexPath.row] {
+                    if let jetServiceType = flight.flightType, let cost = flight.flightCost {
+                        let nextViewModel = ConfirmDetailsViewModel(jetserviceTypeString: jetServiceType, tripTotalCost: cost)
+                        ConfirmDetailsVeiwModelProvider.shared.confirmDetailsViewModel = nextViewModel
+                    }
+                }
+                
                 // reload
                 tableView.reloadData()
             }

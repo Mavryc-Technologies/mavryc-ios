@@ -67,6 +67,11 @@ class ConfirmDetailsScreenVC: UIViewController {
         ScreenNavigator.sharedInstance.registerScreen(screen: self, asScreen: .confirmDetails)
         
         self.setupSwipeGesture()
+        
+        if let viewModel = ConfirmDetailsVeiwModelProvider.shared.confirmDetailsViewModel {
+            self.aircraftServiceSelectedTitle.text = viewModel.jetserviceTypeString.lowercased().capitalizingFirstLetter()  + " Jet"
+            self.totalAmountLabel.text = viewModel.tripTotalCost
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
