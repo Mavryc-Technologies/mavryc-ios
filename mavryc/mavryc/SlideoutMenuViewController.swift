@@ -68,6 +68,14 @@ class SlideoutMenuViewController: UIViewController {
         
         profileImageView.layer.cornerRadius = profileImageView.frame.size.width / 2
         profileImageView.layer.masksToBounds = true
+        
+        if User.isUserLoggedIn() {
+            if let first = User.storedUser()?.firstName, let last = User.storedUser()?.lastName {
+                profileNameLabel.text = first + " " + last
+            } else if let email = User.storedUser()?.email {
+                profileNameLabel.text = email
+            }
+        }
     }
     
     
