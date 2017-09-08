@@ -109,6 +109,10 @@ class SlideoutMenuViewController: UIViewController {
         case .profile:
             if User.isUserLoggedIn() {
                 print("should show profile screen here")
+                let sb = UIStoryboard.init(name: "Profile", bundle: Bundle.main)
+                if let vc = sb.instantiateInitialViewController(){
+                    self.show(vc, sender: self)
+                }
             } else {
                 LoginManager.shared.presentLoginScreen(sender: self)
             }

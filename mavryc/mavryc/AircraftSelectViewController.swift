@@ -90,9 +90,17 @@ class AircraftSelectViewController: UIViewController, UITableViewDelegate, UITab
         
         self.setupSwipeGesture()
         
-        //self.tableView(self.tableView, didSelectRowAt: IndexPath(row: 1, section: 0)) // defaults to second item
+        self.tableView(self.tableView, didSelectRowAt: IndexPath(row: 1, section: 0)) // defaults to second item
         cellWasSelectedAtIndexPath = IndexPath(row: 1, section: 0)
         nextButton.isEnabled = true
+        
+        // we need the model to update even though there isn't necessarily user interaction to select the aircraft type (the default selection case) - so we'll set the default model to the default selected cell too
+        if let flight = AircraftServiceProvider.shared.availableFlightsViewModel?.flights[1] {
+            if let jetServiceType = flight.flightType, let cost = flight.flightCost {
+                let nextViewModel = ConfirmDetailsViewModel(jetserviceTypeString: jetServiceType, tripTotalCost: cost)
+                ConfirmDetailsVeiwModelProvider.shared.confirmDetailsViewModel = nextViewModel
+            }
+        }
         
         // this will center appropriately each subscreen setting their constraint.constant to onscreenX
         self.onscreenX = ((self.view.frame.size.width - 300) / 2)

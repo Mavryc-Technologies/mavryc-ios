@@ -18,6 +18,26 @@ class ConfirmDetailsScreenVC: UIViewController {
     
     @IBOutlet weak var splitFareButton: UIButton!
     
+    @IBOutlet weak var outboundDepartCodeLabel: UILabel!
+    @IBOutlet weak var outboundDepartCityLabel: UILabel!
+    @IBOutlet weak var outboundDepartDateLabel: UILabel!
+    @IBOutlet weak var outboundDepartTimePaxLabel: UILabel!
+    
+    @IBOutlet weak var outboundArrivalCodeLabel: UILabel!
+    @IBOutlet weak var outboundArrivalCityLabel: UILabel!
+    @IBOutlet weak var outboundArrivalDateLabel: UILabel!
+    @IBOutlet weak var outboundArrivalTimePaxLabel: UILabel!
+    
+    @IBOutlet weak var returnDepartCodeLabel: UILabel!
+    @IBOutlet weak var returnDepartCityLabel: UILabel!
+    @IBOutlet weak var returnDepartDateLabel: UILabel!
+    @IBOutlet weak var returnDepartTimePaxLabel: UILabel!
+    
+    @IBOutlet weak var returnArrivalCodeLabel: UILabel!
+    @IBOutlet weak var returnArrivalCityLabel: UILabel!
+    @IBOutlet weak var returnArrivalDateLabel: UILabel!
+    @IBOutlet weak var returnArrivalTimePaxLabel: UILabel!
+    
     // MARK: - placeholder ApplePay
     var extendedApplePayBottomVerticalSpaceValue: CGFloat = 0
     var retractedApplePayBottomVerticalSpaceValue: CGFloat = 0
@@ -68,10 +88,7 @@ class ConfirmDetailsScreenVC: UIViewController {
         
         self.setupSwipeGesture()
         
-        if let viewModel = ConfirmDetailsVeiwModelProvider.shared.confirmDetailsViewModel {
-            self.aircraftServiceSelectedTitle.text = viewModel.jetserviceTypeString.lowercased().capitalizingFirstLetter()  + " Jet"
-            self.totalAmountLabel.text = viewModel.tripTotalCost
-        }
+        self.updateUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -84,10 +101,29 @@ class ConfirmDetailsScreenVC: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        self.updateUI()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
+    }
+    
+    func updateUI() {
+        if let viewModel = ConfirmDetailsVeiwModelProvider.shared.confirmDetailsViewModel {
+            self.aircraftServiceSelectedTitle.text = viewModel.jetserviceTypeString.lowercased().capitalizingFirstLetter()  + " Jet"
+            self.totalAmountLabel.text = viewModel.tripTotalCost
+            
+            self.outboundDepartCityLabel.text = viewModel.city(of: .outboundDeparture)
+            self.outboundArrivalCityLabel.text = viewModel.city(of: .outboundArrival)
+            self.returnDepartCityLabel.text = viewModel.city(of: .returnDeparture)
+            self.returnArrivalCityLabel.text = viewModel.city(of: .returnArrival)
+            
+            self.outboundDepartCodeLabel.text = viewModel.airportCode(flightSegment: .outboundDeparture)
+            self.outboundArrivalCodeLabel.text = viewModel.airportCode(flightSegment: .outboundArrival)
+            self.returnDepartCodeLabel.text = viewModel.airportCode(flightSegment: .returnDeparture)
+            self.returnArrivalCodeLabel.text = viewModel.airportCode(flightSegment: .returnArrival)
+        }
     }
     
     func setupSwipeGesture() {
