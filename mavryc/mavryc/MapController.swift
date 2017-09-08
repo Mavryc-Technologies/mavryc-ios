@@ -45,7 +45,7 @@ class MapController: NSObject {
         mapView?.setCenter(center, zoomLevel: 12, animated: true)
         self.mapCam.centerCoordinate = location.coordinate
         self.mapCam.altitude = Double(500000)
-        self.mapCam.pitch = 60.0
+        self.mapCam.pitch = 30.0
         mapView?.setCamera(self.mapCam, withDuration: 0.5, animationTimingFunction: CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn))
         
         // Fill an array with point annotations and add it to the map.
