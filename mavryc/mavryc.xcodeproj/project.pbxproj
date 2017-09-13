@@ -96,6 +96,8 @@
 		96DC0DB31F3D3BBF00B9A9C1 /* Bundle+Versioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DC0DB21F3D3BBF00B9A9C1 /* Bundle+Versioning.swift */; };
 		96DC0DB51F3D3D6600B9A9C1 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96DC0DB41F3D3D6600B9A9C1 /* Profile.storyboard */; };
 		96DC0DB71F3D3D9400B9A9C1 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DC0DB61F3D3D9400B9A9C1 /* ProfileViewController.swift */; };
+		96E1263D1F686A540065D700 /* ViewController+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E1263C1F686A540065D700 /* ViewController+Keyboard.swift */; };
+		96E1263F1F68B7D50065D700 /* BillingInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E1263E1F68B7D50065D700 /* BillingInfo.swift */; };
 		96E53ED31E90378E0045AA06 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E53ED21E90378E0045AA06 /* AppDelegate.swift */; };
 		96E53ED81E90378E0045AA06 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96E53ED61E90378E0045AA06 /* Main.storyboard */; };
 		96E53EDA1E90378E0045AA06 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96E53ED91E90378E0045AA06 /* Assets.xcassets */; };
@@ -113,6 +115,8 @@
 		96F2FCAD1E92DEE300C51674 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96F2FCAB1E92DEE300C51674 /* Onboarding.storyboard */; };
 		96F2FCAF1E92DF0D00C51674 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F2FCAE1E92DF0D00C51674 /* OnboardingViewController.swift */; };
 		96F2FCB31E92DF4E00C51674 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F2FCB21E92DF4E00C51674 /* MainViewController.swift */; };
+		96F8EC691F6368710031B982 /* BillingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F8EC681F6368710031B982 /* BillingViewController.swift */; };
+		96F8EC6B1F6368840031B982 /* Billing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96F8EC6A1F6368840031B982 /* Billing.storyboard */; };
 		96F8F8C11F33D9BC0080FC62 /* ScreenCompletable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F8F8C01F33D9BC0080FC62 /* ScreenCompletable.swift */; };
 		9E6E3AA819379C67449D7679 /* Pods_mavryc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77E884330154E11441155D61 /* Pods_mavryc.framework */; };
 		C1F2A423BE36D5082D065416 /* Pods_mavryc_mavrycTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CE399F9AC03FE71B57D7BEC /* Pods_mavryc_mavrycTests.framework */; };
@@ -220,6 +224,8 @@
 		96DC0DB21F3D3BBF00B9A9C1 /* Bundle+Versioning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle+Versioning.swift"; sourceTree = "<group>"; };
 		96DC0DB41F3D3D6600B9A9C1 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		96DC0DB61F3D3D9400B9A9C1 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		96E1263C1F686A540065D700 /* ViewController+Keyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewController+Keyboard.swift"; sourceTree = "<group>"; };
+		96E1263E1F68B7D50065D700 /* BillingInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillingInfo.swift; sourceTree = "<group>"; };
 		96E53ECF1E90378E0045AA06 /* mavryc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mavryc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		96E53ED21E90378E0045AA06 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		96E53ED71E90378E0045AA06 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -240,6 +246,8 @@
 		96F2FCAB1E92DEE300C51674 /* Onboarding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		96F2FCAE1E92DF0D00C51674 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		96F2FCB21E92DF4E00C51674 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		96F8EC681F6368710031B982 /* BillingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillingViewController.swift; sourceTree = "<group>"; };
+		96F8EC6A1F6368840031B982 /* Billing.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Billing.storyboard; sourceTree = "<group>"; };
 		96F8F8C01F33D9BC0080FC62 /* ScreenCompletable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenCompletable.swift; sourceTree = "<group>"; };
 		F2F8951E5F5E8592861F7180 /* Pods-mavryc-mavrycTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mavryc-mavrycTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-mavryc-mavrycTests/Pods-mavryc-mavrycTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -636,6 +644,7 @@
 				96F2FCAA1E92DBE800C51674 /* onboarding */,
 				96E53EF41E90387B0045AA06 /* pay */,
 				96E9DAA61F45078A00E73279 /* login */,
+				96F8EC671F63685B0031B982 /* billing */,
 				96CE58F71EE8FBB900073BD5 /* common_ui */,
 			);
 			name = features;
@@ -654,6 +663,7 @@
 				96C506561F3CE8F2001E41DB /* UIWindow+View.swift */,
 				96C506651F3D1D4F001E41DB /* String+Utils.swift */,
 				96DC0DB21F3D3BBF00B9A9C1 /* Bundle+Versioning.swift */,
+				96E1263C1F686A540065D700 /* ViewController+Keyboard.swift */,
 			);
 			name = extensions;
 			sourceTree = "<group>";
@@ -701,6 +711,16 @@
 				96F2FC971E92D29600C51674 /* SafeLog.swift */,
 			);
 			name = logging;
+			sourceTree = "<group>";
+		};
+		96F8EC671F63685B0031B982 /* billing */ = {
+			isa = PBXGroup;
+			children = (
+				96F8EC681F6368710031B982 /* BillingViewController.swift */,
+				96F8EC6A1F6368840031B982 /* Billing.storyboard */,
+				96E1263E1F68B7D50065D700 /* BillingInfo.swift */,
+			);
+			name = billing;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -798,6 +818,7 @@
 				96DA35B71EC281F400D2A0BC /* Lato in Resources */,
 				96CB0A461EE5DBF9004ADEA0 /* PaxPicker.xib in Resources */,
 				96E53EDA1E90378E0045AA06 /* Assets.xcassets in Resources */,
+				96F8EC6B1F6368840031B982 /* Billing.storyboard in Resources */,
 				96A32C181E96A30500DA7DC1 /* states-cities.json in Resources */,
 				966744591F28159C007445CE /* ContactPickerViewController.xib in Resources */,
 				96E53ED81E90378E0045AA06 /* Main.storyboard in Resources */,
@@ -932,6 +953,7 @@
 				96F2FCA21E92D9DA00C51674 /* StoryboardIdentifiable.swift in Sources */,
 				968A079A1F451B5C0086BAB4 /* LoginManager.swift in Sources */,
 				9606FD8D1EFC89E50059AD47 /* TripCoordinator.swift in Sources */,
+				96E1263D1F686A540065D700 /* ViewController+Keyboard.swift in Sources */,
 				966744601F282BCB007445CE /* ContactTableViewCell.swift in Sources */,
 				23B819C81EB19145006017FC /* LoginDTO.swift in Sources */,
 				96395F2B1EF33D250094923F /* ScreenNavigator.swift in Sources */,
@@ -944,6 +966,7 @@
 				966BD5721F3E72B500F0F585 /* TintTextField.swift in Sources */,
 				96A32C1B1E96A36900DA7DC1 /* Cities.swift in Sources */,
 				96A758B41EE0CAB500F58A4F /* AirportSearchTableViewController.swift in Sources */,
+				96E1263F1F68B7D50065D700 /* BillingInfo.swift in Sources */,
 				961E2AC21E985602000F2D64 /* FetchFlightsDTO.swift in Sources */,
 				96395F311EF48D230094923F /* MapController.swift in Sources */,
 				9606FD8B1EFC85260059AD47 /* Trip.swift in Sources */,
@@ -980,6 +1003,7 @@
 				96F2FC9B1E92D6FE00C51674 /* AppStyle.swift in Sources */,
 				96F8F8C11F33D9BC0080FC62 /* ScreenCompletable.swift in Sources */,
 				96F2FC981E92D29600C51674 /* SafeLog.swift in Sources */,
+				96F8EC691F6368710031B982 /* BillingViewController.swift in Sources */,
 				961144931F0D92A0003033AE /* DatePickerTableViewController.swift in Sources */,
 				96DA42371EA7FD670036C227 /* Flight.swift in Sources */,
 				96395F371EF5DA310094923F /* FeatureFlag.swift in Sources */,

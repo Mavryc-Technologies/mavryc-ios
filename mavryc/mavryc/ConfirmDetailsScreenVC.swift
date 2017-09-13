@@ -176,10 +176,25 @@ class ConfirmDetailsScreenVC: UIViewController {
         if !User.isUserLoggedIn() {
             self.presentLogin(animated: true)
         } else {
-            UIView.animate(withDuration: 0.25) {
-                self.applePayBottomVerticalSpace.constant = self.extendedApplePayBottomVerticalSpaceValue
-                self.view.layoutIfNeeded()
-            }
+            
+            // Removed to instead present Billing screen
+            // self.presentApplePay()
+            
+            self.presentBillingScreen()
+        }
+    }
+    
+    func presentBillingScreen() {
+        let storyboard = UIStoryboard.init(name: "Billing", bundle: Bundle.main)
+        guard let billingVC = storyboard.instantiateInitialViewController() as? BillingViewController else {return}
+        billingVC.delegate = self
+        self.present(billingVC, animated: true, completion: nil)
+    }
+    
+    func presentApplePay() {
+        UIView.animate(withDuration: 0.25) {
+            self.applePayBottomVerticalSpace.constant = self.extendedApplePayBottomVerticalSpaceValue
+            self.view.layoutIfNeeded()
         }
     }
     
@@ -190,6 +205,13 @@ class ConfirmDetailsScreenVC: UIViewController {
         }
     }
 
+}
+
+extension ConfirmDetailsScreenVC: BillingDelegate {
+    
+    func closeWasTapped() {
+        // will handle closing from the billing screen itself.. this can probably be removed
+    }
 }
 
 extension ConfirmDetailsScreenVC: ScreenNavigable {
