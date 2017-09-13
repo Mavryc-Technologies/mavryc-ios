@@ -11,25 +11,23 @@ import UIKit
 class SlideoutMenuTableViewCell: UITableViewCell {
 
     @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var iconImageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         
         selectionStyle = .none
-        self.title.textColor = UIColor.darkGray
-        self.backgroundColor = UIColor.white
+        self.title.textColor = UIColor.white
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
         if selected {
-            self.backgroundColor = UIColor.white
-            self.title.textColor = AppStyle.skylarBlueGrey
+            self.backgroundColor = AppStyle.skylarBlueGrey
         } else {
-            self.backgroundColor = UIColor.white
-            self.title.textColor = UIColor.darkGray
+            self.backgroundColor = AppStyle.skylarMidBlue
         }
     }
     

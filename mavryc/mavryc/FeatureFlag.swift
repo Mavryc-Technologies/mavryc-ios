@@ -14,6 +14,7 @@ enum FeatureFlag {
     case mapboxAirportAnnotationClustering
     case googlePlaces
     case militaryTime
+    case splitFareOnConfirmScreen
     
     /// feature flag query
     func isFeatureEnabled() -> Bool {
@@ -31,6 +32,9 @@ enum FeatureFlag {
             }
             
         case .militaryTime:
+            return false
+            
+        case .splitFareOnConfirmScreen:
             return false
             
         default:

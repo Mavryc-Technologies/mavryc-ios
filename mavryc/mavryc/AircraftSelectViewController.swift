@@ -90,9 +90,17 @@ class AircraftSelectViewController: UIViewController, UITableViewDelegate, UITab
         
         self.setupSwipeGesture()
         
-        //self.tableView(self.tableView, didSelectRowAt: IndexPath(row: 1, section: 0)) // defaults to second item
+        self.tableView(self.tableView, didSelectRowAt: IndexPath(row: 1, section: 0)) // defaults to second item
         cellWasSelectedAtIndexPath = IndexPath(row: 1, section: 0)
         nextButton.isEnabled = true
+        
+        // we need the model to update even though there isn't necessarily user interaction to select the aircraft type (the default selection case) - so we'll set the default model to the default selected cell too
+        if let flight = AircraftServiceProvider.shared.availableFlightsViewModel?.flights[1] {
+            if let jetServiceType = flight.flightType, let cost = flight.flightCost {
+                let nextViewModel = ConfirmDetailsViewModel(jetserviceTypeString: jetServiceType, tripTotalCost: cost)
+                ConfirmDetailsVeiwModelProvider.shared.confirmDetailsViewModel = nextViewModel
+            }
+        }
         
         // this will center appropriately each subscreen setting their constraint.constant to onscreenX
         self.onscreenX = ((self.view.frame.size.width - 300) / 2)
@@ -110,27 +118,36 @@ class AircraftSelectViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     func setupDetailSubscreens() {
+        guard let availableFlights = AircraftServiceProvider.shared.availableFlightsViewModel?.flights else { return }
+        if availableFlights.count < 2 { return }
+        
         if let vc = self.subscreen1VC {
+            if let cost = availableFlights[0].flightCost, let serviceTitle = availableFlights[0].flightType {
+                vc.costData = cost
+                vc.titleData = serviceTitle
+                vc.subtitleData = self.subtitleData[0]
+            }
             vc.view.tag = 0
-            vc.costData = self.costData[0]
-            vc.titleData = self.titleData[0]
-            vc.subtitleData = self.subtitleData[0]
             vc.delegate = self
             vc.refreshView()
         }
         if let vc2 = self.subscreen2VC {
             vc2.view.tag = 1
-            vc2.costData = self.costData[1]
-            vc2.titleData = self.titleData[1]
-            vc2.subtitleData = self.subtitleData[1]
+            if let cost = availableFlights[1].flightCost, let serviceTitle = availableFlights[1].flightType {
+                vc2.costData = cost
+                vc2.titleData = serviceTitle
+                vc2.subtitleData = self.subtitleData[1]
+            }
             vc2.delegate = self
             vc2.refreshView()
         }
         if let vc3 = self.subscreen3VC {
             vc3.view.tag = 2
-            vc3.costData = self.costData[2]
-            vc3.titleData = self.titleData[2]
-            vc3.subtitleData = self.subtitleData[2]
+            if let cost = availableFlights[2].flightCost, let serviceTitle = availableFlights[2].flightType {
+                vc3.costData = cost
+                vc3.titleData = serviceTitle
+                vc3.subtitleData = self.subtitleData[2]
+            }
             vc3.delegate = self
             vc3.refreshView()
         }
@@ -213,24 +230,34 @@ class AircraftSelectViewController: UIViewController, UITableViewDelegate, UITab
     
     // MARK: - Segues
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        guard let availableFlights = AircraftServiceProvider.shared.availableFlightsViewModel?.flights else { return }
+        if availableFlights.count < 2 { return }
+        
         if segue.identifier == "AircraftDetailsViewControllerSegue1" {
             let vc = segue.destination as? AircraftDetailViewController
             self.subscreen1VC = vc
-            vc?.costData = self.costData[0]
-            vc?.titleData = self.titleData[0]
             vc?.subtitleData = self.subtitleData[0]
+            if let cost = availableFlights[0].flightCost, let serviceTitle = availableFlights[0].flightType {
+                vc?.costData = cost
+                vc?.titleData = serviceTitle
+            }
         } else if segue.identifier == "AircraftDetailsViewControllerSegue2" {
             let vc = segue.destination as? AircraftDetailViewController
             self.subscreen2VC = vc
-            vc?.costData = self.costData[1]
-            vc?.titleData = self.titleData[1]
+            if let cost = availableFlights[1].flightCost, let serviceTitle = availableFlights[1].flightType {
+                vc?.costData = cost
+                vc?.titleData = serviceTitle
+            }
             vc?.subtitleData = self.subtitleData[1]
         } else if segue.identifier == "AircraftDetailsViewControllerSegue3" {
             let vc = segue.destination as? AircraftDetailViewController
             self.subscreen3VC = vc
-            vc?.costData = self.costData[1]
-            vc?.titleData = self.titleData[1]
-            vc?.subtitleData = self.subtitleData[1]
+            if let cost = availableFlights[2].flightCost, let serviceTitle = availableFlights[2].flightType {
+                vc?.costData = cost
+                vc?.titleData = serviceTitle
+            }
+            vc?.subtitleData = self.subtitleData[2]
         }
     }
     
@@ -368,7 +395,11 @@ class AircraftSelectViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return titleData.count    }
+        if let flights = AircraftServiceProvider.shared.availableFlightsViewModel?.flights {
+            return flights.count
+        }
+        return 0
+    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -381,9 +412,18 @@ class AircraftSelectViewController: UIViewController, UITableViewDelegate, UITab
             
             customCell.lefthandView.backgroundColor = AppStyle.aircraftSelectScreenCellNormalColor
             
-            customCell.title.text = titleData[indexPath.row] + costData[indexPath.row]
+            //customCell.title.text = titleData[indexPath.row] + costData[indexPath.row]
+            
+            if let flights = AircraftServiceProvider.shared.availableFlightsViewModel?.flights {
+                if let titleString = flights[indexPath.row].flightType, let costString = flights[indexPath.row].flightCost {
+                        customCell.title.text = titleString.uppercased() + " " + costString
+                }
+            }
+            
             customCell.unattributedTitle = customCell.title.text
-            customCell.subtitle.text = subtitleData[indexPath.row]
+
+            // TODO: this needs to be replaced with reference to an actual Flight property
+            customCell.subtitle.text = subtitleData[1]
             
             customCell.title.textColor = AppStyle.aircraftSelectScreenCellTextNormalColor
             
@@ -419,6 +459,14 @@ class AircraftSelectViewController: UIViewController, UITableViewDelegate, UITab
                 
                 nextButton.isEnabled = true
                 
+                // TODO: update the data model for TripDataModelProvider
+                if let flight = AircraftServiceProvider.shared.availableFlightsViewModel?.flights[indexPath.row] {
+                    if let jetServiceType = flight.flightType, let cost = flight.flightCost {
+                        let nextViewModel = ConfirmDetailsViewModel(jetserviceTypeString: jetServiceType, tripTotalCost: cost)
+                        ConfirmDetailsVeiwModelProvider.shared.confirmDetailsViewModel = nextViewModel
+                    }
+                }
+                
                 // reload
                 tableView.reloadData()
             }
@@ -451,9 +499,11 @@ class AircraftSelectViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     private func applyColorToTitle(indexPath: IndexPath, color: UIColor) -> NSAttributedString {
-        let cost = costData[indexPath.row]
-        let title = titleData[indexPath.row]
-        let combined = title + cost
+        guard let flightData = AircraftServiceProvider.shared.availableFlightsViewModel?.flights[indexPath.row] else { return NSAttributedString() }
+        guard let cost = flightData.flightCost else { return NSAttributedString() }
+        guard let titleString = flightData.flightType else { return NSAttributedString() }
+        let title = titleString.uppercased()
+        let combined = title + " " + cost
         
         // yellow/gold
         let range = (combined as NSString).range(of: cost)

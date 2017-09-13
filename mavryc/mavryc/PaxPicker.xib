@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -45,9 +45,17 @@
                                 <constraint firstAttribute="width" constant="162" id="1XA-en-T86"/>
                                 <constraint firstAttribute="height" constant="22" id="aw5-Co-rL7"/>
                             </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m9u-Da-LeY" userLabel="Bar Tap Capture View">
+                            <rect key="frame" x="20" y="0.0" width="162" height="48"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="162" id="AXi-ip-2Lp"/>
+                                <constraint firstAttribute="height" constant="48" id="xyU-c9-g5U"/>
+                            </constraints>
                             <connections>
-                                <outletCollection property="gestureRecognizers" destination="KPH-nC-Xe2" appends="YES" id="kwE-YW-bGW"/>
-                                <outletCollection property="gestureRecognizers" destination="xhE-hc-OLT" appends="YES" id="Nde-Ns-SLW"/>
+                                <outletCollection property="gestureRecognizers" destination="KPH-nC-Xe2" appends="YES" id="z5t-yY-GBq"/>
+                                <outletCollection property="gestureRecognizers" destination="xhE-hc-OLT" appends="YES" id="mmn-pZ-KVX"/>
                             </connections>
                         </view>
                     </subviews>
@@ -55,6 +63,8 @@
                     <gestureRecognizers/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="Nt3-5K-QSf" secondAttribute="bottom" constant="13" id="0qM-0I-zjO"/>
+                        <constraint firstItem="m9u-Da-LeY" firstAttribute="top" secondItem="Dj3-78-vwX" secondAttribute="top" constant="-13" id="DLX-Kf-lRK"/>
+                        <constraint firstItem="m9u-Da-LeY" firstAttribute="leading" secondItem="Dj3-78-vwX" secondAttribute="leading" id="Foi-RJ-pYB"/>
                         <constraint firstItem="Dj3-78-vwX" firstAttribute="leading" secondItem="LqQ-hG-Exx" secondAttribute="leading" constant="20" id="IoF-Rw-eVr"/>
                         <constraint firstAttribute="trailing" secondItem="Nt3-5K-QSf" secondAttribute="trailing" constant="4" id="W3h-J3-by7"/>
                         <constraint firstItem="Dj3-78-vwX" firstAttribute="top" secondItem="LqQ-hG-Exx" secondAttribute="top" constant="13" id="X8U-ip-xlc"/>

@@ -140,6 +140,11 @@ class OutboundReturnViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        
+//        if FeatureFlag.
+//        addRemoveReturnTripButton.isHidden = true
+//        addTripLabel.isHidden = true
+        
         refreshUI()
     }
     
@@ -444,6 +449,7 @@ extension OutboundReturnViewController: AirportSearchListDelegate {
         if self.arrivalSearchTextField.isFirstResponder {
             arrivalSearchTextField.text = airportName
             TripCoordinator.sharedInstance.currentTripInPlanning?.flights[index].arrivalString = airportName
+            AircraftServiceProvider.shared.availableFlightsViewModel = nil // resets because new available flights will need to be refetched
             if index == 0 {
                 TripCoordinator.sharedInstance.currentTripInPlanning?.flights[1].departureString = airportName
                 let returnArrival = departureSearchTextField.text
@@ -453,6 +459,7 @@ extension OutboundReturnViewController: AirportSearchListDelegate {
             
         } else if self.departureSearchTextField.isFirstResponder {
             departureSearchTextField.text = airportName
+            AircraftServiceProvider.shared.availableFlightsViewModel = nil // resets because new available flights will need to be refetched
             updateSearchControlUIForState(control: departureSearchTextField)
             TripCoordinator.sharedInstance.currentTripInPlanning?.flights[index].departureString = airportName
             

@@ -10,11 +10,17 @@ import Foundation
 
 struct FetchFlightsDTO {
     
-    let origin: String?
-    let destination: String?
+    var origin: String?
+    var destination: String?
+    var departureDateTime: String?
+    var arrivalDateTime: String?
+    var jetServiceType: String?
     
     init(origin: String? = nil, destination: String? = nil) {
         self.origin = origin
         self.destination = destination
+        self.departureDateTime = nil
+        self.arrivalDateTime = nil
+        self.jetServiceType = nil
     }
 }

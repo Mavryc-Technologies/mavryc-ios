@@ -70,15 +70,6 @@ class AircraftDetailViewController: UIViewController {
     }
     
     @IBAction func aircraftSelectionTapAction(_ sender: UITapGestureRecognizer) {
-        
-//        // hittest on ...
-//        let p = sender.location(ofTouch: 0, in: sender.view)
-//        let v = self.clearButtonView?.hitTest(p, with: nil)
-//        if let v = v as? UIView {
-//            print("a hit!")
-//            return
-//        }
-        
         delegate?.aircraftWasSelected(atIndex: self.view.tag)
         
         refreshCell()
@@ -99,8 +90,9 @@ class AircraftDetailViewController: UIViewController {
     
     private func applyColorToTitle(color: UIColor) -> NSAttributedString {
         let cost = self.costData
-        let title = self.titleData
-        let combined = title + cost
+        let titleString = self.titleData
+        let title = titleString.uppercased()
+        let combined = title + " " + cost
         
         // yellow/gold
         let range = (combined as NSString).range(of: cost)

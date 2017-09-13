@@ -18,6 +18,7 @@
 		9606FD8D1EFC89E50059AD47 /* TripCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9606FD8C1EFC89E50059AD47 /* TripCoordinator.swift */; };
 		9606FD8F1EFCA39C0059AD47 /* FlightInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9606FD8E1EFCA39C0059AD47 /* FlightInfo.swift */; };
 		9606FD9B1EFDBD760059AD47 /* tap5.wav in Resources */ = {isa = PBXBuildFile; fileRef = 9606FD9A1EFDBD760059AD47 /* tap5.wav */; };
+		96085F271F4CE75A0049B567 /* DevSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96085F261F4CE75A0049B567 /* DevSettingsTableViewController.swift */; };
 		960B50E41EC6392F002B1432 /* JourneyDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960B50E31EC6392F002B1432 /* JourneyDetailsVC.swift */; };
 		961144931F0D92A0003033AE /* DatePickerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961144921F0D92A0003033AE /* DatePickerTableViewController.swift */; };
 		961144951F0D92BA003033AE /* DatePickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961144941F0D92BA003033AE /* DatePickerTableViewCell.swift */; };
@@ -31,6 +32,7 @@
 		96395F311EF48D230094923F /* MapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96395F301EF48D230094923F /* MapController.swift */; };
 		96395F331EF5B58E0094923F /* JoystickController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96395F321EF5B58E0094923F /* JoystickController.swift */; };
 		96395F371EF5DA310094923F /* FeatureFlag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96395F361EF5DA310094923F /* FeatureFlag.swift */; };
+		963F37361F56419900B55526 /* AircraftServicesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963F37351F56419900B55526 /* AircraftServicesViewModel.swift */; };
 		96459DDA1F32F5E8001E2BCC /* OutboundReturnViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96459DD91F32F5E8001E2BCC /* OutboundReturnViewController.swift */; };
 		964629C81EF89C1800CAA16E /* RightToLeftScreenAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964629C71EF89C1800CAA16E /* RightToLeftScreenAnimator.swift */; };
 		964629CA1EF89C8B00CAA16E /* NavigationControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964629C91EF89C8A00CAA16E /* NavigationControllerDelegate.swift */; };
@@ -46,6 +48,8 @@
 		967716621F2409AB00A9DB39 /* FareSplitterCondensed.xib in Resources */ = {isa = PBXBuildFile; fileRef = 967716611F2409AB00A9DB39 /* FareSplitterCondensed.xib */; };
 		967FF6261E9446BF007B56C6 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967FF6251E9446BF007B56C6 /* Networking.swift */; };
 		967FF6291E945796007B56C6 /* FetchUserClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967FF6281E945796007B56C6 /* FetchUserClient.swift */; };
+		968A079A1F451B5C0086BAB4 /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968A07991F451B5C0086BAB4 /* LoginManager.swift */; };
+		968A079C1F451ECE0086BAB4 /* LoginUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968A079B1F451ECE0086BAB4 /* LoginUser.swift */; };
 		968BCA401F2C15AC00B3C9EF /* AircraftDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968BCA3F1F2C15AB00B3C9EF /* AircraftDetailViewController.swift */; };
 		96A32C181E96A30500DA7DC1 /* states-cities.json in Resources */ = {isa = PBXBuildFile; fileRef = 96A32C171E96A30500DA7DC1 /* states-cities.json */; };
 		96A32C1B1E96A36900DA7DC1 /* Cities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A32C1A1E96A36900DA7DC1 /* Cities.swift */; };
@@ -61,7 +65,6 @@
 		96B1F2CF1EEA19A900EB5F4A /* airports.csv in Resources */ = {isa = PBXBuildFile; fileRef = 96B1F2CE1EEA19A900EB5F4A /* airports.csv */; };
 		96B1F2D11EEA294E00EB5F4A /* airports.sqlite3 in Resources */ = {isa = PBXBuildFile; fileRef = 96B1F2D01EEA294E00EB5F4A /* airports.sqlite3 */; };
 		96B7236D1EA98B5200B2E322 /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B7236C1EA98B5200B2E322 /* AppData.swift */; };
-		96B723701EA98B8D00B2E322 /* RealmConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B7236F1EA98B8D00B2E322 /* RealmConfiguration.swift */; };
 		96B723721EA9B53400B2E322 /* databaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B723711EA9B53400B2E322 /* databaseTests.swift */; };
 		96B723741EA9E26100B2E322 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B723731EA9E26100B2E322 /* User.swift */; };
 		96B7476B1F0E9F56006071E5 /* Date+Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B7476A1F0E9F56006071E5 /* Date+Format.swift */; };
@@ -75,6 +78,7 @@
 		96C6D0941F1837B9009AF342 /* FareSplittingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C6D0931F1837B9009AF342 /* FareSplittingViewController.swift */; };
 		96C6D0961F194CFB009AF342 /* FareSplitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C6D0951F194CFB009AF342 /* FareSplitter.swift */; };
 		96C6D09A1F195D3A009AF342 /* FareSplitter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 96C6D0991F195D3A009AF342 /* FareSplitter.xib */; };
+		96CAF3F61F58AAF00031561F /* ConfirmDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CAF3F51F58AAF00031561F /* ConfirmDetailsViewModel.swift */; };
 		96CB0A441EE5DB42004ADEA0 /* PaxPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CB0A431EE5DB42004ADEA0 /* PaxPicker.swift */; };
 		96CB0A461EE5DBF9004ADEA0 /* PaxPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 96CB0A451EE5DBF9004ADEA0 /* PaxPicker.xib */; };
 		96CB0A491EE75FAA004ADEA0 /* AirportSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96CB0A481EE75FAA004ADEA0 /* AirportSearchTableViewCell.swift */; };
@@ -92,6 +96,8 @@
 		96DC0DB31F3D3BBF00B9A9C1 /* Bundle+Versioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DC0DB21F3D3BBF00B9A9C1 /* Bundle+Versioning.swift */; };
 		96DC0DB51F3D3D6600B9A9C1 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96DC0DB41F3D3D6600B9A9C1 /* Profile.storyboard */; };
 		96DC0DB71F3D3D9400B9A9C1 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DC0DB61F3D3D9400B9A9C1 /* ProfileViewController.swift */; };
+		96E1263D1F686A540065D700 /* ViewController+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E1263C1F686A540065D700 /* ViewController+Keyboard.swift */; };
+		96E1263F1F68B7D50065D700 /* BillingInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E1263E1F68B7D50065D700 /* BillingInfo.swift */; };
 		96E53ED31E90378E0045AA06 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E53ED21E90378E0045AA06 /* AppDelegate.swift */; };
 		96E53ED81E90378E0045AA06 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96E53ED61E90378E0045AA06 /* Main.storyboard */; };
 		96E53EDA1E90378E0045AA06 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96E53ED91E90378E0045AA06 /* Assets.xcassets */; };
@@ -109,6 +115,8 @@
 		96F2FCAD1E92DEE300C51674 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96F2FCAB1E92DEE300C51674 /* Onboarding.storyboard */; };
 		96F2FCAF1E92DF0D00C51674 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F2FCAE1E92DF0D00C51674 /* OnboardingViewController.swift */; };
 		96F2FCB31E92DF4E00C51674 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F2FCB21E92DF4E00C51674 /* MainViewController.swift */; };
+		96F8EC691F6368710031B982 /* BillingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F8EC681F6368710031B982 /* BillingViewController.swift */; };
+		96F8EC6B1F6368840031B982 /* Billing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96F8EC6A1F6368840031B982 /* Billing.storyboard */; };
 		96F8F8C11F33D9BC0080FC62 /* ScreenCompletable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F8F8C01F33D9BC0080FC62 /* ScreenCompletable.swift */; };
 		9E6E3AA819379C67449D7679 /* Pods_mavryc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77E884330154E11441155D61 /* Pods_mavryc.framework */; };
 		C1F2A423BE36D5082D065416 /* Pods_mavryc_mavrycTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CE399F9AC03FE71B57D7BEC /* Pods_mavryc_mavrycTests.framework */; };
@@ -138,6 +146,7 @@
 		9606FD8C1EFC89E50059AD47 /* TripCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripCoordinator.swift; sourceTree = "<group>"; };
 		9606FD8E1EFCA39C0059AD47 /* FlightInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlightInfo.swift; sourceTree = "<group>"; };
 		9606FD9A1EFDBD760059AD47 /* tap5.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = tap5.wav; sourceTree = "<group>"; };
+		96085F261F4CE75A0049B567 /* DevSettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DevSettingsTableViewController.swift; sourceTree = "<group>"; };
 		960B50E31EC6392F002B1432 /* JourneyDetailsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JourneyDetailsVC.swift; sourceTree = "<group>"; };
 		961144921F0D92A0003033AE /* DatePickerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerTableViewController.swift; sourceTree = "<group>"; };
 		961144941F0D92BA003033AE /* DatePickerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerTableViewCell.swift; sourceTree = "<group>"; };
@@ -151,6 +160,7 @@
 		96395F301EF48D230094923F /* MapController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapController.swift; sourceTree = "<group>"; };
 		96395F321EF5B58E0094923F /* JoystickController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoystickController.swift; sourceTree = "<group>"; };
 		96395F361EF5DA310094923F /* FeatureFlag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureFlag.swift; sourceTree = "<group>"; };
+		963F37351F56419900B55526 /* AircraftServicesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AircraftServicesViewModel.swift; sourceTree = "<group>"; };
 		96459DD91F32F5E8001E2BCC /* OutboundReturnViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutboundReturnViewController.swift; sourceTree = "<group>"; };
 		964629C71EF89C1800CAA16E /* RightToLeftScreenAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightToLeftScreenAnimator.swift; sourceTree = "<group>"; };
 		964629C91EF89C8A00CAA16E /* NavigationControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationControllerDelegate.swift; sourceTree = "<group>"; };
@@ -166,6 +176,8 @@
 		967716611F2409AB00A9DB39 /* FareSplitterCondensed.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FareSplitterCondensed.xib; sourceTree = "<group>"; };
 		967FF6251E9446BF007B56C6 /* Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		967FF6281E945796007B56C6 /* FetchUserClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchUserClient.swift; sourceTree = "<group>"; };
+		968A07991F451B5C0086BAB4 /* LoginManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
+		968A079B1F451ECE0086BAB4 /* LoginUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginUser.swift; sourceTree = "<group>"; };
 		968BCA3F1F2C15AB00B3C9EF /* AircraftDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AircraftDetailViewController.swift; sourceTree = "<group>"; };
 		96A32C171E96A30500DA7DC1 /* states-cities.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "states-cities.json"; sourceTree = "<group>"; };
 		96A32C1A1E96A36900DA7DC1 /* Cities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cities.swift; sourceTree = "<group>"; };
@@ -181,7 +193,6 @@
 		96B1F2CE1EEA19A900EB5F4A /* airports.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = airports.csv; sourceTree = "<group>"; };
 		96B1F2D01EEA294E00EB5F4A /* airports.sqlite3 */ = {isa = PBXFileReference; lastKnownFileType = file; path = airports.sqlite3; sourceTree = "<group>"; };
 		96B7236C1EA98B5200B2E322 /* AppData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppData.swift; sourceTree = "<group>"; };
-		96B7236F1EA98B8D00B2E322 /* RealmConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmConfiguration.swift; sourceTree = "<group>"; };
 		96B723711EA9B53400B2E322 /* databaseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = databaseTests.swift; sourceTree = "<group>"; };
 		96B723731EA9E26100B2E322 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		96B7476A1F0E9F56006071E5 /* Date+Format.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Format.swift"; sourceTree = "<group>"; };
@@ -195,6 +206,7 @@
 		96C6D0931F1837B9009AF342 /* FareSplittingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FareSplittingViewController.swift; sourceTree = "<group>"; };
 		96C6D0951F194CFB009AF342 /* FareSplitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FareSplitter.swift; sourceTree = "<group>"; };
 		96C6D0991F195D3A009AF342 /* FareSplitter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FareSplitter.xib; sourceTree = "<group>"; };
+		96CAF3F51F58AAF00031561F /* ConfirmDetailsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmDetailsViewModel.swift; sourceTree = "<group>"; };
 		96CB0A431EE5DB42004ADEA0 /* PaxPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaxPicker.swift; sourceTree = "<group>"; };
 		96CB0A451EE5DBF9004ADEA0 /* PaxPicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PaxPicker.xib; sourceTree = "<group>"; };
 		96CB0A481EE75FAA004ADEA0 /* AirportSearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirportSearchTableViewCell.swift; sourceTree = "<group>"; };
@@ -212,6 +224,8 @@
 		96DC0DB21F3D3BBF00B9A9C1 /* Bundle+Versioning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle+Versioning.swift"; sourceTree = "<group>"; };
 		96DC0DB41F3D3D6600B9A9C1 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		96DC0DB61F3D3D9400B9A9C1 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		96E1263C1F686A540065D700 /* ViewController+Keyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewController+Keyboard.swift"; sourceTree = "<group>"; };
+		96E1263E1F68B7D50065D700 /* BillingInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillingInfo.swift; sourceTree = "<group>"; };
 		96E53ECF1E90378E0045AA06 /* mavryc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mavryc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		96E53ED21E90378E0045AA06 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		96E53ED71E90378E0045AA06 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -232,6 +246,8 @@
 		96F2FCAB1E92DEE300C51674 /* Onboarding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		96F2FCAE1E92DF0D00C51674 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		96F2FCB21E92DF4E00C51674 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		96F8EC681F6368710031B982 /* BillingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillingViewController.swift; sourceTree = "<group>"; };
+		96F8EC6A1F6368840031B982 /* Billing.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Billing.storyboard; sourceTree = "<group>"; };
 		96F8F8C01F33D9BC0080FC62 /* ScreenCompletable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenCompletable.swift; sourceTree = "<group>"; };
 		F2F8951E5F5E8592861F7180 /* Pods-mavryc-mavrycTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mavryc-mavrycTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-mavryc-mavrycTests/Pods-mavryc-mavrycTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -430,6 +446,8 @@
 				9606FD8C1EFC89E50059AD47 /* TripCoordinator.swift */,
 				9606FD8E1EFCA39C0059AD47 /* FlightInfo.swift */,
 				96F8F8C01F33D9BC0080FC62 /* ScreenCompletable.swift */,
+				963F37351F56419900B55526 /* AircraftServicesViewModel.swift */,
+				96CAF3F51F58AAF00031561F /* ConfirmDetailsViewModel.swift */,
 			);
 			name = models;
 			sourceTree = "<group>";
@@ -446,7 +464,6 @@
 		96B7236E1EA98B7000B2E322 /* database */ = {
 			isa = PBXGroup;
 			children = (
-				96B7236F1EA98B8D00B2E322 /* RealmConfiguration.swift */,
 			);
 			name = database;
 			sourceTree = "<group>";
@@ -454,12 +471,13 @@
 		96C506581F3CEB32001E41DB /* slideout menu */ = {
 			isa = PBXGroup;
 			children = (
-				96C506591F3CEB52001E41DB /* SlideoutMenu.storyboard */,
 				96C5065B1F3CEB86001E41DB /* SlideoutMenuViewController.swift */,
+				96C506591F3CEB52001E41DB /* SlideoutMenu.storyboard */,
 				96C506611F3D19E3001E41DB /* SlideoutMenuTableViewCell.swift */,
 				96C506621F3D19E3001E41DB /* SlideoutMenuTableViewCell.xib */,
 				96DC0DB41F3D3D6600B9A9C1 /* Profile.storyboard */,
 				96DC0DB61F3D3D9400B9A9C1 /* ProfileViewController.swift */,
+				96085F261F4CE75A0049B567 /* DevSettingsTableViewController.swift */,
 			);
 			name = "slideout menu";
 			sourceTree = "<group>";
@@ -625,17 +643,11 @@
 				9652283C1EAAA0DE0054DA70 /* map */,
 				96F2FCAA1E92DBE800C51674 /* onboarding */,
 				96E53EF41E90387B0045AA06 /* pay */,
-				96E53EF81E903AEC0045AA06 /* signup */,
+				96E9DAA61F45078A00E73279 /* login */,
+				96F8EC671F63685B0031B982 /* billing */,
 				96CE58F71EE8FBB900073BD5 /* common_ui */,
 			);
 			name = features;
-			sourceTree = "<group>";
-		};
-		96E53EF81E903AEC0045AA06 /* signup */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = signup;
 			sourceTree = "<group>";
 		};
 		96E53EF91E903B440045AA06 /* extensions */ = {
@@ -651,8 +663,18 @@
 				96C506561F3CE8F2001E41DB /* UIWindow+View.swift */,
 				96C506651F3D1D4F001E41DB /* String+Utils.swift */,
 				96DC0DB21F3D3BBF00B9A9C1 /* Bundle+Versioning.swift */,
+				96E1263C1F686A540065D700 /* ViewController+Keyboard.swift */,
 			);
 			name = extensions;
+			sourceTree = "<group>";
+		};
+		96E9DAA61F45078A00E73279 /* login */ = {
+			isa = PBXGroup;
+			children = (
+				968A07991F451B5C0086BAB4 /* LoginManager.swift */,
+				968A079B1F451ECE0086BAB4 /* LoginUser.swift */,
+			);
+			name = login;
 			sourceTree = "<group>";
 		};
 		96F2FCA01E92D9A900C51674 /* storyboard support */ = {
@@ -689,6 +711,16 @@
 				96F2FC971E92D29600C51674 /* SafeLog.swift */,
 			);
 			name = logging;
+			sourceTree = "<group>";
+		};
+		96F8EC671F63685B0031B982 /* billing */ = {
+			isa = PBXGroup;
+			children = (
+				96F8EC681F6368710031B982 /* BillingViewController.swift */,
+				96F8EC6A1F6368840031B982 /* Billing.storyboard */,
+				96E1263E1F68B7D50065D700 /* BillingInfo.swift */,
+			);
+			name = billing;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -786,6 +818,7 @@
 				96DA35B71EC281F400D2A0BC /* Lato in Resources */,
 				96CB0A461EE5DBF9004ADEA0 /* PaxPicker.xib in Resources */,
 				96E53EDA1E90378E0045AA06 /* Assets.xcassets in Resources */,
+				96F8EC6B1F6368840031B982 /* Billing.storyboard in Resources */,
 				96A32C181E96A30500DA7DC1 /* states-cities.json in Resources */,
 				966744591F28159C007445CE /* ContactPickerViewController.xib in Resources */,
 				96E53ED81E90378E0045AA06 /* Main.storyboard in Resources */,
@@ -918,7 +951,9 @@
 				96C506631F3D19E3001E41DB /* SlideoutMenuTableViewCell.swift in Sources */,
 				9606FD891EFC83A50059AD47 /* Notification+Location.swift in Sources */,
 				96F2FCA21E92D9DA00C51674 /* StoryboardIdentifiable.swift in Sources */,
+				968A079A1F451B5C0086BAB4 /* LoginManager.swift in Sources */,
 				9606FD8D1EFC89E50059AD47 /* TripCoordinator.swift in Sources */,
+				96E1263D1F686A540065D700 /* ViewController+Keyboard.swift in Sources */,
 				966744601F282BCB007445CE /* ContactTableViewCell.swift in Sources */,
 				23B819C81EB19145006017FC /* LoginDTO.swift in Sources */,
 				96395F2B1EF33D250094923F /* ScreenNavigator.swift in Sources */,
@@ -931,9 +966,9 @@
 				966BD5721F3E72B500F0F585 /* TintTextField.swift in Sources */,
 				96A32C1B1E96A36900DA7DC1 /* Cities.swift in Sources */,
 				96A758B41EE0CAB500F58A4F /* AirportSearchTableViewController.swift in Sources */,
+				96E1263F1F68B7D50065D700 /* BillingInfo.swift in Sources */,
 				961E2AC21E985602000F2D64 /* FetchFlightsDTO.swift in Sources */,
 				96395F311EF48D230094923F /* MapController.swift in Sources */,
-				96B723701EA98B8D00B2E322 /* RealmConfiguration.swift in Sources */,
 				9606FD8B1EFC85260059AD47 /* Trip.swift in Sources */,
 				96B063D81ED3A4B7006151E5 /* JoystickMapCoordinator.swift in Sources */,
 				9677165C1F23D5F100A9DB39 /* FareSplitterCondensed.swift in Sources */,
@@ -950,6 +985,7 @@
 				96C506661F3D1D4F001E41DB /* String+Utils.swift in Sources */,
 				96E7DBA41F05A2C700AA850E /* JoystickView.swift in Sources */,
 				96DC0DB71F3D3D9400B9A9C1 /* ProfileViewController.swift in Sources */,
+				968A079C1F451ECE0086BAB4 /* LoginUser.swift in Sources */,
 				96DA35AD1EC1264400D2A0BC /* FlightPanelViewController.swift in Sources */,
 				96CB0A491EE75FAA004ADEA0 /* AirportSearchTableViewCell.swift in Sources */,
 				96CE58F61EE8FBAF00073BD5 /* StyledButton.swift in Sources */,
@@ -967,6 +1003,7 @@
 				96F2FC9B1E92D6FE00C51674 /* AppStyle.swift in Sources */,
 				96F8F8C11F33D9BC0080FC62 /* ScreenCompletable.swift in Sources */,
 				96F2FC981E92D29600C51674 /* SafeLog.swift in Sources */,
+				96F8EC691F6368710031B982 /* BillingViewController.swift in Sources */,
 				961144931F0D92A0003033AE /* DatePickerTableViewController.swift in Sources */,
 				96DA42371EA7FD670036C227 /* Flight.swift in Sources */,
 				96395F371EF5DA310094923F /* FeatureFlag.swift in Sources */,
@@ -974,16 +1011,19 @@
 				96B7476B1F0E9F56006071E5 /* Date+Format.swift in Sources */,
 				966744581F28159C007445CE /* ContactPickerViewController.swift in Sources */,
 				964629CA1EF89C8B00CAA16E /* NavigationControllerDelegate.swift in Sources */,
+				96CAF3F61F58AAF00031561F /* ConfirmDetailsViewModel.swift in Sources */,
 				96395F2F1EF472B80094923F /* LocationController.swift in Sources */,
 				9667445B1F281A95007445CE /* SkylarContact.swift in Sources */,
 				961144951F0D92BA003033AE /* DatePickerTableViewCell.swift in Sources */,
 				96C6D0941F1837B9009AF342 /* FareSplittingViewController.swift in Sources */,
+				96085F271F4CE75A0049B567 /* DevSettingsTableViewController.swift in Sources */,
 				96CE58F01EE8A12900073BD5 /* AircraftSelectCell.swift in Sources */,
 				96F2FCAF1E92DF0D00C51674 /* OnboardingViewController.swift in Sources */,
 				96395F2D1EF340BD0094923F /* Notification+Screens.swift in Sources */,
 				96395F291EF312070094923F /* UIView+Image.swift in Sources */,
 				96E53ED31E90378E0045AA06 /* AppDelegate.swift in Sources */,
 				96F2FCA81E92DA6A00C51674 /* UIStoryboard+Storyboards.swift in Sources */,
+				963F37361F56419900B55526 /* AircraftServicesViewModel.swift in Sources */,
 				96C506601F3CFADE001E41DB /* Notification+Menu.swift in Sources */,
 				96B7236D1EA98B5200B2E322 /* AppData.swift in Sources */,
 				96459DDA1F32F5E8001E2BCC /* OutboundReturnViewController.swift in Sources */,
@@ -1131,7 +1171,7 @@
 			baseConfigurationReference = 7BF64E167EC734F4C54DBF17 /* Pods-mavryc.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CURRENT_PROJECT_VERSION = 36;
+				CURRENT_PROJECT_VERSION = 39;
 				DEVELOPMENT_TEAM = 8H5S399Z5A;
 				INFOPLIST_FILE = mavryc/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -1151,7 +1191,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CURRENT_PROJECT_VERSION = 36;
+				CURRENT_PROJECT_VERSION = 39;
 				DEVELOPMENT_TEAM = 8H5S399Z5A;
 				INFOPLIST_FILE = mavryc/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;

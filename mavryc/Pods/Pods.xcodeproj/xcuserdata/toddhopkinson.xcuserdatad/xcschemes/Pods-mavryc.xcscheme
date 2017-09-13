@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'F3E8BBD2C75BC17461186ABDFE3726D0'
+               BlueprintIdentifier = 'F499B43C27FEFFB59C4804A5A83F4EB1'
                BlueprintName = 'Pods-mavryc'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'Pods-mavryc.framework'>

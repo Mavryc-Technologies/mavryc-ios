@@ -8,13 +8,13 @@ target 'mavryc' do
   pod 'SwiftyJSON', '~> 3.1.1'
   pod 'Locksmith', '~> 3.0'
   pod 'ObjectMapper', '~> 2.2'
-  pod 'RealmSwift'
   pod 'SQLite.swift', '~> 0.11.3'
   pod 'Mapbox-iOS-SDK', '~> 3.5'
   pod 'SwiftySound'
   pod 'GooglePlaces'
   pod 'GooglePlacePicker'
   pod 'GoogleMaps'
+  pod 'LFLoginController'
 
   target 'mavrycTests' do
     pod 'SwiftyJSON', '~> 3.1.1'
