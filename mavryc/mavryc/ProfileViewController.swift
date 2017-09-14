@@ -59,4 +59,10 @@ class ProfileViewController: UIViewController {
             print("dismissed")
         }
     }
+    
+    @IBAction func logoutAction(_ sender: Any) {
+        User.logout()
+        self.dismiss(animated: true, completion: nil)
+    }
+    
 }

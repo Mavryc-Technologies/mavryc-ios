@@ -127,11 +127,26 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                     </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rdl-GU-iJD">
+                                        <rect key="frame" x="165" y="538" width="44" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="bCg-j3-3Pj"/>
+                                            <constraint firstAttribute="width" constant="44" id="rcr-5C-3hY"/>
+                                        </constraints>
+                                        <state key="normal" title="logout">
+                                            <color key="titleColor" red="0.3803921569" green="0.4431372549" blue="0.53333333329999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="logoutAction:" destination="6XQ-DN-wVa" eventType="touchUpInside" id="JyF-Wf-kYr"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="OWo-Qi-KCK" firstAttribute="leading" secondItem="N5H-iJ-Lye" secondAttribute="leading" constant="26" id="LHh-Pd-HB9"/>
                                     <constraint firstItem="OWo-Qi-KCK" firstAttribute="top" secondItem="N5H-iJ-Lye" secondAttribute="top" constant="8" id="Yre-0c-oh0"/>
+                                    <constraint firstItem="Rdl-GU-iJD" firstAttribute="centerX" secondItem="N5H-iJ-Lye" secondAttribute="centerX" id="lsW-Uh-CuW"/>
+                                    <constraint firstAttribute="bottom" secondItem="Rdl-GU-iJD" secondAttribute="bottom" constant="8" id="qmu-ag-D3j"/>
                                 </constraints>
                             </view>
                         </subviews>

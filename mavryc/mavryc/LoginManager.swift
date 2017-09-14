@@ -28,7 +28,7 @@ class LoginManager {
     
     static let shared = LoginManager()
     
-    public weak var loginViewController: LFLoginController? = nil
+    public weak var loginViewController: AuthLandingViewController? = nil
     
     fileprivate var listeners: [LoginMulticastDelegate] = []
     
@@ -48,31 +48,27 @@ class LoginManager {
     }
     
     public func presentLoginScreen(sender: UIViewController, delegate: LoginMulticastDelegate) {
-        let login = LFLoginController()
-        login.view.backgroundColor = AppStyle.skylarDeepBlue
-        login.loginButtonColor = AppStyle.skylarGold
         
-        self.loginViewController = login
-        login.delegate = self
+        let storyboard = UIStoryboard.init(name: "Authentication", bundle: Bundle.main)
+
+        guard let loginNavController = storyboard.instantiateInitialViewController() as? UINavigationController else {return}
+//        guard let login = loginNavController.viewControllers.first as? AuthLandingViewController else { return }
         
         self.registerLoginMulticastDelegate(listener: delegate)
-        
-        sender.show(login, sender: self)
+        sender.show(loginNavController, sender: self)
     }
     
     public func presentLoginScreen(sender: UIViewController) {
-        let login = LFLoginController()
-        login.view.backgroundColor = AppStyle.skylarDeepBlue
-        login.loginButtonColor = AppStyle.skylarGold
         
-        self.loginViewController = login
-        login.delegate = self
+        let storyboard = UIStoryboard.init(name: "Authentication", bundle: Bundle.main)
+        guard let loginNavController = storyboard.instantiateInitialViewController() as? UINavigationController else {return}
+//        guard let login = loginNavController.viewControllers.first as? AuthLandingViewController else { return }
         
         if let sendr = sender as? LoginMulticastDelegate {
             self.registerLoginMulticastDelegate(listener: sendr)
         }
         
-        sender.show(login, sender: self)
+        sender.show(loginNavController, sender: self)
     }
     
     public func dismissLoginScreen() {
@@ -82,41 +78,41 @@ class LoginManager {
     }
 }
 
-extension LoginManager: LFLoginControllerDelegate {
-    
-    func loginDidFinish(email: String, password: String, type: LFLoginController.SendType) {
-        
-        if !email.isEmpty && !password.isEmpty {
-            
-            // TODO: proceed for demonstration purposes as if LoginAPI or Signin API succeeded
-            let appUser = User(email: email, password: password)
-            appUser.save()
-            
-            if type == .Login {
-                
-                // TODO: implement API call to login - returns LoginUser on success
-                let user = LoginUser(email: email, password: password)
-                
-                self.listeners.forEach { (listener) in
-                    listener.onLogin(success: true, manager: self, Login: user)
-                }
-            } else {
-                
-                // TODO: implement API call to signup - returns LoginUser on success
-                let user = LoginUser(email: email, password: password)
-                
-                self.listeners.forEach { (listener) in
-                    listener.onLogin(success: true, manager: self, Login: user)
-                }
-            }
-        }
-    }
-    
-    func forgotPasswordTapped() {
-        self.listeners.forEach { (listener) in
-//            listener.onForgotPassword(manager: self)
-        }
-    }
-    
-}
+//extension LoginManager: LFLoginControllerDelegate {
+//    
+//    func loginDidFinish(email: String, password: String, type: LFLoginController.SendType) {
+//        
+//        if !email.isEmpty && !password.isEmpty {
+//            
+//            // TODO: proceed for demonstration purposes as if LoginAPI or Signin API succeeded
+//            let appUser = User(email: email, password: password)
+//            appUser.save()
+//            
+//            if type == .Login {
+//                
+//                // TODO: implement API call to login - returns LoginUser on success
+//                let user = LoginUser(email: email, password: password)
+//                
+//                self.listeners.forEach { (listener) in
+//                    listener.onLogin(success: true, manager: self, Login: user)
+//                }
+//            } else {
+//                
+//                // TODO: implement API call to signup - returns LoginUser on success
+//                let user = LoginUser(email: email, password: password)
+//                
+//                self.listeners.forEach { (listener) in
+//                    listener.onLogin(success: true, manager: self, Login: user)
+//                }
+//            }
+//        }
+//    }
+//    
+//    func forgotPasswordTapped() {
+//        self.listeners.forEach { (listener) in
+////            listener.onForgotPassword(manager: self)
+//        }
+//    }
+//    
+//}
 
