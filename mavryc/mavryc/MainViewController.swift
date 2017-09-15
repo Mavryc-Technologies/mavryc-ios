@@ -36,7 +36,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var joystick: CDJoystick!
     @IBOutlet weak var joystickToken: UIView! {
         didSet {
-            joystickToken.center =  joystick.center
+            //joystickToken.center =  joystick.center
         }
     }
     
