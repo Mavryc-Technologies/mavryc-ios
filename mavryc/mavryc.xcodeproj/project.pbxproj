@@ -108,6 +108,7 @@
 		96E53EDD1E90378E0045AA06 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96E53EDB1E90378E0045AA06 /* LaunchScreen.storyboard */; };
 		96E53EE81E90378E0045AA06 /* mavrycTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E53EE71E90378E0045AA06 /* mavrycTests.swift */; };
 		96E7DBA41F05A2C700AA850E /* JoystickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E7DBA31F05A2C700AA850E /* JoystickView.swift */; };
+		96EF69651F6B28C500CE0E85 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 96EF69641F6B28C500CE0E85 /* README.txt */; };
 		96F2FC961E92CD0000C51674 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F2FC951E92CD0000C51674 /* AppCoordinator.swift */; };
 		96F2FC981E92D29600C51674 /* SafeLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F2FC971E92D29600C51674 /* SafeLog.swift */; };
 		96F2FC9B1E92D6FE00C51674 /* AppStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F2FC9A1E92D6FE00C51674 /* AppStyle.swift */; };
@@ -244,6 +245,7 @@
 		96E53EE71E90378E0045AA06 /* mavrycTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mavrycTests.swift; sourceTree = "<group>"; };
 		96E53EE91E90378E0045AA06 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		96E7DBA31F05A2C700AA850E /* JoystickView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoystickView.swift; sourceTree = "<group>"; };
+		96EF69641F6B28C500CE0E85 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 		96F2FC951E92CD0000C51674 /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		96F2FC971E92D29600C51674 /* SafeLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SafeLog.swift; sourceTree = "<group>"; };
 		96F2FC9A1E92D6FE00C51674 /* AppStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppStyle.swift; sourceTree = "<group>"; };
@@ -340,17 +342,6 @@
 				23B819C91EB19198006017FC /* LoginClient.swift */,
 			);
 			name = user;
-			sourceTree = "<group>";
-		};
-		962CE1BF1F69D38400106C7A /* login */ = {
-			isa = PBXGroup;
-			children = (
-				962CE1C21F69D6D600106C7A /* Authentication.storyboard */,
-				962CE1C01F69D6C800106C7A /* AuthLandingViewController.swift */,
-				962CE1C41F69D77D00106C7A /* SignupViewController.swift */,
-				962CE1C61F69D78700106C7A /* LoginViewController.swift */,
-			);
-			name = login;
 			sourceTree = "<group>";
 		};
 		962E88D91EE9A7A8003DECBF /* screens */ = {
@@ -480,13 +471,6 @@
 			name = "airport search control";
 			sourceTree = "<group>";
 		};
-		96B7236E1EA98B7000B2E322 /* database */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = database;
-			sourceTree = "<group>";
-		};
 		96C506581F3CEB32001E41DB /* slideout menu */ = {
 			isa = PBXGroup;
 			children = (
@@ -593,7 +577,6 @@
 				96E53EF61E903AA00045AA06 /* networking */,
 				96A32C191E96A34800DA7DC1 /* models */,
 				96E53EF71E903AC70045AA06 /* features */,
-				96B7236E1EA98B7000B2E322 /* database */,
 				96E53EF91E903B440045AA06 /* extensions */,
 				96F2FCB51E92FACA00C51674 /* logging */,
 				96F2FCA01E92D9A900C51674 /* storyboard support */,
@@ -615,6 +598,7 @@
 		96E53EF21E9037B70045AA06 /* application */ = {
 			isa = PBXGroup;
 			children = (
+				96EF69641F6B28C500CE0E85 /* README.txt */,
 				96E53ED21E90378E0045AA06 /* AppDelegate.swift */,
 				96F2FC951E92CD0000C51674 /* AppCoordinator.swift */,
 				96F2FC9A1E92D6FE00C51674 /* AppStyle.swift */,
@@ -690,9 +674,12 @@
 		96E9DAA61F45078A00E73279 /* login */ = {
 			isa = PBXGroup;
 			children = (
-				962CE1BF1F69D38400106C7A /* login */,
 				968A07991F451B5C0086BAB4 /* LoginManager.swift */,
 				968A079B1F451ECE0086BAB4 /* LoginUser.swift */,
+				962CE1C21F69D6D600106C7A /* Authentication.storyboard */,
+				962CE1C01F69D6C800106C7A /* AuthLandingViewController.swift */,
+				962CE1C41F69D77D00106C7A /* SignupViewController.swift */,
+				962CE1C61F69D78700106C7A /* LoginViewController.swift */,
 			);
 			name = login;
 			sourceTree = "<group>";
@@ -856,6 +843,7 @@
 				962EE1181EBBBA7800797CD9 /* Mapbox.storyboard in Resources */,
 				96B1F2D11EEA294E00EB5F4A /* airports.sqlite3 in Resources */,
 				96CE58F11EE8A12900073BD5 /* AircraftSelectCell.xib in Resources */,
+				96EF69651F6B28C500CE0E85 /* README.txt in Resources */,
 				96C506641F3D19E3001E41DB /* SlideoutMenuTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
