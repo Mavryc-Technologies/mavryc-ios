@@ -95,9 +95,10 @@ extension JoystickController: JoystickDelegate {
     
     /// Keeps the disk/token image centered on the virtual joystick center
     private func updateDiskPosition(for tokenView: UIView, toJoystick: UIView, atStickCenter: CGPoint) {
-        let centerX = ((toJoystick.frame.origin.x + atStickCenter.x))
-        let centerY = ((toJoystick.frame.origin.y + atStickCenter.y))
-        tokenView.center = CGPoint(x: centerX, y: centerY )
+// TODO: uncommend and fix positioning only when joystick operation is enabled again - it is currently disabled
+//        let centerX = ((toJoystick.frame.origin.x + atStickCenter.x))
+//        let centerY = ((toJoystick.frame.origin.y + atStickCenter.y))
+//        tokenView.center = CGPoint(x: centerX, y: centerY )
     }
     
     

@@ -6,7 +6,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -108,15 +107,14 @@
                                 </connections>
                             </view>
                             <containerView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5mB-pa-23C" userLabel="Joystick" customClass="CDJoystick" customModule="mavryc" customModuleProvider="target">
-                                <rect key="frame" x="132" y="477" width="150" height="150"/>
+                                <rect key="frame" x="132" y="510" width="150" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="cqp-5L-1To"/>
                                     <constraint firstAttribute="height" constant="150" id="f1J-K1-Gqm"/>
                                 </constraints>
                             </containerView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cFN-Fj-6Dl" userLabel="joystickToken" customClass="JoystickView" customModule="mavryc" customModuleProvider="target">
-                                <rect key="frame" x="84" y="397" width="207" height="207"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cFN-Fj-6Dl" userLabel="joystickToken" customClass="JoystickView" customModule="mavryc" customModuleProvider="target">
+                                <rect key="frame" x="104" y="480" width="207" height="208"/>
                                 <subviews>
                                     <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="plane_icon_bg" translatesAutoresizingMaskIntoConstraints="NO" id="pqM-2U-VGg">
                                         <rect key="frame" x="63" y="63" width="80" height="80"/>
@@ -136,6 +134,10 @@
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="207" id="NE9-0G-D1V"/>
+                                    <constraint firstAttribute="height" constant="208" id="l55-dL-pjq"/>
+                                </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sxP-CM-Y4T" userLabel="Panel Container">
                                 <rect key="frame" x="0.0" y="678" width="414" height="672"/>
@@ -175,6 +177,8 @@
                             <constraint firstItem="sxP-CM-Y4T" firstAttribute="height" secondItem="jUE-lh-mSM" secondAttribute="height" id="8cI-Df-Idj"/>
                             <constraint firstAttribute="trailingMargin" secondItem="DvP-bY-FJA" secondAttribute="trailing" constant="37" id="9Mp-sx-AAP"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="sxP-CM-Y4T" secondAttribute="top" constant="58" id="I4w-48-yoJ"/>
+                            <constraint firstItem="cFN-Fj-6Dl" firstAttribute="centerX" secondItem="5mB-pa-23C" secondAttribute="centerX" id="Jq8-Se-6KX"/>
+                            <constraint firstItem="cFN-Fj-6Dl" firstAttribute="centerY" secondItem="5mB-pa-23C" secondAttribute="centerY" constant="-0.33333333333337123" id="JwY-Hu-i45"/>
                             <constraint firstAttribute="trailing" secondItem="t7R-Dr-WIp" secondAttribute="trailing" id="LFf-lA-ZZH"/>
                             <constraint firstItem="0IC-Vt-fGK" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="LWS-xP-8jW"/>
                             <constraint firstItem="jUE-lh-mSM" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="MCi-3x-s3l"/>
@@ -183,6 +187,7 @@
                             <constraint firstItem="5mB-pa-23C" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="WTa-0L-dJs"/>
                             <constraint firstItem="zdh-rz-3Oz" firstAttribute="leading" secondItem="jUE-lh-mSM" secondAttribute="leading" id="XCj-3I-iDq"/>
                             <constraint firstItem="0IC-Vt-fGK" firstAttribute="top" secondItem="zdh-rz-3Oz" secondAttribute="bottom" constant="30" id="ZmK-J8-SDB"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="5mB-pa-23C" secondAttribute="bottom" constant="76" id="crr-54-577"/>
                             <constraint firstItem="jUE-lh-mSM" firstAttribute="top" secondItem="zdh-rz-3Oz" secondAttribute="bottom" id="ezV-Z6-Yzc"/>
                             <constraint firstItem="xdu-ln-9BJ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="-1" id="iml-Dm-fS9"/>
                             <constraint firstItem="zdh-rz-3Oz" firstAttribute="trailing" secondItem="sxP-CM-Y4T" secondAttribute="trailing" id="lv5-Rs-Qhp"/>
@@ -192,7 +197,6 @@
                             <constraint firstItem="zdh-rz-3Oz" firstAttribute="trailing" secondItem="jUE-lh-mSM" secondAttribute="trailing" id="rzJ-Xh-sJr"/>
                             <constraint firstItem="t7R-Dr-WIp" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="-1" id="udj-72-rLM"/>
                             <constraint firstAttribute="trailing" secondItem="xdu-ln-9BJ" secondAttribute="trailing" id="vRg-Yw-6D6"/>
-                            <constraint firstItem="5mB-pa-23C" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="1.5" id="vuw-tX-B3t"/>
                             <constraint firstItem="zdh-rz-3Oz" firstAttribute="leading" secondItem="sxP-CM-Y4T" secondAttribute="leading" id="xiH-ua-BIe"/>
                         </constraints>
                     </view>
@@ -1699,7 +1703,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="556"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="3ha-Yn-xGq">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="3ha-Yn-xGq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

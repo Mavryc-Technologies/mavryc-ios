@@ -24,6 +24,10 @@
 		961144951F0D92BA003033AE /* DatePickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961144941F0D92BA003033AE /* DatePickerTableViewCell.swift */; };
 		961E2AC21E985602000F2D64 /* FetchFlightsDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961E2AC11E985602000F2D64 /* FetchFlightsDTO.swift */; };
 		961E2AC71E985A20000F2D64 /* webServiceClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961E2AC61E985A20000F2D64 /* webServiceClientTests.swift */; };
+		962CE1C11F69D6C800106C7A /* AuthLandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962CE1C01F69D6C800106C7A /* AuthLandingViewController.swift */; };
+		962CE1C31F69D6D600106C7A /* Authentication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 962CE1C21F69D6D600106C7A /* Authentication.storyboard */; };
+		962CE1C51F69D77D00106C7A /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962CE1C41F69D77D00106C7A /* SignupViewController.swift */; };
+		962CE1C71F69D78700106C7A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962CE1C61F69D78700106C7A /* LoginViewController.swift */; };
 		962EE1181EBBBA7800797CD9 /* Mapbox.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 962EE1171EBBBA7800797CD9 /* Mapbox.storyboard */; };
 		96395F291EF312070094923F /* UIView+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96395F281EF312070094923F /* UIView+Image.swift */; };
 		96395F2B1EF33D250094923F /* ScreenNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96395F2A1EF33D250094923F /* ScreenNavigator.swift */; };
@@ -104,6 +108,7 @@
 		96E53EDD1E90378E0045AA06 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96E53EDB1E90378E0045AA06 /* LaunchScreen.storyboard */; };
 		96E53EE81E90378E0045AA06 /* mavrycTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E53EE71E90378E0045AA06 /* mavrycTests.swift */; };
 		96E7DBA41F05A2C700AA850E /* JoystickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E7DBA31F05A2C700AA850E /* JoystickView.swift */; };
+		96EF69651F6B28C500CE0E85 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 96EF69641F6B28C500CE0E85 /* README.txt */; };
 		96F2FC961E92CD0000C51674 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F2FC951E92CD0000C51674 /* AppCoordinator.swift */; };
 		96F2FC981E92D29600C51674 /* SafeLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F2FC971E92D29600C51674 /* SafeLog.swift */; };
 		96F2FC9B1E92D6FE00C51674 /* AppStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F2FC9A1E92D6FE00C51674 /* AppStyle.swift */; };
@@ -152,6 +157,10 @@
 		961144941F0D92BA003033AE /* DatePickerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerTableViewCell.swift; sourceTree = "<group>"; };
 		961E2AC11E985602000F2D64 /* FetchFlightsDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchFlightsDTO.swift; sourceTree = "<group>"; };
 		961E2AC61E985A20000F2D64 /* webServiceClientTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = webServiceClientTests.swift; sourceTree = "<group>"; };
+		962CE1C01F69D6C800106C7A /* AuthLandingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthLandingViewController.swift; sourceTree = "<group>"; };
+		962CE1C21F69D6D600106C7A /* Authentication.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Authentication.storyboard; sourceTree = "<group>"; };
+		962CE1C41F69D77D00106C7A /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		962CE1C61F69D78700106C7A /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		962EE1171EBBBA7800797CD9 /* Mapbox.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Mapbox.storyboard; sourceTree = "<group>"; };
 		96395F281EF312070094923F /* UIView+Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Image.swift"; sourceTree = "<group>"; };
 		96395F2A1EF33D250094923F /* ScreenNavigator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenNavigator.swift; sourceTree = "<group>"; };
@@ -236,6 +245,7 @@
 		96E53EE71E90378E0045AA06 /* mavrycTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mavrycTests.swift; sourceTree = "<group>"; };
 		96E53EE91E90378E0045AA06 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		96E7DBA31F05A2C700AA850E /* JoystickView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoystickView.swift; sourceTree = "<group>"; };
+		96EF69641F6B28C500CE0E85 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 		96F2FC951E92CD0000C51674 /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		96F2FC971E92D29600C51674 /* SafeLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SafeLog.swift; sourceTree = "<group>"; };
 		96F2FC9A1E92D6FE00C51674 /* AppStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppStyle.swift; sourceTree = "<group>"; };
@@ -461,13 +471,6 @@
 			name = "airport search control";
 			sourceTree = "<group>";
 		};
-		96B7236E1EA98B7000B2E322 /* database */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = database;
-			sourceTree = "<group>";
-		};
 		96C506581F3CEB32001E41DB /* slideout menu */ = {
 			isa = PBXGroup;
 			children = (
@@ -574,7 +577,6 @@
 				96E53EF61E903AA00045AA06 /* networking */,
 				96A32C191E96A34800DA7DC1 /* models */,
 				96E53EF71E903AC70045AA06 /* features */,
-				96B7236E1EA98B7000B2E322 /* database */,
 				96E53EF91E903B440045AA06 /* extensions */,
 				96F2FCB51E92FACA00C51674 /* logging */,
 				96F2FCA01E92D9A900C51674 /* storyboard support */,
@@ -596,6 +598,7 @@
 		96E53EF21E9037B70045AA06 /* application */ = {
 			isa = PBXGroup;
 			children = (
+				96EF69641F6B28C500CE0E85 /* README.txt */,
 				96E53ED21E90378E0045AA06 /* AppDelegate.swift */,
 				96F2FC951E92CD0000C51674 /* AppCoordinator.swift */,
 				96F2FC9A1E92D6FE00C51674 /* AppStyle.swift */,
@@ -673,6 +676,10 @@
 			children = (
 				968A07991F451B5C0086BAB4 /* LoginManager.swift */,
 				968A079B1F451ECE0086BAB4 /* LoginUser.swift */,
+				962CE1C21F69D6D600106C7A /* Authentication.storyboard */,
+				962CE1C01F69D6C800106C7A /* AuthLandingViewController.swift */,
+				962CE1C41F69D77D00106C7A /* SignupViewController.swift */,
+				962CE1C61F69D78700106C7A /* LoginViewController.swift */,
 			);
 			name = login;
 			sourceTree = "<group>";
@@ -815,6 +822,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				96E53EDD1E90378E0045AA06 /* LaunchScreen.storyboard in Resources */,
+				962CE1C31F69D6D600106C7A /* Authentication.storyboard in Resources */,
 				96DA35B71EC281F400D2A0BC /* Lato in Resources */,
 				96CB0A461EE5DBF9004ADEA0 /* PaxPicker.xib in Resources */,
 				96E53EDA1E90378E0045AA06 /* Assets.xcassets in Resources */,
@@ -835,6 +843,7 @@
 				962EE1181EBBBA7800797CD9 /* Mapbox.storyboard in Resources */,
 				96B1F2D11EEA294E00EB5F4A /* airports.sqlite3 in Resources */,
 				96CE58F11EE8A12900073BD5 /* AircraftSelectCell.xib in Resources */,
+				96EF69651F6B28C500CE0E85 /* README.txt in Resources */,
 				96C506641F3D19E3001E41DB /* SlideoutMenuTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -960,6 +969,7 @@
 				96CE58FA1EE93C6000073BD5 /* ConfirmDetailsScreenVC.swift in Sources */,
 				967FF6261E9446BF007B56C6 /* Networking.swift in Sources */,
 				96A32C1F1E98153300DA7DC1 /* SignupClient.swift in Sources */,
+				962CE1C71F69D78700106C7A /* LoginViewController.swift in Sources */,
 				96C506571F3CE8F2001E41DB /* UIWindow+View.swift in Sources */,
 				96F2FCB31E92DF4E00C51674 /* MainViewController.swift in Sources */,
 				96F2FC961E92CD0000C51674 /* AppCoordinator.swift in Sources */,
@@ -1009,6 +1019,7 @@
 				96395F371EF5DA310094923F /* FeatureFlag.swift in Sources */,
 				96F2FC9E1E92D8CC00C51674 /* AppState.swift in Sources */,
 				96B7476B1F0E9F56006071E5 /* Date+Format.swift in Sources */,
+				962CE1C11F69D6C800106C7A /* AuthLandingViewController.swift in Sources */,
 				966744581F28159C007445CE /* ContactPickerViewController.swift in Sources */,
 				964629CA1EF89C8B00CAA16E /* NavigationControllerDelegate.swift in Sources */,
 				96CAF3F61F58AAF00031561F /* ConfirmDetailsViewModel.swift in Sources */,
@@ -1024,6 +1035,7 @@
 				96E53ED31E90378E0045AA06 /* AppDelegate.swift in Sources */,
 				96F2FCA81E92DA6A00C51674 /* UIStoryboard+Storyboards.swift in Sources */,
 				963F37361F56419900B55526 /* AircraftServicesViewModel.swift in Sources */,
+				962CE1C51F69D77D00106C7A /* SignupViewController.swift in Sources */,
 				96C506601F3CFADE001E41DB /* Notification+Menu.swift in Sources */,
 				96B7236D1EA98B5200B2E322 /* AppData.swift in Sources */,
 				96459DDA1F32F5E8001E2BCC /* OutboundReturnViewController.swift in Sources */,
@@ -1171,7 +1183,7 @@
 			baseConfigurationReference = 7BF64E167EC734F4C54DBF17 /* Pods-mavryc.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CURRENT_PROJECT_VERSION = 39;
+				CURRENT_PROJECT_VERSION = 41;
 				DEVELOPMENT_TEAM = 8H5S399Z5A;
 				INFOPLIST_FILE = mavryc/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -1191,7 +1203,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CURRENT_PROJECT_VERSION = 39;
+				CURRENT_PROJECT_VERSION = 41;
 				DEVELOPMENT_TEAM = 8H5S399Z5A;
 				INFOPLIST_FILE = mavryc/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;

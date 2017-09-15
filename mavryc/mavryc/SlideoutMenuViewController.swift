@@ -56,7 +56,7 @@ class SlideoutMenuViewController: UIViewController {
         
         tableView.register(UINib(nibName: "SlideoutMenuTableViewCell", bundle: Bundle.main), forCellReuseIdentifier: "menuCell")
         
-        profileNameLabel.text = "John Appleseed"
+        profileNameLabel.text = "Login"
         
         profileImageView.layer.cornerRadius = profileImageView.frame.size.width / 2
         profileImageView.layer.masksToBounds = true
@@ -75,6 +75,11 @@ class SlideoutMenuViewController: UIViewController {
             } else if let email = User.storedUser()?.email {
                 profileNameLabel.text = email
             }
+            
+            profileImageView.image = UIImage(named: "the-rock-studio71")
+        } else {
+            profileNameLabel.text = "Login"
+            profileImageView.image = nil
         }
     }
     
